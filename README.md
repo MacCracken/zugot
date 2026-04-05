@@ -18,8 +18,8 @@ Zugot is consumed by:
 ```
 zugot/
 ├── base/              — 116 recipes (toolchain, kernel, core libs — LFS Ch. 5-8)
-├── desktop/           — 71 recipes (Wayland, PipeWire, GPU, fonts, themes)
-├── marketplace/       — 109 recipes (AGNOS crates + consumer apps)
+├── desktop/           — 112 recipes (Wayland, PipeWire, GPU, fonts, themes, apps)
+├── marketplace/       — 111 recipes (AGNOS crates + consumer apps)
 ├── ai/                — 25 recipes (CUDA, ONNX, PyTorch, whisper, llama.cpp)
 ├── edge/              — 31 recipes (fleet management, IoT, minimal profile)
 ├── network/           — 9 recipes (nftables, iproute2, wireless)
@@ -27,7 +27,7 @@ zugot/
 ├── python/            — 4 recipes (Python runtime)
 ├── database/          — 3 recipes (database systems)
 ├── sandbox/           — 3 recipes (sandbox/container recipes)
-├── build-order.txt    — 309 packages in dependency order (base + desktop)
+├── build-order.txt    — 225 packages in dependency order (base + desktop)
 └── bazaar/            — community-contributed recipes (planned)
 ```
 
@@ -93,8 +93,8 @@ network_access = false
 | Category | Count | Description |
 |----------|-------|-------------|
 | **base** | 116 | GCC 15.2, Rust 1.89, Linux 6.6.72, glibc 2.42, full LFS toolchain |
-| **desktop** | 71 | Mesa, PipeWire, Wayland, foot, helix, mpv, GTK, Qt |
-| **marketplace** | 109 | AGNOS library crates (77), consumer apps (19+), OS subsystems |
+| **desktop** | 112 | Mesa, PipeWire, Wayland, foot, helix, mpv, GTK, Qt |
+| **marketplace** | 111 | AGNOS library crates, consumer apps, OS subsystems, cyrius, agnos-kernel |
 | **ai** | 25 | CUDA, ONNX, PyTorch, whisper.cpp, llama.cpp, vllm |
 | **edge** | 31 | Minimal profile, fleet agents, ESP32, IoT |
 | **network** | 9 | nftables, iproute2, wireless tools |
@@ -105,7 +105,7 @@ network_access = false
 
 ## Build Order
 
-`build-order.txt` contains 309 packages in dependency-sorted order for building the complete base + desktop system from source. This is the self-hosting critical path — AGNOS builds AGNOS using these recipes in this order.
+`build-order.txt` contains 225 packages in dependency-sorted order for building the complete base + desktop system from source. This is the self-hosting critical path — AGNOS builds AGNOS using these recipes in this order.
 
 ## Recipe Rules
 

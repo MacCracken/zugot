@@ -16,8 +16,8 @@ base/iana-etc
 base/m4
 base/xz
 base/zlib
-base/zstd
 base/lz4
+base/zstd
 base/bzip2
 base/expat
 base/libffi
@@ -28,6 +28,8 @@ base/acl
 base/libcap
 base/libcap-ng
 base/gdbm
+base/gmp
+base/mpfr
 base/gawk
 base/sed
 base/grep
@@ -60,8 +62,6 @@ base/autoconf
 base/automake
 base/gperf
 base/libxcrypt
-base/gmp
-base/mpfr
 base/mpc
 
 # =========================================================================
@@ -143,6 +143,9 @@ base/cmake
 base/meson
 base/llvm
 base/rust
+
+# bazaar depends on ark + takumi (marketplace) — build after marketplace packages
+base/bazaar
 
 # =========================================================================
 # TIER 3a: Desktop — Core libs (needed by everything downstream)

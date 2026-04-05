@@ -106,8 +106,8 @@ Every recipe change requires a full field audit — **never just bump a version*
 ```
 zugot/
 ├── base/              — 116 recipes (LFS toolchain, kernel, core libs)
-├── desktop/           — 71 recipes (Wayland, PipeWire, GPU, fonts)
-├── marketplace/       — 109 recipes (AGNOS crates + consumer apps)
+├── desktop/           — 112 recipes (Wayland, PipeWire, GPU, fonts, apps)
+├── marketplace/       — 111 recipes (AGNOS crates + consumer apps)
 ├── ai/                — 25 recipes (CUDA, ONNX, PyTorch)
 ├── edge/              — 31 recipes (fleet, IoT, minimal)
 ├── network/           — 9 recipes (nftables, iproute2)

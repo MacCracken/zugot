@@ -7,7 +7,7 @@
 name = "dbus"
 version = "1.16.2"
 description = "D-Bus — interprocess communication message bus"
-license = "AFL-2.1"
+license = "AFL-2.1 OR GPL-2.0-or-later"
 groups = ["base", "core", "tier1"]
 release = 1
 arch = "x86_64"
