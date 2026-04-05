@@ -1,0 +1,59 @@
+# Cyrius — Sovereign, self-hosting systems language
+# Assembly up. No Rust. No LLVM. No Python. Just sh + Linux x86_64.
+# Compiler toolchain: assembler (asm.cyr), compiler (cc2), builder (cyrb).
+#
+# Name: Cyrius (sovereign systems language)
+# Bin: cc2, asm, cyrb
+#
+# Status: Pre-release — v0.1.0.
+
+[package]
+name = "cyrius"
+version = "0.1.0"
+description = "Cyrius — sovereign self-hosting systems language and compiler toolchain"
+license = "GPL-3.0-only"
+groups = ["tool", "compiler", "language", "rust"]
+release = 1
+arch = "x86_64"
+
+[source]
+github_release = "MacCracken/cyrius"
+release_asset = "cyrius-*-linux-amd64.tar.gz"
+sha256 = ""  # TODO: populate from release tarball
+
+[depends]
+runtime = ["glibc"]
+build = []
+
+[marketplace]
+category = "developer-tools"
+runtime = "native-binary"
+publisher = "AGNOS"
+tags = ["compiler", "language", "systems", "assembler", "self-hosting", "bootstrap"]
+min_agnos_version = "2026.3.22"
+
+[marketplace.sandbox]
+seccomp_mode = "basic"
+network_access = false
+
+[build]
+make = "sh bootstrap/bootstrap.sh"
+check = "sh scripts/test_all.sh"
+install = """
+mkdir -p $PKG/usr/bin
+cp build/cc2 $PKG/usr/bin/cc2
+cp build/asm $PKG/usr/bin/asm
+cp build/cyrb $PKG/usr/bin/cyrb
+chmod +x $PKG/usr/bin/cc2 $PKG/usr/bin/asm $PKG/usr/bin/cyrb
+
+# Standard library and includes
+mkdir -p $PKG/usr/lib/cyrius
+cp -r stage1/*.cyr $PKG/usr/lib/cyrius/ 2>/dev/null || true
+
+# Documentation
+mkdir -p $PKG/usr/share/doc/cyrius
+cp README.md $PKG/usr/share/doc/cyrius/ 2>/dev/null || true
+"""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

@@ -1,0 +1,59 @@
+# AGNOS Kernel — Sovereign operating system kernel written in Cyrius
+# Bare-metal kernel binary. No C, no Rust, no LLVM. Assembly up.
+# Boots on QEMU via multiboot1. x86_64 target.
+#
+# Name: AGNOS (Greek: agnosis — unknowing, the blank slate)
+# Bin: agnos (kernel binary)
+#
+# Status: Pre-release — v0.9.0.
+
+[package]
+name = "agnos-kernel"
+version = "0.9.0"
+description = "AGNOS — sovereign operating system kernel written in Cyrius"
+license = "GPL-3.0-only"
+groups = ["system", "kernel", "os"]
+release = 1
+arch = "x86_64"
+
+[source]
+github_release = "MacCracken/agnos"
+release_asset = "agnos-*-x86_64.tar.gz"
+sha256 = ""  # TODO: populate from release tarball
+
+[depends]
+runtime = []
+build = ["cyrius"]
+
+[marketplace]
+category = "system-tools"
+runtime = "native-binary"
+publisher = "AGNOS"
+tags = ["kernel", "os", "sovereign", "cyrius", "bare-metal", "x86_64"]
+min_agnos_version = "2026.3.22"
+
+[marketplace.sandbox]
+seccomp_mode = "basic"
+network_access = false
+
+[build]
+make = """
+cat kernel/agnos.cyr | cc2 > build/agnos
+"""
+check = "sh scripts/test.sh"
+install = """
+mkdir -p $PKG/usr/lib/agnos
+cp build/agnos $PKG/usr/lib/agnos/agnos
+chmod +x $PKG/usr/lib/agnos/agnos
+
+# Kernel source for reference
+mkdir -p $PKG/usr/src/agnos
+cp kernel/agnos.cyr $PKG/usr/src/agnos/
+
+# Documentation
+mkdir -p $PKG/usr/share/doc/agnos
+cp README.md $PKG/usr/share/doc/agnos/ 2>/dev/null || true
+"""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
