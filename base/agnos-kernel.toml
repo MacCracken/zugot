@@ -3,7 +3,7 @@
 
 [package]
 name = "agnos-kernel"
-version = "0.9.0"
+version = "1.0.0"
 description = "AGNOS — sovereign operating system kernel"
 license = "GPL-3.0-only"
 groups = ["base", "core", "kernel", "tier1"]
@@ -13,7 +13,7 @@ arch = "x86_64"
 [source]
 github_release = "MacCracken/agnos"
 release_asset = "agnos-x86_64"
-sha256 = ""  # TODO: fill after 0.9.0 release
+sha256 = "23ecccd2226430edbdf23f5de611b802a96bed298ec84ee333c23dbfc9e27091"
 
 [depends]
 runtime = []

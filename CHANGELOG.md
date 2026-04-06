@@ -4,6 +4,16 @@ All notable changes to zugot will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [Unreleased]
+
+### Version Bumps
+
+#### Base
+- agnos-kernel: 0.9.0 → 1.0.0 (first stable release, SHA256 verified from release asset)
+
+#### Marketplace
+- agnos-kernel: 0.9.0 → 1.0.0 (status updated from pre-release to stable, SHA256 verified)
+
 ## [0.1.0] - 2026-04-05
 
 ### Added
