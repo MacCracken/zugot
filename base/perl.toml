@@ -5,7 +5,7 @@
 
 [package]
 name = "perl"
-version = "5.42.1"
+version = "5.42.2"
 description = "Perl — programming language"
 license = "Artistic-1.0"
 groups = ["base", "build", "tier1"]
@@ -13,8 +13,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://www.cpan.org/src/5.0/perl-5.42.1.tar.xz"
-sha256 = "098c7f76e7a28443f6403610c7e339777905360c5225798fd142b8d33b05c6b4"
+url = "https://www.cpan.org/src/5.0/perl-5.42.2.tar.xz"
+sha256 = "0a585eeb9e363c0f80482ddb3571625250c2c86aeb408853e8ea50805cfb14bb"
 patches = []
 
 [depends]

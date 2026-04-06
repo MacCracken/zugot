@@ -3,11 +3,11 @@
 # Two-pass build: Pass 1 (cross, Ch. 5.5) is handled by the bootstrap script.
 # This recipe is the FINAL system build (Ch. 8.5).
 #
-# LFS Ch. 8.5: Glibc-2.42
+# LFS Ch. 8.5: Glibc-2.43
 
 [package]
 name = "glibc"
-version = "2.42"
+version = "2.43"
 description = "GNU C Library — core system library"
 license = "LGPL-2.1-only"
 groups = ["base", "toolchain", "tier0"]
@@ -15,10 +15,10 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://ftp.gnu.org/gnu/glibc/glibc-2.42.tar.xz"
-sha256 = "d1775e32e4628e64ef930f435b67bb63af7599acb6be2b335b9f19f16509f17f"
+url = "https://ftp.gnu.org/gnu/glibc/glibc-2.43.tar.xz"
+sha256 = "d9c86c6b5dbddb43a3e08270c5844fc5177d19442cf5b8df4be7c07cd5fa3831"
 patches = [
-    "glibc-2.42-fhs-1.patch",
+    "glibc-2.43-fhs-1.patch",
 ]
 
 [depends]
@@ -37,7 +37,7 @@ build = [
 [build]
 pre_build = """
 # Apply FHS patch for /var/cache/nscd and /var/db
-patch -Np1 -i ../glibc-2.42-fhs-1.patch
+patch -Np1 -i ../glibc-2.43-fhs-1.patch
 
 # LSB compliance symlinks (x86_64)
 case $(uname -m) in

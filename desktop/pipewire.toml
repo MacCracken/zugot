@@ -4,7 +4,7 @@
 
 [package]
 name = "pipewire"
-version = "1.4.11"
+version = "1.6.2"
 description = "pipewire — Low-latency audio and video routing server"
 license = "MIT"
 groups = ["desktop", "audio"]
@@ -12,8 +12,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://github.com/PipeWire/pipewire/archive/refs/tags/1.4.11.tar.gz"
-sha256 = "49a6cf6ea7a34acd3a9dd05e0758ce5831f1918e1ce47b7ab66662a357045504"
+url = "https://github.com/PipeWire/pipewire/archive/refs/tags/1.6.2.tar.gz"
+sha256 = "2014c187fccdd6d245585be4eda7dabd781dcddd921604c40ab015bba6cb042d"
 patches = []
 
 [depends]

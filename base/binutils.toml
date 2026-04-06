@@ -7,7 +7,7 @@
 
 [package]
 name = "binutils"
-version = "2.45"
+version = "2.46"
 description = "GNU Binary Utilities — linker, assembler, object tools"
 license = "GPL-3.0-only"
 groups = ["base", "toolchain", "tier0"]
@@ -15,8 +15,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://ftp.gnu.org/gnu/binutils/binutils-2.45.tar.xz"
-sha256 = "c50c0e7f9cb188980e2cc97e4537626b1672441815587f1eab69d2a1bfbef5d2"
+url = "https://ftp.gnu.org/gnu/binutils/binutils-2.46.tar.xz"
+sha256 = "80c3fe2ae1062abf56456f52518bd670f9ec3917b7f85e152b347ac6b6faf880"
 patches = []
 
 [depends]

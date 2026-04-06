@@ -1,0 +1,33 @@
+# AGNOS Kernel — sovereign operating system kernel
+# Written in Cyrius. Boots via multiboot1 on QEMU/GRUB.
+
+[package]
+name = "agnos-kernel"
+version = "0.9.0"
+description = "AGNOS — sovereign operating system kernel"
+license = "GPL-3.0-only"
+groups = ["base", "core", "kernel", "tier1"]
+release = 1
+arch = "x86_64"
+
+[source]
+github_release = "MacCracken/agnos"
+release_asset = "agnos-x86_64"
+sha256 = ""  # TODO: fill after 0.9.0 release
+
+[depends]
+runtime = []
+build = ["cyrius"]
+
+[build]
+pre_build = ""
+configure = ""
+make = "cat kernel/agnos.cyr | cc2 > build/agnos"
+check = "sh scripts/test.sh"
+install = """
+install -Dm644 build/agnos $PKG/boot/agnos
+"""
+post_install = ""
+
+[security]
+hardening = []

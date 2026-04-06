@@ -6,7 +6,7 @@
 
 [package]
 name = "shadow"
-version = "4.19.0"
+version = "4.19.4"
 description = "Shadow — user/group management and login utilities"
 license = "BSD-3-Clause"
 groups = ["base", "security", "tier1"]
@@ -14,8 +14,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://github.com/shadow-maint/shadow/releases/download/4.19.0/shadow-4.19.0.tar.xz"
-sha256 = "9cb28ec40f19ee0a5ae8f4fd55539fed88ec41e336663d468cdeab739b632b33"
+url = "https://github.com/shadow-maint/shadow/releases/download/4.19.4/shadow-4.19.4.tar.xz"
+sha256 = "ce57a313e315a0a7cb04a8f50cc20753e994e487bbe9b78a2a824ca75cb486c0"
 patches = []
 
 [depends]

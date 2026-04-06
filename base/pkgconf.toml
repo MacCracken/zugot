@@ -5,7 +5,7 @@
 
 [package]
 name = "pkgconf"
-version = "2.5.1"
+version = "3.0.0"
 description = "Pkgconf — package configuration tool"
 license = "ISC"
 groups = ["base", "build", "tier1"]
@@ -13,8 +13,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://distfiles.ariadne.space/pkgconf/pkgconf-2.5.1.tar.xz"
-sha256 = "cd05c9589b9f86ecf044c10a2269822bc9eb001eced2582cfffd658b0a50c243"
+url = "https://distfiles.ariadne.space/pkgconf/pkgconf-3.0.0.tar.xz"
+sha256 = "5b23effaaed1a843fe051b30589310989b1e2cd5b3fd9037027e6fb3dcdfa5d6"
 patches = []
 
 [depends]

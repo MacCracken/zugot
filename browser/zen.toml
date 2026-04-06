@@ -3,7 +3,7 @@
 
 [package]
 name = "zen-browser"
-version = "1.19.5b"
+version = "1.19.6b"
 description = "Zen Browser — Minimalist, privacy-focused web browser"
 license = "MPL-2.0"
 groups = ["desktop", "browser", "internet"]
@@ -11,8 +11,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://github.com/zen-browser/desktop/archive/refs/tags/1.19.5b.tar.gz"
-sha256 = "fb211577e2e80a7699eebd627c15a69a8221a7e40b8bdc527fea7a4d8240473d"
+url = "https://github.com/zen-browser/desktop/archive/refs/tags/1.19.6b.tar.gz"
+sha256 = "0ec204c790e5cb915cc76c3c42f9783397572b31b3d52eb36d757ea3184fa2d3"
 patches = ["agnos-defaults.patch", "wayland-primary.patch"]
 
 [depends]

@@ -4,7 +4,7 @@
 
 [package]
 name = "iw"
-version = "6.9"
+version = "6.17"
 description = "iw — WiFi configuration and monitoring tool"
 license = "ISC"
 groups = ["network"]
@@ -12,8 +12,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://kernel.org/pub/software/network/iw/iw-6.9.tar.xz"
-sha256 = "3f2db22ad41c675242b98ae3942dbf3112548c60a42ff739210f2de4e98e4894"
+url = "https://kernel.org/pub/software/network/iw/iw-6.17.tar.xz"
+sha256 = "7d182e498289ab39b257da6780d562e415377107f50358ee5b55b8cfe40b1e33"
 patches = []
 
 [depends]

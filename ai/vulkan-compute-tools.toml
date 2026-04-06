@@ -4,7 +4,7 @@
 
 [package]
 name = "vulkan-compute-tools"
-version = "1.4.309"
+version = "1.4.341"
 description = "vulkan-compute-tools — Vulkan SPIR-V compiler and validation layers for GPU compute"
 license = "Apache-2.0"
 groups = ["ai", "ml", "gpu"]
@@ -12,8 +12,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://github.com/KhronosGroup/Vulkan-ValidationLayers/archive/refs/tags/v1.4.309.tar.gz"
-sha256 = "32ef33def9e347776a68f5bdfde346a762fb9d6763dd6ec7164b7850719efff1"
+url = "https://github.com/KhronosGroup/Vulkan-ValidationLayers/archive/refs/tags/v1.4.341.tar.gz"
+sha256 = "cbedb6fbd5194474d02e7a9d85f7092e54fa39989acc5ca8512447b97520ded1"
 patches = []
 
 [depends]

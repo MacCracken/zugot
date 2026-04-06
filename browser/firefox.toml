@@ -1,19 +1,18 @@
-# Firefox ESR — Default web browser for AGNOS
+# Firefox — Default web browser for AGNOS
 # Built from source with Wayland-native support and hardened security flags.
-# ESR chosen for stability and long-term support alignment with AGNOS release cadence.
 
 [package]
 name = "firefox"
-version = "140.9.0"
-description = "Mozilla Firefox ESR — Privacy-focused web browser"
+version = "149.0"
+description = "Mozilla Firefox — Privacy-focused web browser"
 license = "MPL-2.0"
 groups = ["desktop", "browser", "internet"]
 release = 1
 arch = "x86_64"
 
 [source]
-url = "https://archive.mozilla.org/pub/firefox/releases/140.9.0esr/source/firefox-140.9.0esr.source.tar.xz"
-sha256 = ""  # TODO: verify from release tarball
+url = "https://archive.mozilla.org/pub/firefox/releases/149.0/source/firefox-149.0.source.tar.xz"
+sha256 = "b861fdee999d9b6404e1e865d6f707c41b4bded1b5ea62affc176288c1484b8a"
 patches = ["agnos-defaults.patch", "wayland-primary.patch"]
 
 [depends]

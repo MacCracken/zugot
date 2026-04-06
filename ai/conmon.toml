@@ -4,7 +4,7 @@
 
 [package]
 name = "conmon"
-version = "2.1.12"
+version = "2.2.1"
 description = "conmon — OCI container runtime monitor"
 license = "Apache-2.0"
 groups = ["containers"]
@@ -12,8 +12,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://github.com/containers/conmon/archive/refs/tags/v2.1.12.tar.gz"
-sha256 = "842f0b5614281f7e35eec2a4e35f9f7b9834819aa58ecdad8d0ff6a84f6796a6"
+url = "https://github.com/containers/conmon/archive/refs/tags/v2.2.1.tar.gz"
+sha256 = "814fb5979a3a4b8576b1f901e606b482bebb41cb7e57926e6d5765ee786b96d3"
 patches = []
 
 [depends]

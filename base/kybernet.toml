@@ -1,0 +1,36 @@
+# Kybernet — PID 1 init system for AGNOS
+# The helmsman. Manages boot, mounts, signals, cgroups, shutdown.
+# Written in Cyrius. Zero external dependencies at runtime.
+
+[package]
+name = "kybernet"
+version = "0.9.0"
+description = "Kybernet — PID 1 init system for AGNOS"
+license = "GPL-3.0-only"
+groups = ["base", "core", "init", "tier1"]
+release = 1
+arch = "x86_64"
+
+[source]
+github_release = "MacCracken/kybernet"
+release_asset = "kybernet-x86_64"
+sha256 = ""  # TODO: fill after 0.9.0 release
+
+[depends]
+runtime = []            # static binary, no runtime deps
+build = ["cyrius"]      # needs cc2 to build from source
+
+[build]
+pre_build = ""
+configure = ""
+make = "cat src/main.cyr | cc2 > build/kybernet && chmod +x build/kybernet"
+check = "cat src/test.cyr | cc2 > /tmp/kybernet_test && chmod +x /tmp/kybernet_test && /tmp/kybernet_test"
+install = """
+install -Dm755 build/kybernet $PKG/usr/bin/kybernet
+"""
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "stackprotector"]
+cflags = ""
+ldflags = ""

@@ -4,7 +4,7 @@
 
 [package]
 name = "jupyter-server"
-version = "2.15.0"
+version = "2.17.0"
 description = "jupyter-server — Backend server for Jupyter web applications"
 license = "BSD-3-Clause"
 groups = ["ai", "ml", "python", "tools"]
@@ -12,8 +12,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://github.com/jupyter-server/jupyter_server/archive/refs/tags/v2.15.0.tar.gz"
-sha256 = "2a02f4d8262b76cbcd175d5468b2a2b29d2664214e789cfc186b7dec6b2ed102"
+url = "https://github.com/jupyter-server/jupyter_server/archive/refs/tags/v2.17.0.tar.gz"
+sha256 = "0091817b4d46ab26170828e6235518529a73f621bec1b9633c14777c1b9b7db9"
 patches = []
 
 [depends]

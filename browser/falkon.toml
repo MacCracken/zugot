@@ -3,7 +3,7 @@
 
 [package]
 name = "falkon"
-version = "24.12.3"
+version = "25.12.3"
 description = "Falkon — Lightweight Qt-based web browser"
 license = "GPL-3.0-only"
 groups = ["desktop", "browser", "internet"]
@@ -11,8 +11,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://download.kde.org/stable/release-service/24.12.3/src/falkon-24.12.3.tar.xz"
-sha256 = "8d9d967a0af71901188ab4fc501137a4eb7602ffe5222a3240a38ffa9243b951"
+url = "https://download.kde.org/stable/release-service/25.12.3/src/falkon-25.12.3.tar.xz"
+sha256 = "25f90957335058fff8536b511135e36d96e74c49fab45690be89b994015777b5"
 patches = ["agnos-defaults.patch"]
 
 [depends]
