@@ -1,0 +1,82 @@
+# Ifran — LLM inference & training engine for AGNOS
+# System package recipe for building from source via takumi.
+# For marketplace .agnos-agent bundles, see recipes/marketplace/ifran.toml
+#
+# Name: Ifran (Arabic: knowledge/wisdom) — renamed from Synapse/Irfan
+
+[package]
+name = "ifran"
+version = "2026.3.10"
+description = "Ifran — LLM inference & training engine"
+license = "GPL-3.0-only"
+groups = ["server", "ai", "llm"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://github.com/MacCracken/ifran/archive/refs/tags/2026.3.10.tar.gz"
+sha256 = ""  # TODO: populate from release tarball
+
+[depends]
+runtime = [
+    "glibc",
+    "openssl",
+    "sqlite",
+    "zlib",
+]
+build = [
+    "rust",
+    "openssl-dev",
+    "zlib-dev",
+    "protobuf",
+    "pkg-config",
+]
+
+[build]
+pre_build = ""
+configure = ""
+make = "cargo build --release"
+check = "cargo test"
+install = """
+# Install binary
+mkdir -p $PKG/usr/lib/ifran/bin
+cp target/release/ifran $PKG/usr/lib/ifran/bin/ifran
+chmod +x $PKG/usr/lib/ifran/bin/ifran
+
+# Symlink into PATH
+mkdir -p $PKG/usr/bin
+ln -sf /usr/lib/ifran/bin/ifran $PKG/usr/bin/ifran
+
+# System configuration
+mkdir -p $PKG/etc/ifran
+cp config/ifran/ifran.toml $PKG/etc/ifran/ifran.toml
+
+# Systemd service
+mkdir -p $PKG/usr/lib/systemd/system
+cp config/ifran/ifran.service $PKG/usr/lib/systemd/system/ifran.service
+
+# Data directories
+mkdir -p $PKG/var/lib/ifran/models
+mkdir -p $PKG/var/lib/ifran/checkpoints
+mkdir -p $PKG/var/log/ifran
+
+# Create ifran user/group (post-install)
+mkdir -p $PKG/usr/lib/sysusers.d
+cat > $PKG/usr/lib/sysusers.d/ifran.conf << 'EOF'
+u ifran - "Ifran LLM Service" /var/lib/ifran /usr/sbin/nologin
+EOF
+
+# tmpfiles.d for runtime directories
+mkdir -p $PKG/usr/lib/tmpfiles.d
+cat > $PKG/usr/lib/tmpfiles.d/ifran.conf << 'EOF'
+d /var/lib/ifran 0750 ifran ifran -
+d /var/lib/ifran/models 0750 ifran ifran -
+d /var/lib/ifran/checkpoints 0750 ifran ifran -
+d /var/log/ifran 0750 ifran ifran -
+EOF
+"""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"
