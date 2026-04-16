@@ -1,12 +1,12 @@
 # Ifran — LLM inference & training engine for AGNOS
 # System package recipe for building from source via takumi.
-# For marketplace .agnos-agent bundles, see recipes/marketplace/ifran.toml
+# For marketplace .agnos-agent bundles, see marketplace/ifran.cyml
 #
 # Name: Ifran (Arabic: knowledge/wisdom) — renamed from Synapse/Irfan
 
 [package]
 name = "ifran"
-version = "2026.3.10"
+version = "1.3.0"
 description = "Ifran — LLM inference & training engine"
 license = "GPL-3.0-only"
 groups = ["server", "ai", "llm"]
@@ -14,8 +14,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://github.com/MacCracken/ifran/archive/refs/tags/2026.3.10.tar.gz"
-sha256 = ""  # TODO: populate from release tarball
+url = "https://github.com/MacCracken/ifran/archive/refs/tags/1.3.0.tar.gz"
+sha256 = "bea326e9371ee5e7250653805ea457d0cdbc6595624470ebbb68395e142484a3"
 
 [depends]
 runtime = [

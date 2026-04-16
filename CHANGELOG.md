@@ -19,8 +19,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 #### Network
 - dhcpcd: 10.3.0 → 10.3.1 (SHA256 verified from release tarball)
 
+#### Base (security-critical)
+- linux kernel: 6.6.132 → 6.6.134 (LTS point release, SHA256 verified; install paths updated)
+- openssl: 3.5.5 → 3.5.6 (3.5.x LTS, SHA256 verified)
+
 #### Desktop (fonts/text)
-- fontconfig: URL fixed (freedesktop.org/.../release/ returned 404) → gitlab.freedesktop.org generic package endpoint; SHA256 updated from working tarball
 - harfbuzz: 14.0.0 → 14.1.0 (SHA256 verified)
 - noto-fonts: 2025.03.01 (noto-monthly-release-25.3.1) → 2026.04.01 (noto-monthly-release-2026.04.01, SHA256 verified)
 - pango: 1.56.1 → 1.56.4 (SHA256 verified from download.gnome.org)
@@ -84,8 +87,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ### Fixed
 
+#### Base
+- zlib 1.3.2: corrected SHA256 `d7a0654783a4...` → `bb329a0a2cd02...` (prior hash did not match actual tarball at recipe URL; would have broken download verification)
+
 #### Database
 - redis7: license `RSALv2+SSPLv1` → `LicenseRef-RSALv2 OR SSPL-1.0` (valid SPDX expression; RSALv2 has no SPDX identifier, SSPLv1 is `SSPL-1.0`)
+
+#### Root
+- ifran.cyml: version `2026.3.10` → `1.3.0` (upstream release format; prior tag did not exist), SHA256 populated (was TODO placeholder), cross-reference to marketplace/ifran.cyml corrected (was .toml)
+
+#### Desktop
+- fontconfig: URL fixed (freedesktop.org/.../release/ returned 404) → gitlab.freedesktop.org generic package endpoint; SHA256 updated from working tarball
 
 ### Audited
 
