@@ -6,7 +6,7 @@
 
 [package]
 name = "p11-kit"
-version = "0.25.5"
+version = "0.26.2"
 description = "p11-kit — PKCS#11 module management"
 license = "BSD-3-Clause"
 groups = ["base", "security", "tier1"]
@@ -14,8 +14,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://github.com/p11-glue/p11-kit/releases/download/0.25.5/p11-kit-0.25.5.tar.xz"
-sha256 = "04d0a86450cdb1be018f26af6699857171a188ac6d5b8c90786a60854e1198e5"
+url = "https://github.com/p11-glue/p11-kit/releases/download/0.26.2/p11-kit-0.26.2.tar.xz"
+sha256 = "09fd9f44da4813a3141e73d5e7cf7008e5660d0405f13d56c15e1da9dcecf828"
 patches = []
 
 [depends]

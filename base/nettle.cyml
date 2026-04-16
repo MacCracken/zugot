@@ -5,7 +5,7 @@
 
 [package]
 name = "nettle"
-version = "3.10.1"
+version = "3.10.2"
 description = "Nettle — low-level cryptographic library"
 license = "LGPL-3.0-only"
 groups = ["base", "security", "tier1"]
@@ -13,8 +13,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://ftp.gnu.org/gnu/nettle/nettle-3.10.1.tar.gz"
-sha256 = "b0fcdd7fc0cdea6e80dcf1dd85ba794af0d5b4a57e26397eee3bc193272d9132"
+url = "https://ftp.gnu.org/gnu/nettle/nettle-3.10.2.tar.gz"
+sha256 = "fe9ff51cb1f2abb5e65a6b8c10a92da0ab5ab6eaf26e7fc2b675c45f1fb519b5"
 patches = []
 
 [depends]

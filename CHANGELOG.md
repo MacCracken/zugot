@@ -23,6 +23,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 - linux kernel: 6.6.132 → 6.6.134 (LTS point release, SHA256 verified; install paths updated)
 - openssl: 3.5.5 → 3.5.6 (3.5.x LTS, SHA256 verified)
 
+#### Base (crypto/trust stack)
+- libgcrypt: 1.12.1 → 1.12.2 (SHA256 verified)
+- libgpg-error: 1.51 → 1.59 (8 minor versions, SHA256 verified)
+- libksba: 1.6.7 → 1.6.8 (SHA256 verified)
+- libtasn1: 4.19.0 → 4.21.0 (SHA256 verified)
+- nettle: 3.10.1 → 3.10.2 (3.10.x stable track, SHA256 verified)
+- p11-kit: 0.25.5 → 0.26.2 (SHA256 verified)
+
 #### Desktop (fonts/text)
 - harfbuzz: 14.0.0 → 14.1.0 (SHA256 verified)
 - noto-fonts: 2025.03.01 (noto-monthly-release-25.3.1) → 2026.04.01 (noto-monthly-release-2026.04.01, SHA256 verified)
