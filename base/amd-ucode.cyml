@@ -1,6 +1,6 @@
 [package]
 name = "amd-ucode"
-version = "20260309"
+version = "20260410"
 description = "AMD CPU microcode updates (from linux-firmware)"
 license = "Proprietary"
 groups = ["base", "kernel", "tier1"]
@@ -8,8 +8,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://cdn.kernel.org/pub/linux/kernel/firmware/linux-firmware-20260309.tar.gz"
-sha256 = "28fb1b57fa9531edbd001a2462068267f10622e613abd40f952344b3f1fc5a16"
+url = "https://cdn.kernel.org/pub/linux/kernel/firmware/linux-firmware-20260410.tar.gz"
+sha256 = "d1f3ba3abff38f6fc8461ac6ccad15a2305355daed8f52eec218b4e3d0ea9ee4"
 patches = []
 
 [depends]

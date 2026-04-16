@@ -52,6 +52,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 - dropbear: 2025.88 → 2025.89 (SHA256 verified)
 - elfutils: 0.194 → 0.195 (SHA256 verified)
 
+#### Base (build tools — meson/ninja)
+- meson: 1.10.2 → 1.11.0 (SHA256 verified)
+- ninja: 1.13.1 → 1.13.2 (SHA256 verified)
+
+#### Base (network/firewall)
+- nftables: 1.1.1 → 1.1.6 (SHA256 verified; matches edge/nftables)
+
+#### Base (kernel/firmware)
+- amd-ucode: 20260309 → 20260410 (SHA256 verified from cdn.kernel.org)
+- linux-firmware: 20260309 → 20260410 (SHA256 verified from cdn.kernel.org)
+- linux-api-headers: 6.6.130 → 6.6.134 (matches linux kernel bump, SHA256 verified)
+- dracut: 105 → 110 (dracut-ng, 5 releases behind, SHA256 verified)
+
+#### Base (sandbox/runtime)
+- firecracker: 1.15.0 → 1.15.1 (SHA256 verified)
+
+#### Base (other)
+- iana-etc: 20250807 → 20260409 (SHA256 verified)
+
 #### Base (filesystem/storage)
 - cryptsetup: 2.8.4 → 2.8.6 (2.8.x LTS, SHA256 verified)
 - lvm2: 2.03.28 → 2.03.39 (11 patch releases behind, SHA256 verified)
@@ -155,6 +174,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 ### Known Issues (flagged for review)
 
 - libcap-ng: recipe at 0.8.5 (released 2023). Upstream latest is 0.9.3 but redhat.com mirror stops at 0.8.5 and GitHub archive tarballs lack pre-generated `configure` script (only `autogen.sh` present). Bumping requires adding autotools to build deps and running `autogen.sh` in pre_build — left at 0.8.5 pending decision.
+- cyrius (base recipe): recipe at 0.9.0 with empty SHA256 and `release_asset = "cc2"`. Upstream at 5.1.12 and compiler renamed cc2 → cc5. Bumping requires updating version + release_asset name + filling SHA — deferred, needs coordinated change across recipes that depend on cyrius.
+- kybernet (base recipe): recipe at 0.9.0 with empty SHA256 (TODO). Upstream at 1.0.1. Release asset exists but SHA needs manual verification from release tarball.
+- gvisor: recipe pinned to literal string `"latest"` with rolling-release URL pointing to `/release/latest/x86_64/runsc`. SHA256 populated but will drift silently with each upstream release. Either pin to a specific version tag or document this behavior.
+- agnos-kernel: recipe at 1.0.0 (bumped previously); GitHub API returns no tags for `MacCracken/agnos-kernel` — recipe `github_release` points to `MacCracken/agnos` (different repo). Unable to verify independently via curl.
 
 #### Desktop
 - fontconfig: URL fixed (freedesktop.org/.../release/ returned 404) → gitlab.freedesktop.org generic package endpoint; SHA256 updated from working tarball
@@ -204,6 +227,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 #### Base (shell/text tools at current upstream)
 - bash 5.3, less 692, man-db 2.13.1
+
+#### Base (build/network/firmware at current upstream)
+- cmake 4.3.1, curl 8.19.0 (matches edge), dbus 1.16.2 (matches edge), grub 2.14, intel-ucode microcode-20260227
 
 #### Base (compression/archive at current upstream)
 - bzip2 1.0.8 (upstream end-of-life at 1.0.8), cpio 2.15, gzip 1.14, lz4 1.10.0, tar 1.35, xz 5.8.3 (SHA256 verified), zlib 1.3.2 (SHA256 corrected above), zstd 1.5.7
