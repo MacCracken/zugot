@@ -5,7 +5,7 @@
 
 [package]
 name = "pango"
-version = "1.56.1"
+version = "1.56.4"
 description = "Pango — Internationalized text rendering library"
 license = "LGPL-2.0-only"
 groups = ["desktop", "graphics"]
@@ -13,8 +13,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://download.gnome.org/sources/pango/1.56/pango-1.56.1.tar.xz"
-sha256 = "426be66460c98b8378573e7f6b0b2ab450f6bb6d2ec7cecc33ae81178f246480"
+url = "https://download.gnome.org/sources/pango/1.56/pango-1.56.4.tar.xz"
+sha256 = "17065e2fcc5f5a5bdbffc884c956bfc7c451a96e8c4fb2f8ad837c6413cb5a01"
 patches = []
 
 [depends]

@@ -19,6 +19,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 #### Network
 - dhcpcd: 10.3.0 → 10.3.1 (SHA256 verified from release tarball)
 
+#### Desktop (fonts/text)
+- fontconfig: URL fixed (freedesktop.org/.../release/ returned 404) → gitlab.freedesktop.org generic package endpoint; SHA256 updated from working tarball
+- harfbuzz: 14.0.0 → 14.1.0 (SHA256 verified)
+- noto-fonts: 2025.03.01 (noto-monthly-release-25.3.1) → 2026.04.01 (noto-monthly-release-2026.04.01, SHA256 verified)
+- pango: 1.56.1 → 1.56.4 (SHA256 verified from download.gnome.org)
+
 #### Desktop (graphics/wayland)
 - libinput: 1.31.0 → 1.31.1 (SHA256 verified from freedesktop gitlab)
 - libxkbcommon: 1.11.0 → 1.13.1 (2 major bumps, SHA256 verified)
@@ -102,6 +108,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 #### Desktop (graphics/wayland at current upstream)
 - glslang 16.2.0, libdrm 2.4.131, wayland 1.25.0, wayland-protocols 1.48
+
+#### Desktop (fonts/text at current upstream)
+- cairo 1.18.4, fcft 3.3.3, fribidi 1.0.16, pixman 0.46.4
 
 #### Edge (local builds — no upstream)
 - agnos-edge-agent 2026.3.11, esp32-agent 2026.3.18, glibc 2.42 (local build), secureyeoman-edge 2026.3.18
