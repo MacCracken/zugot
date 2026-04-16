@@ -28,6 +28,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 - rust: 1.94.1 → 1.95.0 (SHA256 verified from static.rust-lang.org stable channel)
 - llvm: 22.1.2 → 22.1.3 (SHA256 verified from GitHub release)
 
+#### Base (core utilities)
+- coreutils: 9.7 → 9.10 (SHA256 verified)
+- texinfo: 7.2 → 7.3 (SHA256 verified)
+- which: 2.21 → 2.23 (SHA256 verified)
+
 #### Base (build tools)
 - m4: 1.4.20 → 1.4.21 (SHA256 verified)
 - autoconf: 2.72 → 2.73 (SHA256 verified)
@@ -145,6 +150,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 #### Base (interpreters at current upstream)
 - perl 5.42.2 (5.42.x stable; 5.43.x is dev)
+
+#### Base (core utilities at current upstream)
+- sed 4.9, grep 3.12, findutils 4.10.0, diffutils 3.12, patch 2.8
 
 #### Base (compression/archive at current upstream)
 - bzip2 1.0.8 (upstream end-of-life at 1.0.8), cpio 2.15, gzip 1.14, lz4 1.10.0, tar 1.35, xz 5.8.3 (SHA256 verified), zlib 1.3.2 (SHA256 corrected above), zstd 1.5.7
