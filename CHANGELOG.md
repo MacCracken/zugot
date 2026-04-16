@@ -19,6 +19,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 #### Network
 - dhcpcd: 10.3.0 → 10.3.1 (SHA256 verified from release tarball)
 
+#### Desktop (graphics/wayland)
+- libinput: 1.31.0 → 1.31.1 (SHA256 verified from freedesktop gitlab)
+- libxkbcommon: 1.11.0 → 1.13.1 (2 major bumps, SHA256 verified)
+- mesa: 26.0.4 → 26.0.5 (SHA256 verified from mesa.freedesktop.org)
+- vulkan-headers: 1.4.341 → 1.4.349 (SHA256 verified)
+- vulkan-loader: 1.4.348 → 1.4.349 (SHA256 verified)
+- xwayland: 24.1.9 → 24.1.10 (SHA256 verified from xorg)
+
 #### Desktop (audio/multimedia)
 - flac: 1.4.3 → 1.5.0 (major version bump, SHA256 verified from xiph)
 - gstreamer: 1.28.1 → 1.28.2 (SHA256 verified)
@@ -91,6 +99,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 #### Desktop (audio/multimedia at current upstream)
 - alsa-lib 1.2.15.3, alsa-utils 1.2.15.2, bluez 5.86, cups 2.4.16, ffmpeg 8.1, libvorbis 1.3.7, wireplumber 0.5.14
+
+#### Desktop (graphics/wayland at current upstream)
+- glslang 16.2.0, libdrm 2.4.131, wayland 1.25.0, wayland-protocols 1.48
 
 #### Edge (local builds — no upstream)
 - agnos-edge-agent 2026.3.11, esp32-agent 2026.3.18, glibc 2.42 (local build), secureyeoman-edge 2026.3.18
