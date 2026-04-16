@@ -5,7 +5,7 @@
 
 [package]
 name = "libarchive"
-version = "3.8.6"
+version = "3.8.7"
 description = "Libarchive — multi-format archive library"
 license = "BSD-2-Clause"
 groups = ["base", "core", "tier1"]
@@ -13,8 +13,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://github.com/libarchive/libarchive/releases/download/v3.8.6/libarchive-3.8.6.tar.xz"
-sha256 = "8ac57c1f5e99550948d1fe755c806d26026e71827da228f36bef24527e372e6f"
+url = "https://github.com/libarchive/libarchive/releases/download/v3.8.7/libarchive-3.8.7.tar.xz"
+sha256 = "d3a8ba457ae25c27c84fd2830a2efdcc5b1d40bf585d4eb0d35f47e99e5d4774"
 patches = []
 
 [depends]
