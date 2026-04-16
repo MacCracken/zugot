@@ -4,7 +4,7 @@
 
 [package]
 name = "huggingface-hub-cli"
-version = "1.9.0"
+version = "1.11.0"
 description = "huggingface-hub-cli — CLI for downloading and managing HuggingFace models and datasets"
 license = "Apache-2.0"
 groups = ["ai", "ml", "python", "tools"]
@@ -12,8 +12,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://github.com/huggingface/huggingface_hub/archive/refs/tags/v1.9.0.tar.gz"
-sha256 = "4410c7d7a35d2f0df324aa03772760d4f4fb244204579cb8a3adee8f6d10d24d"
+url = "https://github.com/huggingface/huggingface_hub/archive/refs/tags/v1.11.0.tar.gz"
+sha256 = "c7bc9033257702064587b2d64603207e6a550e9bfc1c2a20ee29708d1bf16412"
 patches = []
 
 [depends]

@@ -19,6 +19,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 #### Network
 - dhcpcd: 10.3.0 → 10.3.1 (SHA256 verified from release tarball)
 
+#### AI
+- crun: 1.22 → 1.27 (SHA256 verified)
+- go: 1.26.1 → 1.26.2 (SHA256 verified from go.dev)
+- huggingface-hub-cli: 1.9.0 → 1.11.0 (SHA256 verified)
+- llama-cpp: b8664 → b8815 (build tag bump, SHA256 verified)
+- nccl: 2.29.7 → 2.30.3 (URL tag v2.30.3-1, SHA256 verified)
+- ollama: 0.20.2 → 0.20.7 (SHA256 verified)
+- podman: 5.8.1 → 5.8.2 (SHA256 verified)
+- python-transformers: 5.5.0 → 5.5.4 (SHA256 verified)
+- rocm: 7.2.1 → 7.2.2 (SHA256 verified)
+
 #### Browser
 - brave: 1.91.9 → 1.91.64 (SHA256 verified from GitHub tarball)
 - chromium: 147.0.7727.49 → 147.0.7727.101 (SHA256 remains TODO — tarball ~6GB)
@@ -43,6 +54,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 #### Python
 - python3.12 3.12.13 — current upstream, SHA256 populated
+
+#### AI (at current upstream, SHA256 populated)
+- cni-plugins 1.9.1, conmon 2.2.1, jupyter-server 2.17.0, lapack 3.12.1, onnxruntime 1.24.4, openblas 0.3.32, python-numpy 2.4.4, python-pandas 3.0.2, python-pytorch 2.11.0, python-safetensors 0.7.0, python-scipy 1.17.1, slirp4netns 1.3.3, vllm 0.19.0, vulkan-compute-tools 1.4.341, yajl 2.1.0, nvidia-cuda-toolkit 12.8.1
 
 #### Network
 - ca-certificates 2026.03 (cacert-2026-03-19.pem) — current upstream

@@ -4,7 +4,7 @@
 
 [package]
 name = "llama-cpp"
-version = "b8664"
+version = "b8815"
 description = "llama-cpp — High-performance LLM inference engine in C/C++"
 license = "MIT"
 groups = ["ai", "ml", "llm"]
@@ -12,8 +12,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://github.com/ggml-org/llama.cpp/archive/refs/tags/b8664.tar.gz"
-sha256 = "9f0eb938aedb865ea4585f4cd92af97dc8417d0b0e178ac6831494bea5d93e0e"
+url = "https://github.com/ggml-org/llama.cpp/archive/refs/tags/b8815.tar.gz"
+sha256 = "e1420afe155cd6ebce83e7fbddd36ee2f16978fa66accc2a19e37de50e9606ae"
 patches = []
 
 [depends]

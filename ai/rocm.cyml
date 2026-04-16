@@ -4,7 +4,7 @@
 
 [package]
 name = "rocm"
-version = "7.2.1"
+version = "7.2.2"
 description = "rocm — AMD ROCm open-source GPU compute platform"
 license = "MIT"
 groups = ["ai", "ml", "gpu", "amd"]
@@ -12,8 +12,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://github.com/ROCm/ROCm/archive/refs/tags/rocm-7.2.1.tar.gz"
-sha256 = "1471d05c17aae447b7c09d01c91ffdf928c2b90a8f7fc7a3f6abf7f5ddced245"
+url = "https://github.com/ROCm/ROCm/archive/refs/tags/rocm-7.2.2.tar.gz"
+sha256 = "3069793dee9dde6c9f617d04a7c124ed7d39dcc8c32b2ba9e03a4d531d531eef"
 patches = []
 
 [depends]
