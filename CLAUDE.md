@@ -4,7 +4,7 @@
 
 **Zugot** (Hebrew: זוּגוֹת — pairs, as in the paired creatures that entered the ark) — Recipe repository for AGNOS
 
-- **Type**: Recipe database (TOML files, not a Rust crate)
+- **Type**: Recipe database (CYML files, not a Rust crate)
 - **License**: GPL-3.0-only
 - **Version**: 0.1.0
 - **Genesis repo**: [agnosticos](https://github.com/MacCracken/agnosticos)
@@ -13,9 +13,9 @@
 
 ## What This Is
 
-Zugot is the package database for AGNOS. Every package that can be built or installed — from the C library to the desktop compositor to the science crates — has a recipe here. Recipes are TOML files consumed by ark (package manager), nous (resolver), and takumi (build system).
+Zugot is the package database for AGNOS. Every package that can be built or installed — from the C library to the desktop compositor to the science crates — has a recipe here. Recipes are CYML files (`.cyml`, TOML syntax parsed by Cyrius's CYML parser) consumed by ark (package manager), nous (resolver), and takumi (build system).
 
-Zugot is NOT a Rust crate. There is no Cargo.toml, no src/ directory, no compilation. The "code" is TOML recipe files. The quality gates are validation scripts, not cargo clippy.
+Zugot is NOT a Rust crate. There is no Cargo.toml, no src/ directory, no compilation. The "code" is CYML recipe files. The quality gates are validation scripts, not cargo clippy.
 
 ## Consumers
 
@@ -38,7 +38,7 @@ The P(-1) process for zugot is a full audit of existing recipes before any new w
 5. **Field completeness** — every recipe must have: name, version, description, license, groups, source, depends, build steps, security hardening flags. Marketplace recipes must also have: category, runtime, publisher, tags, min_agnos_version
 6. **Header comment sync** — verify header comments match the actual version and status. Fix stale "Scaffolded v0.1.0" comments on stable crates
 7. **Build order validation** — if touching base/desktop recipes, verify `build-order.txt` is correct and complete
-8. **Structural audit** — verify install blocks are in the correct TOML section (`[build]` not `[security]`), no duplicate fields, no stale references
+8. **Structural audit** — verify install blocks are in the correct CYML section (`[build]` not `[security]`), no duplicate fields, no stale references
 9. **Documentation** — update CHANGELOG with all findings and fixes
 
 ### Work Loop (continuous)

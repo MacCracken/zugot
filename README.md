@@ -6,7 +6,7 @@ Named after the paired creatures that entered the ark. Each recipe is a *zug* �
 
 ## What Zugot Is
 
-Zugot is the package database for AGNOS. Every package that can be built or installed — from the C library to the desktop compositor to the science crates — has a recipe here. Recipes are TOML files that define what to download, how to build it, what it depends on, and how to harden it.
+Zugot is the package database for AGNOS. Every package that can be built or installed — from the C library to the desktop compositor to the science crates — has a recipe here. Recipes are CYML files (Cyrius Markup Language — TOML syntax, `.cyml` extension) that define what to download, how to build it, what it depends on, and how to harden it.
 
 Zugot is consumed by:
 - **[ark](https://github.com/MacCracken/ark)** — the package manager (installs from recipes)
@@ -33,7 +33,7 @@ zugot/
 
 ## Recipe Format
 
-Every recipe is a TOML file with these sections:
+Every recipe is a `.cyml` file (TOML syntax, parsed by Cyrius's CYML parser) with these sections:
 
 ```toml
 [package]

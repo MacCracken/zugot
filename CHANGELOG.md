@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+### Changed
+- Recipe file format: `.toml` → `.cyml` (Cyrius Markup Language). All 426 recipe files renamed via `git mv`. Content unchanged — CYML parses TOML syntax for single-entry (no `---` delimiter) files. Downstream consumers (ark, nous, takumi, mela) must update readers to accept `.cyml`.
+
 ### Version Bumps
 
 #### Base
