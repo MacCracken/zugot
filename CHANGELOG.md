@@ -23,6 +23,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 - linux kernel: 6.6.132 → 6.6.134 (LTS point release, SHA256 verified; install paths updated)
 - openssl: 3.5.5 → 3.5.6 (3.5.x LTS, SHA256 verified)
 
+#### Base (build tools)
+- m4: 1.4.20 → 1.4.21 (SHA256 verified)
+- autoconf: 2.72 → 2.73 (SHA256 verified)
+
 #### Base (compression/archive)
 - libarchive: 3.8.6 → 3.8.7 (SHA256 verified from GitHub)
 
@@ -101,6 +105,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 #### Base
 - zlib 1.3.2: corrected SHA256 `d7a0654783a4...` → `bb329a0a2cd02...` (prior hash did not match actual tarball at recipe URL; would have broken download verification)
 - binutils: URL fixed (`binutils-2.46.tar.xz` returned 404 → `binutils-2.46.0.tar.xz`; GNU changed 2.46 tarball naming to include patch digit) + version field `2.46` → `2.46.0` + SHA256 corrected to match actual tarball (`80c3fe2a...` → `d75a94f4...`)
+- pkgconf: version `3.0.0` → `2.5.1` (3.0.0 does not exist upstream, URL returned 404; prior bump was erroneous — latest pkgconf is 2.5.1). SHA256 corrected against actual tarball.
 
 #### Database
 - redis7: license `RSALv2+SSPLv1` → `LicenseRef-RSALv2 OR SSPL-1.0` (valid SPDX expression; RSALv2 has no SPDX identifier, SSPLv1 is `SSPL-1.0`)
@@ -126,6 +131,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 #### Base (toolchain at current upstream)
 - gcc 15.2.0 (SHA256 verified against upstream tarball), glibc 2.43 (SHA256 verified)
+
+#### Base (GCC deps — all current, SHA256 verified)
+- gmp 6.3.0, mpfr 4.2.2, mpc 1.3.1, bc 7.0.3
+
+#### Base (build tools at current upstream, SHA256 verified)
+- make 4.4.1, gawk 5.4.0, bison 3.8.2, flex 2.6.4, automake 1.18.1, libtool 2.5.4, gperf 3.3
 
 #### Base (compression/archive at current upstream)
 - bzip2 1.0.8 (upstream end-of-life at 1.0.8), cpio 2.15, gzip 1.14, lz4 1.10.0, tar 1.35, xz 5.8.3 (SHA256 verified), zlib 1.3.2 (SHA256 corrected above), zstd 1.5.7
