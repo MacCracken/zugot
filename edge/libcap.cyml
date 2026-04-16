@@ -6,7 +6,7 @@
 
 [package]
 name = "libcap"
-version = "2.73"
+version = "2.78"
 description = "libcap — POSIX capabilities library and tools"
 license = "BSD-3-Clause"
 groups = ["edge", "tier1"]
@@ -14,8 +14,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://mirrors.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-2.73.tar.xz"
-sha256 = "6405f6089cf4cdd8c271540cd990654d78dd0b1989b2d9bda20f933a75a795a5"
+url = "https://mirrors.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-2.78.tar.xz"
+sha256 = "0d621e562fd932ccf67b9660fb018e468a683d7b827541df27813228c996bb11"
 patches = []
 
 [depends]

@@ -5,7 +5,7 @@
 
 [package]
 name = "nftables"
-version = "1.1.1"
+version = "1.1.6"
 description = "nftables — modern packet filtering firewall for edge"
 license = "GPL-2.0-only"
 groups = ["edge", "tier1"]
@@ -13,8 +13,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://netfilter.org/projects/nftables/files/nftables-1.1.1.tar.xz"
-sha256 = "6358830f3a64f31e39b0ad421d7dadcd240b72343ded48d8ef13b8faf204865a"
+url = "https://netfilter.org/projects/nftables/files/nftables-1.1.6.tar.xz"
+sha256 = "372931bda8556b310636a2f9020adc710f9bab66f47efe0ce90bff800ac2530c"
 patches = []
 
 [depends]

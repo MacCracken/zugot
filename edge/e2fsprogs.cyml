@@ -5,7 +5,7 @@
 
 [package]
 name = "e2fsprogs"
-version = "1.47.2"
+version = "1.47.4"
 description = "e2fsprogs — ext4 filesystem creation and repair tools"
 license = "GPL-2.0-only"
 groups = ["edge", "tier1"]
@@ -13,8 +13,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://downloads.sourceforge.net/e2fsprogs/e2fsprogs-1.47.2.tar.gz"
-sha256 = "6dcd67ff9d8b13274ba3f088e4318be4f5b71412cd863524423fc49d39a6371f"
+url = "https://downloads.sourceforge.net/e2fsprogs/e2fsprogs-1.47.4.tar.gz"
+sha256 = "2cec05f39c20ee621f14926195664e66e6017190ac8e4bbdb16d86082e43c5da"
 patches = []
 
 [depends]

@@ -5,7 +5,7 @@
 
 [package]
 name = "dbus"
-version = "1.16.0"
+version = "1.16.2"
 description = "D-Bus — minimal system message bus for edge"
 license = "AFL-2.1 OR GPL-2.0-or-later"
 groups = ["edge", "tier1"]
@@ -13,8 +13,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://dbus.freedesktop.org/releases/dbus/dbus-1.16.0.tar.xz"
-sha256 = "9f8ca5eb51cbe09951aec8624b86c292990ae2428b41b856e2bed17ec65c8849"
+url = "https://dbus.freedesktop.org/releases/dbus/dbus-1.16.2.tar.xz"
+sha256 = "0ba2a1a4b16afe7bceb2c07e9ce99a8c2c3508e5dec290dbb643384bd6beb7e2"
 patches = []
 
 [depends]

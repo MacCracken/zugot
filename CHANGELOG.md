@@ -19,6 +19,26 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 #### Network
 - dhcpcd: 10.3.0 → 10.3.1 (SHA256 verified from release tarball)
 
+#### Edge
+- ca-certificates: 2025.12.02 → 2026.03.19 (match network/ recipe, SHA256 verified from curl.se)
+- coreutils: 9.7 → 9.10 (SHA256 verified)
+- curl: 8.12.1 → 8.19.0 (SHA256 verified)
+- dbus: 1.16.0 → 1.16.2 (SHA256 verified)
+- device-mapper (LVM2): 2.03.28 → 2.03.39 (SHA256 verified)
+- dhcpcd: 10.1.0 → 10.3.1 (match network/ recipe, SHA256 verified)
+- e2fsprogs: 1.47.2 → 1.47.4 (SHA256 verified)
+- jq: 1.7.1 → 1.8.1 (SHA256 verified)
+- kernel-edge: 6.6.130 → 6.6.134 (LTS point release, SHA256 verified; install paths updated for new version)
+- kmod: 33 → 34 (SHA256 verified)
+- libcap: 2.73 → 2.78 (SHA256 verified)
+- ncurses: 6.5 → 6.6 (SHA256 verified)
+- nftables: 1.1.1 → 1.1.6 (SHA256 verified from netfilter.org)
+- openssh: 10.0p1 → 10.3p1 (match network/ recipe, security fix, SHA256 verified)
+- openssl: 3.5.5 → 3.5.6 (3.5.x LTS, SHA256 verified)
+- readline: 8.2.13 → 8.3 (SHA256 verified)
+- wireguard-tools: 1.0.20210914 → 1.0.20260223 (SHA256 verified)
+- zlib: 1.3.1 → 1.3.2 (SHA256 verified)
+
 #### AI
 - crun: 1.22 → 1.27 (SHA256 verified)
 - go: 1.26.1 → 1.26.2 (SHA256 verified from go.dev)
@@ -57,6 +77,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 #### AI (at current upstream, SHA256 populated)
 - cni-plugins 1.9.1, conmon 2.2.1, jupyter-server 2.17.0, lapack 3.12.1, onnxruntime 1.24.4, openblas 0.3.32, python-numpy 2.4.4, python-pandas 3.0.2, python-pytorch 2.11.0, python-safetensors 0.7.0, python-scipy 1.17.1, slirp4netns 1.3.3, vllm 0.19.0, vulkan-compute-tools 1.4.341, yajl 2.1.0, nvidia-cuda-toolkit 12.8.1
+
+#### Edge (at current upstream)
+- avahi 0.8, bash 5.3 (SHA256 verified), busybox 1.37.0, cryptsetup 2.7.5 (recipe tracks v2.7 LTS path), eudev 3.2.14, iproute2 6.19.0, tpm2-tools 5.7, tpm2-tss 4.1.3, util-linux 2.40.4 (recipe tracks v2.40 LTS path)
+
+#### Edge (local builds — no upstream)
+- agnos-edge-agent 2026.3.11, esp32-agent 2026.3.18, glibc 2.42 (local build), secureyeoman-edge 2026.3.18
+
+#### Sandbox (local builds — no upstream)
+- sy-agnos-init 2026.3.18, sy-agnos-nftables 2026.3.18, sy-agnos-rootfs 2026.3.18
 
 #### Network
 - ca-certificates 2026.03 (cacert-2026-03-19.pem) — current upstream

@@ -5,7 +5,7 @@
 
 [package]
 name = "dhcpcd"
-version = "10.1.0"
+version = "10.3.1"
 description = "DHCP client daemon — lightweight network configuration"
 license = "BSD-2-Clause"
 groups = ["edge", "tier1"]
@@ -13,8 +13,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://github.com/NetworkConfiguration/dhcpcd/releases/download/v10.1.0/dhcpcd-10.1.0.tar.xz"
-sha256 = "abc307c63853da3199baa5c1e15fd5ede9d68d068b2a59ca14c5a6768e9cc3b7"
+url = "https://github.com/NetworkConfiguration/dhcpcd/releases/download/v10.3.1/dhcpcd-10.3.1.tar.xz"
+sha256 = "1aed450dfd22f280a64f7e5feee148d29727c292a3d1819287cf4f98b12d4a68"
 patches = []
 
 [depends]
