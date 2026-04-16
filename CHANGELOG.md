@@ -100,6 +100,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 #### Base
 - zlib 1.3.2: corrected SHA256 `d7a0654783a4...` → `bb329a0a2cd02...` (prior hash did not match actual tarball at recipe URL; would have broken download verification)
+- binutils: URL fixed (`binutils-2.46.tar.xz` returned 404 → `binutils-2.46.0.tar.xz`; GNU changed 2.46 tarball naming to include patch digit) + version field `2.46` → `2.46.0` + SHA256 corrected to match actual tarball (`80c3fe2a...` → `d75a94f4...`)
 
 #### Database
 - redis7: license `RSALv2+SSPLv1` → `LicenseRef-RSALv2 OR SSPL-1.0` (valid SPDX expression; RSALv2 has no SPDX identifier, SSPLv1 is `SSPL-1.0`)
@@ -122,6 +123,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 #### AI (at current upstream, SHA256 populated)
 - cni-plugins 1.9.1, conmon 2.2.1, jupyter-server 2.17.0, lapack 3.12.1, onnxruntime 1.24.4, openblas 0.3.32, python-numpy 2.4.4, python-pandas 3.0.2, python-pytorch 2.11.0, python-safetensors 0.7.0, python-scipy 1.17.1, slirp4netns 1.3.3, vllm 0.19.0, vulkan-compute-tools 1.4.341, yajl 2.1.0, nvidia-cuda-toolkit 12.8.1
+
+#### Base (toolchain at current upstream)
+- gcc 15.2.0 (SHA256 verified against upstream tarball), glibc 2.43 (SHA256 verified)
 
 #### Base (compression/archive at current upstream)
 - bzip2 1.0.8 (upstream end-of-life at 1.0.8), cpio 2.15, gzip 1.14, lz4 1.10.0, tar 1.35, xz 5.8.3 (SHA256 verified), zlib 1.3.2 (SHA256 corrected above), zstd 1.5.7
