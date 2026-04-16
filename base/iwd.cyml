@@ -1,6 +1,6 @@
 [package]
 name = "iwd"
-version = "3.5"
+version = "3.12"
 description = "iNet wireless daemon — modern WiFi management (replaces wpa_supplicant)"
 license = "LGPL-2.1-only"
 groups = ["base", "network", "tier1"]
@@ -8,8 +8,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://www.kernel.org/pub/linux/network/wireless/iwd-3.5.tar.xz"
-sha256 = "19f128d924b206f5fcaac34b41f4a001f6e21caa356179321ebe01849790e134"
+url = "https://www.kernel.org/pub/linux/network/wireless/iwd-3.12.tar.xz"
+sha256 = "d89a5e45c7180170e19be828f9e944a768c593758094fc57a358d0e7c4cb1a49"
 patches = []
 
 [depends]

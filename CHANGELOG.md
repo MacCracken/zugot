@@ -28,6 +28,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 - rust: 1.94.1 → 1.95.0 (SHA256 verified from static.rust-lang.org stable channel)
 - llvm: 22.1.2 → 22.1.3 (SHA256 verified from GitHub release)
 
+#### Base (init/system tools)
+- kbd: 2.8.0 → 2.9.0 (SHA256 verified)
+- iwd: 3.5 → 3.12 (7 versions behind, SHA256 verified)
+
 #### Base (common libraries)
 - libcap: 2.77 → 2.78 (SHA256 verified)
 - libxcrypt: 4.4.38 → 4.5.2 (SHA256 verified)
@@ -173,6 +177,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 #### Base (common libraries at current upstream, SHA256 verified)
 - attr 2.5.2, acl 2.3.2, expat 2.7.5, libffi 3.5.2, libseccomp 2.6.0, libargon2 20190702 (upstream EOL), libnghttp2 1.68.1, libpipeline 1.5.8
+
+#### Base (init/system tools at current upstream)
+- procps-ng 4.0.6, psmisc 23.7, sysvinit 3.14, sysklogd 2.7.2, inetutils 2.6, iproute2 6.19.0
 
 #### Base (compression/archive at current upstream)
 - bzip2 1.0.8 (upstream end-of-life at 1.0.8), cpio 2.15, gzip 1.14, lz4 1.10.0, tar 1.35, xz 5.8.3 (SHA256 verified), zlib 1.3.2 (SHA256 corrected above), zstd 1.5.7
