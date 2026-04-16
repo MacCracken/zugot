@@ -45,6 +45,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 - libpng: 1.6.56 → 1.6.58 (SHA256 verified)
 - gettext: 0.26 → 1.0 (major version bump — first 1.x release, SHA256 verified from ftp.gnu.org)
 
+#### Base (shell/text tools)
+- file: 5.46 → 5.47 (SHA256 verified)
+- groff: 1.23.0 → 1.24.1 (SHA256 verified)
+- man-pages: 6.15 → 6.17 (SHA256 verified)
+- dropbear: 2025.88 → 2025.89 (SHA256 verified)
+- elfutils: 0.194 → 0.195 (SHA256 verified)
+
 #### Base (filesystem/storage)
 - cryptsetup: 2.8.4 → 2.8.6 (2.8.x LTS, SHA256 verified)
 - lvm2: 2.03.28 → 2.03.39 (11 patch releases behind, SHA256 verified)
@@ -194,6 +201,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 #### Base (small libraries at current upstream)
 - json-c 0.18 (tag json-c-0.18-20240915), libaio 0.3.113, libmnl 1.0.5, ncurses 6.6, readline 8.3, gdbm 1.26, freetype 2.14.3
+
+#### Base (shell/text tools at current upstream)
+- bash 5.3, less 692, man-db 2.13.1
 
 #### Base (compression/archive at current upstream)
 - bzip2 1.0.8 (upstream end-of-life at 1.0.8), cpio 2.15, gzip 1.14, lz4 1.10.0, tar 1.35, xz 5.8.3 (SHA256 verified), zlib 1.3.2 (SHA256 corrected above), zstd 1.5.7
