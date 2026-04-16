@@ -11,6 +11,41 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ### Version Bumps
 
+#### Python
+- python3.13: 3.13.12 → 3.13.13 (SHA256 verified from python.org tarball)
+- python3.13t: 3.13.2 → 3.13.13 (freethreaded; was 10 patches behind; SHA256 verified)
+- python3.14: 3.14.3 → 3.14.4 (SHA256 verified from python.org tarball)
+
+#### Network
+- dhcpcd: 10.3.0 → 10.3.1 (SHA256 verified from release tarball)
+
+### Fixed
+
+#### Database
+- redis7: license `RSALv2+SSPLv1` → `LicenseRef-RSALv2 OR SSPL-1.0` (valid SPDX expression; RSALv2 has no SPDX identifier, SSPLv1 is `SSPL-1.0`)
+
+### Audited
+
+#### Database
+- postgresql17 17.9 — current upstream (major=17, latestMinor=9 per postgresql.org versions.json), SHA256 populated
+- redis7 7.4.8 — current upstream 7.x stable, SHA256 verified against release tarball
+- pgvector 0.8.2 — current upstream, SHA256 verified against release tarball
+
+#### Python
+- python3.12 3.12.13 — current upstream, SHA256 populated
+
+#### Network
+- ca-certificates 2026.03 (cacert-2026-03-19.pem) — current upstream
+- iw 6.17 — current upstream (kernel.org)
+- libnl 3.12.0 — current upstream
+- networkmanager 1.51.4 — current stable (rc1/rc2 exist but not tracking pre-releases)
+- openssh 10.3p1 — current upstream
+- rsync 3.4.1 — current upstream
+- wget 1.25.0 — current upstream
+- wpa-supplicant 2.11 — current upstream
+
+### Version Bumps
+
 #### Base
 - agnos-kernel: 0.9.0 → 1.0.0 (first stable release, SHA256 verified from release asset)
 

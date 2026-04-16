@@ -5,7 +5,7 @@
 
 [package]
 name = "python3.13t"
-version = "3.13.2"
+version = "3.13.13"
 description = "CPython 3.13 Free-Threaded — GIL-disabled Python interpreter"
 license = "PSF-2.0"
 groups = ["system", "runtime", "python"]
@@ -13,8 +13,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://www.python.org/ftp/python/3.13.2/Python-3.13.2.tar.xz"
-sha256 = "d984bcc57cd67caab26f7def42e523b1c015bbc5dc07836cf4f0b63fa159eb56"
+url = "https://www.python.org/ftp/python/3.13.13/Python-3.13.13.tar.xz"
+sha256 = "2ab91ff401783ccca64f75d10c882e957bdfd60e2bf5a72f8421793729b78a71"
 patches = []
 
 [depends]

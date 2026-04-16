@@ -6,7 +6,7 @@
 name = "redis7"
 version = "7.4.8"
 description = "Redis 7 — In-memory data structure store"
-license = "RSALv2+SSPLv1"
+license = "LicenseRef-RSALv2 OR SSPL-1.0"
 groups = ["system", "database", "server"]
 release = 1
 arch = "x86_64"
