@@ -37,6 +37,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 - libxcrypt: 4.4.38 → 4.5.2 (SHA256 verified)
 - libunistring: 1.3 → 1.4.2 (SHA256 verified)
 
+#### Base (auth/security)
+- linux-pam: 1.7.1 → 1.7.2 (SHA256 verified from GitHub release)
+
 #### Base (filesystem/storage)
 - cryptsetup: 2.8.4 → 2.8.6 (2.8.x LTS, SHA256 verified)
 - lvm2: 2.03.28 → 2.03.39 (11 patch releases behind, SHA256 verified)
