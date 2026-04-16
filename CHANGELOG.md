@@ -19,6 +19,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 #### Network
 - dhcpcd: 10.3.0 → 10.3.1 (SHA256 verified from release tarball)
 
+#### Desktop (audio/multimedia)
+- flac: 1.4.3 → 1.5.0 (major version bump, SHA256 verified from xiph)
+- gstreamer: 1.28.1 → 1.28.2 (SHA256 verified)
+- gst-plugins-base: 1.28.1 → 1.28.2 (SHA256 verified)
+- gst-plugins-good: 1.28.1 → 1.28.2 (SHA256 verified)
+- libogg: 1.3.5 → 1.3.6 (SHA256 verified from xiph)
+- pipewire: 1.6.2 → 1.6.3 (SHA256 verified from GitHub)
+
 #### Edge
 - ca-certificates: 2025.12.02 → 2026.03.19 (match network/ recipe, SHA256 verified from curl.se)
 - coreutils: 9.7 → 9.10 (SHA256 verified)
@@ -80,6 +88,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 #### Edge (at current upstream)
 - avahi 0.8, bash 5.3 (SHA256 verified), busybox 1.37.0, cryptsetup 2.7.5 (recipe tracks v2.7 LTS path), eudev 3.2.14, iproute2 6.19.0, tpm2-tools 5.7, tpm2-tss 4.1.3, util-linux 2.40.4 (recipe tracks v2.40 LTS path)
+
+#### Desktop (audio/multimedia at current upstream)
+- alsa-lib 1.2.15.3, alsa-utils 1.2.15.2, bluez 5.86, cups 2.4.16, ffmpeg 8.1, libvorbis 1.3.7, wireplumber 0.5.14
 
 #### Edge (local builds — no upstream)
 - agnos-edge-agent 2026.3.11, esp32-agent 2026.3.18, glibc 2.42 (local build), secureyeoman-edge 2026.3.18
