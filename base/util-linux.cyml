@@ -14,7 +14,7 @@ arch = "x86_64"
 
 [source]
 url = "https://www.kernel.org/pub/linux/utils/util-linux/v2.42/util-linux-2.42.tar.xz"
-sha256 = "38bef8cb64da496d6b9f6fc74514c4f785015a7fbd235468f5dde039a77a2fbd"
+sha256 = "3452b260bbaa775d6e749ac3bb22111785003fc1f444970025c8da26dfa758e9"
 patches = []
 
 [depends]

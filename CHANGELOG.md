@@ -28,6 +28,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 - rust: 1.94.1 → 1.95.0 (SHA256 verified from static.rust-lang.org stable channel)
 - llvm: 22.1.2 → 22.1.3 (SHA256 verified from GitHub release)
 
+#### Base (filesystem/storage)
+- cryptsetup: 2.8.4 → 2.8.6 (2.8.x LTS, SHA256 verified)
+- lvm2: 2.03.28 → 2.03.39 (11 patch releases behind, SHA256 verified)
+
 #### Base (core utilities)
 - coreutils: 9.7 → 9.10 (SHA256 verified)
 - texinfo: 7.2 → 7.3 (SHA256 verified)
@@ -116,6 +120,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 - zlib 1.3.2: corrected SHA256 `d7a0654783a4...` → `bb329a0a2cd02...` (prior hash did not match actual tarball at recipe URL; would have broken download verification)
 - binutils: URL fixed (`binutils-2.46.tar.xz` returned 404 → `binutils-2.46.0.tar.xz`; GNU changed 2.46 tarball naming to include patch digit) + version field `2.46` → `2.46.0` + SHA256 corrected to match actual tarball (`80c3fe2a...` → `d75a94f4...`)
 - pkgconf: version `3.0.0` → `2.5.1` (3.0.0 does not exist upstream, URL returned 404; prior bump was erroneous — latest pkgconf is 2.5.1). SHA256 corrected against actual tarball.
+- util-linux 2.42: SHA256 corrected `38bef8cb64da4...` → `3452b260bbaa7...` (prior hash did not match actual tarball at recipe URL; would have broken download verification)
 
 #### Database
 - redis7: license `RSALv2+SSPLv1` → `LicenseRef-RSALv2 OR SSPL-1.0` (valid SPDX expression; RSALv2 has no SPDX identifier, SSPLv1 is `SSPL-1.0`)
@@ -153,6 +158,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 #### Base (core utilities at current upstream)
 - sed 4.9, grep 3.12, findutils 4.10.0, diffutils 3.12, patch 2.8
+
+#### Base (filesystem/storage at current upstream, SHA256 verified)
+- util-linux 2.42 (SHA corrected — see Fixed), e2fsprogs 1.47.4, dosfstools 4.2, eudev 3.2.14, kmod 34.2
 
 #### Base (compression/archive at current upstream)
 - bzip2 1.0.8 (upstream end-of-life at 1.0.8), cpio 2.15, gzip 1.14, lz4 1.10.0, tar 1.35, xz 5.8.3 (SHA256 verified), zlib 1.3.2 (SHA256 corrected above), zstd 1.5.7

@@ -5,7 +5,7 @@
 
 [package]
 name = "lvm2"
-version = "2.03.28"
+version = "2.03.39"
 description = "LVM2 — Logical Volume Manager"
 license = "GPL-2.0-only"
 groups = ["base", "core", "tier1"]
@@ -13,8 +13,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://sourceware.org/ftp/lvm2/LVM2.2.03.28.tgz"
-sha256 = "b822baff6b62df36382c717ceba98a2688ebb31bf2b768f3ffa2b6d5e2557242"
+url = "https://sourceware.org/ftp/lvm2/LVM2.2.03.39.tgz"
+sha256 = "23bc9067e28fe0d37b3cc441f2865b9e022ce3c624babe22918b8dd90c031ee8"
 patches = []
 
 [depends]
