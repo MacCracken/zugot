@@ -40,6 +40,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 #### Base (auth/security)
 - linux-pam: 1.7.1 → 1.7.2 (SHA256 verified from GitHub release)
 
+#### Base (small libraries)
+- libnftnl: 1.2.8 → 1.3.1 (SHA256 verified from netfilter.org)
+- libpng: 1.6.56 → 1.6.58 (SHA256 verified)
+- gettext: 0.26 → 1.0 (major version bump — first 1.x release, SHA256 verified from ftp.gnu.org)
+
 #### Base (filesystem/storage)
 - cryptsetup: 2.8.4 → 2.8.6 (2.8.x LTS, SHA256 verified)
 - lvm2: 2.03.28 → 2.03.39 (11 patch releases behind, SHA256 verified)
@@ -183,6 +188,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 #### Base (init/system tools at current upstream)
 - procps-ng 4.0.6, psmisc 23.7, sysvinit 3.14, sysklogd 2.7.2, inetutils 2.6, iproute2 6.19.0
+
+#### Base (auth/security at current upstream, SHA256 verified)
+- shadow 4.19.4, sudo 1.9.17p2, audit 4.0.2
+
+#### Base (small libraries at current upstream)
+- json-c 0.18 (tag json-c-0.18-20240915), libaio 0.3.113, libmnl 1.0.5, ncurses 6.6, readline 8.3, gdbm 1.26, freetype 2.14.3
 
 #### Base (compression/archive at current upstream)
 - bzip2 1.0.8 (upstream end-of-life at 1.0.8), cpio 2.15, gzip 1.14, lz4 1.10.0, tar 1.35, xz 5.8.3 (SHA256 verified), zlib 1.3.2 (SHA256 corrected above), zstd 1.5.7
