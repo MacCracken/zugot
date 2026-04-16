@@ -19,6 +19,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 #### Network
 - dhcpcd: 10.3.0 → 10.3.1 (SHA256 verified from release tarball)
 
+#### Browser
+- brave: 1.91.9 → 1.91.64 (SHA256 verified from GitHub tarball)
+- chromium: 147.0.7727.49 → 147.0.7727.101 (SHA256 remains TODO — tarball ~6GB)
+- falkon: 25.12.3 → 26.04.0 (KDE release-service bump, SHA256 verified)
+- firefox: 149.0 → 149.0.2 (SHA256 verified from mozilla.org)
+- librewolf: 149.0-1 → 149.0.2-2 (SHA256 verified from codeberg)
+- midori: 11.6.4 → 11.6.5.1 (SHA256 verified from GitHub tarball)
+- vivaldi: 7.9.3970.45 → 7.9.3970.55 (SHA256 verified from .deb; pre_build command updated)
+- zen-browser: 1.19.6b → 1.19.8b (SHA256 verified from GitHub tarball)
+
 ### Fixed
 
 #### Database

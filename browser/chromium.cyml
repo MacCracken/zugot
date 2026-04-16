@@ -4,7 +4,7 @@
 
 [package]
 name = "chromium"
-version = "147.0.7727.49"
+version = "147.0.7727.101"
 description = "Chromium — Open-source web browser"
 license = "BSD-3-Clause"
 groups = ["desktop", "browser", "internet"]
@@ -12,8 +12,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-147.0.7727.49.tar.xz"
-sha256 = ""  # TODO: verify from release tarball
+url = "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-147.0.7727.101.tar.xz"
+sha256 = ""  # TODO: tarball too large (~6GB) — verify locally before release
 patches = ["agnos-defaults.patch", "wayland-ozone.patch"]
 
 [depends]
