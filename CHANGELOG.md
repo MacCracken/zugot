@@ -23,6 +23,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 - linux kernel: 6.6.132 → 6.6.134 (LTS point release, SHA256 verified; install paths updated)
 - openssl: 3.5.5 → 3.5.6 (3.5.x LTS, SHA256 verified)
 
+#### Base (interpreters/languages)
+- python: 3.13.12 → 3.13.13 (SHA256 verified from python.org)
+- rust: 1.94.1 → 1.95.0 (SHA256 verified from static.rust-lang.org stable channel)
+- llvm: 22.1.2 → 22.1.3 (SHA256 verified from GitHub release)
+
 #### Base (build tools)
 - m4: 1.4.20 → 1.4.21 (SHA256 verified)
 - autoconf: 2.72 → 2.73 (SHA256 verified)
@@ -137,6 +142,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 #### Base (build tools at current upstream, SHA256 verified)
 - make 4.4.1, gawk 5.4.0, bison 3.8.2, flex 2.6.4, automake 1.18.1, libtool 2.5.4, gperf 3.3
+
+#### Base (interpreters at current upstream)
+- perl 5.42.2 (5.42.x stable; 5.43.x is dev)
 
 #### Base (compression/archive at current upstream)
 - bzip2 1.0.8 (upstream end-of-life at 1.0.8), cpio 2.15, gzip 1.14, lz4 1.10.0, tar 1.35, xz 5.8.3 (SHA256 verified), zlib 1.3.2 (SHA256 corrected above), zstd 1.5.7
