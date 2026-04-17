@@ -6,7 +6,7 @@
 
 - **Type**: Recipe database (CYML files, not a Rust crate)
 - **License**: GPL-3.0-only
-- **Version**: 0.1.0
+- **Version**: 1.0.0 (released 2026-04-17)
 - **Genesis repo**: [agnosticos](https://github.com/MacCracken/agnosticos)
 - **Philosophy**: [AGNOS Philosophy & Intention](https://github.com/MacCracken/agnosticos/blob/main/docs/philosophy.md)
 - **Standards**: [First-Party Standards](https://github.com/MacCracken/agnosticos/blob/main/docs/development/applications/first-party-standards.md)
@@ -37,7 +37,7 @@ The P(-1) process for zugot is a full audit of existing recipes before any new w
 4. **Dependency audit** — verify runtime and build dependencies are complete and current. Check if upstream has added or removed dependencies
 5. **Field completeness** — every recipe must have: name, version, description, license, groups, source, depends, build steps, security hardening flags. Marketplace recipes must also have: category, runtime, publisher, tags, min_agnos_version
 6. **Header comment sync** — verify header comments match the actual version and status. Fix stale "Scaffolded v0.1.0" comments on stable crates
-7. **Build order validation** — if touching base/desktop recipes, verify `build-order.txt` is correct and complete
+7. **Build order validation** — if touching base/desktops recipes, verify `build-order.txt` is correct and complete
 8. **Structural audit** — verify install blocks are in the correct CYML section (`[build]` not `[security]`), no duplicate fields, no stale references
 9. **Documentation** — update CHANGELOG with all findings and fixes
 
@@ -48,7 +48,7 @@ The P(-1) process for zugot is a full audit of existing recipes before any new w
 3. **Cross-check** — verify versions against upstream (crates.io, GitHub, project sites)
 4. **SHA256** — download actual tarballs and compute SHA256 for any new or bumped recipes
 5. **Dependency check** — verify all runtime and build deps are listed and current
-6. **Build order** — if base/desktop recipe changed, verify `build-order.txt` is still correct
+6. **Build order** — if base/desktops recipe changed, verify `build-order.txt` is still correct
 7. **Review** — check for stale comments, wrong license suffixes, missing fields
 8. **If heavy changes → return to step 2** — keep validating until clean
 9. **Documentation** — update CHANGELOG with changes. Group by category. Note version bumps with old → new. Update roadmap if applicable
@@ -90,11 +90,11 @@ Every recipe change requires a full field audit — **never just bump a version*
 
 ### Adding a New Recipe
 
-1. Determine category (base, desktop, marketplace, ai, edge, network, browser, python, database, sandbox, bazaar)
+1. Determine category (base, desktops, marketplace, ai, edge, network, browser, python, database, sandbox, bazaar)
 2. Copy the closest existing recipe as a template
 3. Fill ALL fields — no empty fields except SHA256 for unreleased packages (must have `# TODO` comment)
 4. Verify build steps actually work
-5. Add to `build-order.txt` if it's a base/desktop package (respect dependency ordering)
+5. Add to `build-order.txt` if it's a base/desktopss package (respect dependency ordering)
 6. Update CHANGELOG
 
 ### Version Bumps
@@ -121,24 +121,54 @@ Every recipe change requires a full field audit — **never just bump a version*
 
 ```
 zugot/
-├── base/              — 116 recipes (LFS toolchain, kernel, core libs)
-├── desktops/           — 112 recipes (Wayland, PipeWire, GPU, fonts, apps)
-├── marketplace/       — 111 recipes (AGNOS crates + consumer apps)
-├── ai/                — 25 recipes (CUDA, ONNX, PyTorch)
-├── edge/              — 31 recipes (fleet, IoT, minimal)
-├── network/           — 9 recipes (nftables, iproute2)
-├── browser/           — 8 recipes (Firefox ESR, Chromium)
-├── python/            — 4 recipes
-├── database/          — 3 recipes
-├── sandbox/           — 3 recipes
-├── bazaar/            — community recipes (planned)
-├── build-order.txt    — dependency-sorted build sequence
-├── README.md          — what zugot is, recipe format, category descriptions
-├── CHANGELOG.md       — every change, grouped by category
-├── LICENSE            — GPL-3.0-only
-└── CLAUDE.md          — this file
+├── VERSION                              — current release (1.0.0)
+├── README.md                            — what zugot is, recipe format, categories
+├── CHANGELOG.md                         — every change, grouped by category
+├── CLAUDE.md                            — this file (AI-agent instructions)
+├── LICENSE                              — GPL-3.0-only
+├── CONTRIBUTING.md                      — contributor guide
+├── SECURITY.md                          — security reporting
+├── noted-issues-bazaar-finds.md         — bazaar cross-reference audit
+│
+├── build-order.txt                      — 225-package dependency-sorted sequence
+│
+├── base/                                — 163 recipes (LFS toolchain + kernel + core libs + build tools + auth + crypto + ...)
+├── desktops/                            — 196 recipes (Wayland, PipeWire, GPU, fonts, apps, toolkits, Hyprland stack, ...)
+├── marketplace/                         — 111 recipes (AGNOS-native MacCracken/* packages)
+├── ai/                                  —  31 recipes (CUDA, ONNX, PyTorch, container runtimes)
+├── edge/                                —  31 recipes (fleet, IoT, minimal profile)
+├── network/                             —  10 recipes (nftables, iproute2, wireless, VPN)
+├── browser/                             —   8 recipes (Firefox, Chromium, Brave, variants)
+├── python/                              —   4 recipes (python3.12, 3.13, 3.13t, 3.14)
+├── database/                            —   3 recipes (postgresql17, redis7, pgvector)
+├── sandbox/                             —   3 recipes (local AGNOS sandbox images)
+├── bazaar/                              —   community recipes (via separate repo; cross-checked)
+│
+├── scripts/
+│   └── validate_recipes.py              — parse + filename-match + SHA + dep-resolution checks
+│
+├── .github/workflows/
+│   └── validate-recipes.yml             — CI workflow: validator runs on every push/PR
+│
+└── docs/
+    ├── adr/                             — Architecture Decision Records
+    ├── audit/                           — dated security/CVE audit reports
+    └── development/
+        └── roadmap.md                   — current open work items, P1/P2/P3 tracked
 ```
 
 ## CHANGELOG Format
 
-Follow [Keep a Changelog](https://keepachangelog.com/). Group changes by category (base, desktop, marketplace, etc.). Note version bumps with old → new. Include SHA256 status (verified/placeholder).
+Follow [Keep a Changelog](https://keepachangelog.com/). Group changes by category (base, desktops, marketplace, etc.). Note version bumps with old → new. Include SHA256 status (verified/placeholder).
+
+## Validator
+
+Every PR must pass `scripts/validate_recipes.py`:
+1. TOML/CYML parse errors (stdlib `tomllib`)
+2. Filename ≠ `[package].name` mismatches
+3. Empty `sha256` without a `# TODO` comment
+4. Unresolved `[depends].runtime` / `[depends].build`
+
+Usage: `scripts/validate_recipes.py` (zugot-only) or `scripts/validate_recipes.py --check-against ../bazaar` (cross-check).
+
+CI wired in `.github/workflows/validate-recipes.yml`.

@@ -2,9 +2,21 @@
 
 All notable changes to zugot will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/).
+The format is based on [Keep a Changelog](https://keepachangelog.com/) and
+[Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
+
+Nothing yet. Next audit cycle ~2026-05-15.
+
+## [1.0.0] - 2026-04-17
+
+First stable release. Zugot grew from ~426 recipes to **561** across a single
+hardening + expansion pass; introduced the validator + CI; formalized naming
+conventions; delivered a dated CVE audit; renamed the `desktop/` directory to
+`desktops/` reflecting that Wayland won't be the only desktop AGNOS ships.
+
+See `docs/adr/` for the architectural decisions that shaped this release.
 
 ### Security (audit 2026-04-17)
 
@@ -29,8 +41,8 @@ Plus `base/nss.cyml` 3.122.1 — CVE-2026-2781/4727 status unclear until Mozilla
 ### Documentation
 
 - New `docs/audit/2026-04-17.md` — first external-research CVE audit. Structure is reusable: one file per audit pass, dated. Next cycle ~2026-05-15.
-
-## [Unreleased]
+- New `VERSION` file (`1.0.0`).
+- New `docs/adr/` — Architecture Decision Records for the major design calls (CYML format, `desktops` pluralization, naming conventions, validator+CI, dated audit cadence).
 
 ### Straggler SHA Population (2026-04-17)
 
