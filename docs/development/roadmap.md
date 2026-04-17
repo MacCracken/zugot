@@ -45,7 +45,7 @@ The following recipes build fine but have `sha256 = ""` with a `# TODO` comment 
 |---|---|---|
 | `browser/chromium.cyml` | **still TODO** | tarball ~6GB, too large to auto-download; populate SHA from a dev machine before any release build |
 | `base/boost.cyml` | ✅ resolved 2026-04-17 | 110MB tarball fetched, SHA256 populated |
-| `desktop/luajit.cyml` | ✅ resolved 2026-04-17 | pinned to commit `18b087cd` (v2.1 branch snapshot 2026-04-17); version field updated to `2.1-18b087cd`; bump periodically |
+| `desktops/luajit.cyml` | ✅ resolved 2026-04-17 | pinned to commit `18b087cd` (v2.1 branch snapshot 2026-04-17); version field updated to `2.1-18b087cd`; bump periodically |
 
 ### Marketplace
 
@@ -60,9 +60,9 @@ All four transitions applied:
 | recipe | change | notes |
 |---|---|---|
 | `base/libcap-ng.cyml` | 0.8.5 → **0.9.3** | switched to GitHub archive URL (redhat mirror is stuck); added `autogen.sh` pre_build + `autoconf`/`automake`/`libtool` build deps. SHA256 verified. |
-| `desktop/nvidia-driver.cyml` | 570.133.07 → **595.58.03** | production-stable channel chosen; SHA256 verified from download.nvidia.com |
-| `desktop/zathura.cyml` | 0.5.14 → **2026.03.27** | upstream switched from semver to date-based versioning; version + URL + SHA updated |
-| `desktop/girara.cyml` | 0.4.5 → **2026.02.04** | same date-based transition |
+| `desktops/nvidia-driver.cyml` | 570.133.07 → **595.58.03** | production-stable channel chosen; SHA256 verified from download.nvidia.com |
+| `desktops/zathura.cyml` | 0.5.14 → **2026.03.27** | upstream switched from semver to date-based versioning; version + URL + SHA updated |
+| `desktops/girara.cyml` | 0.4.5 → **2026.02.04** | same date-based transition |
 
 ---
 
@@ -145,15 +145,15 @@ Libraries:
 - `base/mimalloc.cyml` 3.3.0
 - `base/parted.cyml` 1.9.0
 - `base/cbindgen.cyml` 0.29.2
-- `desktop/at-spi2-core.cyml` 2.60.0
-- `desktop/dbus-glib.cyml` 0.100.2
-- `desktop/libgtop.cyml` 2.41.3
-- `desktop/libsoup.cyml` 3.6.6
-- `desktop/libxmlb.cyml` 0.3.26
-- `desktop/libxdamage.cyml` 1.1.7
-- `desktop/libxcomposite.cyml` 0.4.7
-- `desktop/webkit2gtk-4.1.cyml` 2.52.3
-- `desktop/extra-cmake-modules.cyml` 6.25.0
+- `desktops/at-spi2-core.cyml` 2.60.0
+- `desktops/dbus-glib.cyml` 0.100.2
+- `desktops/libgtop.cyml` 2.41.3
+- `desktops/libsoup.cyml` 3.6.6
+- `desktops/libxmlb.cyml` 0.3.26
+- `desktops/libxdamage.cyml` 1.1.7
+- `desktops/libxcomposite.cyml` 0.4.7
+- `desktops/webkit2gtk-4.1.cyml` 2.52.3
+- `desktops/extra-cmake-modules.cyml` 6.25.0
 
 Meta-package aliases (zero-build, depend on their canonical package):
 - `base/clang.cyml` → llvm
@@ -161,9 +161,9 @@ Meta-package aliases (zero-build, depend on their canonical package):
 - `base/gfortran.cyml` → gcc
 - `base/libuuid.cyml` → util-linux
 - `base/libltdl.cyml` → libtool
-- `desktop/libgbm.cyml` → mesa
-- `desktop/libseat.cyml` → seatd
-- `desktop/pipewire-jack.cyml` → pipewire
+- `desktops/libgbm.cyml` → mesa
+- `desktops/libseat.cyml` → seatd
+- `desktops/pipewire-jack.cyml` → pipewire
 
 ### Filename/package-name mismatches resolved via `git mv`
 - `python/cpython-3.12.cyml` → `python3.12.cyml`
@@ -176,7 +176,7 @@ Meta-package aliases (zero-build, depend on their canonical package):
 - `edge/kernel.cyml` → `kernel-edge.cyml`
 
 Package-name adjustments (filename kept):
-- `desktop/libsigcpp.cyml` — package renamed from `libsigc++` → `libsigcpp` (avoid `+` in names)
+- `desktops/libsigcpp.cyml` — package renamed from `libsigc++` → `libsigcpp` (avoid `+` in names)
 - `browser/zen.cyml` — package renamed from `zen-browser` → `zen`
 
 ---

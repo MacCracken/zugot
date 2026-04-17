@@ -18,7 +18,7 @@ Zugot is consumed by:
 ```
 zugot/
 ├── base/              — 116 recipes (toolchain, kernel, core libs — LFS Ch. 5-8)
-├── desktop/           — 112 recipes (Wayland, PipeWire, GPU, fonts, themes, apps)
+├── desktops/           — 112 recipes (Wayland, PipeWire, GPU, fonts, themes, apps)
 ├── marketplace/       — 111 recipes (AGNOS crates + consumer apps)
 ├── ai/                — 25 recipes (CUDA, ONNX, PyTorch, whisper, llama.cpp)
 ├── edge/              — 31 recipes (fleet management, IoT, minimal profile)
@@ -93,7 +93,7 @@ network_access = false
 | Category | Count | Description |
 |----------|-------|-------------|
 | **base** | 116 | GCC 15.2, Rust 1.89, Linux 6.6.72, glibc 2.42, full LFS toolchain |
-| **desktop** | 112 | Mesa, PipeWire, Wayland, foot, helix, mpv, GTK, Qt |
+| **desktops** | 112 | Mesa, PipeWire, Wayland, foot, helix, mpv, GTK, Qt |
 | **marketplace** | 111 | AGNOS library crates, consumer apps, OS subsystems, cyrius, agnos-kernel |
 | **ai** | 25 | CUDA, ONNX, PyTorch, whisper.cpp, llama.cpp, vllm |
 | **edge** | 31 | Minimal profile, fleet agents, ESP32, IoT |
@@ -120,7 +120,7 @@ Every recipe change requires a full field audit ([feedback_recipe_audit](https:/
 
 ## Licensing
 
-All recipes in zugot define how to build GPL-3.0-only packages. The recipes themselves are GPL-3.0-only. Third-party packages (base/, desktop/, browser/) retain their upstream licenses as specified in each recipe's `license` field.
+All recipes in zugot define how to build GPL-3.0-only packages. The recipes themselves are GPL-3.0-only. Third-party packages (base/, desktops/, browser/) retain their upstream licenses as specified in each recipe's `license` field.
 
 ## Related
 
