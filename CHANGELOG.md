@@ -95,6 +95,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 - nettle: 3.10.1 → 3.10.2 (3.10.x stable track, SHA256 verified)
 - p11-kit: 0.25.5 → 0.26.2 (SHA256 verified)
 
+#### Desktop (batch 3 — X11/libs/apps)
+- libusb: 1.0.27 → 1.0.29 (SHA256 verified)
+- libx11: 1.8.10 → 1.8.13 (SHA256 verified)
+- libxau: 1.0.11 → 1.0.12 (SHA256 verified)
+- libxext: 1.3.6 → 1.3.7 (SHA256 verified)
+- libxfixes: 6.0.1 → 6.0.2 (SHA256 verified)
+- libxml2: 2.15.2 → 2.15.3 (SHA256 verified)
+- libxrandr: 1.5.4 → 1.5.5 (SHA256 verified)
+- linux-pam (desktop): 1.7.0 → 1.7.2 (matches base/linux-pam, SHA256 verified)
+- lua: 5.4.7 → 5.4.8 (5.4.x stable; 5.5.0 is new major — staying on 5.4, SHA256 verified)
+- mako: 1.10.0 → 1.11.0 (SHA256 verified)
+- polkit: 125 → 127 (SHA256 verified)
+
 #### Desktop (batch 2 — libs)
 - icu: 76.1 → 78.3 (2 major versions, SHA256 verified)
 - json-glib: 1.10.6 → 1.10.8 (SHA256 verified)
@@ -273,9 +286,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 #### Desktop (batch 2 — current upstream)
 - imv 5.0.1, lcms2 2.18, libatasmart 0.19 (upstream unmaintained), libepoxy 1.5.10, libheif 1.21.2, libjpeg-turbo 3.1.4.1, libplacebo 7.360.1, libsass 3.6.6 (newer v1.0.1/v2.0 tags appear pre-release), libsndfile 1.2.2, libspectre 0.2.12
 
+#### Desktop (batch 3 — current upstream)
+- libva 2.23.0, libxcb 1.17.0, libxdmcp 1.1.5, libxi 1.8.2, libxrender 0.9.12, mpv 0.41.0, mtdev 1.1.7, pcre2 10.47
+
 #### Desktop (batch 1 flagged — no action)
 - girara 0.4.5: recipe URL exists but upstream switched to date-based versioning (latest: 2026.02.04). Keeping at 0.4.5 for now; bumping requires URL format rework
 - agnos-desktop 2026.3.25: local/AGNOS-native, no upstream to verify
+
+#### Desktop (batch 3 flagged — no action)
+- nvidia-driver: recipe at 570.133.07; upstream latest production stable is 595.58.03. Bumping proprietary NVIDIA drivers requires careful version selection (branch/ML/beta distinctions). Flagged for deliberate decision.
 
 #### Edge (local builds — no upstream)
 - agnos-edge-agent 2026.3.11, esp32-agent 2026.3.18, glibc 2.42 (local build), secureyeoman-edge 2026.3.18
