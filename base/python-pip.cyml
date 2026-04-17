@@ -1,0 +1,39 @@
+# python-pip — Meta-package providing the `pip` dep name
+# Thin alias that depends on `python` (which ships pip bundled).
+# The python recipe already installs /usr/bin/pip3; this meta-package installs
+# /usr/bin/pip as a symlink to pip3 so recipes listing `pip` as a dep resolve.
+# Contributors should invoke `python -m pip` in scripts where possible.
+
+[package]
+name = "pip"
+version = "1.0.0"
+description = "pip — alias meta-package for python's bundled pip"
+license = "PSF-2.0"
+groups = ["base", "runtime", "python", "meta"]
+release = 1
+arch = "any"
+
+[source]
+local = true
+
+[depends]
+runtime = ["python"]
+build = []
+
+[build]
+pre_build = ""
+configure = ""
+make = ""
+check = ""
+install = """
+# The `python` recipe already installs /usr/bin/pip3 via --with-ensurepip=install.
+# Create /usr/bin/pip as a versioned symlink for recipes that list `pip` directly.
+mkdir -p $PKG/usr/bin
+ln -sf pip3 $PKG/usr/bin/pip
+"""
+post_install = ""
+
+[security]
+hardening = []
+cflags = ""
+ldflags = ""

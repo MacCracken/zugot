@@ -1,0 +1,34 @@
+# pkg-config — Meta-package providing the pkg-config dep name
+# This is a thin alias: zugot's real implementation is `pkgconf` (base/pkgconf.cyml),
+# which already installs /usr/bin/pkg-config as a compatibility symlink.
+# This meta-package exists only so bazaar recipes that list `pkg-config` resolve.
+# Contributors should prefer `pkgconf` directly where possible.
+
+[package]
+name = "pkg-config"
+version = "2.5.1"
+description = "pkg-config — alias meta-package for pkgconf (compatibility)"
+license = "ISC"
+groups = ["base", "build", "meta"]
+release = 1
+arch = "any"
+
+[source]
+local = true
+
+[depends]
+runtime = ["pkgconf"]
+build = []
+
+[build]
+pre_build = ""
+configure = ""
+make = ""
+check = ""
+install = ""
+post_install = ""
+
+[security]
+hardening = []
+cflags = ""
+ldflags = ""

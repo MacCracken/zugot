@@ -22,7 +22,7 @@ pre_build = ""
 configure = ""
 make = ""
 check = ""
-install = """
+install = '''
 # Install core Noto fonts (Sans, Serif, Mono) — skip CJK/extra for size
 mkdir -p $PKG/usr/share/fonts/noto
 
@@ -55,7 +55,7 @@ cat > $PKG/etc/fonts/conf.d/60-noto.conf << 'FONTCONF'
   </alias>
 </fontconfig>
 FONTCONF
-"""
+'''
 post_install = ""
 
 [security]

@@ -64,7 +64,7 @@ make olddefconfig
 configure = ""
 make = "make -j$(nproc) bzImage modules"
 check = ""
-install = """
+install = '''
 make INSTALL_MOD_PATH=$PKG modules_install
 mkdir -p $PKG/boot
 cp -v arch/x86/boot/bzImage $PKG/boot/vmlinuz-6.6.134-edge
@@ -75,7 +75,7 @@ cp -v .config $PKG/boot/config-6.6.134-edge
 find $PKG/lib/modules -name '*.ko' -exec strip --strip-debug {} \;
 # Remove build/source symlinks (save space)
 rm -rf $PKG/lib/modules/*/build $PKG/lib/modules/*/source
-"""
+'''
 post_install = "depmod -a 6.6.134-edge"
 
 [security]

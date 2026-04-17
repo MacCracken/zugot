@@ -1,0 +1,34 @@
+# nodejs-npm — Meta-package providing the `npm` dep name
+# Thin alias that depends on `nodejs` (which ships npm bundled).
+# The nodejs recipe already installs /usr/bin/npm; this meta-package exists
+# so bazaar recipes that list `npm` as a separate dep resolve cleanly.
+# Contributors should normally just depend on `nodejs`.
+
+[package]
+name = "npm"
+version = "1.0.0"
+description = "npm — alias meta-package for nodejs's bundled npm"
+license = "MIT"
+groups = ["base", "runtime", "meta"]
+release = 1
+arch = "any"
+
+[source]
+local = true
+
+[depends]
+runtime = ["nodejs"]
+build = []
+
+[build]
+pre_build = ""
+configure = ""
+make = ""
+check = ""
+install = ""
+post_install = ""
+
+[security]
+hardening = []
+cflags = ""
+ldflags = ""

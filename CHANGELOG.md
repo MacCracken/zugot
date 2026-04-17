@@ -6,6 +6,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+### Fixed (bazaar-finds pass 2)
+
+Four recipes had unescaped backslashes in `"""..."""` basic strings. TOML only accepts `\b \t \n \r \" \\ \uXXXX \UXXXXXXXX` as escapes — sequences like `\.` and `\;` are parse errors. Cyrius's current CYML parser is lax enough to accept them, but strict TOML-compatible consumers (Python `tomllib`, Rust `toml` crate) fail. Converted the offending blocks to literal multi-line strings (`'''...'''`) which don't process escapes:
+- `base/shadow.cyml` (pre_build block with `sed 's/...\.N ...'` patterns)
+- `base/nss.cyml` (install block with `find ... -exec ... \;`)
+- `desktop/noto-fonts.cyml` (install block, same `\;` pattern)
+- `edge/kernel.cyml` (install block, same `\;` pattern)
+
+### Added (meta-packages — bazaar-finds pass 2 closure)
+
+Three thin alias recipes so bazaar deps `pkg-config`, `pip`, `npm` resolve without requiring bazaar contributors to learn zugot's canonical naming:
+- `base/pkg-config.cyml` — alias for `pkgconf` (real implementation already creates /usr/bin/pkg-config symlink)
+- `base/python-pip.cyml` (name `pip`) — alias for python's bundled pip; installs `/usr/bin/pip → pip3`
+- `base/nodejs-npm.cyml` (name `npm`) — alias for nodejs's bundled npm
+
+Remaining bazaar gaps `pycups` and `pycurl` (1 ref each, both in `system-config-printer`) are intentionally NOT added per CLAUDE.md rule 9 — bazaar's `system-config-printer.cyml` should `pip install pycups pycurl` at build time via the new `pip` meta-package.
+
 ### Added
 
 #### Base (new build tools — addresses bazaar cross-ref audit)
