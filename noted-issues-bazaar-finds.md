@@ -7,49 +7,36 @@
 | Pass | Date | Zugot HEAD | Bazaar HEAD | Unresolved unique | Unresolved refs |
 |---|---|---|---|---:|---:|
 | 1 | 2026-04-16 | `f2ee273` | `579ed38` | 91 | 135 |
-| 2 | 2026-04-16 | `f2150bc` | `39019cc` | **5** | **13** |
+| 2 | 2026-04-16 | `f2150bc` | `39019cc` | 5 | 13 |
+| 3 | 2026-04-16 | `efe0c7a` | `39019cc` | **2** | **2** |
 
-Zugot absorbed 35/40 prioritized gaps in pass 1→2 (9 new packages in `base/`, several new `desktop/`, added `aquamarine`, `hyprcursor`, `hyprwayland-scanner`, `qt6-base`, `seatd`, `pulseaudio`, `libuv`, `tree-sitter`, `oniguruma`, and more). Great progress.
+Pass 2→3: zugot added `pip`, `npm`, `pkg-config`, and fixed all 4 TOML parse errors. Well done. Only 2 refs left, both in a single bazaar recipe.
 
-## Remaining unresolved — 5 deps, 13 references
+## Remaining unresolved — 2 refs
 
-### Needs zugot meta-packages (7 refs)
+Both are referenced only by `recipes/desktops/system-config-printer.cyml` in bazaar. They're Python bindings for system printing.
 
-`pip` and `npm` ship bundled with their parent runtimes (`python`, `nodejs`), so bazaar contributors instinctively list them as deps. Rather than forcing contributors to drop them, **provide thin meta-packages** that depend on the runtime and install the right executable shim.
-
-| dep | refs | recipes | suggested zugot recipe |
-|---|---:|---|---|
-| `pip` | 6 | yt-dlp, vllm, aider, open-webui, comfyui, pytorch | `python-pip.cyml` — depends only on `python`, installs `/usr/bin/pip` (symlink or shim to `python -m pip`) |
-| `npm` | 1 | open-webui | `nodejs-npm.cyml` — depends only on `nodejs`, installs `/usr/bin/npm` (it's already in the tarball, just split into its own package for explicit dep) |
-
-### Still genuinely missing (6 refs)
-
-| dep | refs | recipes |
-|---|---:|---|
-| `pkg-config` | 4 | podman, libreoffice, ffmpeg, retroarch |
-| `pycups` | 1 | system-config-printer |
-| `pycurl` | 1 | system-config-printer |
-
-`pkg-config` was on the previous priority list under "build tools" and is the highest-impact remaining gap — it's required at build time by anything using autotools or meson with C deps.
-
-`pycups` and `pycurl` are Python bindings. Either add as `python-cups` / `python-pycurl`, or the bazaar `system-config-printer.cyml` can be changed to pull them via `pip` at install time once the `pip` meta-package lands.
-
-## Also found — 4 TOML parse errors in zugot recipes
-
-These files fail `python -m tomllib` parsing — unescaped backslashes in double-quoted strings (TOML requires `\\` for a literal backslash). My first cross-check silently skipped these recipes, which is why the pass-1 report wrongly listed some packages as missing when they existed.
-
-| file | line | fix |
+| dep | upstream | notes |
 |---|---|---|
-| `base/shadow.cyml` | 29 | escape `\` as `\\` (or use a literal `'...'` string) |
-| `base/nss.cyml` | 50 | same |
-| `desktop/noto-fonts.cyml` | 30 | same |
-| `edge/kernel.cyml` | 75 | same |
+| `pycups` | [OpenPrinting/pycups](https://github.com/OpenPrinting/pycups) | Python CUPS API binding. Built via `python -m pip install` or setuptools. Depends on `python`, `cups`. |
+| `pycurl` | [pycurl.io](http://pycurl.io/) | Python cURL binding. Built via setuptools. Depends on `python`, `curl`, `openssl`. |
 
-These may parse fine in cyrius' current CYML parser (which is more lax) but will break any stricter TOML-compatible consumer. Worth fixing for portability.
+Both are small C extensions — each is ~1-2 MB of source. Since zugot has `python` and `cups`/`curl` already, these slot in cleanly.
+
+## Minor finding — filename ≠ package name in zugot
+
+The bazaar validator enforces `filename_basename == [package].name`. Zugot appears to follow the same convention across its 528 recipes, except:
+
+| file | declared `[package].name` |
+|---|---|
+| `base/python-pip.cyml` | `pip` |
+| `base/nodejs-npm.cyml` | `npm` |
+
+Not a blocker — the resolver indexes by `[package].name`, not filename — but inconsistent with the rest of the repo. Two easy fixes: rename files to `base/pip.cyml` / `base/npm.cyml`, or rename packages to `python-pip` / `nodejs-npm` (and update bazaar's refs to match).
 
 ## Already absorbed into bazaar (informational)
 
-Naming bugs on bazaar's side — fixed in bazaar across two rename passes (`579ed38`, `39019cc`). Listed here so zugot doesn't need to provide the misspellings:
+Naming bugs on bazaar's side — fixed across two rename passes. Listed here so zugot doesn't need to provide the misspellings:
 
 | was | is now | pass |
 |---|---|---|
@@ -69,7 +56,7 @@ Naming bugs on bazaar's side — fixed in bazaar across two rename passes (`579e
 | `libcurl` → `curl` | 2 |
 | `sigc++` → `libsigc++` | 2 |
 
-**Suggested contributor doc note:** zugot package names use one convention consistently — runtime package ships headers (no `-dev` split), and `lib` prefix follows upstream project naming (so `curl` but `libsigc++`, `libuv` but `x264`). Contributors coming from Debian/Ubuntu backgrounds tend to reach for `-dev` and `lib-` variants by reflex.
+**Suggested contributor doc note:** zugot package names follow one convention — runtime package ships headers (no `-dev` split), and `lib` prefix follows upstream project naming (so `curl` but `libsigc++`, `luajit` but `libuv`, `x264` but `libx265` — wait, zugot has both conventions for codecs actually). Worth documenting the canonical name for each commonly-referenced package so contributors don't guess. Contributors coming from Debian/Ubuntu backgrounds tend to reach for `-dev` and `lib-` variants by reflex.
 
 ## How to regenerate this list
 

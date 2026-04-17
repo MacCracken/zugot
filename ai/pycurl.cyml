@@ -1,0 +1,35 @@
+# pycurl — Python bindings for libcurl
+# Used by system-config-printer and other Python HTTP tools.
+#
+# BLFS
+
+[package]
+name = "pycurl"
+version = "7.45.7"
+description = "pycurl — Python bindings for libcurl"
+license = "LGPL-2.1-or-later OR MIT"
+groups = ["desktops", "python"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://github.com/pycurl/pycurl/archive/refs/tags/REL_7_45_7.tar.gz"
+sha256 = "0f7a8dcb7048f0485c90b66f31f94b89ed41f499a18b874b0ce19209ffebb9c6"
+patches = []
+
+[depends]
+runtime = ["python", "curl", "openssl"]
+build = ["python", "pip", "gcc", "curl", "openssl"]
+
+[build]
+pre_build = ""
+configure = ""
+make = ""
+check = ""
+install = "python -m pip install --prefix=/usr --root=$PKG --no-deps ."
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

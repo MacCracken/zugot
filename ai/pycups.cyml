@@ -1,0 +1,35 @@
+# pycups — Python CUPS API bindings
+# Used by system-config-printer and other Python printer tools.
+#
+# BLFS
+
+[package]
+name = "pycups"
+version = "2.0.4"
+description = "pycups — Python bindings for the CUPS API"
+license = "GPL-2.0-or-later"
+groups = ["desktops", "python"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://github.com/OpenPrinting/pycups/archive/refs/tags/v2.0.4.tar.gz"
+sha256 = "31d9cf62df7884fe430d11970a8c9278282a47a0ff6b1529c58c7d26e8eb4789"
+patches = []
+
+[depends]
+runtime = ["python", "cups"]
+build = ["python", "pip", "gcc", "cups"]
+
+[build]
+pre_build = ""
+configure = ""
+make = ""
+check = ""
+install = "python -m pip install --prefix=/usr --root=$PKG --no-deps ."
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

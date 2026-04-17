@@ -18,10 +18,17 @@ Four recipes had unescaped backslashes in `"""..."""` basic strings. TOML only a
 
 Three thin alias recipes so bazaar deps `pkg-config`, `pip`, `npm` resolve without requiring bazaar contributors to learn zugot's canonical naming:
 - `base/pkg-config.cyml` — alias for `pkgconf` (real implementation already creates /usr/bin/pkg-config symlink)
-- `base/python-pip.cyml` (name `pip`) — alias for python's bundled pip; installs `/usr/bin/pip → pip3`
-- `base/nodejs-npm.cyml` (name `npm`) — alias for nodejs's bundled npm
+- `base/pip.cyml` (name `pip`) — alias for python's bundled pip; installs `/usr/bin/pip → pip3`
+- `base/npm.cyml` (name `npm`) — alias for nodejs's bundled npm
 
-Remaining bazaar gaps `pycups` and `pycurl` (1 ref each, both in `system-config-printer`) are intentionally NOT added per CLAUDE.md rule 9 — bazaar's `system-config-printer.cyml` should `pip install pycups pycurl` at build time via the new `pip` meta-package.
+Initial filenames were `python-pip.cyml`/`nodejs-npm.cyml` (flagged in pass 3 for filename/package-name mismatch) and renamed here to match the `[package].name` convention used by the rest of zugot.
+
+### Added (pass 3 closure)
+
+- `ai/pycups.cyml` 2.0.4 — Python CUPS bindings (was `NOT added` in pass 2 per CLAUDE.md rule 9; pass-3 rationale revisited — these are small C extensions with clean deps on `python + cups`, so ship them as first-party recipes instead of pushing bazaar to do `pip install` in build scripts)
+- `ai/pycurl.cyml` 7.45.7 — Python libcurl bindings (same reasoning)
+
+This closes bazaar's unresolved count to **0**.
 
 ### Added
 
