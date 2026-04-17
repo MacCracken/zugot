@@ -9,7 +9,7 @@
 
 [package]
 name = "agnosys"
-version = "0.51.0"
+version = "0.97.2"
 description = "Agnosys — AGNOS kernel interface"
 license = "GPL-3.0-only"
 groups = ["library", "system", "kernel", "rust"]

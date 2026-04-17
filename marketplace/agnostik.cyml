@@ -9,7 +9,7 @@
 
 [package]
 name = "agnostik"
-version = "0.90.0"
+version = "0.96.0"
 description = "Agnostik — shared types and domain primitives for AGNOS"
 license = "GPL-3.0-only"
 groups = ["library", "types", "rust"]

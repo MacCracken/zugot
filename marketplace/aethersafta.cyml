@@ -9,7 +9,7 @@
 
 [package]
 name = "aethersafta"
-version = "0.25.3"
+version = "0.50.0"
 description = "Aethersafta — Real-time media compositing engine"
 license = "GPL-3.0-only"
 groups = ["library", "media", "compositor", "rust"]

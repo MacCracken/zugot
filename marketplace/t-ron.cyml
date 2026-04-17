@@ -9,7 +9,7 @@
 
 [package]
 name = "t-ron"
-version = "0.90.0"
+version = "2.0.0"
 description = "T-Ron — MCP security monitor (auditing, rate limiting, injection detection, correlation)"
 license = "GPL-3.0-only"
 groups = ["library", "security", "mcp", "rust"]

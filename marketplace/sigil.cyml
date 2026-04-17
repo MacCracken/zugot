@@ -10,7 +10,7 @@
 
 [package]
 name = "sigil"
-version = "1.0.0"
+version = "2.4.2"
 description = "Sigil — system-wide trust verification (signing, integrity, revocation, delegation)"
 license = "GPL-3.0-only"
 groups = ["library", "security", "crypto", "rust"]

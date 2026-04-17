@@ -9,7 +9,7 @@
 
 [package]
 name = "cyrius"
-version = "0.1.0"
+version = "5.2.0"
 description = "Cyrius — sovereign self-hosting systems language and compiler toolchain"
 license = "GPL-3.0-only"
 groups = ["tool", "compiler", "language", "rust"]

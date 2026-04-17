@@ -6,6 +6,64 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+### Version Bumps — Marketplace (39 AGNOS-native packages)
+
+Marketplace audit against upstream `MacCracken/*` GitHub tags (`git ls-remote` after API rate-limit). All SHA256 values remain TODO per existing convention for unreleased `release_asset` bundles — SHAs get populated when consumers build against the actual release tarball.
+
+#### Tier 1 (>1.0 major version bumps)
+- abaco: 1.1.0 → 2.1.0
+- ai-hwaccel: 1.0.0 → 2.0.0
+- hoosh: 1.2.0 → 2.0.0
+- itihas: 1.0.1 → 2.2.0
+- hisab: 1.4.0 → 2.2.0
+- majra: 1.0.4 → 2.2.0
+- sankhya: 1.0.0 → 2.0.0
+- shabda: 1.1.0 → 2.0.0
+- shabdakosh: 1.1.0 → 2.0.0
+- svara: 1.1.1 → 2.0.0
+- t-ron: 0.90.0 → 2.0.0
+- vidya: 1.0.0 → 2.1.0
+
+#### Tier 2 (sub-1.0 → 1.x, big jumps)
+- agnos-kernel: 1.0.0 → 1.22.0
+- agnoshi: 0.90.0 → 1.0.0
+- agnostik: 0.90.0 → 0.96.0
+- agnosys: 0.51.0 → 0.97.2
+- argonaut: 0.90.0 → 1.2.0
+- ark: 0.1.0 → 0.8.0
+- aethersafta: 0.25.3 → 0.50.0
+- avatara: 1.0.1 → 2.3.0
+- bote: 0.92.0 → 2.5.1
+- cyrius: 0.1.0 → 5.2.0 (recipe massively stale; upstream now at 5.x)
+- daimon: 0.6.0 → 1.1.1
+- kiran: 0.26.3 → 1.0.0
+- kybernet: 0.51.0 → 1.0.1
+- nein: 0.90.0 → 1.0.0
+- nous: 0.1.0 → 1.1.1
+- phylax: 0.5.0 → 1.0.0
+- ranga: 0.29.4 → 1.0.0
+- selah: 0.29.4 → 2026.3.17
+- sigil: 1.0.0 → 2.4.2
+- szal: 1.0.1 → 1.1.0
+- sharira: 1.0.0 → 1.1.0
+- shravan: 1.0.1 → 2.3.2
+- tarang: 0.21.3 → 2026.3.18
+- yukti: 0.25.3 → 1.2.0
+
+#### Tier 3 (point-release bumps)
+- dhvani: 1.0.0 → 1.1.0
+- ifran: 1.2.0 → 1.3.0
+- rasa: 2026.3.18 → 2026.3.23
+
+### Flagged — Recipe AHEAD of upstream (no action)
+These have recipe versions newer than current upstream tags — likely pre-release staging:
+- secureyeoman, secureyeoman-agent, secureyeoman-lite, secureyeoman-primary, secureyeoman-sqlite: recipe 2026.3.28 vs upstream 2026.3.19
+- stiva: recipe 2.0.0 vs upstream 1.0.0
+
+### Flagged — No upstream tags yet (no action)
+22 recipes where `git ls-remote` returns no tags — repos may exist but haven't had a release cut. Left at current recipe versions:
+abacus, aegis, aethersafha, agnova, cyrius-seed, jantu, jivanu, kavach, libro, mabda, mastishk, mela, mneme, muharrir, murti, nazar, salai, samay, seema, shakti, takumi, tanur
+
 ### Fixed (bazaar-finds pass 2)
 
 Four recipes had unescaped backslashes in `"""..."""` basic strings. TOML only accepts `\b \t \n \r \" \\ \uXXXX \UXXXXXXXX` as escapes — sequences like `\.` and `\;` are parse errors. Cyrius's current CYML parser is lax enough to accept them, but strict TOML-compatible consumers (Python `tomllib`, Rust `toml` crate) fail. Converted the offending blocks to literal multi-line strings (`'''...'''`) which don't process escapes:

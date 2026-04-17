@@ -10,7 +10,7 @@
 
 [package]
 name = "daimon"
-version = "0.6.0"
+version = "1.1.1"
 description = "Daimon — AGNOS agent orchestrator (HTTP API, supervisor, service registry, port 8090)"
 license = "GPL-3.0-only"
 groups = ["server", "system", "rust"]

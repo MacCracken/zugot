@@ -10,7 +10,7 @@
 
 [package]
 name = "ark"
-version = "0.1.0"
+version = "0.8.0"
 description = "Ark — unified package manager CLI for AGNOS"
 license = "GPL-3.0-only"
 groups = ["tool", "package-management", "rust"]

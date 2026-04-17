@@ -9,7 +9,7 @@
 
 [package]
 name = "nein"
-version = "0.90.0"
+version = "1.0.0"
 description = "Nein — programmatic nftables firewall (policy, NAT, port mapping, MCP, inspection)"
 license = "GPL-3.0-only"
 groups = ["library", "networking", "security", "rust"]

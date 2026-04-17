@@ -9,7 +9,7 @@
 
 [package]
 name = "agnos-kernel"
-version = "1.0.0"
+version = "1.22.0"
 description = "AGNOS — sovereign operating system kernel written in Cyrius"
 license = "GPL-3.0-only"
 groups = ["system", "kernel", "os"]

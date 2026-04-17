@@ -10,7 +10,7 @@
 
 [package]
 name = "kybernet"
-version = "0.51.0"
+version = "1.0.1"
 description = "Kybernet — PID 1 helmsman for AGNOS (uses argonaut)"
 license = "GPL-3.0-only"
 groups = ["system", "init", "rust"]

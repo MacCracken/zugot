@@ -9,7 +9,7 @@
 
 [package]
 name = "dhvani"
-version = "1.0.0"
+version = "1.1.0"
 description = "Dhvani — Core audio engine (buffers, DSP, mixing, analysis, clock)"
 license = "GPL-3.0-only"
 groups = ["library", "audio", "rust"]

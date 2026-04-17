@@ -8,7 +8,7 @@
 
 [package]
 name = "vidya"
-version = "1.0.0"
+version = "2.1.0"
 description = "Vidya — programming reference engine"
 license = "GPL-3.0-only"
 groups = ["library", "science", "rust"]

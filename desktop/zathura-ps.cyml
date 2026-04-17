@@ -1,6 +1,6 @@
 [package]
 name = "zathura-ps"
-version = "0.2.8"
+version = "0.2.9"
 description = "PostScript document support plugin for zathura"
 license = "Zlib"
 groups = ["desktops"]
@@ -8,8 +8,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://pwmt.org/projects/zathura-ps/download/zathura-ps-0.2.8.tar.xz"
-sha256 = "07ca594f7277f9876d0038048418343ea2964028e93c90f9569eff36a8932e4a"
+url = "https://pwmt.org/projects/zathura-ps/download/zathura-ps-0.2.9.tar.xz"
+sha256 = "a95334500848a7a6e8f497232abbc63ba4a628796df73766c3714840083555e8"
 patches = []
 
 [depends]

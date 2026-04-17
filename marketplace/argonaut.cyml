@@ -9,7 +9,7 @@
 
 [package]
 name = "argonaut"
-version = "0.90.0"
+version = "1.2.0"
 description = "Argonaut — init system and service manager for AGNOS (wave-parallel startup)"
 license = "GPL-3.0-only"
 groups = ["library", "system", "init", "rust"]

@@ -8,7 +8,7 @@
 
 [package]
 name = "shravan"
-version = "1.0.1"
+version = "2.3.2"
 description = "Shravan — audio codecs"
 license = "GPL-3.0-only"
 groups = ["library", "media", "rust"]

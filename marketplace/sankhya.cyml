@@ -8,7 +8,7 @@
 
 [package]
 name = "sankhya"
-version = "1.0.0"
+version = "2.0.0"
 description = "Sankhya — ancient mathematical systems"
 license = "GPL-3.0-only"
 groups = ["library", "science", "rust"]

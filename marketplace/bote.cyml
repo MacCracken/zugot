@@ -10,7 +10,7 @@
 
 [package]
 name = "bote"
-version = "0.92.0"
+version = "2.5.1"
 description = "Bote — MCP core service (JSON-RPC 2.0, tool registry, host, dispatch, transport)"
 license = "GPL-3.0-only"
 groups = ["library", "mcp", "rust"]
