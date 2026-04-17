@@ -95,6 +95,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 - nettle: 3.10.1 → 3.10.2 (3.10.x stable track, SHA256 verified)
 - p11-kit: 0.25.5 → 0.26.2 (SHA256 verified)
 
+#### Desktop (batch 1 — libs/apps)
+- bolt: 0.9.8 → 0.9.11 (SHA256 verified)
+- dbus: 1.16.0 → 1.16.2 (SHA256 verified, matches base/edge)
+- djvulibre: 3.5.28 → 3.5.29 (SHA256 verified)
+- elogind: 255.5 → 255.22 (URL tag uses `V` prefix, SHA256 verified)
+- gdk-pixbuf: 2.42.12 → 2.44.6 (minor series bump, SHA256 verified)
+- gtk4: 4.22.1 → 4.22.2 (SHA256 verified; 4.23 is dev)
+
 #### Desktop (fonts/text)
 - harfbuzz: 14.0.0 → 14.1.0 (SHA256 verified)
 - noto-fonts: 2025.03.01 (noto-monthly-release-25.3.1) → 2026.04.01 (noto-monthly-release-2026.04.01, SHA256 verified)
@@ -181,6 +189,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 #### Desktop
 - fontconfig: URL fixed (freedesktop.org/.../release/ returned 404) → gitlab.freedesktop.org generic package endpoint; SHA256 updated from working tarball
+- gtk3: version `3.24.52` → `3.24.43` (3.24.52 does not exist upstream — latest stable 3.24.x is 3.24.43; prior bump was erroneous; SHA256 corrected)
 
 ### Audited
 
@@ -245,6 +254,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 #### Desktop (fonts/text at current upstream)
 - cairo 1.18.4, fcft 3.3.3, fribidi 1.0.16, pixman 0.46.4
+
+#### Desktop (batch 1 — current upstream, SHA256 populated)
+- atk 2.38.0, cliphist 0.7.0, duktape 2.7.0, eudev 3.2.14, foot 1.26.1, fuzzel 1.14.1, glib 2.88.0, gobject-introspection 1.86.0, graphene 1.10.8, greetd 0.10.3, helix 25.07.1
+
+#### Desktop (batch 1 flagged — no action)
+- girara 0.4.5: recipe URL exists but upstream switched to date-based versioning (latest: 2026.02.04). Keeping at 0.4.5 for now; bumping requires URL format rework
+- agnos-desktop 2026.3.25: local/AGNOS-native, no upstream to verify
 
 #### Edge (local builds — no upstream)
 - agnos-edge-agent 2026.3.11, esp32-agent 2026.3.18, glibc 2.42 (local build), secureyeoman-edge 2026.3.18

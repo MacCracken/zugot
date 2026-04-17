@@ -4,7 +4,7 @@
 
 [package]
 name = "gtk4"
-version = "4.22.1"
+version = "4.22.2"
 description = "gtk4 — GTK4 widget toolkit for graphical applications"
 license = "LGPL-2.0-only"
 groups = ["desktop", "libs"]
@@ -12,8 +12,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://download.gnome.org/sources/gtk/4.22/gtk-4.22.1.tar.xz"
-sha256 = "cd7b5a9c41127da6fb321c5a842ad73c62e6996f9ce3f1960ca509f6559d55fc"
+url = "https://download.gnome.org/sources/gtk/4.22/gtk-4.22.2.tar.xz"
+sha256 = "b1c987370a0c30780cde351bdbee02eef816728f1c1c2ec7c8093281c0709ee8"
 patches = []
 
 [depends]

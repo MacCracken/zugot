@@ -6,7 +6,7 @@
 
 [package]
 name = "gtk3"
-version = "3.24.52"
+version = "3.24.43"
 description = "GTK 3 — multi-platform GUI toolkit"
 license = "LGPL-2.1-or-later"
 groups = ["desktop", "gui"]
@@ -14,8 +14,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.52.tar.xz"
-sha256 = "6e95d3011ecc51a72fec8b2a8e5b06b4e134c2b2cfe513bfce42d9029c6c8dd1"
+url = "https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.43.tar.xz"
+sha256 = "7e04f0648515034b806b74ae5d774d87cffb1a2a96c468cb5be476d51bf2f3c7"
 patches = []
 
 [depends]
