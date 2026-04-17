@@ -1,9 +1,15 @@
 # AGNOS Kernel — sovereign operating system kernel
 # Written in Cyrius. Boots via multiboot1 on QEMU/GRUB.
+#
+# Note: upstream repo is `MacCracken/agnos` (the OS); this recipe is named
+# `agnos-kernel` because it builds/installs just the kernel component.
+#
+# Upstream ships both a pre-built x86_64 binary and a source tarball.
+# Recipe builds from source via the cyrius toolchain (cc5 in 1.x+ line).
 
 [package]
 name = "agnos-kernel"
-version = "1.0.0"
+version = "1.22.0"
 description = "AGNOS — sovereign operating system kernel"
 license = "GPL-3.0-only"
 groups = ["base", "core", "kernel", "tier1"]
@@ -11,9 +17,9 @@ release = 1
 arch = "x86_64"
 
 [source]
-github_release = "MacCracken/agnos"
-release_asset = "agnos-x86_64"
-sha256 = "23ecccd2226430edbdf23f5de611b802a96bed298ec84ee333c23dbfc9e27091"
+url = "https://github.com/MacCracken/agnos/releases/download/1.22.0/agnos-1.22.0-src.tar.gz"
+sha256 = "177bf9e8f28fbc9a4432ab73610d4ab51d6a3bf3fc61a81b5d376bf719c17d0e"
+patches = []
 
 [depends]
 runtime = []
@@ -22,7 +28,7 @@ build = ["cyrius"]
 [build]
 pre_build = ""
 configure = ""
-make = "cat kernel/agnos.cyr | cc2 > build/agnos"
+make = "cat kernel/agnos.cyr | cc5 > build/agnos"
 check = "sh scripts/test.sh"
 install = """
 install -Dm644 build/agnos $PKG/boot/agnos
@@ -31,3 +37,5 @@ post_install = ""
 
 [security]
 hardening = []
+cflags = ""
+ldflags = ""

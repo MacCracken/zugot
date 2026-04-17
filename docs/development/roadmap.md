@@ -15,38 +15,23 @@
 
 ## P1 · Broken / stale recipes needing coordinated work
 
-### `base/cyrius.cyml` — massively stale (0.9.0 → 5.2.0)
+### ✅ `base/cyrius.cyml` — resolved 2026-04-17
 
-Recipe at `0.9.0` with `release_asset = "cc2"` and empty SHA256. Upstream is **5.2.0** and the compiler binary was renamed **cc2 → cc5** somewhere in the 1.x→5.x jump.
+Rewritten: 0.9.0 → **5.2.0**, switched from `release_asset = "cc2"` pattern to direct `url` pointing at the pre-built `cyrius-5.2.0-x86_64-linux.tar.gz` release tarball, SHA256 populated. Install now copies the full toolchain (`cc5`, `cyrius`, `cyrc`, `cyrfmt`, `cyrlint`, `cyrdoc`, `ark`, helper scripts, stdlib) from the pre-built tarball — no bootstrap-from-source needed for distribution builds.
 
-Fixing this requires:
-1. Bump `version` to `5.2.0` (or latest stable)
-2. Change `release_asset = "cc2"` → `"cc5"`
-3. Update `install` step (currently `install -Dm755 build/cc2 $PKG/usr/bin/cc2`) to install `cc5`
-4. Populate SHA256 from the release asset
-5. Audit **every downstream recipe** that declares a build-time dependency on `cyrius` — the asset name change cascades
+Downstream `make = "... | cc2 > ..."` references in `kybernet` and `agnos-kernel` updated to `cc5`.
 
-Coordinate with `marketplace/cyrius.cyml` (already bumped to 5.2.0 in the current session).
+### ✅ `base/kybernet.cyml` — resolved 2026-04-17
 
-### `base/kybernet.cyml` — stale, empty SHA
+Bumped 0.9.0 → **1.0.1**. Switched from `release_asset = "kybernet-x86_64"` (pre-built binary) to building from the `kybernet-1.0.1-src.tar.gz` release tarball via `cc5`. SHA256 populated.
 
-Recipe at `0.9.0` with `sha256 = ""`. Upstream at **1.0.1**. Release asset exists but the SHA needs manual verification from the actual release tarball. Bump the version and populate the SHA.
+### ✅ `base/agnos-kernel.cyml` — resolved 2026-04-17
 
-Coordinate with `marketplace/kybernet.cyml` (already bumped to 1.0.1).
+Bumped 1.0.0 → **1.22.0**. Kept recipe name `agnos-kernel` (it's the kernel component of the broader AGNOS OS) but clarified in header comment that `MacCracken/agnos` is the upstream repo. Switched from `release_asset` → source tarball URL (`agnos-1.22.0-src.tar.gz`), SHA256 populated. Build uses `cc5` (was `cc2`).
 
-### `base/agnos-kernel.cyml` — recipe name ≠ upstream repo
+### ✅ `base/gvisor.cyml` — resolved 2026-04-17
 
-Recipe is named `agnos-kernel` but `github_release = "MacCracken/agnos"` (different name). Either:
-1. Rename the recipe/file to `agnos.cyml`, or
-2. Change `github_release` to `MacCracken/agnos-kernel` if that repo exists
-
-`git ls-remote https://github.com/MacCracken/agnos-kernel` should confirm which repo holds the releases.
-
-### `base/gvisor.cyml` — literal `"latest"` version
-
-Recipe has `version = "latest"` and URL points to `/release/latest/x86_64/runsc` which is a moving target on GCS. SHA256 is populated but will silently break whenever upstream cuts a new release.
-
-Pin to a specific gVisor release version instead, or document that the recipe is intentionally rolling and the SHA must be re-verified before any release build.
+Pinned from `version = "latest"` to **20260413.0** (gVisor's weekly date-based release). URL now points at `/release/20260413/x86_64/runsc` instead of `/release/latest/...` — SHA256 will no longer drift silently. Bump deliberately; re-verify SHA when advancing to a newer date.
 
 ---
 
@@ -56,11 +41,11 @@ The following recipes build fine but have `sha256 = ""` with a `# TODO` comment 
 
 ### Base / desktop
 
-| recipe | reason |
-|---|---|
-| `browser/chromium.cyml` | tarball ~6GB, too large to auto-download |
-| `base/boost.cyml` | 110MB tarball, not auto-fetched during scaffold |
-| `desktop/luajit.cyml` | tracks rolling `v2.1` branch (not a tag); SHA must be re-verified on each build |
+| recipe | status | reason |
+|---|---|---|
+| `browser/chromium.cyml` | **still TODO** | tarball ~6GB, too large to auto-download; populate SHA from a dev machine before any release build |
+| `base/boost.cyml` | ✅ resolved 2026-04-17 | 110MB tarball fetched, SHA256 populated |
+| `desktop/luajit.cyml` | ✅ resolved 2026-04-17 | pinned to commit `18b087cd` (v2.1 branch snapshot 2026-04-17); version field updated to `2.1-18b087cd`; bump periodically |
 
 ### Marketplace
 

@@ -6,6 +6,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+### P1 Roadmap Items Resolved (2026-04-17)
+
+First pass through the P1 items in `docs/development/roadmap.md`:
+
+#### `base/cyrius.cyml` — rewritten (0.9.0 → 5.2.0)
+Switched from the stale `release_asset = "cc2"` pattern to a direct `url` pointing at the pre-built `cyrius-5.2.0-x86_64-linux.tar.gz` release tarball. Install now copies the full 5.x toolchain (`cc5`, `cyrius`, `cyrc`, `cyrfmt`, `cyrlint`, `cyrdoc`, `ark`, helper scripts, stdlib) from the tarball. SHA256 populated (`537da95c...`). Downstream build references to `cc2` updated to `cc5` in `kybernet` and `agnos-kernel`.
+
+#### `base/kybernet.cyml` (0.9.0 → 1.0.1)
+Switched from `release_asset = "kybernet-x86_64"` (pre-built binary) to building from `kybernet-1.0.1-src.tar.gz` via `cc5`. SHA256 populated (`f9c88e97...`).
+
+#### `base/agnos-kernel.cyml` (1.0.0 → 1.22.0)
+Clarified naming in header comment (upstream repo is `MacCracken/agnos`, recipe name `agnos-kernel` describes the kernel component). Switched to building from `agnos-1.22.0-src.tar.gz` via `cc5`. SHA256 populated (`177bf9e8...`).
+
+#### `base/gvisor.cyml` — pinned (`latest` → `20260413.0`)
+Replaced the rolling `/release/latest/` URL (SHA would silently drift) with pinned `/release/20260413/x86_64/runsc`. SHA256 updated to match pinned build (`c97966a7...`).
+
+#### SHA population backlog
+- `base/boost.cyml` — SHA256 populated (`9e6bee9a...`; tarball verified at 51MB)
+- `desktop/luajit.cyml` — pinned to commit `18b087cd` (v2.1 branch snapshot), version field `2.1-18b087cd`, SHA256 populated (`88a592af...`)
+- `browser/chromium.cyml` — still TODO (6GB tarball); noted in roadmap for dev-machine fetch before release build
+
 ### Version Bumps — Marketplace (39 AGNOS-native packages)
 
 Marketplace audit against upstream `MacCracken/*` GitHub tags (`git ls-remote` after API rate-limit). All SHA256 values remain TODO per existing convention for unreleased `release_asset` bundles — SHAs get populated when consumers build against the actual release tarball.

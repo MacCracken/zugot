@@ -1,22 +1,24 @@
 # LuaJIT — Just-In-Time compiler for Lua
 # Tracks the v2.1 branch (last tagged beta3; project uses rolling 2.1 series).
+# Pinned to commit 18b087cd (v2.1 branch snapshot at 2026-04-17).
 #
 # BLFS
 
 [package]
 name = "luajit"
-version = "2.1"
-description = "LuaJIT — Just-In-Time Compiler for Lua (rolling 2.1 branch)"
+version = "2.1-18b087cd"
+description = "LuaJIT — Just-In-Time Compiler for Lua (v2.1 branch snapshot)"
 license = "MIT"
 groups = ["desktops", "libs"]
 release = 1
 arch = "x86_64"
 
 [source]
-# LuaJIT ships v2.1 as a rolling branch; last tagged release was v2.1.0-beta3.
-# Project recommends tracking the v2.1 branch for upstream-stable behavior.
-url = "https://github.com/LuaJIT/LuaJIT/archive/refs/heads/v2.1.tar.gz"
-sha256 = ""  # TODO: rolling branch — re-verify at build time
+# LuaJIT ships v2.1 as a rolling branch (last tag was v2.1.0-beta3).
+# Pinned to a specific commit for reproducibility; re-snapshot the
+# branch periodically and update both the version suffix and SHA256.
+url = "https://github.com/LuaJIT/LuaJIT/archive/18b087cd2cd4ddc4a79782bf155383a689d5093d.tar.gz"
+sha256 = "88a592afa9907d6b0c6e1e7ac9b39982622e3ca086f0646d4ea89b0e4e81f093"
 patches = []
 
 [depends]

@@ -1,10 +1,13 @@
 # Kybernet — PID 1 init system for AGNOS
 # The helmsman. Manages boot, mounts, signals, cgroups, shutdown.
 # Written in Cyrius. Zero external dependencies at runtime.
+#
+# Upstream ships pre-built source tarball + pre-built x86_64 binary.
+# Recipe builds from source via the cyrius toolchain (cc5 in 1.x line).
 
 [package]
 name = "kybernet"
-version = "0.9.0"
+version = "1.0.1"
 description = "Kybernet — PID 1 init system for AGNOS"
 license = "GPL-3.0-only"
 groups = ["base", "core", "init", "tier1"]
@@ -12,19 +15,19 @@ release = 1
 arch = "x86_64"
 
 [source]
-github_release = "MacCracken/kybernet"
-release_asset = "kybernet-x86_64"
-sha256 = ""  # TODO: fill after 0.9.0 release
+url = "https://github.com/MacCracken/kybernet/releases/download/1.0.1/kybernet-1.0.1-src.tar.gz"
+sha256 = "f9c88e97ebf13035a45c1b26216a208565e264684b37a4c5bcd19870d263cc67"
+patches = []
 
 [depends]
 runtime = []            # static binary, no runtime deps
-build = ["cyrius"]      # needs cc2 to build from source
+build = ["cyrius"]      # needs cc5 (from cyrius 5.x) to build from source
 
 [build]
 pre_build = ""
 configure = ""
-make = "cat src/main.cyr | cc2 > build/kybernet && chmod +x build/kybernet"
-check = "cat src/test.cyr | cc2 > /tmp/kybernet_test && chmod +x /tmp/kybernet_test && /tmp/kybernet_test"
+make = "cat src/main.cyr | cc5 > build/kybernet && chmod +x build/kybernet"
+check = "cat src/test.cyr | cc5 > /tmp/kybernet_test && chmod +x /tmp/kybernet_test && /tmp/kybernet_test"
 install = """
 install -Dm755 build/kybernet $PKG/usr/bin/kybernet
 """
