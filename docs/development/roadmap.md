@@ -53,16 +53,16 @@ Most `marketplace/*.cyml` recipes have `sha256 = ""` with a `# TODO` comment. Co
 
 ---
 
-## P2 · Recipes needing upstream transition handling
+## P2 · Recipes needing upstream transition handling — ✅ resolved 2026-04-17
 
-These work at the pinned version but upstream has changed something structural (naming scheme, source URL format, version scheme):
+All four transitions applied:
 
-| recipe | current | upstream latest | issue |
-|---|---|---|---|
-| `base/libcap-ng.cyml` | 0.8.5 | 0.9.3 | Redhat mirror stops at 0.8.5; GitHub archive lacks pre-generated `configure` (need `autogen.sh` + autotools in build deps) |
-| `desktop/nvidia-driver.cyml` | 570.133.07 | 595.58.03 (prod stable) | Proprietary binary; bumping requires deliberate branch/ML/beta channel choice |
-| `desktop/zathura.cyml` | 0.5.14 | 2026.03.27 | Upstream switched from semver to date-based versioning; URL format rework needed |
-| `desktop/girara.cyml` | 0.4.5 | 2026.02.04 | Same as zathura — date-based versioning switch |
+| recipe | change | notes |
+|---|---|---|
+| `base/libcap-ng.cyml` | 0.8.5 → **0.9.3** | switched to GitHub archive URL (redhat mirror is stuck); added `autogen.sh` pre_build + `autoconf`/`automake`/`libtool` build deps. SHA256 verified. |
+| `desktop/nvidia-driver.cyml` | 570.133.07 → **595.58.03** | production-stable channel chosen; SHA256 verified from download.nvidia.com |
+| `desktop/zathura.cyml` | 0.5.14 → **2026.03.27** | upstream switched from semver to date-based versioning; version + URL + SHA updated |
+| `desktop/girara.cyml` | 0.4.5 → **2026.02.04** | same date-based transition |
 
 ---
 
@@ -91,25 +91,50 @@ Revisit this list periodically and bump as releases land.
 
 ## P3 · Tooling / process
 
-### Validator — cross-check zugot against bazaar
+### ✅ Validator + CI — resolved 2026-04-17
 
-`noted-issues-bazaar-finds.md` cites a Python cross-check script. Two follow-ups:
+Delivered as `scripts/validate_recipes.py` + `.github/workflows/validate-recipes.yml`. The script checks four classes of problem:
+1. TOML/CYML parse errors (via stdlib `tomllib` — catches invalid backslash escapes like `\.` that the lax Cyrius parser accepts; **covers the "TOML-compatible parsing" item below too**)
+2. Filename ≠ `[package].name` mismatches
+3. Empty `sha256` without a `# TODO` comment
+4. Unresolved deps in `[depends].runtime` / `[depends].build`
 
-1. **Wire it into zugot CI** as a `validate_recipes` step that fails the PR if:
-   - Any `[depends].runtime` or `[depends].build` entry references a package neither in zugot nor bazaar
-   - Any `sha256` field is an unchanged placeholder (`""` without a `# TODO` comment, or `"VERIFY"`)
-   - Any filename doesn't match its `[package].name`
-2. **Wire it into bazaar CI** (upstream request) as `--check-against ../zugot` mode. The script already exists; it just needs a workflow file.
+Usage:
+```sh
+scripts/validate_recipes.py                            # zugot-only
+scripts/validate_recipes.py --check-against ../bazaar  # cross-check bazaar
+```
 
-### TOML-compatible parsing
+First run against the current zugot tree surfaced **151 legitimate issues** — see "Follow-ups surfaced by the validator" below.
 
-Cyrius's current CYML parser is lax enough to accept invalid TOML escape sequences (e.g. `\.` inside `"""..."""`). Strict consumers (Python `tomllib`, Rust `toml` crate) fail on these. We found and fixed 4 in pass 2. A lint step should scan for:
-- Invalid backslash escapes inside basic strings (`"..."` / `"""..."""`)
-- Recommendation: prefer literal strings (`'...'` / `'''...'''`) whenever a multi-line block contains shell or regex code with backslashes
+### Roadmap maintenance — ongoing
 
-### Roadmap maintenance
+Keep this file updated as part of the work loop (CLAUDE.md §9: "update roadmap if applicable"). Close items inline with `✅ Resolved 2026-MM-DD` so the audit trail survives.
 
-This file itself is new. Keep it updated as part of the work loop (CLAUDE.md §9: "update roadmap if applicable"). Close items inline with a `✅ Resolved` marker and a commit/PR link so the audit trail survives.
+---
+
+## Follow-ups surfaced by the validator (next roadmap sweep)
+
+First run of `scripts/validate_recipes.py` flagged 151 issues. Grouped for the next pass:
+
+### Naming conventions not yet applied to existing recipes
+9 `ai/*.cyml` recipes still declare `python3` instead of `python` (CLAUDE.md rule 2):
+`huggingface-hub-cli`, `jupyter-server`, `python-numpy`, `python-pandas`, `python-pytorch`, `python-safetensors`, `python-scipy`, `python-transformers`, `vllm`
+
+Browser and some marketplace recipes still use `libpipewire` instead of `pipewire`.
+
+### Genuinely missing recipes (new packages needed)
+| dep | referenced by | scope |
+|---|---|---|
+| `gfortran` | lapack, openblas, python-scipy | new `base/` recipe (could be a meta-package pointing at `gcc` since gfortran ships as part of the GCC build) |
+| `docbook-xsl` | xmlto | new `base/` recipe |
+| `brotli` | nodejs | new `base/` recipe |
+| `c-ares` | nodejs | new `base/` recipe |
+| `gyp` | nss | new `base/` recipe (Chromium's build-config generator) |
+| `libseat` | aquamarine | alias/meta-package — `seatd` provides `libseat` (same pattern as pkgconf→pkg-config) |
+
+### Filename/package-name mismatches
+To be enumerated from validator output during the next sweep.
 
 ---
 

@@ -6,7 +6,7 @@
 
 [package]
 name = "nvidia-driver"
-version = "570.133.07"
+version = "595.58.03"
 description = "NVIDIA proprietary GPU driver"
 license = "Proprietary"
 groups = ["desktops", "graphics", "gpu"]
@@ -14,8 +14,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://us.download.nvidia.com/XFree86/Linux-x86_64/570.133.07/NVIDIA-Linux-x86_64-570.133.07.run"
-sha256 = "2d43e64c581be5ef554de9888b1aa90037ef6d45f54284d3d9dcedc08dc4dc26"
+url = "https://us.download.nvidia.com/XFree86/Linux-x86_64/595.58.03/NVIDIA-Linux-x86_64-595.58.03.run"
+sha256 = "8c0d4f967b7932c4ab5714272aee8103392b0a702c92afa555176d36205829f9"
 patches = []
 
 [depends]

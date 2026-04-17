@@ -6,6 +6,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+### P3 Roadmap — Tooling (2026-04-17)
+
+- **`scripts/validate_recipes.py`** — new. Parses every `*.cyml` via stdlib `tomllib` and reports:
+  1. TOML/CYML parse errors (also catches the class of lax-parser-accepts-but-strict-parser-fails issues like `\.` inside `"""..."""`)
+  2. Filename ≠ `[package].name` mismatches
+  3. Empty `sha256` without a `# TODO` comment
+  4. Unresolved `[depends].runtime` / `[depends].build` entries
+
+  Supports `--check-against <path>` for cross-checking bazaar against zugot. First run against the current tree surfaced 151 legitimate issues (mostly `python3→python` renames never applied to `ai/*.cyml`; a handful of missing recipes: gfortran, docbook-xsl, brotli, c-ares, gyp) — enumerated in roadmap under "Follow-ups surfaced by the validator".
+
+- **`.github/workflows/validate-recipes.yml`** — new. Runs the validator on every push to `main` and every PR.
+
+### P2 Roadmap — Upstream Transitions (2026-04-17)
+
+Four recipes needed coordinated updates for upstream changes:
+
+- **`base/libcap-ng.cyml`** 0.8.5 → **0.9.3**. Switched source from `people.redhat.com` (stuck at 0.8.5) to GitHub archive (`stevegrubb/libcap-ng`). Added `autogen.sh` in pre_build and `autoconf`/`automake`/`libtool` to build deps since GitHub tarballs ship without pre-generated `configure`. SHA256 verified (`fe11ebbb...`).
+- **`desktop/nvidia-driver.cyml`** 570.133.07 → **595.58.03** (production stable channel). SHA256 verified from download.nvidia.com (423MB .run installer).
+- **`desktop/zathura.cyml`** 0.5.14 → **2026.03.27**. Upstream switched from semver to date-based versioning; URL and version updated. SHA256 verified.
+- **`desktop/girara.cyml`** 0.4.5 → **2026.02.04**. Same date-based versioning transition. SHA256 verified.
+
 ### P1 Roadmap Items Resolved (2026-04-17)
 
 First pass through the P1 items in `docs/development/roadmap.md`:
