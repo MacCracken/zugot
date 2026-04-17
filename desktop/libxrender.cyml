@@ -3,7 +3,7 @@ name = "libxrender"
 version = "0.9.12"
 description = "X Rendering Extension client library"
 license = "MIT"
-groups = ["desktop"]
+groups = ["desktops"]
 release = 1
 arch = "x86_64"
 

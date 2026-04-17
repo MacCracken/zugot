@@ -3,7 +3,7 @@ name = "libusb"
 version = "1.0.29"
 description = "Cross-platform library for USB device access from userspace"
 license = "LGPL-2.1-only"
-groups = ["desktop"]
+groups = ["desktops"]
 release = 1
 arch = "x86_64"
 

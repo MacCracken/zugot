@@ -3,7 +3,7 @@ name = "librsvg"
 version = "2.62.1"
 description = "SVG rendering library written in Rust"
 license = "LGPL-2.1-only"
-groups = ["desktop"]
+groups = ["desktops"]
 release = 1
 arch = "x86_64"
 

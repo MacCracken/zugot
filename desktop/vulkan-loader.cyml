@@ -8,7 +8,7 @@ name = "vulkan-loader"
 version = "1.4.349"
 description = "Vulkan Loader — Vulkan ICD loader library"
 license = "Apache-2.0"
-groups = ["desktop", "graphics"]
+groups = ["desktops", "graphics"]
 release = 1
 arch = "x86_64"
 

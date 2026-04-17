@@ -3,7 +3,7 @@ name = "foot"
 version = "1.26.1"
 description = "Fast, lightweight, Wayland-native terminal emulator"
 license = "MIT"
-groups = ["desktop"]
+groups = ["desktops"]
 release = 1
 arch = "x86_64"
 

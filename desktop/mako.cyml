@@ -3,7 +3,7 @@ name = "mako"
 version = "1.11.0"
 description = "Lightweight Wayland-native notification daemon"
 license = "MIT"
-groups = ["desktop"]
+groups = ["desktops"]
 release = 1
 arch = "x86_64"
 

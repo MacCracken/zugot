@@ -7,7 +7,7 @@ name = "libatasmart"
 version = "0.19"
 description = "libatasmart — ATA S.M.A.R.T. reading and parsing library"
 license = "LGPL-2.1-only"
-groups = ["desktop", "system"]
+groups = ["desktops", "system"]
 release = 1
 arch = "x86_64"
 

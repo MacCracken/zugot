@@ -7,7 +7,7 @@ name = "duktape"
 version = "2.7.0"
 description = "duktape — Embeddable JavaScript engine"
 license = "MIT"
-groups = ["desktop", "libs"]
+groups = ["desktops", "libs"]
 release = 1
 arch = "x86_64"
 

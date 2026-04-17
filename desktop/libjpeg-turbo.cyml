@@ -7,7 +7,7 @@ name = "libjpeg-turbo"
 version = "3.1.4.1"
 description = "libjpeg-turbo — JPEG image codec with SIMD acceleration"
 license = "BSD-3-Clause"
-groups = ["desktop", "graphics"]
+groups = ["desktops", "graphics"]
 release = 1
 arch = "x86_64"
 

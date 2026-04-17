@@ -3,7 +3,7 @@ name = "noto-fonts"
 version = "2026.04.01"
 description = "Google Noto fonts — universal Unicode coverage"
 license = "OFL-1.1"
-groups = ["desktop", "fonts"]
+groups = ["desktops", "fonts"]
 release = 1
 arch = "x86_64"
 

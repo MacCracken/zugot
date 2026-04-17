@@ -3,7 +3,7 @@ name = "ffmpeg"
 version = "8.1"
 description = "Complete cross-platform multimedia framework"
 license = "LGPL-2.1-only"
-groups = ["desktop"]
+groups = ["desktops"]
 release = 1
 arch = "x86_64"
 

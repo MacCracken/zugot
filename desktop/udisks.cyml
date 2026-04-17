@@ -4,16 +4,16 @@
 
 [package]
 name = "udisks"
-version = "2.10.1"
+version = "2.11.1"
 description = "udisks — D-Bus interface for disk management operations"
 license = "GPL-2.0-only"
-groups = ["desktop", "libs"]
+groups = ["desktops", "libs"]
 release = 1
 arch = "x86_64"
 
 [source]
-url = "https://github.com/storaged-project/udisks/releases/download/udisks-2.10.1/udisks-2.10.1.tar.bz2"
-sha256 = "b75734ccf602540dedb4068bec206adcb508a4c003725e117ae8f994d92d8ece"
+url = "https://github.com/storaged-project/udisks/releases/download/udisks-2.11.1/udisks-2.11.1.tar.bz2"
+sha256 = "e88c52bae02fa13414604bbef42c6bb91c2e24177ee0057ed55c6bd7451bcb6d"
 patches = []
 
 [depends]

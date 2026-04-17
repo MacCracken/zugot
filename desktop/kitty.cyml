@@ -3,7 +3,7 @@ name = "kitty"
 version = "0.46.2"
 description = "GPU-accelerated terminal emulator with kitten tools"
 license = "GPL-3.0-only"
-groups = ["desktop"]
+groups = ["desktops"]
 release = 1
 arch = "x86_64"
 

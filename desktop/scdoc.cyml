@@ -3,7 +3,7 @@ name = "scdoc"
 version = "1.9.7"
 description = "Simple man page generator written in C99"
 license = "MIT"
-groups = ["desktop"]
+groups = ["desktops"]
 release = 1
 arch = "x86_64"
 

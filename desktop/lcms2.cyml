@@ -3,7 +3,7 @@ name = "lcms2"
 version = "2.18"
 description = "Little CMS color management engine for ICC profile transforms"
 license = "MIT"
-groups = ["desktop"]
+groups = ["desktops"]
 release = 1
 arch = "x86_64"
 

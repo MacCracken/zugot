@@ -3,7 +3,7 @@ name = "utf8proc"
 version = "2.11.3"
 description = "Clean C library for processing UTF-8 Unicode data"
 license = "MIT"
-groups = ["desktop"]
+groups = ["desktops"]
 release = 1
 arch = "x86_64"
 

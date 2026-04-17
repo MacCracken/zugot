@@ -8,7 +8,7 @@ name = "pango"
 version = "1.56.4"
 description = "Pango — Internationalized text rendering library"
 license = "LGPL-2.0-only"
-groups = ["desktop", "graphics"]
+groups = ["desktops", "graphics"]
 release = 1
 arch = "x86_64"
 

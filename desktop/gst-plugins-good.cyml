@@ -3,7 +3,7 @@ name = "gst-plugins-good"
 version = "1.28.2"
 description = "GStreamer good plugins — LGPL codecs, PulseAudio, PipeWire, V4L2"
 license = "LGPL-2.1-only"
-groups = ["desktop", "multimedia"]
+groups = ["desktops", "multimedia"]
 release = 1
 arch = "x86_64"
 

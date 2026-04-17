@@ -3,7 +3,7 @@ name = "gst-plugins-base"
 version = "1.28.2"
 description = "GStreamer base plugins — essential codecs, audio/video support"
 license = "LGPL-2.0-only"
-groups = ["desktop", "multimedia"]
+groups = ["desktops", "multimedia"]
 release = 1
 arch = "x86_64"
 

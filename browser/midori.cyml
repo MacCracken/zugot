@@ -6,7 +6,7 @@ name = "midori"
 version = "11.6.5.1"
 description = "Midori — Fast, lightweight web browser"
 license = "LGPL-2.1-only"
-groups = ["desktop", "browser", "internet"]
+groups = ["desktops", "browser", "internet"]
 release = 1
 arch = "x86_64"
 

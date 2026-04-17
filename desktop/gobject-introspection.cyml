@@ -7,7 +7,7 @@ name = "gobject-introspection"
 version = "1.86.0"
 description = "gobject-introspection — GObject introspection for language bindings"
 license = "LGPL-2.0-only"
-groups = ["desktop", "libs"]
+groups = ["desktops", "libs"]
 release = 1
 arch = "x86_64"
 

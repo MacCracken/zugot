@@ -11,7 +11,7 @@ name = "jalwa"
 version = "2026.3.22"
 description = "Jalwa — AI-native media player"
 license = "GPL-3.0-only"
-groups = ["desktop", "media", "rust"]
+groups = ["desktops", "media", "rust"]
 release = 1
 arch = "x86_64"
 

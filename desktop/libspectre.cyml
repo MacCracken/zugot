@@ -3,7 +3,7 @@ name = "libspectre"
 version = "0.2.12"
 description = "Small library for rendering PostScript documents"
 license = "GPL-2.0-only"
-groups = ["desktop"]
+groups = ["desktops"]
 release = 1
 arch = "x86_64"
 

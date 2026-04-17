@@ -6,7 +6,7 @@ name = "librewolf"
 version = "149.0.2-2"
 description = "LibreWolf — Privacy-hardened Firefox fork"
 license = "MPL-2.0"
-groups = ["desktop", "browser", "internet"]
+groups = ["desktops", "browser", "internet"]
 release = 1
 arch = "x86_64"
 

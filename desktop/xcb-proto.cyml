@@ -3,7 +3,7 @@ name = "xcb-proto"
 version = "1.17.0"
 description = "X protocol C-language Binding protocol descriptions"
 license = "MIT"
-groups = ["desktop"]
+groups = ["desktops"]
 release = 1
 arch = "x86_64"
 

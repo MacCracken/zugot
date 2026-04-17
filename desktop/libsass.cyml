@@ -3,7 +3,7 @@ name = "libsass"
 version = "3.6.6"
 description = "C/C++ implementation of the Sass CSS preprocessor"
 license = "MIT"
-groups = ["desktop"]
+groups = ["desktops"]
 release = 1
 arch = "x86_64"
 

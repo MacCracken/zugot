@@ -3,7 +3,7 @@ name = "djvulibre"
 version = "3.5.29"
 description = "DjVu document format library and utilities"
 license = "GPL-2.0-only"
-groups = ["desktop"]
+groups = ["desktops"]
 release = 1
 arch = "x86_64"
 

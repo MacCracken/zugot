@@ -4,16 +4,16 @@
 
 [package]
 name = "upower"
-version = "1.90.6"
+version = "1.91.2"
 description = "upower — Power management and battery monitoring service"
 license = "GPL-2.0-only"
-groups = ["desktop", "libs"]
+groups = ["desktops", "libs"]
 release = 1
 arch = "x86_64"
 
 [source]
-url = "https://gitlab.freedesktop.org/upower/upower/-/archive/v1.90.6/upower-v1.90.6.tar.gz"
-sha256 = "7e367c2619ca0f26d5bfc085b46bad9657b2774cc3eaffbf310b607df6e21377"
+url = "https://gitlab.freedesktop.org/upower/upower/-/archive/v1.91.2/upower-v1.91.2.tar.gz"
+sha256 = "cd9a3a3f5e0aa21eac131253228757bbdc90ecd39768f46c325754e32daa3083"
 patches = []
 
 [depends]

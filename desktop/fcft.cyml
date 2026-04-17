@@ -3,7 +3,7 @@ name = "fcft"
 version = "3.3.3"
 description = "Font loading and glyph rasterization library using FreeType, FontConfig, and pixman"
 license = "MIT"
-groups = ["desktop"]
+groups = ["desktops"]
 release = 1
 arch = "x86_64"
 

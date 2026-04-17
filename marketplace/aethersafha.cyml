@@ -13,7 +13,7 @@ name = "aethersafha"
 version = "0.1.0"
 description = "Aethersafha — AI-augmented Wayland compositor for AGNOS"
 license = "GPL-3.0-only"
-groups = ["desktop", "compositor", "rust"]
+groups = ["desktops", "compositor", "rust"]
 release = 1
 arch = "x86_64"
 

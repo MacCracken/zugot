@@ -6,7 +6,7 @@ name = "brave"
 version = "1.91.64"
 description = "Brave Browser — Privacy-first Chromium-based browser"
 license = "MPL-2.0"
-groups = ["desktop", "browser", "internet"]
+groups = ["desktops", "browser", "internet"]
 release = 1
 arch = "x86_64"
 

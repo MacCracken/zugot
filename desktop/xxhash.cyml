@@ -3,7 +3,7 @@ name = "xxhash"
 version = "0.8.3"
 description = "Extremely fast non-cryptographic hash algorithm"
 license = "BSD-2-Clause"
-groups = ["desktop"]
+groups = ["desktops"]
 release = 1
 arch = "x86_64"
 

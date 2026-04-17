@@ -3,7 +3,7 @@ name = "libxi"
 version = "1.8.2"
 description = "X11 Input Extension client library (XInput2)"
 license = "MIT"
-groups = ["desktop"]
+groups = ["desktops"]
 release = 1
 arch = "x86_64"
 

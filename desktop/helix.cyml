@@ -3,7 +3,7 @@ name = "helix"
 version = "25.07.1"
 description = "Post-modern modal text editor written in Rust"
 license = "MPL-2.0"
-groups = ["desktop"]
+groups = ["desktops"]
 release = 1
 arch = "x86_64"
 

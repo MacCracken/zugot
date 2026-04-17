@@ -7,7 +7,7 @@ name = "pipewire"
 version = "1.6.3"
 description = "pipewire — Low-latency audio and video routing server"
 license = "MIT"
-groups = ["desktop", "audio"]
+groups = ["desktops", "audio"]
 release = 1
 arch = "x86_64"
 

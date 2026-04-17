@@ -12,7 +12,7 @@ name = "tanur"
 version = "0.1.0"
 description = "Tanur — Desktop LLM studio"
 license = "GPL-3.0-only"
-groups = ["application", "desktop", "ai", "rust"]
+groups = ["application", "desktops", "ai", "rust"]
 release = 1
 arch = "x86_64"
 

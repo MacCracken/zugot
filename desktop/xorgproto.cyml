@@ -1,15 +1,15 @@
 [package]
 name = "xorgproto"
-version = "2024.1"
+version = "2025.1"
 description = "X.Org protocol header files"
 license = "MIT"
-groups = ["desktop"]
+groups = ["desktops"]
 release = 1
 arch = "x86_64"
 
 [source]
-url = "https://xorg.freedesktop.org/archive/individual/proto/xorgproto-2024.1.tar.xz"
-sha256 = "372225fd40815b8423547f5d890c5debc72e88b91088fbfb13158c20495ccb59"
+url = "https://xorg.freedesktop.org/archive/individual/proto/xorgproto-2025.1.tar.xz"
+sha256 = "56898c716c0578df8a2d828c9c3e5c528277705c0484381a81960fe1a67668e8"
 patches = []
 
 [depends]

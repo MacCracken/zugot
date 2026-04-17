@@ -8,7 +8,7 @@ name = "pixman"
 version = "0.46.4"
 description = "pixman — Pixel manipulation library"
 license = "MIT"
-groups = ["desktop", "graphics"]
+groups = ["desktops", "graphics"]
 release = 1
 arch = "x86_64"
 

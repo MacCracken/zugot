@@ -9,7 +9,7 @@ name = "nvidia-driver"
 version = "570.133.07"
 description = "NVIDIA proprietary GPU driver"
 license = "Proprietary"
-groups = ["desktop", "graphics", "gpu"]
+groups = ["desktops", "graphics", "gpu"]
 release = 1
 arch = "x86_64"
 

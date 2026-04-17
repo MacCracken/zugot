@@ -7,7 +7,7 @@ name = "polkit"
 version = "127"
 description = "polkit — Authorization framework for system privilege management"
 license = "LGPL-2.0-only"
-groups = ["desktop", "libs"]
+groups = ["desktops", "libs"]
 release = 1
 arch = "x86_64"
 

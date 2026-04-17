@@ -8,7 +8,7 @@ name = "wayland-protocols"
 version = "1.48"
 description = "Wayland Protocols — Extended Wayland protocol definitions"
 license = "MIT"
-groups = ["desktop", "graphics"]
+groups = ["desktops", "graphics"]
 release = 1
 arch = "x86_64"
 

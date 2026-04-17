@@ -7,7 +7,7 @@ name = "libsndfile"
 version = "1.2.2"
 description = "libsndfile — C library for reading and writing audio files"
 license = "LGPL-2.1-only"
-groups = ["desktop", "audio"]
+groups = ["desktops", "audio"]
 release = 1
 arch = "x86_64"
 

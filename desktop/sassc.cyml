@@ -3,7 +3,7 @@ name = "sassc"
 version = "3.6.2"
 description = "Sass CSS preprocessor C implementation"
 license = "MIT"
-groups = ["desktop"]
+groups = ["desktops"]
 release = 1
 arch = "x86_64"
 

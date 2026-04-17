@@ -8,7 +8,7 @@ name = "xwayland"
 version = "24.1.10"
 description = "XWayland — X11 compatibility layer for Wayland"
 license = "MIT"
-groups = ["desktop", "graphics", "xcompat"]
+groups = ["desktops", "graphics", "xcompat"]
 release = 1
 arch = "x86_64"
 

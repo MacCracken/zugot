@@ -7,7 +7,7 @@ name = "libevdev"
 version = "1.13.6"
 description = "libevdev — Input event device wrapper library"
 license = "MIT"
-groups = ["desktop", "input"]
+groups = ["desktops", "input"]
 release = 1
 arch = "x86_64"
 

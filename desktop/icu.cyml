@@ -3,7 +3,7 @@ name = "icu"
 version = "78.3"
 description = "International Components for Unicode — C/C++ globalization library"
 license = "ICU"
-groups = ["desktop"]
+groups = ["desktops"]
 release = 1
 arch = "x86_64"
 

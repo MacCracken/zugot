@@ -7,7 +7,7 @@ name = "libblockdev"
 version = "3.4.0"
 description = "libblockdev — Block device operations library"
 license = "LGPL-2.1-only"
-groups = ["desktop", "system"]
+groups = ["desktops", "system"]
 release = 1
 arch = "x86_64"
 

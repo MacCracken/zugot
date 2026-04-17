@@ -8,7 +8,7 @@ name = "wlroots"
 version = "0.20.0"
 description = "wlroots — Modular Wayland compositor library"
 license = "MIT"
-groups = ["desktop", "graphics"]
+groups = ["desktops", "graphics"]
 release = 1
 arch = "x86_64"
 

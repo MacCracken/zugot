@@ -3,7 +3,7 @@ name = "imv"
 version = "5.0.1"
 description = "Simple Wayland-native image viewer"
 license = "MIT"
-groups = ["desktop"]
+groups = ["desktops"]
 release = 1
 arch = "x86_64"
 

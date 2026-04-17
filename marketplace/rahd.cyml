@@ -10,7 +10,7 @@ name = "rahd"
 version = "2026.3.18-1"
 description = "Rahd — AI-native calendar & contacts for AGNOS"
 license = "GPL-3.0-only"
-groups = ["desktop", "productivity"]
+groups = ["desktops", "productivity"]
 release = 1
 arch = "x86_64"
 

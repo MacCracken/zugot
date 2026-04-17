@@ -9,7 +9,7 @@ name = "bolt"
 version = "0.9.11"
 description = "bolt — Thunderbolt 3/4 device manager"
 license = "LGPL-2.1-or-later"
-groups = ["desktop", "hardware"]
+groups = ["desktops", "hardware"]
 release = 1
 arch = "x86_64"
 

@@ -3,7 +3,7 @@ name = "fuzzel"
 version = "1.14.1"
 description = "Wayland-native application launcher and dmenu replacement"
 license = "MIT"
-groups = ["desktop"]
+groups = ["desktops"]
 release = 1
 arch = "x86_64"
 

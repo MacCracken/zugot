@@ -6,7 +6,7 @@ name = "firefox"
 version = "149.0.2"
 description = "Mozilla Firefox — Privacy-focused web browser"
 license = "MPL-2.0"
-groups = ["desktop", "browser", "internet"]
+groups = ["desktops", "browser", "internet"]
 release = 1
 arch = "x86_64"
 

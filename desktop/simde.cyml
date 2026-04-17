@@ -3,7 +3,7 @@ name = "simde"
 version = "0.8.2"
 description = "Portable SIMD wrapper headers (SSE/AVX/NEON)"
 license = "MIT"
-groups = ["desktop"]
+groups = ["desktops"]
 release = 1
 arch = "x86_64"
 

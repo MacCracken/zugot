@@ -3,7 +3,7 @@ name = "abacus"
 version = "2026.3.22"
 description = "Abacus — Desktop calculator and unit converter"
 license = "GPL-3.0-only"
-groups = ["application", "desktop", "math", "rust"]
+groups = ["application", "desktops", "math", "rust"]
 release = 1
 arch = "x86_64"
 

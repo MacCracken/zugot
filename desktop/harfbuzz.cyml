@@ -8,7 +8,7 @@ name = "harfbuzz"
 version = "14.1.0"
 description = "HarfBuzz — OpenType text shaping engine"
 license = "MIT"
-groups = ["desktop", "graphics"]
+groups = ["desktops", "graphics"]
 release = 1
 arch = "x86_64"
 

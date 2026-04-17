@@ -3,7 +3,7 @@ name = "girara"
 version = "0.4.5"
 description = "GTK3 user interface library for the zathura document viewer"
 license = "Zlib"
-groups = ["desktop"]
+groups = ["desktops"]
 release = 1
 arch = "x86_64"
 

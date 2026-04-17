@@ -3,7 +3,7 @@ name = "cliphist"
 version = "0.7.0"
 description = "Wayland clipboard manager with image support"
 license = "MIT"
-groups = ["desktop"]
+groups = ["desktops"]
 release = 1
 arch = "x86_64"
 

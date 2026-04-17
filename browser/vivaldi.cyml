@@ -6,7 +6,7 @@ name = "vivaldi"
 version = "7.9.3970.55"
 description = "Vivaldi — Highly customizable Chromium-based browser"
 license = "Vivaldi-EULA"
-groups = ["desktop", "browser", "internet"]
+groups = ["desktops", "browser", "internet"]
 release = 1
 arch = "x86_64"
 

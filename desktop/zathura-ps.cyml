@@ -3,7 +3,7 @@ name = "zathura-ps"
 version = "0.2.8"
 description = "PostScript document support plugin for zathura"
 license = "Zlib"
-groups = ["desktop"]
+groups = ["desktops"]
 release = 1
 arch = "x86_64"
 

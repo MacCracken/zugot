@@ -7,7 +7,7 @@ name = "mtdev"
 version = "1.1.7"
 description = "mtdev — Multitouch protocol translation library"
 license = "MIT"
-groups = ["desktop", "input"]
+groups = ["desktops", "input"]
 release = 1
 arch = "x86_64"
 

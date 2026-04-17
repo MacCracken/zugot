@@ -9,7 +9,7 @@ name = "gtk3"
 version = "3.24.43"
 description = "GTK 3 — multi-platform GUI toolkit"
 license = "LGPL-2.1-or-later"
-groups = ["desktop", "gui"]
+groups = ["desktops", "gui"]
 release = 1
 arch = "x86_64"
 

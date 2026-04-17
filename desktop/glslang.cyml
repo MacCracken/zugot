@@ -3,7 +3,7 @@ name = "glslang"
 version = "16.2.0"
 description = "Khronos GLSL/HLSL to SPIR-V shader compiler"
 license = "Apache-2.0"
-groups = ["desktop"]
+groups = ["desktops"]
 release = 1
 arch = "x86_64"
 

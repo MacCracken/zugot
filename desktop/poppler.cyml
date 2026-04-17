@@ -9,7 +9,7 @@ name = "poppler"
 version = "26.04.0"
 description = "Poppler — PDF rendering library"
 license = "GPL-2.0-or-later"
-groups = ["desktop", "document"]
+groups = ["desktops", "document"]
 release = 1
 arch = "x86_64"
 

@@ -10,7 +10,7 @@ name = "aequi"
 version = "2026.3.18"
 description = "Aequi — Local-first self-employed accounting platform"
 license = "GPL-3.0-only"
-groups = ["desktop", "finance", "rust"]
+groups = ["desktops", "finance", "rust"]
 release = 1
 arch = "x86_64"
 

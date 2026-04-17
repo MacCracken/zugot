@@ -3,7 +3,7 @@ name = "zathura"
 version = "0.5.14"
 description = "Lightweight document viewer with plugin support (PDF, DJVU, PS)"
 license = "Zlib"
-groups = ["desktop"]
+groups = ["desktops"]
 release = 1
 arch = "x86_64"
 

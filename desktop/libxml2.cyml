@@ -3,7 +3,7 @@ name = "libxml2"
 version = "2.15.3"
 description = "XML parsing library for GNOME"
 license = "MIT"
-groups = ["desktop"]
+groups = ["desktops"]
 release = 1
 arch = "x86_64"
 

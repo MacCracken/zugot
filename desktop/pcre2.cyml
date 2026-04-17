@@ -7,7 +7,7 @@ name = "pcre2"
 version = "10.47"
 description = "pcre2 — Perl Compatible Regular Expressions library"
 license = "BSD-3-Clause"
-groups = ["desktop", "libs"]
+groups = ["desktops", "libs"]
 release = 1
 arch = "x86_64"
 

@@ -8,7 +8,7 @@ name = "vulkan-headers"
 version = "1.4.349"
 description = "Vulkan Headers — Vulkan API header files"
 license = "Apache-2.0"
-groups = ["desktop", "graphics"]
+groups = ["desktops", "graphics"]
 release = 1
 arch = "x86_64"
 

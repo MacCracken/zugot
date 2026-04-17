@@ -3,7 +3,7 @@ name = "atk"
 version = "2.38.0"
 description = "GNOME Accessibility Toolkit interface definitions"
 license = "LGPL-2.0-only"
-groups = ["desktop"]
+groups = ["desktops"]
 release = 1
 arch = "x86_64"
 

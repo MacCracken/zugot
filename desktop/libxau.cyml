@@ -3,7 +3,7 @@ name = "libxau"
 version = "1.0.12"
 description = "X11 Authorization Protocol library"
 license = "MIT"
-groups = ["desktop"]
+groups = ["desktops"]
 release = 1
 arch = "x86_64"
 

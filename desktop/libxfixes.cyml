@@ -3,7 +3,7 @@ name = "libxfixes"
 version = "6.0.2"
 description = "X11 Xfixes extension library"
 license = "MIT"
-groups = ["desktop"]
+groups = ["desktops"]
 release = 1
 arch = "x86_64"
 

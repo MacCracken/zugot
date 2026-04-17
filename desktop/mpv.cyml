@@ -3,7 +3,7 @@ name = "mpv"
 version = "0.41.0"
 description = "General-purpose media player with Wayland and PipeWire support"
 license = "GPL-2.0-or-later"
-groups = ["desktop"]
+groups = ["desktops"]
 release = 1
 arch = "x86_64"
 

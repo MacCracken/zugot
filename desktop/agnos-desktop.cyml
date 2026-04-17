@@ -12,7 +12,7 @@ name = "agnos-desktop"
 version = "2026.3.25"
 description = "AGNOS Desktop Environment (aethersafha compositor + full desktop stack)"
 license = "GPL-3.0-only"
-groups = ["desktop", "meta"]
+groups = ["desktops", "meta"]
 release = 1
 arch = "x86_64"
 

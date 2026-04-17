@@ -7,7 +7,7 @@ name = "linux-pam"
 version = "1.7.2"
 description = "linux-pam — Pluggable Authentication Modules"
 license = "BSD-3-Clause"
-groups = ["desktop", "security"]
+groups = ["desktops", "security"]
 release = 1
 arch = "x86_64"
 

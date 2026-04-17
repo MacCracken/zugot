@@ -3,7 +3,7 @@ name = "greetd"
 version = "0.10.3"
 description = "Minimal, unprivileged login manager daemon"
 license = "GPL-3.0-only"
-groups = ["desktop", "session"]
+groups = ["desktops", "session"]
 release = 1
 arch = "x86_64"
 

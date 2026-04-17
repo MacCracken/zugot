@@ -3,7 +3,7 @@ name = "tuigreet"
 version = "0.9.1"
 description = "TUI greeter for greetd — minimal, terminal-based login screen"
 license = "GPL-3.0-only"
-groups = ["desktop", "session"]
+groups = ["desktops", "session"]
 release = 1
 arch = "x86_64"
 

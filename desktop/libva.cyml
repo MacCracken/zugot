@@ -3,7 +3,7 @@ name = "libva"
 version = "2.23.0"
 description = "Video Acceleration API (VA-API) implementation library"
 license = "MIT"
-groups = ["desktop"]
+groups = ["desktops"]
 release = 1
 arch = "x86_64"
 

@@ -9,7 +9,7 @@ name = "fontconfig"
 version = "2.17.1"
 description = "Fontconfig — Font configuration and discovery library"
 license = "MIT"
-groups = ["desktop", "graphics"]
+groups = ["desktops", "graphics"]
 release = 1
 arch = "x86_64"
 

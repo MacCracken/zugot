@@ -3,7 +3,7 @@ name = "libass"
 version = "0.17.4"
 description = "Portable subtitle renderer for ASS/SSA subtitle format"
 license = "ISC"
-groups = ["desktop"]
+groups = ["desktops"]
 release = 1
 arch = "x86_64"
 

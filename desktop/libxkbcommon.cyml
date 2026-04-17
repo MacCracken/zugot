@@ -8,7 +8,7 @@ name = "libxkbcommon"
 version = "1.13.1"
 description = "libxkbcommon — Keyboard keymap handling library"
 license = "MIT"
-groups = ["desktop", "graphics"]
+groups = ["desktops", "graphics"]
 release = 1
 arch = "x86_64"
 

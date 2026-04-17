@@ -7,7 +7,7 @@ name = "wireplumber"
 version = "0.5.14"
 description = "wireplumber — Policy-driven session and policy manager for PipeWire"
 license = "MIT"
-groups = ["desktop", "audio"]
+groups = ["desktops", "audio"]
 release = 1
 arch = "x86_64"
 

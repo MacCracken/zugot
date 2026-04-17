@@ -7,7 +7,7 @@ name = "gdk-pixbuf"
 version = "2.44.6"
 description = "gdk-pixbuf — Image loading library for GTK applications"
 license = "LGPL-2.1-only"
-groups = ["desktop", "libs"]
+groups = ["desktops", "libs"]
 release = 1
 arch = "x86_64"
 

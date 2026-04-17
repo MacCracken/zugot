@@ -3,7 +3,7 @@ name = "yazi"
 version = "26.1.22"
 description = "Blazingly fast TUI file manager written in Rust"
 license = "MIT"
-groups = ["desktop"]
+groups = ["desktops"]
 release = 1
 arch = "x86_64"
 
