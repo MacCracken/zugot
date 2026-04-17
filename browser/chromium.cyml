@@ -13,7 +13,7 @@ arch = "x86_64"
 
 [source]
 url = "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-147.0.7727.101.tar.xz"
-sha256 = ""  # TODO: tarball too large (~6GB) — verify locally before release
+sha256 = "8430437ccb9756c9e8fa179e1899e49fceeac28cd2dee433a514a4a8ab22611b"
 patches = ["agnos-defaults.patch", "wayland-ozone.patch"]
 
 [depends]

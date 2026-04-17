@@ -6,6 +6,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+### Straggler SHA Population (2026-04-17)
+
+- **`base/gn.cyml`** — pinned to commit `ab5eb178` (main-branch head 2026-04-17); version field `20260417-ab5eb178`. SHA256 verified (`5fbe3e56...`). googlesource archive endpoint requires `Accept: application/x-gzip` header; documented in recipe comment.
+- **`browser/chromium.cyml`** — SHA256 populated (`8430437c...`). 5.3GB tarball fetched + hashed in one pass (~3.5 min on this host); the prior "too large" note overstated the difficulty. No bug, but now reproducible by default.
+
+### Directory rename (2026-04-17) — `desktop/` → `desktops/`
+
+Completing the plural-pluralisation initiated in the groups-field rename:
+- Moved 176 recipe files via `git mv desktop/ desktops/` (history preserved)
+- `build-order.txt` path entries updated (70 `desktop/X` → `desktops/X`)
+- `README.md` tree diagram + category table
+- `CLAUDE.md` tree diagram
+- `docs/development/roadmap.md` all recipe path references
+
+Downstream consumers that hardcode the recipe directory path must update to `desktops/`.
+
 ### Validator Closure (2026-04-17) — 151 → 0 unresolved
 
 Full sweep of issues surfaced by `scripts/validate_recipes.py`. Validator now reports **`OK: all recipes validate clean`**.

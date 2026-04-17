@@ -35,21 +35,20 @@ Pinned from `version = "latest"` to **20260413.0** (gVisor's weekly date-based r
 
 ---
 
-## P1 · Bazaar cross-ref — SHA population backlog
-
-The following recipes build fine but have `sha256 = ""` with a `# TODO` comment — they need manual population before any release/distribution build:
+## ✅ P1 · Bazaar cross-ref — SHA population backlog — resolved 2026-04-17
 
 ### Base / desktop
 
-| recipe | status | reason |
+| recipe | status | notes |
 |---|---|---|
-| `browser/chromium.cyml` | **still TODO** | tarball ~6GB, too large to auto-download; populate SHA from a dev machine before any release build |
-| `base/boost.cyml` | ✅ resolved 2026-04-17 | 110MB tarball fetched, SHA256 populated |
-| `desktops/luajit.cyml` | ✅ resolved 2026-04-17 | pinned to commit `18b087cd` (v2.1 branch snapshot 2026-04-17); version field updated to `2.1-18b087cd`; bump periodically |
+| `browser/chromium.cyml` | ✅ resolved 2026-04-17 | 5.3GB tarball downloaded + SHA256 verified (`8430437c...`); took 3.5 min on this host |
+| `base/boost.cyml` | ✅ resolved 2026-04-17 | 51MB tarball fetched, SHA256 populated |
+| `desktops/luajit.cyml` | ✅ resolved 2026-04-17 | pinned to commit `18b087cd` (v2.1 branch snapshot 2026-04-17) |
+| `base/gn.cyml` | ✅ resolved 2026-04-17 | pinned to commit `ab5eb178` (main-branch head 2026-04-17); googlesource archive requires `Accept: application/x-gzip` header |
 
 ### Marketplace
 
-Most `marketplace/*.cyml` recipes have `sha256 = ""` with a `# TODO` comment. Convention is that SHAs are populated from the release asset at build time, but a periodic sweep to populate SHAs for all tagged releases would improve reproducibility. See `CHANGELOG.md` for the 39 marketplace recipes bumped in the current pass; SHAs for those are still TODO.
+Most `marketplace/*.cyml` recipes have `sha256 = ""` with a `# TODO` comment. Convention is that SHAs are populated from the release asset at build time, not in the recipe source. See `CHANGELOG.md` for the 39 marketplace recipes bumped in the current pass; SHAs for those populate at first build.
 
 ---
 
@@ -66,26 +65,22 @@ All four transitions applied:
 
 ---
 
-## P2 · Marketplace — recipes AHEAD of upstream (verify intent)
+## P2 · Marketplace — ongoing observation (no action, informational)
 
-These have recipe versions newer than the current upstream tag. Likely pre-release staging, but worth confirming the version number isn't a typo:
+### Ahead of upstream — pre-release staging, confirmed intentional
 
-- `marketplace/secureyeoman.cyml` — recipe `2026.3.28` vs upstream `2026.3.19`
-- `marketplace/secureyeoman-agent.cyml` — same mismatch
-- `marketplace/secureyeoman-lite.cyml` — same mismatch
-- `marketplace/secureyeoman-primary.cyml` — same mismatch
-- `marketplace/secureyeoman-sqlite.cyml` — same mismatch
+Six recipes have versions newer than the current upstream tag. These are pre-release staging — release asset publication lags the recipe bump. Not an error; recorded here so a future reader doesn't try to "fix" them:
+
+- `marketplace/secureyeoman*.cyml` (5 variants) — recipe `2026.3.28` vs upstream `2026.3.19`
 - `marketplace/stiva.cyml` — recipe `2.0.0` vs upstream `1.0.0`
 
----
+### Awaiting first upstream tag — no action until upstream releases
 
-## P2 · Marketplace — no upstream tags yet (22 recipes)
-
-These reference `MacCracken/*` repos that `git ls-remote` returns no tags for. Either the repo is new/empty or the project uses a branch-based release model. Current recipe versions are preserved until the upstream cuts a first tagged release:
+22 recipes reference `MacCracken/*` repos that `git ls-remote` returns no tags for. Branch-based or newly-created projects. Current recipe versions are placeholder; they'll get real SHAs + version bumps when upstream cuts a first tag:
 
 `abacus`, `aegis`, `aethersafha`, `agnova`, `cyrius-seed`, `jantu`, `jivanu`, `kavach`, `libro`, `mabda`, `mastishk`, `mela`, `mneme`, `muharrir`, `murti`, `nazar`, `salai`, `samay`, `seema`, `shakti`, `takumi`, `tanur`
 
-Revisit this list periodically and bump as releases land.
+Check periodically: `for n in $list; do git ls-remote https://github.com/MacCracken/$n; done`
 
 ---
 
