@@ -1,0 +1,41 @@
+# Qt 6 Tools — linguist, designer, assistant, qhelpgenerator
+# Development tools and library for Qt help/translation infrastructure.
+#
+# BLFS
+
+[package]
+name = "qt6-tools"
+version = "6.10.3"
+description = "Qt 6 Tools — Linguist, Designer, Assistant, help/translation tools"
+license = "LGPL-3.0-only OR GPL-2.0-only"
+groups = ["desktops", "libs", "build"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://download.qt.io/official_releases/qt/6.10/6.10.3/submodules/qttools-everywhere-src-6.10.3.tar.xz"
+sha256 = "8f00b9e3d1f80973d81cff67684972b89993183ef19924404d5b8ff0f89675b6"
+patches = []
+
+[depends]
+runtime = ["qt6-base", "qt6-declarative"]
+build = ["gcc", "make", "pkgconf", "cmake", "ninja", "qt6-base", "qt6-declarative"]
+
+[build]
+pre_build = ""
+configure = """
+mkdir -p build && cd build && \
+cmake .. \
+    -G Ninja \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release
+"""
+make = "cd build && ninja -j$(nproc)"
+check = ""
+install = "cd build && DESTDIR=$PKG ninja install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

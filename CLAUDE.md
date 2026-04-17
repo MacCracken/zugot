@@ -60,6 +60,19 @@ The P(-1) process for zugot is a full audit of existing recipes before any new w
 - **Large effort** (base system version bump, new category, build-order changes): Small bites only — one recipe at a time, verify each before moving to the next. Base system recipes affect everything downstream
 - **If unsure**: Treat it as large. A wrong base recipe breaks the entire build
 
+### Naming Conventions (for recipe authors and downstream consumers)
+
+Packages in zugot follow Linux-distribution-agnostic naming. The short rules:
+
+1. **No `-dev` split.** Headers and `.pc` files ship with the runtime package. Do not reference `wayland-dev`, `ncurses-dev`, `libevent-dev`, etc. — use the plain name (`wayland`, `ncurses`, `libevent`).
+2. **Python packages use `python`, not `python3`.** The `python` recipe provides Python 3; `python3` is not a valid dep name.
+3. **`pip` ships with `python`.** Do not list `pip` as a separate dep. Invoke `python -m pip` in build scripts.
+4. **`npm` ships with `nodejs`.** Same pattern — depend on `nodejs`.
+5. **Use `pkgconf`, not `pkg-config`.** The `pkgconf` recipe provides a `pkg-config` compatibility symlink at install time, but recipes should depend on the canonical name (`pkgconf`).
+6. **Groups use plural `"desktops"`, not `"desktop"`.** Multiple desktop environments are planned; the group tag reflects that.
+
+See `noted-issues-bazaar-finds.md` for cross-referenced examples from the bazaar audit.
+
 ### Recipe Work Rules
 
 Every recipe change requires a full field audit — **never just bump a version**.

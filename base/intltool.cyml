@@ -1,0 +1,35 @@
+# Intltool — i18n string extraction for GNOME/XFCE build systems
+# Required by older GNOME/XFCE apps for translation file processing.
+#
+# BLFS
+
+[package]
+name = "intltool"
+version = "0.51.0"
+description = "Intltool — internationalization tool for build systems"
+license = "GPL-2.0-only"
+groups = ["base", "build", "tier1"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://launchpad.net/intltool/trunk/0.51.0/+download/intltool-0.51.0.tar.gz"
+sha256 = "67c74d94196b153b774ab9f89b2fa6c6ba79352407037c8c14d5aeb334e959cd"
+patches = []
+
+[depends]
+runtime = ["perl"]
+build = ["gcc", "make", "perl"]
+
+[build]
+pre_build = ""
+configure = "./configure --prefix=/usr"
+make = "make -j$(nproc)"
+check = "make check || true"
+install = "make DESTDIR=$PKG install"
+post_install = ""
+
+[security]
+hardening = []
+cflags = ""
+ldflags = ""

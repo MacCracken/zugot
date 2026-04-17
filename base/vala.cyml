@@ -1,0 +1,35 @@
+# Vala — compiler for the GObject type system
+# Source-to-C compiler used by GNOME/XFCE apps (gimp, xfce-libs, libadwaita).
+#
+# BLFS
+
+[package]
+name = "vala"
+version = "0.56.19"
+description = "Vala — GObject-based compiler targeting C"
+license = "LGPL-2.1-only"
+groups = ["base", "build", "tier1"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://download.gnome.org/sources/vala/0.56/vala-0.56.19.tar.xz"
+sha256 = "5ad7cbbfcc0de61b403d6797c9ef60455bfbebd8e162aec33b5b0b097adfb9d5"
+patches = []
+
+[depends]
+runtime = ["glibc", "glib"]
+build = ["gcc", "make", "pkgconf", "bison", "flex"]
+
+[build]
+pre_build = ""
+configure = "./configure --prefix=/usr"
+make = "make -j$(nproc)"
+check = "make check || true"
+install = "make DESTDIR=$PKG install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

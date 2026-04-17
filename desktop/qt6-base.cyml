@@ -1,0 +1,58 @@
+# Qt 6 Base — Core Qt 6 framework modules
+# Provides QtCore, QtGui, QtWidgets, QtNetwork, QtDBus, QtXml, QtSql.
+# Foundation for all other Qt 6 modules.
+#
+# BLFS
+
+[package]
+name = "qt6-base"
+version = "6.10.3"
+description = "Qt 6 Base — Core framework modules (QtCore, QtGui, QtWidgets, QtNetwork)"
+license = "LGPL-3.0-only OR GPL-2.0-only"
+groups = ["desktops", "libs"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://download.qt.io/official_releases/qt/6.10/6.10.3/submodules/qtbase-everywhere-src-6.10.3.tar.xz"
+sha256 = "383dc907816338f0cba72088a524c07458dfc69ce684ca9132fcc4fe91c24b0b"
+patches = []
+
+[depends]
+runtime = [
+    "glibc", "zlib", "openssl", "sqlite", "pcre2", "icu",
+    "libx11", "libxcb", "xcb-proto", "libxkbcommon",
+    "wayland", "wayland-protocols", "mesa", "libdrm",
+    "fontconfig", "freetype", "harfbuzz", "libpng", "libjpeg-turbo",
+    "dbus", "glib",
+]
+build = ["gcc", "make", "pkgconf", "cmake", "ninja", "python", "perl"]
+
+[build]
+pre_build = ""
+configure = """
+mkdir -p build && cd build && \
+cmake .. \
+    -G Ninja \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DINSTALL_ARCHDATADIR=/usr/lib/qt6 \
+    -DINSTALL_LIBEXECDIR=/usr/lib/qt6 \
+    -DINSTALL_DATADIR=/usr/share/qt6 \
+    -DINSTALL_DOCDIR=/usr/share/doc/qt6 \
+    -DINSTALL_EXAMPLESDIR=/usr/share/qt6/examples \
+    -DINSTALL_INCLUDEDIR=/usr/include/qt6 \
+    -DINSTALL_MKSPECSDIR=/usr/lib/qt6/mkspecs \
+    -DINSTALL_PLUGINSDIR=/usr/lib/qt6/plugins \
+    -DQT_FEATURE_openssl_linked=ON \
+    -DQT_FEATURE_system_sqlite=ON
+"""
+make = "cd build && ninja -j$(nproc)"
+check = ""
+install = "cd build && DESTDIR=$PKG ninja install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

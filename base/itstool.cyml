@@ -1,0 +1,36 @@
+# ITS Tool — XML translation via ITS rules
+# Translates XML documents (DocBook, Mallard) using W3C Internationalization Tag Set.
+# Required by GNOME documentation builds (evince, file-roller, gparted).
+#
+# BLFS
+
+[package]
+name = "itstool"
+version = "2.0.7"
+description = "ITS Tool — XML translation tool using ITS rules"
+license = "GPL-3.0-only"
+groups = ["base", "build", "tier1"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://files.itstool.org/itstool/itstool-2.0.7.tar.bz2"
+sha256 = "6b9a7cd29a12bb95598f5750e8763cee78836a1a207f85b74d8b3275b27e87ca"
+patches = []
+
+[depends]
+runtime = ["python", "libxml2"]
+build = ["python"]
+
+[build]
+pre_build = ""
+configure = "./configure --prefix=/usr"
+make = "make -j$(nproc)"
+check = "make check || true"
+install = "make DESTDIR=$PKG install"
+post_install = ""
+
+[security]
+hardening = []
+cflags = ""
+ldflags = ""

@@ -1,0 +1,41 @@
+# Qt 6 Declarative — QML and Quick modules
+# Provides QtQml and QtQuick for declarative UI definition.
+#
+# BLFS
+
+[package]
+name = "qt6-declarative"
+version = "6.10.3"
+description = "Qt 6 Declarative — QML and Quick modules for declarative UI"
+license = "LGPL-3.0-only OR GPL-2.0-only"
+groups = ["desktops", "libs"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://download.qt.io/official_releases/qt/6.10/6.10.3/submodules/qtdeclarative-everywhere-src-6.10.3.tar.xz"
+sha256 = "dadf80d43b8e08ca63aa65d46859a42b920a7777cf7e0ecfcb4c4537f9e65c76"
+patches = []
+
+[depends]
+runtime = ["qt6-base"]
+build = ["gcc", "make", "pkgconf", "cmake", "ninja", "qt6-base"]
+
+[build]
+pre_build = ""
+configure = """
+mkdir -p build && cd build && \
+cmake .. \
+    -G Ninja \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release
+"""
+make = "cd build && ninja -j$(nproc)"
+check = ""
+install = "cd build && DESTDIR=$PKG ninja install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

@@ -6,6 +6,26 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+### Added
+
+#### Base (new build tools — addresses bazaar cross-ref audit)
+- nasm 2.16.03 (x86 assembler — unblocks firefox, librewolf, zen in browser/ and ffmpeg downstream)
+- intltool 0.51.0 (i18n for GNOME/XFCE — unblocks avahi in edge/ and 6 bazaar recipes)
+- itstool 2.0.7 (XML translation — unblocks 4 bazaar recipes)
+- desktop-file-utils 0.28 (unblocks 4 bazaar recipes)
+- vala 0.56.19 (unblocks 3 bazaar recipes)
+
+#### Desktop (new Qt 6 stack — unblocks falkon + bazaar Qt consumers)
+- qt6-base 6.10.3 (core modules)
+- qt6-declarative 6.10.3 (QML/Quick)
+- qt6-wayland 6.10.3 (Wayland integration)
+- qt6-tools 6.10.3 (Linguist/Designer)
+- qt6-webengine 6.10.3 (Chromium-based web engine for falkon)
+- All Qt SHA256 values taken from Qt's `.tar.xz.sha256` sidecar files published alongside each tarball.
+
+### Documentation
+- CLAUDE.md: added "Naming Conventions" section documenting the `-dev` split rule, `python/pip/nodejs/npm/pkgconf` canonical names, and `"desktops"` group plural. Cross-references `noted-issues-bazaar-finds.md`.
+
 ### Changed
 - Recipe file format: `.toml` → `.cyml` (Cyrius Markup Language). All 426 recipe files renamed via `git mv`. Content unchanged — CYML parses TOML syntax for single-entry (no `---` delimiter) files. Downstream consumers (ark, nous, takumi, mela) must update readers to accept `.cyml`.
 - Group name: `"desktop"` → `"desktops"` (plural) in 130 recipes' `groups = [...]` field. Wayland will not be the only desktop AGNOS ships long-term, so the namespace is pluralized. Applied only to `groups` field — `seccomp_mode = "desktop"`, `tags = [..., "desktop", ...]`, `boot_mode = ["desktop"]`, and descriptive text with "desktop" in it are preserved. Downstream consumers that filter by group tag must update to `"desktops"`.

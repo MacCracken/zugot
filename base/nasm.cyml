@@ -1,0 +1,35 @@
+# NASM — Netwide Assembler
+# x86 assembler used by media codecs (ffmpeg) and browsers (firefox, librewolf, zen).
+#
+# BLFS
+
+[package]
+name = "nasm"
+version = "2.16.03"
+description = "NASM — x86/x86-64 assembler"
+license = "BSD-2-Clause"
+groups = ["base", "build", "tier1"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://www.nasm.us/pub/nasm/releasebuilds/2.16.03/nasm-2.16.03.tar.xz"
+sha256 = "1412a1c760bbd05db026b6c0d1657affd6631cd0a63cddb6f73cc6d4aa616148"
+patches = []
+
+[depends]
+runtime = ["glibc"]
+build = ["gcc", "make", "perl"]
+
+[build]
+pre_build = ""
+configure = "./configure --prefix=/usr"
+make = "make -j$(nproc)"
+check = "make test || true"
+install = "make DESTDIR=$PKG install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"
