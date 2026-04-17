@@ -33,15 +33,15 @@ runtime = [
     "glibc",
     "openssl",
     "sqlite",
-    "postgresql",
+    "postgresql17",
     "zlib",
 ]
 build = [
     "bun",
     "nodejs",
-    "openssl-dev",
-    "zlib-dev",
-    "postgresql-dev",
+    "openssl",
+    "zlib",
+    "postgresql17",
 ]
 
 [marketplace]

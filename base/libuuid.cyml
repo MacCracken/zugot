@@ -1,0 +1,32 @@
+# libuuid — alias meta-package for util-linux's libuuid
+# util-linux installs /usr/lib/libuuid.so and the `uuid/uuid.h` header
+# directly. This alias lets recipes list `libuuid` as a dep explicitly.
+
+[package]
+name = "libuuid"
+version = "2.42"
+description = "libuuid — alias meta-package for util-linux's libuuid"
+license = "BSD-3-Clause"
+groups = ["base", "libs", "meta"]
+release = 1
+arch = "any"
+
+[source]
+local = true
+
+[depends]
+runtime = ["util-linux"]
+build = []
+
+[build]
+pre_build = ""
+configure = ""
+make = ""
+check = ""
+install = ""
+post_install = ""
+
+[security]
+hardening = []
+cflags = ""
+ldflags = ""

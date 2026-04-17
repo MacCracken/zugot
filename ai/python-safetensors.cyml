@@ -17,8 +17,8 @@ sha256 = "6e4968a6570ad038780d64d3088a6f32d377a30accfa0821c9c8642dbdaabab7"
 patches = []
 
 [depends]
-runtime = ["python3"]
-build = ["python3", "pip", "rust"]
+runtime = ["python"]
+build = ["python", "pip", "rust"]
 
 [build]
 pre_build = ""

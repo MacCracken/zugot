@@ -1,0 +1,46 @@
+# DocBook XSL — XSLT stylesheets for DocBook XML
+# Required by xmlto for converting DocBook to HTML, PDF, man pages.
+# Non-namespaced variant; upstream effectively frozen (last tag 1.79.2).
+#
+# BLFS
+
+[package]
+name = "docbook-xsl"
+version = "1.79.2"
+description = "DocBook XSL — XSLT stylesheets for DocBook XML (nonamespaces variant)"
+license = "MIT"
+groups = ["base", "build", "tier2"]
+release = 1
+arch = "any"
+
+[source]
+url = "https://github.com/docbook/xslt10-stylesheets/releases/download/release%2F1.79.2/docbook-xsl-nons-1.79.2.tar.bz2"
+sha256 = "ee8b9eca0b7a8f89075832a2da7534bce8c5478fc8fc2676f512d5d87d832102"
+patches = []
+
+[depends]
+runtime = []
+build = []
+
+[build]
+pre_build = ""
+configure = ""
+make = ""
+check = ""
+install = """
+# DocBook XSL ships as a data-only package; copy stylesheets to /usr/share.
+mkdir -p $PKG/usr/share/xml/docbook/xsl-stylesheets-nons-1.79.2
+cp -r VERSION common eclipse epub extensions fo highlighting html htmlhelp \
+      images javahelp lib manpages params profiling roundtrip \
+      slides template tests tools webhelp website xhtml xhtml-1_1 xhtml5 \
+    $PKG/usr/share/xml/docbook/xsl-stylesheets-nons-1.79.2/ 2>/dev/null || true
+
+# Stable symlink without the version suffix
+ln -sfv xsl-stylesheets-nons-1.79.2 $PKG/usr/share/xml/docbook/xsl-stylesheets
+"""
+post_install = ""
+
+[security]
+hardening = []
+cflags = ""
+ldflags = ""

@@ -35,9 +35,9 @@ runtime = [
 build = [
     "bun",
     "nodejs",
-    "openssl-dev",
-    "sqlite-dev",
-    "zlib-dev",
+    "openssl",
+    "sqlite",
+    "zlib",
 ]
 
 [marketplace]

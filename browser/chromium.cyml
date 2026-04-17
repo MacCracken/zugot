@@ -28,11 +28,11 @@ runtime = [
     "libdrm",
     "wayland",
     "wayland-protocols",
-    "libpipewire",
+    "pipewire",
     "dbus",
     "at-spi2-core",
     "fontconfig",
-    "freetype2",
+    "freetype",
     "harfbuzz",
     "libxkbcommon",
     "libva",
@@ -51,7 +51,7 @@ runtime = [
     "curl",
 ]
 build = [
-    "python3",
+    "python",
     "nodejs",
     "gn",
     "ninja",

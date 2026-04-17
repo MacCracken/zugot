@@ -1,0 +1,40 @@
+# mimalloc — Microsoft's general-purpose allocator
+# Used by Python 3.13+ freethreaded mode and Python 3.14.
+
+[package]
+name = "mimalloc"
+version = "3.3.0"
+description = "mimalloc — General-purpose high-performance allocator"
+license = "MIT"
+groups = ["base", "libs", "tier1"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://github.com/microsoft/mimalloc/archive/refs/tags/v3.3.0.tar.gz"
+sha256 = "cf227295c307efc6f16e90c485595f9bb91c5a5532a3000f81f08907f8fc56a2"
+patches = []
+
+[depends]
+runtime = ["glibc"]
+build = ["gcc", "make", "cmake", "ninja", "pkgconf"]
+
+[build]
+pre_build = ""
+configure = """
+cmake -B build -G Ninja \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DMI_BUILD_SHARED=ON \
+    -DMI_BUILD_STATIC=OFF \
+    -DMI_BUILD_TESTS=OFF
+"""
+make = "cmake --build build --parallel"
+check = ""
+install = "DESTDIR=$PKG cmake --install build"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

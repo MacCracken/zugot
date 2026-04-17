@@ -32,7 +32,7 @@ runtime = [
 ]
 build = [
     "rust",
-    "openssl-dev",
+    "openssl",
 ]
 
 [marketplace]

@@ -1,0 +1,32 @@
+# lld — alias meta-package for llvm's LLD linker
+# Ships inside the `llvm` recipe when built with `LLVM_ENABLE_PROJECTS` including lld.
+# This alias lets recipes list `lld` as a build dep explicitly.
+
+[package]
+name = "lld"
+version = "22.1.3"
+description = "lld — alias meta-package for llvm's LLD linker"
+license = "Apache-2.0"
+groups = ["base", "toolchain", "meta"]
+release = 1
+arch = "any"
+
+[source]
+local = true
+
+[depends]
+runtime = ["llvm"]
+build = []
+
+[build]
+pre_build = ""
+configure = ""
+make = ""
+check = ""
+install = ""
+post_install = ""
+
+[security]
+hardening = []
+cflags = ""
+ldflags = ""

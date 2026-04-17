@@ -1,0 +1,34 @@
+# gfortran — GNU Fortran compiler (meta-package)
+# Thin alias that depends on `gcc` — gfortran ships as part of the GCC build
+# (the `gcc` recipe enables the `fortran` language target). Recipes that list
+# `gfortran` as a build dep resolve via this meta-package without needing
+# duplicate source or build steps.
+
+[package]
+name = "gfortran"
+version = "15.2.0"
+description = "gfortran — GNU Fortran compiler (alias for gcc's fortran frontend)"
+license = "GPL-3.0-only"
+groups = ["base", "toolchain", "meta"]
+release = 1
+arch = "any"
+
+[source]
+local = true
+
+[depends]
+runtime = ["gcc"]
+build = []
+
+[build]
+pre_build = ""
+configure = ""
+make = ""
+check = ""
+install = ""
+post_install = ""
+
+[security]
+hardening = []
+cflags = ""
+ldflags = ""

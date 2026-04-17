@@ -1,0 +1,35 @@
+# dbus-glib — Legacy GLib bindings for D-Bus
+# Deprecated upstream in favor of GDBus (inside glib) but still needed by firefox.
+#
+# BLFS
+
+[package]
+name = "dbus-glib"
+version = "0.100.2"
+description = "dbus-glib — Legacy GLib bindings for D-Bus"
+license = "GPL-2.0-only"
+groups = ["desktops", "libs"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://dbus.freedesktop.org/releases/dbus-glib/dbus-glib-0.100.2.tar.gz"
+sha256 = "a5bb42da921f51c28161e0e54a5a8241d94a1c0499a14007150e9ce743da6ac5"
+patches = []
+
+[depends]
+runtime = ["glib", "dbus", "expat"]
+build = ["gcc", "make", "pkgconf"]
+
+[build]
+pre_build = ""
+configure = "./configure --prefix=/usr --sysconfdir=/etc --disable-static"
+make = "make -j$(nproc)"
+check = ""
+install = "make DESTDIR=$PKG install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

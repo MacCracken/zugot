@@ -32,9 +32,9 @@ runtime = [
 build = [
     "rust",
     "nodejs",
-    "openssl-dev",
-    "webkit2gtk-4.1-dev",
-    "librsvg-dev",
+    "openssl",
+    "webkit2gtk-4.1",
+    "librsvg",
 ]
 optional = [
     "tesseract-ocr",

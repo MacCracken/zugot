@@ -24,7 +24,7 @@ sha256 = ""  # TODO: populate from release tarball
 
 [depends]
 runtime = ["glibc", "openssl"]
-build = ["rust", "openssl-dev"]
+build = ["rust", "openssl"]
 
 [marketplace]
 category = "system"

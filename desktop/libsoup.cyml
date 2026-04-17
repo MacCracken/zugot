@@ -1,0 +1,37 @@
+# libsoup — HTTP client/server library (GNOME)
+# Used by WebKitGTK, epiphany, GNOME apps.
+
+[package]
+name = "libsoup"
+version = "3.6.6"
+description = "libsoup — HTTP client/server library"
+license = "LGPL-2.0-only"
+groups = ["desktops", "libs"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://download.gnome.org/sources/libsoup/3.6/libsoup-3.6.6.tar.xz"
+sha256 = "51ed0ae06f9d5a40f401ff459e2e5f652f9a510b7730e1359ee66d14d4872740"
+patches = []
+
+[depends]
+runtime = ["glib", "libpsl", "libnghttp2", "sqlite", "brotli"]
+build = ["gcc", "make", "pkgconf", "meson", "ninja", "gobject-introspection", "vala"]
+
+[build]
+pre_build = ""
+configure = """
+mkdir -p build && cd build && \
+meson setup .. --prefix=/usr --buildtype=release \
+  -Dtests=false -Dgssapi=disabled -Dsysprof=disabled
+"""
+make = "cd build && ninja -j$(nproc)"
+check = ""
+install = "cd build && DESTDIR=$PKG ninja install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

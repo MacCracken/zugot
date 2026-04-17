@@ -18,7 +18,7 @@ sha256 = "a6549da3a6c43de83b8717dae5413c57a60d92f6ecc624615c612d0bb0ad0fe2"
 patches = []
 
 [depends]
-runtime = ["glib", "libsigc++"]
+runtime = ["glib", "libsigcpp"]
 build = ["gcc", "make", "pkgconf", "meson", "ninja", "mm-common", "perl"]
 
 [build]

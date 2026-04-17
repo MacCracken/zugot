@@ -6,6 +6,37 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+### Validator Closure (2026-04-17) — 151 → 0 unresolved
+
+Full sweep of issues surfaced by `scripts/validate_recipes.py`. Validator now reports **`OK: all recipes validate clean`**.
+
+#### Mass renames (convention fixes)
+- `python3` → `python` across 21 recipes
+- `libpipewire` → `pipewire` across 9 recipes
+- All `-dev` suffixes stripped from deps (openssl-dev, zlib-dev, pam-dev, sqlite-dev, wayland-dev, postgresql-dev, etc.)
+- `pam` → `linux-pam`; `freetype2` → `freetype`; `postgresql`/`postgresql-dev` → `postgresql17`; `systemd-libs` → `elogind`
+
+#### New recipes — 30 added
+
+Build tools: `brotli` 1.2.0, `c-ares` 1.34.6, `docbook-xsl` 1.79.2, `gyp` 0.22.0, `gn` 20260410, `autoconf2.13`, `squashfs-tools` 4.7.5, `bun` 1.3.12, `ruby` 3.4.9
+
+Libraries: `libpsl` 0.21.5, `libyaml` 0.2.5, `mimalloc` 3.3.0, `parted` 1.9.0, `cbindgen` 0.29.2, `at-spi2-core` 2.60.0, `dbus-glib` 0.100.2, `libgtop` 2.41.3, `libsoup` 3.6.6, `libxmlb` 0.3.26, `libxdamage` 1.1.7, `libxcomposite` 0.4.7, `webkit2gtk-4.1` 2.52.3, `extra-cmake-modules` 6.25.0
+
+Meta-package aliases (depend on canonical package, zero build): `clang` → llvm, `lld` → llvm, `gfortran` → gcc, `libuuid` → util-linux, `libltdl` → libtool, `libgbm` → mesa, `libseat` → seatd, `pipewire-jack` → pipewire
+
+#### Filename/package-name mismatches fixed
+
+Renames via `git mv`:
+- `python/cpython-3.12.cyml` → `python3.12.cyml` (+ 3.13, 3.13-freethreaded→3.13t, 3.14)
+- `database/pgvector-0.8.cyml` → `pgvector.cyml`
+- `database/postgresql-17.cyml` → `postgresql17.cyml`
+- `database/redis-7.cyml` → `redis7.cyml`
+- `edge/kernel.cyml` → `kernel-edge.cyml`
+
+Package-name edits (filename kept):
+- `desktop/libsigcpp.cyml` — package renamed `libsigc++` → `libsigcpp`
+- `browser/zen.cyml` — package renamed `zen-browser` → `zen`
+
 ### P3 Roadmap — Tooling (2026-04-17)
 
 - **`scripts/validate_recipes.py`** — new. Parses every `*.cyml` via stdlib `tomllib` and reports:

@@ -1,0 +1,44 @@
+# squashfs-tools — mksquashfs / unsquashfs
+# Required by sy-agnos-rootfs and any squashfs-based image builder.
+
+[package]
+name = "squashfs-tools"
+version = "4.7.5"
+description = "squashfs-tools — SquashFS filesystem tools (mksquashfs, unsquashfs)"
+license = "GPL-2.0-only"
+groups = ["base", "tools", "tier1"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://github.com/plougher/squashfs-tools/archive/refs/tags/4.7.5.tar.gz"
+sha256 = "547b7b7f4d2e44bf91b6fc554664850c69563701deab9fd9cd7e21f694c88ea6"
+patches = []
+
+[depends]
+runtime = ["glibc", "zlib", "xz", "zstd", "lz4"]
+build = ["gcc", "make", "pkgconf"]
+
+[build]
+pre_build = "cd squashfs-tools"
+configure = ""
+make = """
+cd squashfs-tools && make -j$(nproc) \
+    XZ_SUPPORT=1 \
+    LZO_SUPPORT=0 \
+    LZ4_SUPPORT=1 \
+    ZSTD_SUPPORT=1 \
+    XATTR_SUPPORT=1
+"""
+check = ""
+install = """
+cd squashfs-tools
+install -Dm755 mksquashfs $PKG/usr/bin/mksquashfs
+install -Dm755 unsquashfs $PKG/usr/bin/unsquashfs
+"""
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

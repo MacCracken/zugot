@@ -1,0 +1,31 @@
+# pipewire-jack — alias meta-package for pipewire's JACK compatibility layer
+# The `pipewire` recipe ships libjack replacement as part of the build.
+
+[package]
+name = "pipewire-jack"
+version = "1.6.3"
+description = "pipewire-jack — alias meta-package for pipewire's JACK shim"
+license = "MIT"
+groups = ["desktops", "audio", "meta"]
+release = 1
+arch = "any"
+
+[source]
+local = true
+
+[depends]
+runtime = ["pipewire"]
+build = []
+
+[build]
+pre_build = ""
+configure = ""
+make = ""
+check = ""
+install = ""
+post_install = ""
+
+[security]
+hardening = []
+cflags = ""
+ldflags = ""

@@ -4,7 +4,7 @@
 # BLFS
 
 [package]
-name = "libsigc++"
+name = "libsigcpp"
 version = "3.6.0"
 description = "libsigc++ — C++ typesafe callback framework"
 license = "LGPL-3.0-only"

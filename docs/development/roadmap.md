@@ -113,28 +113,71 @@ Keep this file updated as part of the work loop (CLAUDE.md §9: "update roadmap 
 
 ---
 
-## Follow-ups surfaced by the validator (next roadmap sweep)
+## ✅ Follow-ups surfaced by the validator — resolved 2026-04-17
 
-First run of `scripts/validate_recipes.py` flagged 151 issues. Grouped for the next pass:
+First run of `scripts/validate_recipes.py` flagged 151 issues. All resolved in the same pass — validator now reports `OK: all recipes validate clean`.
 
-### Naming conventions not yet applied to existing recipes
-9 `ai/*.cyml` recipes still declare `python3` instead of `python` (CLAUDE.md rule 2):
-`huggingface-hub-cli`, `jupyter-server`, `python-numpy`, `python-pandas`, `python-pytorch`, `python-safetensors`, `python-scipy`, `python-transformers`, `vllm`
+### Naming convention renames (mass sweep)
+- `python3` → `python` across 21 recipes (9 ai/, 7 browser/, 1 edge/, ~4 marketplace/)
+- `libpipewire` → `pipewire` across 9 recipes (7 browser/, desktop/qt6-webengine, others)
+- All `-dev` suffixes stripped from dep names (openssl-dev, zlib-dev, pam-dev, sqlite-dev, wayland-dev, etc.) — was 35+ occurrences in marketplace/ and elsewhere
+- `pam` → `linux-pam`
+- `freetype2` → `freetype`
+- `postgresql` / `postgresql-dev` → `postgresql17`
+- `systemd-libs` → `elogind`
 
-Browser and some marketplace recipes still use `libpipewire` instead of `pipewire`.
+### New recipes created (30 total)
 
-### Genuinely missing recipes (new packages needed)
-| dep | referenced by | scope |
-|---|---|---|
-| `gfortran` | lapack, openblas, python-scipy | new `base/` recipe (could be a meta-package pointing at `gcc` since gfortran ships as part of the GCC build) |
-| `docbook-xsl` | xmlto | new `base/` recipe |
-| `brotli` | nodejs | new `base/` recipe |
-| `c-ares` | nodejs | new `base/` recipe |
-| `gyp` | nss | new `base/` recipe (Chromium's build-config generator) |
-| `libseat` | aquamarine | alias/meta-package — `seatd` provides `libseat` (same pattern as pkgconf→pkg-config) |
+Build tools & language runtimes:
+- `base/brotli.cyml` 1.2.0
+- `base/c-ares.cyml` 1.34.6
+- `base/docbook-xsl.cyml` 1.79.2
+- `base/gyp.cyml` 0.22.0
+- `base/gn.cyml` 20260410 (rolling snapshot)
+- `base/autoconf2.13.cyml` 2.13 (legacy, Firefox SpiderMonkey)
+- `base/squashfs-tools.cyml` 4.7.5
+- `base/bun.cyml` 1.3.12 (Zig-based JS runtime, binary distribution)
+- `base/ruby.cyml` 3.4.9
 
-### Filename/package-name mismatches
-To be enumerated from validator output during the next sweep.
+Libraries:
+- `base/libpsl.cyml` 0.21.5
+- `base/libyaml.cyml` 0.2.5
+- `base/mimalloc.cyml` 3.3.0
+- `base/parted.cyml` 1.9.0
+- `base/cbindgen.cyml` 0.29.2
+- `desktop/at-spi2-core.cyml` 2.60.0
+- `desktop/dbus-glib.cyml` 0.100.2
+- `desktop/libgtop.cyml` 2.41.3
+- `desktop/libsoup.cyml` 3.6.6
+- `desktop/libxmlb.cyml` 0.3.26
+- `desktop/libxdamage.cyml` 1.1.7
+- `desktop/libxcomposite.cyml` 0.4.7
+- `desktop/webkit2gtk-4.1.cyml` 2.52.3
+- `desktop/extra-cmake-modules.cyml` 6.25.0
+
+Meta-package aliases (zero-build, depend on their canonical package):
+- `base/clang.cyml` → llvm
+- `base/lld.cyml` → llvm
+- `base/gfortran.cyml` → gcc
+- `base/libuuid.cyml` → util-linux
+- `base/libltdl.cyml` → libtool
+- `desktop/libgbm.cyml` → mesa
+- `desktop/libseat.cyml` → seatd
+- `desktop/pipewire-jack.cyml` → pipewire
+
+### Filename/package-name mismatches resolved via `git mv`
+- `python/cpython-3.12.cyml` → `python3.12.cyml`
+- `python/cpython-3.13.cyml` → `python3.13.cyml`
+- `python/cpython-3.13-freethreaded.cyml` → `python3.13t.cyml`
+- `python/cpython-3.14.cyml` → `python3.14.cyml`
+- `database/pgvector-0.8.cyml` → `pgvector.cyml`
+- `database/postgresql-17.cyml` → `postgresql17.cyml`
+- `database/redis-7.cyml` → `redis7.cyml`
+- `edge/kernel.cyml` → `kernel-edge.cyml`
+
+Package-name adjustments (filename kept):
+- `desktop/libsigcpp.cyml` — package renamed from `libsigc++` → `libsigcpp` (avoid `+` in names)
+- `browser/zen.cyml` — package renamed from `zen-browser` → `zen`
 
 ---
 

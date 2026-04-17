@@ -17,8 +17,8 @@ sha256 = "ab3fde9e7e382f45ac942be6ea2c2ef362c5ccd6f55ed6d5f35e6ea81d3ab88e"
 patches = []
 
 [depends]
-runtime = ["python3", "python-numpy", "openblas", "lapack"]
-build = ["gcc", "make", "pkgconf", "cmake", "python3", "pip"]
+runtime = ["python", "python-numpy", "openblas", "lapack"]
+build = ["gcc", "make", "pkgconf", "cmake", "python", "pip"]
 
 [build]
 pre_build = ""

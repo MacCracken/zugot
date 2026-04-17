@@ -1,0 +1,46 @@
+# WebKitGTK 4.1 — GTK port of WebKit browser engine
+# Large build (~4-6 hours). Required by Midori, epiphany, and some GTK apps.
+
+[package]
+name = "webkit2gtk-4.1"
+version = "2.52.3"
+description = "WebKitGTK 4.1 — WebKit browser engine bindings for GTK 3"
+license = "LGPL-2.0-only"
+groups = ["desktops", "libs"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://webkitgtk.org/releases/webkitgtk-2.52.3.tar.xz"
+sha256 = "5b3e0d174e63dcc28848b1194e0e7448d5948c3c2427ecd931c2c5be5261aebb"
+patches = []
+
+[depends]
+runtime = [
+    "glib", "gtk3", "libsoup", "libsecret", "gst-plugins-base", "gst-plugins-good",
+    "cairo", "harfbuzz", "fontconfig", "freetype", "icu", "zlib", "libxml2", "libxslt",
+    "libwebp", "libjpeg-turbo", "libpng", "libgcrypt", "libtasn1",
+    "wayland", "wayland-protocols", "libxkbcommon", "mesa", "libgbm", "libdrm",
+]
+build = ["gcc", "make", "cmake", "ninja", "pkgconf", "python", "gperf", "perl", "ruby"]
+
+[build]
+pre_build = ""
+configure = """
+cmake -B build -G Ninja \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DPORT=GTK \
+    -DUSE_GTK4=OFF \
+    -DUSE_LIBHYPHEN=OFF \
+    -DENABLE_DOCUMENTATION=OFF
+"""
+make = "cmake --build build --parallel"
+check = ""
+install = "DESTDIR=$PKG cmake --install build"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

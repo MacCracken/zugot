@@ -1,0 +1,31 @@
+# libltdl — alias meta-package for libtool's libltdl
+# libtool ships libltdl as its runtime dynamic-linking helper library.
+
+[package]
+name = "libltdl"
+version = "2.5.4"
+description = "libltdl — alias meta-package for libtool's libltdl"
+license = "LGPL-2.1-only"
+groups = ["base", "libs", "meta"]
+release = 1
+arch = "any"
+
+[source]
+local = true
+
+[depends]
+runtime = ["libtool"]
+build = []
+
+[build]
+pre_build = ""
+configure = ""
+make = ""
+check = ""
+install = ""
+post_install = ""
+
+[security]
+hardening = []
+cflags = ""
+ldflags = ""

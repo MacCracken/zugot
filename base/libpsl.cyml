@@ -1,0 +1,37 @@
+# libpsl — Public Suffix List library
+# Used by libsoup, curl for TLD/PSL cookie scoping.
+
+[package]
+name = "libpsl"
+version = "0.21.5"
+description = "libpsl — Public Suffix List library"
+license = "MIT"
+groups = ["base", "libs", "tier1"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://github.com/rockdaboot/libpsl/releases/download/0.21.5/libpsl-0.21.5.tar.gz"
+sha256 = "1dcc9ceae8b128f3c0b3f654decd0e1e891afc6ff81098f227ef260449dae208"
+patches = []
+
+[depends]
+runtime = ["glibc", "icu"]
+build = ["gcc", "make", "pkgconf", "meson", "ninja"]
+
+[build]
+pre_build = ""
+configure = """
+mkdir -p build && cd build && \
+meson setup .. --prefix=/usr --buildtype=release \
+  -Druntime=libicu -Dbuiltin=libicu -Dtests=false
+"""
+make = "cd build && ninja -j$(nproc)"
+check = ""
+install = "cd build && DESTDIR=$PKG ninja install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

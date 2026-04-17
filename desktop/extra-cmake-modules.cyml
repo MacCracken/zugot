@@ -1,0 +1,38 @@
+# extra-cmake-modules — KDE Frameworks CMake utilities
+# Required by KDE Frameworks consumers (falkon, etc.).
+
+[package]
+name = "extra-cmake-modules"
+version = "6.25.0"
+description = "extra-cmake-modules — KDE Frameworks CMake utility scripts"
+license = "BSD-3-Clause"
+groups = ["desktops", "build"]
+release = 1
+arch = "any"
+
+[source]
+url = "https://download.kde.org/stable/frameworks/6.25/extra-cmake-modules-6.25.0.tar.xz"
+sha256 = "ffeb4951bf09b2b8ee17ef24a28b6de650c0db0f59ddffb9009b37cac63af348"
+patches = []
+
+[depends]
+runtime = []
+build = ["cmake", "ninja"]
+
+[build]
+pre_build = ""
+configure = """
+cmake -B build -G Ninja \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DBUILD_TESTING=OFF
+"""
+make = "cmake --build build --parallel"
+check = ""
+install = "DESTDIR=$PKG cmake --install build"
+post_install = ""
+
+[security]
+hardening = []
+cflags = ""
+ldflags = ""

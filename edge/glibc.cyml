@@ -19,7 +19,7 @@ patches = []
 
 [depends]
 runtime = ["kernel-edge"]
-build = ["gcc", "make", "bison", "python3", "texinfo"]
+build = ["gcc", "make", "bison", "python", "texinfo"]
 
 [build]
 strip = true

@@ -17,8 +17,8 @@ sha256 = "f4753e73e34c8d83221ba58f232433fca2748be8b18dbca02d242ed153945043"
 patches = []
 
 [depends]
-runtime = ["python3", "python-numpy"]
-build = ["python3", "pip", "cython"]
+runtime = ["python", "python-numpy"]
+build = ["python", "pip", "cython"]
 
 [build]
 pre_build = ""

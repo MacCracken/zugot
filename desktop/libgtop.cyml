@@ -1,0 +1,36 @@
+# libgtop — System monitoring library (process/memory/CPU/network stats)
+# Used by libxfce4ui and GNOME system monitor.
+
+[package]
+name = "libgtop"
+version = "2.41.3"
+description = "libgtop — System monitoring library"
+license = "GPL-2.0-only"
+groups = ["desktops", "libs"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://download.gnome.org/sources/libgtop/2.41/libgtop-2.41.3.tar.xz"
+sha256 = "775676df958e2ea2452f7568f28b2ea581063d312773dd5c0b7624c1b9b2da8c"
+patches = []
+
+[depends]
+runtime = ["glib"]
+build = ["gcc", "make", "pkgconf", "meson", "ninja", "gobject-introspection"]
+
+[build]
+pre_build = ""
+configure = """
+mkdir -p build && cd build && \
+meson setup .. --prefix=/usr --buildtype=release
+"""
+make = "cd build && ninja -j$(nproc)"
+check = ""
+install = "cd build && DESTDIR=$PKG ninja install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

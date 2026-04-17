@@ -24,7 +24,7 @@ sha256 = ""  # TODO: populate from release tarball
 
 [depends]
 runtime = ["glibc", "wayland", "libinput", "mesa"]
-build = ["rust", "wayland-dev", "libinput-dev"]
+build = ["rust", "wayland", "libinput"]
 
 [marketplace]
 category = "desktop"

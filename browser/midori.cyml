@@ -27,11 +27,11 @@ runtime = [
     "libdrm",
     "wayland",
     "wayland-protocols",
-    "libpipewire",
+    "pipewire",
     "dbus",
     "at-spi2-core",
     "fontconfig",
-    "freetype2",
+    "freetype",
     "harfbuzz",
     "libxkbcommon",
     "pango",
@@ -41,7 +41,7 @@ runtime = [
 build = [
     "nodejs",
     "npm",
-    "python3",
+    "python",
     "pkg-config",
 ]
 

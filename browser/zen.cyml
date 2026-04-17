@@ -2,7 +2,7 @@
 # Built on Firefox ESR engine with custom UI and enhanced privacy defaults.
 
 [package]
-name = "zen-browser"
+name = "zen"
 version = "1.19.8b"
 description = "Zen Browser — Minimalist, privacy-focused web browser"
 license = "MPL-2.0"
@@ -28,7 +28,7 @@ runtime = [
     "zlib",
     "libffi",
     "fontconfig",
-    "freetype2",
+    "freetype",
     "harfbuzz",
     "cairo",
     "pango",
@@ -36,14 +36,14 @@ runtime = [
     "libdrm",
     "wayland",
     "wayland-protocols",
-    "libpipewire",
+    "pipewire",
 ]
 build = [
     "rust",
     "cbindgen",
     "nodejs",
     "nasm",
-    "python3",
+    "python",
     "clang",
     "llvm",
     "pkg-config",

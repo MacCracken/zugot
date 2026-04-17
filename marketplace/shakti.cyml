@@ -23,14 +23,14 @@ release_asset = "shakti-*-linux-amd64.tar.gz"
 sha256 = ""  # TODO: populate from release tarball
 
 [depends]
-runtime = ["glibc", "pam"]
-build = ["rust", "pam-dev"]
+runtime = ["glibc", "linux-pam"]
+build = ["rust", "linux-pam"]
 
 [marketplace]
 category = "system"
 runtime = "native-binary"
 publisher = "AGNOS"
-tags = ["sudo", "privilege", "escalation", "pam", "security", "audit", "rust"]
+tags = ["sudo", "privilege", "escalation", "linux-pam", "security", "audit", "rust"]
 min_agnos_version = "2026.3.22"
 
 [marketplace.sandbox]

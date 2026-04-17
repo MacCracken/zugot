@@ -1,0 +1,37 @@
+# libxmlb — Binary XML library (appstream dependency)
+# Faster XML lookup for static catalogs (appstream).
+
+[package]
+name = "libxmlb"
+version = "0.3.26"
+description = "libxmlb — Binary XML library for fast read-only queries"
+license = "LGPL-2.1-only"
+groups = ["desktops", "libs"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://github.com/hughsie/libxmlb/archive/refs/tags/0.3.26.tar.gz"
+sha256 = "1a34bcfa58617675dafd5251921506b31afcc8384de4d1cb09b62a3ead8460a3"
+patches = []
+
+[depends]
+runtime = ["glib", "xz"]
+build = ["gcc", "make", "pkgconf", "meson", "ninja", "gobject-introspection"]
+
+[build]
+pre_build = ""
+configure = """
+mkdir -p build && cd build && \
+meson setup .. --prefix=/usr --buildtype=release \
+  -Dgtkdoc=false
+"""
+make = "cd build && ninja -j$(nproc)"
+check = ""
+install = "cd build && DESTDIR=$PKG ninja install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

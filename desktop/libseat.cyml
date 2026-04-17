@@ -1,0 +1,33 @@
+# libseat — Alias meta-package for seatd's libseat component
+# seatd upstream ships both the daemon (seatd) and the client library (libseat)
+# from a single source tree. Recipes that depend specifically on `libseat`
+# (e.g. aquamarine) resolve via this meta-package.
+
+[package]
+name = "libseat"
+version = "0.9.2"
+description = "libseat — alias meta-package for seatd's libseat library"
+license = "MIT"
+groups = ["desktops", "libs", "meta"]
+release = 1
+arch = "any"
+
+[source]
+local = true
+
+[depends]
+runtime = ["seatd"]
+build = []
+
+[build]
+pre_build = ""
+configure = ""
+make = ""
+check = ""
+install = ""
+post_install = ""
+
+[security]
+hardening = []
+cflags = ""
+ldflags = ""

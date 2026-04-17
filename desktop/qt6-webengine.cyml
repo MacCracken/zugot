@@ -24,7 +24,7 @@ runtime = [
     "nss", "nspr", "libxkbcommon", "libxcb", "mesa", "libdrm",
     "wayland", "wayland-protocols", "ffmpeg", "libpng", "libjpeg-turbo",
     "harfbuzz", "icu", "pcre2", "zlib", "libwebp",
-    "alsa-lib", "libpipewire", "dbus",
+    "alsa-lib", "pipewire", "dbus",
 ]
 build = [
     "gcc", "make", "pkgconf", "cmake", "ninja", "python", "perl",

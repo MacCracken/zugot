@@ -31,10 +31,10 @@ runtime = [
     "mesa",
     "libdrm",
     "fontconfig",
-    "freetype2",
+    "freetype",
     "harfbuzz",
     "dbus",
-    "libpipewire",
+    "pipewire",
 ]
 build = [
     "cmake",
@@ -42,7 +42,7 @@ build = [
     "qt6-tools",
     "ninja",
     "pkg-config",
-    "python3",
+    "python",
 ]
 
 [build]

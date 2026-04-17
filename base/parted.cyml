@@ -1,0 +1,35 @@
+# parted — GNU Parted disk partitioning tool and library
+# Required by libblockdev (udisks).
+#
+# BLFS
+
+[package]
+name = "parted"
+version = "1.9.0"
+description = "parted — GNU Parted disk partition manipulation tool"
+license = "GPL-3.0-only"
+groups = ["base", "tools", "tier1"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://ftp.gnu.org/gnu/parted/parted-1.9.0.tar.xz"
+sha256 = "a6ee9f595f9887d4740086e89aa4fb049527f14165ec1fe2c6e6fec9f5e00eb7"
+patches = []
+
+[depends]
+runtime = ["glibc", "util-linux", "readline", "ncurses", "libuuid"]
+build = ["gcc", "make", "pkgconf", "device-mapper"]
+
+[build]
+pre_build = ""
+configure = "./configure --prefix=/usr --disable-static"
+make = "make -j$(nproc)"
+check = "make check || true"
+install = "make DESTDIR=$PKG install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

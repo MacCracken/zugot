@@ -1,0 +1,33 @@
+# libyaml — YAML 1.1 parser/emitter in C
+# Required by appstream, PyYAML, and many configuration tools.
+
+[package]
+name = "libyaml"
+version = "0.2.5"
+description = "libyaml — YAML 1.1 parser/emitter"
+license = "MIT"
+groups = ["base", "libs", "tier1"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://github.com/yaml/libyaml/archive/refs/tags/0.2.5.tar.gz"
+sha256 = "fa240dbf262be053f3898006d502d514936c818e422afdcf33921c63bed9bf2e"
+patches = []
+
+[depends]
+runtime = ["glibc"]
+build = ["gcc", "make", "autoconf", "automake", "libtool"]
+
+[build]
+pre_build = "./bootstrap"
+configure = "./configure --prefix=/usr --disable-static"
+make = "make -j$(nproc)"
+check = "make check || true"
+install = "make DESTDIR=$PKG install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

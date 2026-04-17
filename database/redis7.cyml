@@ -20,13 +20,13 @@ patches = []
 runtime = [
     "glibc",
     "openssl",
-    "systemd-libs",
+    "elogind",
 ]
 build = [
     "gcc",
     "make",
     "pkg-config",
-    "openssl-dev",
+    "openssl",
 ]
 
 [build]

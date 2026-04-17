@@ -30,8 +30,8 @@ runtime = [
 ]
 build = [
     "rust",
-    "openssl-dev",
-    "zlib-dev",
+    "openssl",
+    "zlib",
 ]
 
 [marketplace]

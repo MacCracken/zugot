@@ -17,8 +17,8 @@ sha256 = "2d390634c5182175533585cc89f3608a4682ccb173cc9bb940b2881c8d6f8fa0"
 patches = []
 
 [depends]
-runtime = ["python3", "openblas"]
-build = ["python3", "pip", "meson", "cython"]
+runtime = ["python", "openblas"]
+build = ["python", "pip", "meson", "cython"]
 
 [build]
 pre_build = ""

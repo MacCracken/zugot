@@ -1,0 +1,40 @@
+# Brotli — Compression algorithm (Google)
+# Used by nodejs, Chromium, and as an optional transport encoding.
+#
+# BLFS
+
+[package]
+name = "brotli"
+version = "1.2.0"
+description = "Brotli — Compression algorithm (encoder and decoder library)"
+license = "MIT"
+groups = ["base", "libs", "tier1"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://github.com/google/brotli/archive/refs/tags/v1.2.0.tar.gz"
+sha256 = "816c96e8e8f193b40151dad7e8ff37b1221d019dbcb9c35cd3fadbfe6477dfec"
+patches = []
+
+[depends]
+runtime = ["glibc"]
+build = ["gcc", "make", "cmake", "ninja", "pkgconf"]
+
+[build]
+pre_build = ""
+configure = """
+cmake -B build -G Ninja \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DBUILD_SHARED_LIBS=ON
+"""
+make = "cmake --build build --parallel"
+check = ""
+install = "DESTDIR=$PKG cmake --install build"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

@@ -1,0 +1,34 @@
+# clang — alias meta-package for llvm's Clang frontend
+# The `llvm` recipe builds with `LLVM_ENABLE_PROJECTS="clang"` and installs
+# /usr/bin/clang directly. This alias exists so recipes that list `clang`
+# as a build dep resolve without requiring bazaar contributors to learn
+# that Clang is bundled inside the llvm package.
+
+[package]
+name = "clang"
+version = "22.1.3"
+description = "clang — alias meta-package for llvm's Clang C/C++ frontend"
+license = "Apache-2.0"
+groups = ["base", "toolchain", "meta"]
+release = 1
+arch = "any"
+
+[source]
+local = true
+
+[depends]
+runtime = ["llvm"]
+build = []
+
+[build]
+pre_build = ""
+configure = ""
+make = ""
+check = ""
+install = ""
+post_install = ""
+
+[security]
+hardening = []
+cflags = ""
+ldflags = ""

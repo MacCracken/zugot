@@ -30,18 +30,18 @@ sha256 = ""  # TODO: populate from release tarball
 [depends]
 runtime = [
     "glibc",
-    "python3",
+    "python",
     "openssl",
     "sqlite",
     "libffi",
     "zlib",
 ]
 build = [
-    "python3",
+    "python",
     "pip",
-    "openssl-dev",
-    "libffi-dev",
-    "zlib-dev",
+    "openssl",
+    "libffi",
+    "zlib",
 ]
 
 [marketplace]

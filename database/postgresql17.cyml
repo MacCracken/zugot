@@ -27,8 +27,8 @@ runtime = [
     "icu",
     "lz4",
     "zstd",
-    "pam",
-    "systemd-libs",
+    "linux-pam",
+    "elogind",
     "e2fsprogs",
 ]
 build = [
@@ -38,7 +38,7 @@ build = [
     "bison",
     "flex",
     "perl",
-    "python3",
+    "python",
     "llvm",
     "clang",
     "docbook-xsl",
