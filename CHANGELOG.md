@@ -95,6 +95,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 - nettle: 3.10.1 → 3.10.2 (3.10.x stable track, SHA256 verified)
 - p11-kit: 0.25.5 → 0.26.2 (SHA256 verified)
 
+#### Desktop (batch 2 — libs)
+- icu: 76.1 → 78.3 (2 major versions, SHA256 verified)
+- json-glib: 1.10.6 → 1.10.8 (SHA256 verified)
+- kitty: 0.46.1 → 0.46.2 (SHA256 verified)
+- libass: 0.17.3 → 0.17.4 (SHA256 verified)
+- libblockdev: 3.2.1 → 3.4.0 (minor series bump, SHA256 verified)
+- libde265: 1.0.15 → 1.0.18 (SHA256 verified)
+- libevdev: 1.13.3 → 1.13.6 (SHA256 verified)
+- libnotify: 0.8.4 → 0.8.8 (SHA256 verified)
+- librsvg: 2.62.0 → 2.62.1 (SHA256 verified)
+- libtiff: 4.7.0 → 4.7.1 (SHA256 verified)
+
 #### Desktop (batch 1 — libs/apps)
 - bolt: 0.9.8 → 0.9.11 (SHA256 verified)
 - dbus: 1.16.0 → 1.16.2 (SHA256 verified, matches base/edge)
@@ -257,6 +269,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 #### Desktop (batch 1 — current upstream, SHA256 populated)
 - atk 2.38.0, cliphist 0.7.0, duktape 2.7.0, eudev 3.2.14, foot 1.26.1, fuzzel 1.14.1, glib 2.88.0, gobject-introspection 1.86.0, graphene 1.10.8, greetd 0.10.3, helix 25.07.1
+
+#### Desktop (batch 2 — current upstream)
+- imv 5.0.1, lcms2 2.18, libatasmart 0.19 (upstream unmaintained), libepoxy 1.5.10, libheif 1.21.2, libjpeg-turbo 3.1.4.1, libplacebo 7.360.1, libsass 3.6.6 (newer v1.0.1/v2.0 tags appear pre-release), libsndfile 1.2.2, libspectre 0.2.12
 
 #### Desktop (batch 1 flagged — no action)
 - girara 0.4.5: recipe URL exists but upstream switched to date-based versioning (latest: 2026.02.04). Keeping at 0.4.5 for now; bumping requires URL format rework

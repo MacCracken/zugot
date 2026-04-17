@@ -1,6 +1,6 @@
 [package]
 name = "icu"
-version = "76.1"
+version = "78.3"
 description = "International Components for Unicode — C/C++ globalization library"
 license = "ICU"
 groups = ["desktop"]
@@ -8,8 +8,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://github.com/unicode-org/icu/releases/download/release-76-1/icu4c-76_1-src.tgz"
-sha256 = "dfacb46bfe4747410472ce3e1144bf28a102feeaa4e3875bac9b4c6cf30f4f3e"
+url = "https://github.com/unicode-org/icu/releases/download/release-78-3/icu4c-78_3-src.tgz"
+sha256 = "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5"
 patches = []
 
 [depends]

@@ -4,7 +4,7 @@
 
 [package]
 name = "libblockdev"
-version = "3.2.1"
+version = "3.4.0"
 description = "libblockdev — Block device operations library"
 license = "LGPL-2.1-only"
 groups = ["desktop", "system"]
@@ -12,8 +12,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://github.com/storaged-project/libblockdev/releases/download/3.2.1/libblockdev-3.2.1.tar.gz"
-sha256 = "318b9e2cedfdfe88161f28079fcb63239aeb5592223f4485b861cfc6ef11189a"
+url = "https://github.com/storaged-project/libblockdev/releases/download/3.4.0/libblockdev-3.4.0.tar.gz"
+sha256 = "65ef9a37babd44b85b8ff9b273f90f9f7d5f8ff7b0c76a8edb69240325fd83f4"
 patches = []
 
 [depends]
