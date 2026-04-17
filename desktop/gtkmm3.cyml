@@ -1,0 +1,39 @@
+# gtkmm3 — C++ bindings for GTK 3
+# Used by inkscape and other GTK3-based C++ applications.
+#
+# BLFS
+
+[package]
+name = "gtkmm3"
+version = "3.24.10"
+description = "gtkmm3 — C++ bindings for GTK 3"
+license = "LGPL-2.1-only"
+groups = ["desktops", "libs"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://download.gnome.org/sources/gtkmm/3.24/gtkmm-3.24.10.tar.xz"
+sha256 = "7ab7e2266808716e26c39924ace1fb46da86c17ef39d989624c42314b32b5a76"
+patches = []
+
+[depends]
+runtime = ["gtk3", "glibmm", "cairomm", "pangomm", "atkmm"]
+build = ["gcc", "make", "pkgconf", "meson", "ninja", "mm-common"]
+
+[build]
+pre_build = ""
+configure = """
+mkdir -p build && cd build && \
+meson setup .. --prefix=/usr --buildtype=release \
+  -Dbuild-examples=false -Dbuild-tests=false -Dbuild-documentation=false
+"""
+make = "cd build && ninja -j$(nproc)"
+check = ""
+install = "cd build && DESTDIR=$PKG ninja install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

@@ -1,0 +1,39 @@
+# libsigc++ — C++ typesafe callback system
+# Foundation for glibmm, gtkmm, and the rest of the -mm binding stack.
+#
+# BLFS
+
+[package]
+name = "libsigc++"
+version = "3.6.0"
+description = "libsigc++ — C++ typesafe callback framework"
+license = "LGPL-3.0-only"
+groups = ["desktops", "libs"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://download.gnome.org/sources/libsigc++/3.6/libsigc++-3.6.0.tar.xz"
+sha256 = "c3d23b37dfd6e39f2e09f091b77b1541fbfa17c4f0b6bf5c89baef7229080e17"
+patches = []
+
+[depends]
+runtime = ["glibc"]
+build = ["gcc", "make", "pkgconf", "meson", "ninja", "mm-common"]
+
+[build]
+pre_build = ""
+configure = """
+mkdir -p build && cd build && \
+meson setup .. --prefix=/usr --buildtype=release \
+  -Dbuild-examples=false -Dbuild-tests=false -Dbuild-documentation=false
+"""
+make = "cd build && ninja -j$(nproc)"
+check = ""
+install = "cd build && DESTDIR=$PKG ninja install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

@@ -1,0 +1,41 @@
+# libvpx — VP8/VP9 video codec library
+#
+# BLFS
+
+[package]
+name = "libvpx"
+version = "1.16.0"
+description = "libvpx — VP8/VP9 video codec library"
+license = "BSD-3-Clause"
+groups = ["desktops", "audio"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://github.com/webmproject/libvpx/archive/refs/tags/v1.16.0.tar.gz"
+sha256 = "7a479a3c66b9f5d5542a4c6a1b7d3768a983b1e5c14c60a9396edc9b649e015c"
+patches = []
+
+[depends]
+runtime = ["glibc"]
+build = ["gcc", "make", "yasm"]
+
+[build]
+pre_build = ""
+configure = """
+./configure \
+    --prefix=/usr \
+    --enable-shared \
+    --disable-static \
+    --enable-vp8 --enable-vp9 \
+    --enable-postproc
+"""
+make = "make -j$(nproc)"
+check = ""
+install = "make DESTDIR=$PKG install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

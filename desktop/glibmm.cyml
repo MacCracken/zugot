@@ -1,0 +1,39 @@
+# glibmm — C++ bindings for GLib
+# Part of the GNOME -mm C++ binding family.
+#
+# BLFS
+
+[package]
+name = "glibmm"
+version = "2.88.0"
+description = "glibmm — C++ bindings for GLib"
+license = "LGPL-2.1-only"
+groups = ["desktops", "libs"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://download.gnome.org/sources/glibmm/2.88/glibmm-2.88.0.tar.xz"
+sha256 = "a6549da3a6c43de83b8717dae5413c57a60d92f6ecc624615c612d0bb0ad0fe2"
+patches = []
+
+[depends]
+runtime = ["glib", "libsigc++"]
+build = ["gcc", "make", "pkgconf", "meson", "ninja", "mm-common", "perl"]
+
+[build]
+pre_build = ""
+configure = """
+mkdir -p build && cd build && \
+meson setup .. --prefix=/usr --buildtype=release \
+  -Dbuild-examples=false -Dbuild-documentation=false
+"""
+make = "cd build && ninja -j$(nproc)"
+check = ""
+install = "cd build && DESTDIR=$PKG ninja install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

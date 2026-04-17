@@ -1,0 +1,41 @@
+# wxWidgets — Cross-platform C++ GUI toolkit
+#
+# BLFS
+
+[package]
+name = "wxwidgets"
+version = "3.3.2"
+description = "wxWidgets — Cross-platform C++ GUI toolkit"
+license = "wxWindows"
+groups = ["desktops", "libs"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://github.com/wxWidgets/wxWidgets/releases/download/v3.3.2/wxWidgets-3.3.2.tar.bz2"
+sha256 = "50a28cb668de47b0e006cd6ebed8cf4f76c1cac6116fb3c978c44478219103f2"
+patches = []
+
+[depends]
+runtime = ["gtk3", "glib", "zlib", "libpng", "libjpeg-turbo", "expat", "libtiff", "libsm"]
+build = ["gcc", "make", "pkgconf"]
+
+[build]
+pre_build = "mkdir -p build-wx"
+configure = """
+cd build-wx && ../configure \
+    --prefix=/usr \
+    --with-gtk=3 \
+    --with-opengl \
+    --enable-unicode \
+    --disable-static
+"""
+make = "cd build-wx && make -j$(nproc)"
+check = ""
+install = "cd build-wx && make DESTDIR=$PKG install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

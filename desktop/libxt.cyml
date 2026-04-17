@@ -1,0 +1,35 @@
+# libXt — X11 toolkit intrinsics library
+# Required by legacy X11 applications (Motif-style widgets).
+#
+# BLFS
+
+[package]
+name = "libxt"
+version = "1.3.1"
+description = "libXt — X11 Toolkit Intrinsics library"
+license = "MIT"
+groups = ["desktops", "libs"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://www.x.org/releases/individual/lib/libXt-1.3.1.tar.xz"
+sha256 = "e0a774b33324f4d4c05b199ea45050f87206586d81655f8bef4dba434d931288"
+patches = []
+
+[depends]
+runtime = ["libx11", "libice", "libsm", "xorgproto"]
+build = ["gcc", "make", "pkgconf"]
+
+[build]
+pre_build = ""
+configure = "./configure --prefix=/usr --sysconfdir=/etc --disable-static"
+make = "make -j$(nproc)"
+check = ""
+install = "make DESTDIR=$PKG install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

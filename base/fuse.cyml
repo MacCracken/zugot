@@ -1,0 +1,40 @@
+# libfuse — Filesystem in Userspace (FUSE 3)
+# Runtime library and utilities for FUSE-based filesystems.
+# Required by lmstudio and container runtimes.
+#
+# BLFS
+
+[package]
+name = "fuse"
+version = "3.18.2"
+description = "libfuse 3 — Filesystem in Userspace library and tools"
+license = "LGPL-2.1-only"
+groups = ["base", "libs", "tier1"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://github.com/libfuse/libfuse/releases/download/fuse-3.18.2/fuse-3.18.2.tar.gz"
+sha256 = "f01de85717e20adf5f98aff324acd85dd73d61a5ca3834d573dcf0bd6e54a298"
+patches = []
+
+[depends]
+runtime = ["glibc"]
+build = ["gcc", "make", "meson", "ninja", "pkgconf"]
+
+[build]
+pre_build = ""
+configure = """
+mkdir -p build && cd build && \
+meson setup .. --prefix=/usr --buildtype=release \
+  -Dexamples=false
+"""
+make = "cd build && ninja -j$(nproc)"
+check = "cd build && meson test || true"
+install = "cd build && DESTDIR=$PKG ninja install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

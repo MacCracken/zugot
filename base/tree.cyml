@@ -1,0 +1,34 @@
+# tree — Recursive directory listing
+#
+# BLFS
+
+[package]
+name = "tree"
+version = "2.3.2"
+description = "tree — Recursive directory listing command"
+license = "GPL-2.0-only"
+groups = ["base", "tools", "tier2"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://gitlab.com/OldManProgrammer/unix-tree/-/archive/2.3.2/unix-tree-2.3.2.tar.gz"
+sha256 = "513a53cbc42ca1f4ea06af2bab1f5283524a3848266b1d162416f8033afc4985"
+patches = []
+
+[depends]
+runtime = ["glibc"]
+build = ["gcc", "make"]
+
+[build]
+pre_build = ""
+configure = ""
+make = "make -j$(nproc)"
+check = ""
+install = "make prefix=$PKG/usr install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

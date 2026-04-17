@@ -1,0 +1,34 @@
+# giflib — GIF image format library
+#
+# BLFS
+
+[package]
+name = "giflib"
+version = "6.1.3"
+description = "giflib — GIF image format library and utilities"
+license = "MIT"
+groups = ["desktops", "audio"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://sourceforge.net/projects/giflib/files/giflib-6.1.3.tar.gz/download"
+sha256 = "b65b66b99f0424b93525f987386f22fc5efb9da2bfc92ad4a532249aaffbab0e"
+patches = []
+
+[depends]
+runtime = ["glibc"]
+build = ["gcc", "make"]
+
+[build]
+pre_build = ""
+configure = ""
+make = "make -j$(nproc)"
+check = ""
+install = "make PREFIX=/usr DESTDIR=$PKG install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

@@ -1,0 +1,35 @@
+# libxfce4util — XFCE base utility library
+# Foundation for all other XFCE libraries.
+#
+# BLFS
+
+[package]
+name = "libxfce4util"
+version = "4.20.1"
+description = "libxfce4util — XFCE base utility library"
+license = "LGPL-2.1-only"
+groups = ["desktops", "libs"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://archive.xfce.org/src/xfce/libxfce4util/4.20/libxfce4util-4.20.1.tar.bz2"
+sha256 = "84bfc4daab9e466193540c3665eee42b2cf4d24e3f38fc3e8d1e0a2bebe3b8f1"
+patches = []
+
+[depends]
+runtime = ["glib"]
+build = ["gcc", "make", "pkgconf", "intltool", "gobject-introspection", "vala"]
+
+[build]
+pre_build = ""
+configure = "./configure --prefix=/usr --sysconfdir=/etc"
+make = "make -j$(nproc)"
+check = ""
+install = "make DESTDIR=$PKG install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

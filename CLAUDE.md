@@ -70,6 +70,9 @@ Packages in zugot follow Linux-distribution-agnostic naming. The short rules:
 4. **`npm` ships with `nodejs`.** Same pattern — depend on `nodejs`.
 5. **Use `pkgconf`, not `pkg-config`.** The `pkgconf` recipe provides a `pkg-config` compatibility symlink at install time, but recipes should depend on the canonical name (`pkgconf`).
 6. **Groups use plural `"desktops"`, not `"desktop"`.** Multiple desktop environments are planned; the group tag reflects that.
+7. **Use `linux-pam`, not `pam`.** The recipe name includes the `linux-` prefix.
+8. **Use `x265`, not `libx265`; `x264`, not `libx264`.** Upstream project names don't have the `lib` prefix.
+9. **PyPI packages** (e.g. `pycups`, `pycurl`): don't create zugot recipes unless needed as a system runtime. Applications should invoke `python -m pip install <pkg>` in a virtualenv during build, or list the pip package in an app-level manifest.
 
 See `noted-issues-bazaar-finds.md` for cross-referenced examples from the bazaar audit.
 

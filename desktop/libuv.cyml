@@ -1,0 +1,40 @@
+# libuv — Asynchronous event loop library
+# Foundation for Node.js and other event-driven apps.
+#
+# BLFS
+
+[package]
+name = "libuv"
+version = "1.52.1"
+description = "libuv — Cross-platform async event loop"
+license = "MIT"
+groups = ["desktops", "libs"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://github.com/libuv/libuv/archive/refs/tags/v1.52.1.tar.gz"
+sha256 = "478baf2599bfbc882c355288c9cb6f92e0e7dda435fa04031fa5b607cf3f414c"
+patches = []
+
+[depends]
+runtime = ["glibc"]
+build = ["gcc", "make", "cmake", "ninja", "pkgconf"]
+
+[build]
+pre_build = ""
+configure = """
+cmake -B build -G Ninja \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DBUILD_SHARED_LIBS=ON
+"""
+make = "cmake --build build --parallel"
+check = ""
+install = "DESTDIR=$PKG cmake --install build"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

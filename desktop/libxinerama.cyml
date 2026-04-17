@@ -1,0 +1,34 @@
+# libXinerama — X11 Xinerama extension client library
+#
+# BLFS
+
+[package]
+name = "libxinerama"
+version = "1.1.6"
+description = "libXinerama — X11 Xinerama multi-monitor extension library"
+license = "MIT"
+groups = ["desktops", "libs"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://www.x.org/releases/individual/lib/libXinerama-1.1.6.tar.xz"
+sha256 = "d00fc1599c303dc5cbc122b8068bdc7405d6fcb19060f4597fc51bd3a8be51d7"
+patches = []
+
+[depends]
+runtime = ["libx11", "libxext", "xorgproto"]
+build = ["gcc", "make", "pkgconf"]
+
+[build]
+pre_build = ""
+configure = "./configure --prefix=/usr --sysconfdir=/etc --disable-static"
+make = "make -j$(nproc)"
+check = ""
+install = "make DESTDIR=$PKG install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

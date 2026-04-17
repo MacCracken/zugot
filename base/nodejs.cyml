@@ -1,0 +1,46 @@
+# Node.js — JavaScript runtime (V8 + libuv)
+# Provides `node` and `npm`. Required internally by base/firecracker-adjacent builds,
+# browser/brave/chromium/midori, and many bazaar recipes.
+# Tracks Node.js LTS line (v24.x).
+#
+# BLFS
+
+[package]
+name = "nodejs"
+version = "24.15.0"
+description = "Node.js — JavaScript runtime (bundles npm)"
+license = "MIT"
+groups = ["base", "runtime", "tier1"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://nodejs.org/dist/v24.15.0/node-v24.15.0.tar.xz"
+sha256 = "a4f653d79ed140aaad921e8c22a3b585ca85cfdab80d4030f6309e4663a8a1c8"
+patches = []
+
+[depends]
+runtime = ["glibc", "openssl", "zlib", "icu", "libuv", "brotli", "c-ares"]
+build = ["gcc", "make", "python", "pkgconf"]
+
+[build]
+pre_build = ""
+configure = """
+./configure \
+    --prefix=/usr \
+    --shared-openssl \
+    --shared-zlib \
+    --with-intl=system-icu
+"""
+make = "make -j$(nproc)"
+check = ""
+install = """
+make DESTDIR=$PKG install
+# npm ships with Node.js — no separate dep needed.
+"""
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

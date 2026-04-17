@@ -1,0 +1,36 @@
+# runc — OCI reference runtime (container execution)
+# Used by containerd. zugot's `crun` recipe is a drop-in replacement written in C —
+# pick one or ship both depending on workload.
+#
+# BLFS / AI Stack
+
+[package]
+name = "runc"
+version = "1.4.2"
+description = "runc — OCI reference runtime (Go)"
+license = "Apache-2.0"
+groups = ["containers"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://github.com/opencontainers/runc/archive/refs/tags/v1.4.2.tar.gz"
+sha256 = "9e1dcd513e28fac99e7b47fec38ce4f1969a9a9693b80619e9009286e2d0d584"
+patches = []
+
+[depends]
+runtime = ["glibc", "libseccomp"]
+build = ["go", "make", "pkgconf"]
+
+[build]
+pre_build = ""
+configure = ""
+make = "make -j$(nproc) BUILDTAGS='seccomp'"
+check = ""
+install = "make PREFIX=/usr DESTDIR=$PKG install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

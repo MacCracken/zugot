@@ -1,0 +1,40 @@
+# seatd — Minimal seat management daemon
+# Provides session/seat primitives for Wayland compositors (sway, wlroots, Hyprland).
+# Alternative to logind for non-systemd systems.
+#
+# BLFS
+
+[package]
+name = "seatd"
+version = "0.9.2"
+description = "seatd — Minimal seat management daemon (libseat backend)"
+license = "MIT"
+groups = ["desktops", "libs"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://git.sr.ht/~kennylevinsen/seatd/archive/0.9.2.tar.gz"
+sha256 = "2811654fc87b3b1877f62e69cbf1e761c7072146f127860d9b8fe1ca27607d0e"
+patches = []
+
+[depends]
+runtime = ["glibc", "libcap"]
+build = ["gcc", "make", "pkgconf", "meson", "ninja"]
+
+[build]
+pre_build = ""
+configure = """
+mkdir -p build && cd build && \
+meson setup .. --prefix=/usr --buildtype=release \
+  -Dlibseat-logind=disabled -Dlibseat-builtin=enabled -Dserver=enabled
+"""
+make = "cd build && ninja -j$(nproc)"
+check = "cd build && meson test || true"
+install = "cd build && DESTDIR=$PKG ninja install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

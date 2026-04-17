@@ -1,0 +1,44 @@
+# Git — Distributed version control system
+# Used internally by zugot (base/bazaar, marketplace/delta) and many bazaar recipes.
+#
+# BLFS
+
+[package]
+name = "git"
+version = "2.53.0"
+description = "Git — distributed version control system"
+license = "GPL-2.0-only"
+groups = ["base", "tools", "tier1"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.53.0.tar.xz"
+sha256 = "5818bd7d80b061bbbdfec8a433d609dc8818a05991f731ffc4a561e2ca18c653"
+patches = []
+
+[depends]
+runtime = ["glibc", "openssl", "zlib", "curl", "expat", "perl", "pcre2"]
+build = ["gcc", "make", "pkgconf", "gettext", "perl", "python"]
+
+[build]
+pre_build = ""
+configure = """
+./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --with-gitconfig=/etc/gitconfig \
+    --with-libpcre2 \
+    --with-openssl \
+    --with-curl \
+    --with-expat
+"""
+make = "make -j$(nproc) all"
+check = "make test || true"
+install = "make DESTDIR=$PKG install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

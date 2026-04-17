@@ -1,0 +1,39 @@
+# GDL — GNOME Docking Library
+# Used by inkscape for dockable panels.
+#
+# BLFS
+
+[package]
+name = "gdl"
+version = "3.40.0"
+description = "GDL — GNOME Docking Library"
+license = "LGPL-2.0-only"
+groups = ["desktops", "libs"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://download.gnome.org/sources/gdl/3.40/gdl-3.40.0.tar.xz"
+sha256 = "3641d4fd669d1e1818aeff3cf9ffb7887fc5c367850b78c28c775eba4ab6a555"
+patches = []
+
+[depends]
+runtime = ["gtk3", "glib"]
+build = ["gcc", "make", "pkgconf", "meson", "ninja", "gobject-introspection", "vala"]
+
+[build]
+pre_build = ""
+configure = """
+mkdir -p build && cd build && \
+meson setup .. --prefix=/usr --buildtype=release \
+  -Dintrospection=true -Dvapi=true
+"""
+make = "cd build && ninja -j$(nproc)"
+check = ""
+install = "cd build && DESTDIR=$PKG ninja install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

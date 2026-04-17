@@ -1,0 +1,42 @@
+# sdbus-cpp — Modern C++ D-Bus bindings
+# Wraps sd-bus with a C++17 API. Used by Hyprland and systemd-adjacent apps.
+#
+# BLFS
+
+[package]
+name = "sdbus-cpp"
+version = "2.2.1"
+description = "sdbus-cpp — C++ wrapper around sd-bus"
+license = "LGPL-2.1-only"
+groups = ["desktops", "libs"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://github.com/Kistler-Group/sdbus-cpp/archive/refs/tags/v2.2.1.tar.gz"
+sha256 = "da69a0104beb6e51415a59f1571a47beb1eacc65cc6027b250eb1cf13ff4f802"
+patches = []
+
+[depends]
+runtime = ["glibc", "elogind"]
+build = ["gcc", "make", "cmake", "ninja", "pkgconf", "elogind"]
+
+[build]
+pre_build = ""
+configure = """
+cmake -B build -G Ninja \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DSDBUSCPP_BUILD_LIBSYSTEMD=OFF \
+    -DSDBUSCPP_BUILD_TESTS=OFF \
+    -DSDBUSCPP_BUILD_EXAMPLES=OFF
+"""
+make = "cmake --build build --parallel"
+check = ""
+install = "DESTDIR=$PKG cmake --install build"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

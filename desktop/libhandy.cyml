@@ -1,0 +1,39 @@
+# libhandy — Building blocks for modern GNOME/adaptive GTK apps
+# Widgets for mobile-friendly GTK3 applications.
+#
+# BLFS
+
+[package]
+name = "libhandy"
+version = "1.8.3"
+description = "libhandy — Adaptive widgets for GTK3 applications"
+license = "LGPL-2.1-only"
+groups = ["desktops", "libs"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://download.gnome.org/sources/libhandy/1.8/libhandy-1.8.3.tar.xz"
+sha256 = "05b497229073ff557f10b326e074c5066f8743a302d4820ab97bcb5cd2dab087"
+patches = []
+
+[depends]
+runtime = ["glib", "gtk3", "pango", "fribidi", "libxml2"]
+build = ["gcc", "make", "pkgconf", "meson", "ninja", "vala", "gobject-introspection"]
+
+[build]
+pre_build = ""
+configure = """
+mkdir -p build && cd build && \
+meson setup .. --prefix=/usr --buildtype=release \
+  -Dintrospection=enabled -Dvapi=true -Dtests=false -Dexamples=false
+"""
+make = "cd build && ninja -j$(nproc)"
+check = ""
+install = "cd build && DESTDIR=$PKG ninja install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

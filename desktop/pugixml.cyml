@@ -1,0 +1,39 @@
+# pugixml — Light-weight C++ XML library
+#
+# BLFS
+
+[package]
+name = "pugixml"
+version = "1.15"
+description = "pugixml — Light-weight C++ XML parsing library"
+license = "MIT"
+groups = ["desktops", "libs"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://github.com/zeux/pugixml/archive/refs/tags/v1.15.tar.gz"
+sha256 = "b39647064d9e28297a34278bfb897092bf33b7c487906ddfc094c9e8868bddcb"
+patches = []
+
+[depends]
+runtime = ["glibc"]
+build = ["gcc", "make", "cmake", "ninja"]
+
+[build]
+pre_build = ""
+configure = """
+cmake -B build -G Ninja \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DBUILD_SHARED_LIBS=ON
+"""
+make = "cmake --build build --parallel"
+check = ""
+install = "DESTDIR=$PKG cmake --install build"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

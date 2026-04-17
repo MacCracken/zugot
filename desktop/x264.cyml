@@ -1,0 +1,43 @@
+# x264 — H.264/AVC video encoder
+# The 'libx264' reference some recipes use is the same package (debian naming).
+#
+# BLFS
+
+[package]
+name = "x264"
+version = "stable"
+description = "x264 — H.264/AVC video encoding library"
+license = "GPL-2.0-only"
+groups = ["desktops", "audio"]
+release = 1
+arch = "x86_64"
+
+[source]
+# x264 ships rolling "stable" tarballs from GitLab.
+# Re-verify SHA256 on each rebuild — tarball content drifts.
+url = "https://code.videolan.org/videolan/x264/-/archive/stable/x264-stable.tar.bz2"
+sha256 = "740126cb48549ca4e2f09b4ae13beed592d5b54744044e38f28662fd96d0ba56"
+patches = []
+
+[depends]
+runtime = ["glibc"]
+build = ["gcc", "make", "nasm"]
+
+[build]
+pre_build = ""
+configure = """
+./configure \
+    --prefix=/usr \
+    --enable-shared \
+    --disable-cli \
+    --disable-opencl
+"""
+make = "make -j$(nproc)"
+check = ""
+install = "make DESTDIR=$PKG install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

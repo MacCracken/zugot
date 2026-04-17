@@ -23,8 +23,63 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 - qt6-webengine 6.10.3 (Chromium-based web engine for falkon)
 - All Qt SHA256 values taken from Qt's `.tar.xz.sha256` sidecar files published alongside each tarball.
 
+#### Base (remaining priority 1 build tools — bazaar audit)
+- swig 4.4.1, xmlto 0.0.29, mm-common 1.0.7, gnome-doc-utils 0.20.10 (EOL upstream), hyprwayland-scanner 0.4.5
+
+#### Base (zugot-internal gap closers — runtimes/tools)
+- git 2.53.0 (used by base/bazaar, marketplace/delta, + 4 bazaar recipes)
+- nodejs 24.15.0 (LTS; bundles npm — used by brave, chromium, midori, open-webui)
+- nspr 4.38.2 (dep of nss)
+- nss 3.122.1 (used by firefox, chromium, brave, thunderbird)
+- protobuf 34.1 (dep of ifran, onnxruntime)
+- fuse 3.18.2 (libfuse 3 — dep of lmstudio, container runtimes)
+- abseil-cpp 20260107.1 (dep of protobuf)
+- yasm 1.3.0 (dep of libvpx; nasm preferred elsewhere)
+- boost 1.90.0 (recipe scaffolded with SHA256 TODO — 110MB tarball not auto-downloaded)
+- unzip 6.0, zip 3.0 (Info-ZIP — libreoffice build deps)
+- tree 2.3.2 (pass dep)
+
+#### Desktop (GTK/GNOME ecosystem — 15 recipes)
+- libhandy 1.8.3, libsecret 0.21.7, libnma 1.10.6, libpwquality 1.4.5, libportal 0.9.1
+- gtk-layer-shell 0.10.1, adwaita-icon-theme 50.0, appstream 1.1.2, iso-codes 4.20.1
+- libsigc++ 3.6.0, glibmm 2.88.0, cairomm 1.19.0, pangomm 2.56.1, atkmm 2.36.3, gtkmm3 3.24.10
+
+#### Desktop (transitive deps for new recipes)
+- xcb-util 0.4.1, hicolor-icon-theme 0.18, cracklib 2.10.3, speexdsp 1.2.1, pugixml 1.15
+
+#### Desktop (XFCE stack — 7 recipes)
+- exo 4.20.0, xfconf 4.20.0, libxfce4util 4.20.1, libxfce4ui 4.20.2
+- libice 1.1.2, libsm 1.2.6, startup-notification 0.12 (upstream frozen)
+
+#### Desktop (Hyprland support — 6 recipes)
+- tomlplusplus 3.4.0, sdbus-cpp 2.2.1, xcb-util-wm 0.4.2, aquamarine 0.10.0, hyprcursor 0.1.13, libzip 1.11.4
+
+#### Desktop (audio/video/codecs — 10 recipes)
+- x264 (stable snapshot — note: rolling tarball, re-verify SHA on each build)
+- libvpx 1.16.0, opus 1.5.2, lame 3.100, libwebp 1.6.0, giflib 6.1.3
+- mbedtls 4.1.0, jansson 2.15.0, wxwidgets 3.3.2, portaudio 19.7.0
+- pulseaudio 17.0 (legacy — PipeWire preferred; kept for browser/brave/chromium/firefox compat)
+
+#### Desktop (C/C++ system libraries — 18 recipes)
+- seatd 0.9.2 (blocks sway/wlroots/hyprland), libevent 2.1.12, libsodium 1.0.22
+- libxinerama 1.1.6, libxslt 1.1.45, hunspell 1.7.2, oniguruma 6.9.10, libuv 1.52.1
+- tree-sitter 0.26.8, luajit (rolling v2.1 branch — SHA256 TODO), msgpack-c 6.1.0, unibilium 2.1.2
+- fmt 12.1.0, spdlog 1.17.0, minizip 4.1.0, libxt 1.3.1, graphite2 1.3.14, hwdata 0.406, libdvdread 7.0.1
+
+#### Desktop/app-specific libs (5 recipes)
+- babl 0.1.126, gegl 0.4.70 (GIMP engine); gsl 2.8, gdl 3.40.0 (Inkscape deps)
+
+#### AI/containers stack additions
+- cython 3.2.4 (Python C extension compiler)
+- containerd 2.2.3 (CRI runtime)
+- runc 1.4.2 (OCI reference runtime — zugot's crun is a drop-in alternative)
+- fuse-overlayfs 1.16 (rootless container OverlayFS)
+
+#### Network (legacy compat)
+- iptables 1.8.13 (kept alongside nftables for containers/VPN tools)
+
 ### Documentation
-- CLAUDE.md: added "Naming Conventions" section documenting the `-dev` split rule, `python/pip/nodejs/npm/pkgconf` canonical names, and `"desktops"` group plural. Cross-references `noted-issues-bazaar-finds.md`.
+- CLAUDE.md: expanded "Naming Conventions" section. Added rules for `linux-pam` (not `pam`), `x264/x265` (not `libx264/libx265`), and PyPI-package-policy (don't create zugot recipes for pip-installable Python packages like `pycups`, `pycurl` — use `python -m pip` in app-level manifests). Cross-references `noted-issues-bazaar-finds.md`.
 
 ### Changed
 - Recipe file format: `.toml` → `.cyml` (Cyrius Markup Language). All 426 recipe files renamed via `git mv`. Content unchanged — CYML parses TOML syntax for single-entry (no `---` delimiter) files. Downstream consumers (ark, nous, takumi, mela) must update readers to accept `.cyml`.

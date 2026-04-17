@@ -1,0 +1,39 @@
+# GEGL — Generic Graphics Library
+# Image processing engine used by GIMP.
+#
+# BLFS
+
+[package]
+name = "gegl"
+version = "0.4.70"
+description = "GEGL — Graph-based image processing framework for GIMP"
+license = "LGPL-3.0-only"
+groups = ["desktops", "libs"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://download.gimp.org/pub/gegl/0.4/gegl-0.4.70.tar.xz"
+sha256 = "47f50d9c3aecd375deb48c11ebfead52d162e4fc162a4b3d44618277f1faec02"
+patches = []
+
+[depends]
+runtime = ["glibc", "babl", "glib", "libpng", "libjpeg-turbo", "json-glib", "cairo", "pango"]
+build = ["gcc", "make", "pkgconf", "meson", "ninja", "gobject-introspection"]
+
+[build]
+pre_build = ""
+configure = """
+mkdir -p build && cd build && \
+meson setup .. --prefix=/usr --buildtype=release \
+  -Dworkshop=false -Dintrospection=enabled
+"""
+make = "cd build && ninja -j$(nproc)"
+check = ""
+install = "cd build && DESTDIR=$PKG ninja install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

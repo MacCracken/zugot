@@ -1,0 +1,38 @@
+# cairomm — C++ bindings for Cairo
+#
+# BLFS
+
+[package]
+name = "cairomm"
+version = "1.19.0"
+description = "cairomm — C++ bindings for Cairo 2D graphics"
+license = "LGPL-2.0-only"
+groups = ["desktops", "libs"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://cairographics.org/releases/cairomm-1.19.0.tar.xz"
+sha256 = "8b14f03a0e5178c7ff8f7b288cb342a61711c84c9fbed6e663442cfcc873ce5b"
+patches = []
+
+[depends]
+runtime = ["cairo", "libsigc++"]
+build = ["gcc", "make", "pkgconf", "meson", "ninja", "mm-common"]
+
+[build]
+pre_build = ""
+configure = """
+mkdir -p build && cd build && \
+meson setup .. --prefix=/usr --buildtype=release \
+  -Dbuild-examples=false -Dbuild-tests=false -Dbuild-documentation=false
+"""
+make = "cd build && ninja -j$(nproc)"
+check = ""
+install = "cd build && DESTDIR=$PKG ninja install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

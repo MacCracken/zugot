@@ -1,0 +1,38 @@
+# mm-common — Build infrastructure for GNOME C++ bindings
+# Common build files shared by glibmm, gtkmm, cairomm, etc.
+#
+# BLFS
+
+[package]
+name = "mm-common"
+version = "1.0.7"
+description = "mm-common — Build infrastructure for GNOME C++ bindings (glibmm, gtkmm, etc.)"
+license = "GPL-2.0-only"
+groups = ["base", "build", "tier2"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://download.gnome.org/sources/mm-common/1.0/mm-common-1.0.7.tar.xz"
+sha256 = "494abfce781418259b1e9d8888c73af4de4b6f3be36cc75d9baa8baa0f2a7a39"
+patches = []
+
+[depends]
+runtime = ["python"]
+build = ["meson", "ninja", "python"]
+
+[build]
+pre_build = ""
+configure = """
+mkdir -p build && cd build && \
+meson setup .. --prefix=/usr --buildtype=release
+"""
+make = "cd build && ninja -j$(nproc)"
+check = ""
+install = "cd build && DESTDIR=$PKG ninja install"
+post_install = ""
+
+[security]
+hardening = []
+cflags = ""
+ldflags = ""

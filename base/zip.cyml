@@ -1,0 +1,35 @@
+# Info-ZIP Zip — Create/update .zip archives (Info-ZIP 3.0)
+# Classic utility used by libreoffice build and many Java/Android toolchains.
+#
+# BLFS
+
+[package]
+name = "zip"
+version = "3.0"
+description = "Info-ZIP zip — Create and update .zip archives"
+license = "Info-ZIP"
+groups = ["base", "tools", "tier1"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://sourceforge.net/projects/infozip/files/Zip%203.x%20%28latest%29/3.0/zip30.tar.gz/download"
+sha256 = "f0e8bb1f9b7eb0b01285495a2699df3a4b766784c1765a8f1aeedf63c0806369"
+patches = []
+
+[depends]
+runtime = ["glibc"]
+build = ["gcc", "make"]
+
+[build]
+pre_build = ""
+configure = ""
+make = "make -f unix/Makefile -j$(nproc) generic_gcc"
+check = ""
+install = "make -f unix/Makefile prefix=$PKG/usr MANDIR=$PKG/usr/share/man/man1 install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

@@ -1,0 +1,36 @@
+# SWIG — Simplified Wrapper and Interface Generator
+# Generates bindings to connect C/C++ code with scripting languages.
+# Required by obs-studio build.
+#
+# BLFS
+
+[package]
+name = "swig"
+version = "4.4.1"
+description = "SWIG — C/C++ binding generator for scripting languages"
+license = "GPL-3.0-only"
+groups = ["base", "build", "tier1"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://github.com/swig/swig/archive/refs/tags/v4.4.1.tar.gz"
+sha256 = "8bf32042beb7ee1eeb5c71aa15a62513d964893f84234f2cd77e4a8e2ed41e87"
+patches = []
+
+[depends]
+runtime = ["glibc", "pcre2"]
+build = ["gcc", "make", "pcre2", "autoconf", "automake"]
+
+[build]
+pre_build = "./autogen.sh"
+configure = "./configure --prefix=/usr --without-maximum-compile-warnings"
+make = "make -j$(nproc)"
+check = "make check || true"
+install = "make DESTDIR=$PKG install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

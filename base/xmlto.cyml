@@ -1,0 +1,35 @@
+# xmlto — XSL-based XML document processor
+# Converts DocBook XML to HTML, PDF, man pages. Required by system-config-printer.
+#
+# BLFS
+
+[package]
+name = "xmlto"
+version = "0.0.29"
+description = "xmlto — XSL-based XML document processor"
+license = "GPL-2.0-only"
+groups = ["base", "build", "tier2"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://releases.pagure.org/xmlto/xmlto-0.0.29.tar.bz2"
+sha256 = "6000d8e8f0f9040426c4f85d7ad86789bc88d4aeaef585c4d4110adb0b214f21"
+patches = []
+
+[depends]
+runtime = ["bash", "libxml2", "libxslt", "docbook-xsl"]
+build = ["gcc", "make"]
+
+[build]
+pre_build = ""
+configure = "./configure --prefix=/usr"
+make = "make -j$(nproc)"
+check = "make check || true"
+install = "make DESTDIR=$PKG install"
+post_install = ""
+
+[security]
+hardening = []
+cflags = ""
+ldflags = ""

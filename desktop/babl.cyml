@@ -1,0 +1,39 @@
+# babl — Pixel encoding and color space conversion engine
+# Required by GIMP and GEGL.
+#
+# BLFS
+
+[package]
+name = "babl"
+version = "0.1.126"
+description = "babl — Pixel encoding and color space conversion"
+license = "LGPL-3.0-only"
+groups = ["desktops", "libs"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://download.gimp.org/pub/babl/0.1/babl-0.1.126.tar.xz"
+sha256 = "3f090f4b2a61fecf7c8dc60a5804bbc77cefd8d778af2ded059f0e367a52930e"
+patches = []
+
+[depends]
+runtime = ["glibc", "lcms2"]
+build = ["gcc", "make", "pkgconf", "meson", "ninja", "gobject-introspection"]
+
+[build]
+pre_build = ""
+configure = """
+mkdir -p build && cd build && \
+meson setup .. --prefix=/usr --buildtype=release \
+  -Dwith-docs=false -Denable-gir=true
+"""
+make = "cd build && ninja -j$(nproc)"
+check = ""
+install = "cd build && DESTDIR=$PKG ninja install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

@@ -1,0 +1,34 @@
+# libdvdread — DVD reading library
+#
+# BLFS
+
+[package]
+name = "libdvdread"
+version = "7.0.1"
+description = "libdvdread — DVD reading library"
+license = "GPL-2.0-only"
+groups = ["desktops", "audio"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://download.videolan.org/pub/videolan/libdvdread/7.0.1/libdvdread-7.0.1.tar.bz2"
+sha256 = "cf9be91f18e11cf4bf9caf1181753266a2b7f159327bb3d0081bcc02260d27c2"
+patches = []
+
+[depends]
+runtime = ["glibc"]
+build = ["gcc", "make", "pkgconf"]
+
+[build]
+pre_build = ""
+configure = "./configure --prefix=/usr --disable-static"
+make = "make -j$(nproc)"
+check = ""
+install = "make DESTDIR=$PKG install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

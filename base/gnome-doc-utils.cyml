@@ -1,0 +1,36 @@
+# gnome-doc-utils — Legacy documentation tools for GNOME
+# EOL upstream (2014, last release 0.20.10). Still needed by gparted.
+# Superseded by yelp-tools + itstool for modern GNOME.
+#
+# BLFS
+
+[package]
+name = "gnome-doc-utils"
+version = "0.20.10"
+description = "gnome-doc-utils — Legacy GNOME documentation tools (EOL upstream)"
+license = "GPL-2.0-only"
+groups = ["base", "build", "tier2"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://download.gnome.org/sources/gnome-doc-utils/0.20/gnome-doc-utils-0.20.10.tar.xz"
+sha256 = "cb0639ffa9550b6ddf3b62f3b1add92fb92ab4690d351f2353cffe668be8c4a6"
+patches = []
+
+[depends]
+runtime = ["python", "libxml2", "libxslt"]
+build = ["python", "pkgconf", "intltool"]
+
+[build]
+pre_build = ""
+configure = "./configure --prefix=/usr --disable-scrollkeeper"
+make = "make -j$(nproc)"
+check = ""
+install = "make DESTDIR=$PKG install"
+post_install = ""
+
+[security]
+hardening = []
+cflags = ""
+ldflags = ""

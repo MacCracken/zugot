@@ -1,0 +1,39 @@
+# libportal — GIO-style wrappers for Flatpak/desktop portals
+# Provides async API for xdg-desktop-portal file choosers, print, etc.
+#
+# BLFS
+
+[package]
+name = "libportal"
+version = "0.9.1"
+description = "libportal — GIO wrappers for XDG desktop portals"
+license = "LGPL-3.0-only"
+groups = ["desktops", "libs"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://github.com/flatpak/libportal/archive/refs/tags/0.9.1.tar.gz"
+sha256 = "ea422b789ae487e04194d387bea031fd7485bf88a18aef8c767f7d1c29496a4e"
+patches = []
+
+[depends]
+runtime = ["glib"]
+build = ["gcc", "make", "pkgconf", "meson", "ninja", "gobject-introspection", "vala"]
+
+[build]
+pre_build = ""
+configure = """
+mkdir -p build && cd build && \
+meson setup .. --prefix=/usr --buildtype=release \
+  -Dbackend-gtk3=disabled -Dbackend-gtk4=disabled -Dbackend-qt5=disabled -Dbackend-qt6=disabled -Ddocs=false
+"""
+make = "cd build && ninja -j$(nproc)"
+check = ""
+install = "cd build && DESTDIR=$PKG ninja install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

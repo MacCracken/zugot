@@ -1,0 +1,40 @@
+# minizip-ng — zlib-ng zip manipulation library
+#
+# BLFS
+
+[package]
+name = "minizip"
+version = "4.1.0"
+description = "minizip-ng — Zip file manipulation library (zlib-ng fork)"
+license = "Zlib"
+groups = ["desktops", "libs"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://github.com/zlib-ng/minizip-ng/archive/refs/tags/4.1.0.tar.gz"
+sha256 = "85417229bb0cd56403e811c316150eea1a3643346d9cec7512ddb7ea291b06f2"
+patches = []
+
+[depends]
+runtime = ["glibc", "zlib"]
+build = ["gcc", "make", "cmake", "ninja", "pkgconf"]
+
+[build]
+pre_build = ""
+configure = """
+cmake -B build -G Ninja \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DBUILD_SHARED_LIBS=ON \
+    -DMZ_COMPAT=ON
+"""
+make = "cmake --build build --parallel"
+check = ""
+install = "DESTDIR=$PKG cmake --install build"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

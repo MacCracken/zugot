@@ -1,0 +1,35 @@
+# tree-sitter — Incremental parsing library
+# Used by helix, neovim, and other modern editors.
+#
+# BLFS
+
+[package]
+name = "tree-sitter"
+version = "0.26.8"
+description = "tree-sitter — Incremental parser generator and parse library"
+license = "MIT"
+groups = ["desktops", "libs"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://github.com/tree-sitter/tree-sitter/archive/refs/tags/v0.26.8.tar.gz"
+sha256 = "e6826b7533ec3a885aba598377a6d20b5a6321ff3db76968e960c2352d3a5077"
+patches = []
+
+[depends]
+runtime = ["glibc"]
+build = ["gcc", "make"]
+
+[build]
+pre_build = ""
+configure = ""
+make = "make PREFIX=/usr -j$(nproc)"
+check = ""
+install = "make PREFIX=/usr DESTDIR=$PKG install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

@@ -1,0 +1,39 @@
+# toml++ — Header-only TOML parser for C++17
+#
+# BLFS
+
+[package]
+name = "tomlplusplus"
+version = "3.4.0"
+description = "toml++ — Header-only C++17 TOML parser"
+license = "MIT"
+groups = ["desktops", "libs"]
+release = 1
+arch = "any"
+
+[source]
+url = "https://github.com/marzer/tomlplusplus/archive/refs/tags/v3.4.0.tar.gz"
+sha256 = "8517f65938a4faae9ccf8ebb36631a38c1cadfb5efa85d9a72e15b9e97d25155"
+patches = []
+
+[depends]
+runtime = []
+build = ["cmake", "ninja"]
+
+[build]
+pre_build = ""
+configure = """
+cmake -B build -G Ninja \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DBUILD_SHARED_LIBS=OFF
+"""
+make = "cmake --build build"
+check = ""
+install = "DESTDIR=$PKG cmake --install build"
+post_install = ""
+
+[security]
+hardening = []
+cflags = "-O2 -pipe"
+ldflags = ""

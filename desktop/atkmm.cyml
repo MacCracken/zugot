@@ -1,0 +1,38 @@
+# atkmm — C++ bindings for ATK accessibility library
+#
+# BLFS
+
+[package]
+name = "atkmm"
+version = "2.36.3"
+description = "atkmm — C++ bindings for ATK accessibility toolkit"
+license = "LGPL-2.0-only"
+groups = ["desktops", "libs"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://download.gnome.org/sources/atkmm/2.36/atkmm-2.36.3.tar.xz"
+sha256 = "6ec264eaa0c4de0adb7202c600170bde9a7fbe4d466bfbe940eaf7faaa6c5974"
+patches = []
+
+[depends]
+runtime = ["atk", "glibmm"]
+build = ["gcc", "make", "pkgconf", "meson", "ninja", "mm-common"]
+
+[build]
+pre_build = ""
+configure = """
+mkdir -p build && cd build && \
+meson setup .. --prefix=/usr --buildtype=release \
+  -Dbuild-documentation=false
+"""
+make = "cd build && ninja -j$(nproc)"
+check = ""
+install = "cd build && DESTDIR=$PKG ninja install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

@@ -1,0 +1,35 @@
+# hicolor-icon-theme — Default fallback icon theme
+# Provides the base "hicolor" directory structure required by every icon theme.
+#
+# BLFS
+
+[package]
+name = "hicolor-icon-theme"
+version = "0.18"
+description = "hicolor-icon-theme — Default fallback icon theme"
+license = "LGPL-2.0-only"
+groups = ["desktops", "fonts"]
+release = 1
+arch = "any"
+
+[source]
+url = "https://icon-theme.freedesktop.org/releases/hicolor-icon-theme-0.18.tar.xz"
+sha256 = "db0e50a80aa3bf64bb45cbca5cf9f75efd9348cf2ac690b907435238c3cf81d7"
+patches = []
+
+[depends]
+runtime = []
+build = ["gcc", "make"]
+
+[build]
+pre_build = ""
+configure = "./configure --prefix=/usr"
+make = "make -j$(nproc)"
+check = ""
+install = "make DESTDIR=$PKG install"
+post_install = ""
+
+[security]
+hardening = []
+cflags = ""
+ldflags = ""

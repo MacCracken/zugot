@@ -1,0 +1,35 @@
+# libpwquality — Password quality checking library
+# Used by PAM, GNOME Control Center to evaluate password strength.
+#
+# BLFS
+
+[package]
+name = "libpwquality"
+version = "1.4.5"
+description = "libpwquality — Password quality checking library"
+license = "BSD-3-Clause OR GPL-2.0-only"
+groups = ["desktops", "security"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://github.com/libpwquality/libpwquality/releases/download/libpwquality-1.4.5/libpwquality-1.4.5.tar.bz2"
+sha256 = "6fcf18b75d305d99d04d2e42982ed5b787a081af2842220ed63287a2d6a10988"
+patches = []
+
+[depends]
+runtime = ["glibc", "cracklib", "linux-pam"]
+build = ["gcc", "make", "pkgconf", "python"]
+
+[build]
+pre_build = ""
+configure = "./configure --prefix=/usr --disable-python-bindings"
+make = "make -j$(nproc)"
+check = ""
+install = "make DESTDIR=$PKG install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

@@ -1,0 +1,35 @@
+# exo — XFCE extension library
+# Core helper library used across the XFCE desktop stack.
+#
+# BLFS
+
+[package]
+name = "exo"
+version = "4.20.0"
+description = "exo — XFCE extension library (helpers, mimetype handlers)"
+license = "LGPL-2.1-only"
+groups = ["desktops", "libs"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://archive.xfce.org/src/xfce/exo/4.20/exo-4.20.0.tar.bz2"
+sha256 = "4277f799245f1efde01cd917fd538ba6b12cf91c9f8a73fe2035fd5456ec078d"
+patches = []
+
+[depends]
+runtime = ["glib", "gtk3", "libxfce4util", "libxfce4ui"]
+build = ["gcc", "make", "pkgconf", "intltool"]
+
+[build]
+pre_build = ""
+configure = "./configure --prefix=/usr --sysconfdir=/etc"
+make = "make -j$(nproc)"
+check = ""
+install = "make DESTDIR=$PKG install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

@@ -1,0 +1,46 @@
+# NSPR — Netscape Portable Runtime
+# Platform abstraction layer used by NSS and Mozilla applications.
+#
+# BLFS
+
+[package]
+name = "nspr"
+version = "4.38.2"
+description = "NSPR — Netscape Portable Runtime"
+license = "MPL-2.0"
+groups = ["base", "libs", "tier1"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://archive.mozilla.org/pub/nspr/releases/v4.38.2/src/nspr-4.38.2.tar.gz"
+sha256 = "e4092faeab77bdc9b32db1113e4215948ee768e26c4666db3b5a60b35f2c9105"
+patches = []
+
+[depends]
+runtime = ["glibc"]
+build = ["gcc", "make"]
+
+[build]
+pre_build = "cd nspr"
+configure = """
+cd nspr && ./configure \
+    --prefix=/usr \
+    --with-mozilla \
+    --with-pthreads \
+    --enable-64bit
+"""
+make = "cd nspr && make -j$(nproc)"
+check = ""
+install = """
+cd nspr
+make DESTDIR=$PKG install
+# Remove static libraries
+rm -f $PKG/usr/lib/*.a
+"""
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

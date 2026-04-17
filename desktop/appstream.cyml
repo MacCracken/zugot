@@ -1,0 +1,39 @@
+# appstream — Tools and library for AppStream metadata
+# Processes .metainfo.xml application descriptions for software stores.
+#
+# BLFS
+
+[package]
+name = "appstream"
+version = "1.1.2"
+description = "appstream — Tools for AppStream application metadata"
+license = "LGPL-2.1-only"
+groups = ["desktops", "libs", "tools"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://github.com/ximion/appstream/archive/refs/tags/v1.1.2.tar.gz"
+sha256 = "564ec87b16e9e4ee81fb021e612250fd27f3a3ecd31c209a5dd1ff59def3022d"
+patches = []
+
+[depends]
+runtime = ["glib", "libxml2", "libxslt", "libyaml", "gdk-pixbuf", "libxmlb", "curl"]
+build = ["gcc", "make", "pkgconf", "meson", "ninja", "gobject-introspection", "vala", "itstool", "gperf"]
+
+[build]
+pre_build = ""
+configure = """
+mkdir -p build && cd build && \
+meson setup .. --prefix=/usr --buildtype=release \
+  -Dgir=true -Dvapi=true -Dapidocs=false -Dqt=false
+"""
+make = "cd build && ninja -j$(nproc)"
+check = ""
+install = "cd build && DESTDIR=$PKG ninja install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

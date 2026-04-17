@@ -1,0 +1,34 @@
+# Oniguruma — Regular expression library (Ruby, PHP, jq)
+#
+# BLFS
+
+[package]
+name = "oniguruma"
+version = "6.9.10"
+description = "Oniguruma — Regular expression library"
+license = "BSD-2-Clause"
+groups = ["desktops", "libs"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://github.com/kkos/oniguruma/releases/download/v6.9.10/onig-6.9.10.tar.gz"
+sha256 = "2a5cfc5ae259e4e97f86b68dfffc152cdaffe94e2060b770cb827238d769fc05"
+patches = []
+
+[depends]
+runtime = ["glibc"]
+build = ["gcc", "make", "pkgconf"]
+
+[build]
+pre_build = ""
+configure = "./configure --prefix=/usr --disable-static"
+make = "make -j$(nproc)"
+check = "make check || true"
+install = "make DESTDIR=$PKG install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

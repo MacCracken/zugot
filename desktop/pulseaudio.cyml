@@ -1,0 +1,44 @@
+# PulseAudio — Network-capable sound server
+# Legacy sound server kept for compatibility with apps that don't yet use PipeWire.
+# On AGNOS, PipeWire is the primary audio server; PulseAudio is installed only
+# when explicitly requested by apps (brave, chromium, firefox list it as runtime).
+#
+# BLFS
+
+[package]
+name = "pulseaudio"
+version = "17.0"
+description = "PulseAudio — legacy sound server (kept for compatibility; PipeWire preferred)"
+license = "LGPL-2.1-only"
+groups = ["desktops", "audio"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://www.freedesktop.org/software/pulseaudio/releases/pulseaudio-17.0.tar.xz"
+sha256 = "053794d6671a3e397d849e478a80b82a63cb9d8ca296bd35b73317bb5ceb87b5"
+patches = []
+
+[depends]
+runtime = ["glibc", "alsa-lib", "dbus", "glib", "libsndfile", "libcap", "speexdsp", "libltdl"]
+build = ["gcc", "make", "pkgconf", "meson", "ninja"]
+
+[build]
+pre_build = ""
+configure = """
+mkdir -p build && cd build && \
+meson setup .. --prefix=/usr --buildtype=release \
+  -Dsystemd=disabled \
+  -Ddatabase=simple \
+  -Ddoxygen=false \
+  -Dman=false
+"""
+make = "cd build && ninja -j$(nproc)"
+check = "cd build && meson test || true"
+install = "cd build && DESTDIR=$PKG ninja install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

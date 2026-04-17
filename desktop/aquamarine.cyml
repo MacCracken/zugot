@@ -1,0 +1,39 @@
+# aquamarine — Hyprland rendering/backend library
+# Wayland compositor backend abstraction used by Hyprland.
+#
+# BLFS
+
+[package]
+name = "aquamarine"
+version = "0.10.0"
+description = "aquamarine — Hyprland compositor rendering backend"
+license = "BSD-3-Clause"
+groups = ["desktops", "libs"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://github.com/hyprwm/aquamarine/archive/refs/tags/v0.10.0.tar.gz"
+sha256 = "0ec80c86dd94d7f2836aac9ed415b9170109bd77048de791d837ee729f1ad76a"
+patches = []
+
+[depends]
+runtime = ["libdrm", "libinput", "libseat", "mesa", "pixman", "libgbm", "libxkbcommon", "wayland", "wayland-protocols"]
+build = ["gcc", "make", "cmake", "ninja", "pkgconf", "hyprwayland-scanner"]
+
+[build]
+pre_build = ""
+configure = """
+cmake -B build -G Ninja \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release
+"""
+make = "cmake --build build --parallel"
+check = ""
+install = "DESTDIR=$PKG cmake --install build"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

@@ -1,0 +1,34 @@
+# containerd — Container runtime (CRI for Kubernetes, runc wrapper)
+#
+# BLFS / AI Stack
+
+[package]
+name = "containerd"
+version = "2.2.3"
+description = "containerd — Industry-standard container runtime"
+license = "Apache-2.0"
+groups = ["containers"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://github.com/containerd/containerd/archive/refs/tags/v2.2.3.tar.gz"
+sha256 = "b97780bde4b01ed3596b0b0c6f55bfb130794a3db4e6fe2e0fc9719244933945"
+patches = []
+
+[depends]
+runtime = ["glibc", "runc"]
+build = ["go", "make", "protobuf"]
+
+[build]
+pre_build = ""
+configure = ""
+make = "make -j$(nproc)"
+check = ""
+install = "make DESTDIR=$PKG install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

@@ -1,0 +1,35 @@
+# cracklib — Password strength checking library
+# Dictionary-based password guessability checker. Used by libpwquality and PAM.
+#
+# BLFS
+
+[package]
+name = "cracklib"
+version = "2.10.3"
+description = "cracklib — Password strength checking library"
+license = "LGPL-2.1-only"
+groups = ["desktops", "security"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://github.com/cracklib/cracklib/archive/refs/tags/v2.10.3.tar.gz"
+sha256 = "e320d5bbd84872e1f3a68a923084c68e360b9cfce090d3281af32d810dea0cf1"
+patches = []
+
+[depends]
+runtime = ["glibc", "zlib"]
+build = ["gcc", "make", "autoconf", "automake", "libtool", "gettext", "python"]
+
+[build]
+pre_build = "cd cracklib && autoreconf -fi"
+configure = "cd cracklib && ./configure --prefix=/usr --disable-static"
+make = "cd cracklib && make -j$(nproc)"
+check = ""
+install = "cd cracklib && make DESTDIR=$PKG install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

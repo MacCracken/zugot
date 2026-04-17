@@ -1,0 +1,42 @@
+# iptables — Legacy Linux packet filtering (kept alongside nftables)
+# Some containers/VPN tools still shell out to iptables.
+#
+# BLFS
+
+[package]
+name = "iptables"
+version = "1.8.13"
+description = "iptables — Legacy Linux packet filter (use nftables for new rules)"
+license = "GPL-2.0-only"
+groups = ["network"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://www.netfilter.org/pub/iptables/iptables-1.8.13.tar.xz"
+sha256 = "1afcd33da9e8f913ace6a2126788162e207e26f5d5e29c6573c0e581ffc58b99"
+patches = []
+
+[depends]
+runtime = ["glibc", "libmnl", "libnftnl"]
+build = ["gcc", "make", "pkgconf", "bison", "flex"]
+
+[build]
+pre_build = ""
+configure = """
+./configure \
+    --prefix=/usr \
+    --sbindir=/usr/sbin \
+    --disable-nftables \
+    --enable-libipq \
+    --with-xtlibdir=/usr/lib/xtables
+"""
+make = "make -j$(nproc)"
+check = ""
+install = "make DESTDIR=$PKG install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

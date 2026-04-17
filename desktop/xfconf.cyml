@@ -1,0 +1,35 @@
+# xfconf — XFCE configuration storage system
+# D-Bus service providing persistent settings for XFCE components.
+#
+# BLFS
+
+[package]
+name = "xfconf"
+version = "4.20.0"
+description = "xfconf — XFCE D-Bus configuration storage"
+license = "LGPL-2.1-only"
+groups = ["desktops", "libs"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://archive.xfce.org/src/xfce/xfconf/4.20/xfconf-4.20.0.tar.bz2"
+sha256 = "8bc43c60f1716b13cf35fc899e2a36ea9c6cdc3478a8f051220eef0f53567efd"
+patches = []
+
+[depends]
+runtime = ["glib", "dbus", "libxfce4util"]
+build = ["gcc", "make", "pkgconf", "intltool", "vala"]
+
+[build]
+pre_build = ""
+configure = "./configure --prefix=/usr --sysconfdir=/etc"
+make = "make -j$(nproc)"
+check = ""
+install = "make DESTDIR=$PKG install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

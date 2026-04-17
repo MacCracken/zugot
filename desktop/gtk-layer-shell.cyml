@@ -1,0 +1,39 @@
+# gtk-layer-shell — Layer Shell protocol support for GTK
+# Required by Wayland panel/bar applications (waybar, wofi, etc.).
+#
+# BLFS
+
+[package]
+name = "gtk-layer-shell"
+version = "0.10.1"
+description = "gtk-layer-shell — wlr-layer-shell protocol implementation for GTK"
+license = "MIT"
+groups = ["desktops", "libs"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://github.com/wmww/gtk-layer-shell/archive/refs/tags/v0.10.1.tar.gz"
+sha256 = "88c3a3e0a5300532f3d368d5df64838a87f1fb85273f22d41df0a6b8d0ec59c6"
+patches = []
+
+[depends]
+runtime = ["gtk3", "wayland", "wayland-protocols"]
+build = ["gcc", "make", "pkgconf", "meson", "ninja", "gobject-introspection", "vala"]
+
+[build]
+pre_build = ""
+configure = """
+mkdir -p build && cd build && \
+meson setup .. --prefix=/usr --buildtype=release \
+  -Dtests=false -Dexamples=false -Ddocs=false
+"""
+make = "cd build && ninja -j$(nproc)"
+check = ""
+install = "cd build && DESTDIR=$PKG ninja install"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

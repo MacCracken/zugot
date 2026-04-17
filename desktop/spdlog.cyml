@@ -1,0 +1,40 @@
+# spdlog — Fast C++ logging library
+#
+# BLFS
+
+[package]
+name = "spdlog"
+version = "1.17.0"
+description = "spdlog — Fast C++ logging library"
+license = "MIT"
+groups = ["desktops", "libs"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://github.com/gabime/spdlog/archive/refs/tags/v1.17.0.tar.gz"
+sha256 = "d8862955c6d74e5846b3f580b1605d2428b11d97a410d86e2fb13e857cd3a744"
+patches = []
+
+[depends]
+runtime = ["glibc", "fmt"]
+build = ["gcc", "make", "cmake", "ninja", "pkgconf", "fmt"]
+
+[build]
+pre_build = ""
+configure = """
+cmake -B build -G Ninja \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DSPDLOG_BUILD_SHARED=ON \
+    -DSPDLOG_FMT_EXTERNAL=ON
+"""
+make = "cmake --build build --parallel"
+check = ""
+install = "DESTDIR=$PKG cmake --install build"
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = "-O2 -pipe"
+ldflags = "-Wl,--as-needed"

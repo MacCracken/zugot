@@ -1,0 +1,35 @@
+# Cython — Compiler for writing C extensions to Python
+# Required by numpy, scipy, pandas, and blueman.
+#
+# BLFS / AI Stack
+
+[package]
+name = "cython"
+version = "3.2.4"
+description = "Cython — C extension compiler for Python"
+license = "Apache-2.0"
+groups = ["ai", "python", "tools"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://github.com/cython/cython/archive/refs/tags/3.2.4.tar.gz"
+sha256 = "9631e586c49b9d3f72c3962c376119479a6a98e3c0e3c14d5218e199ef563b18"
+patches = []
+
+[depends]
+runtime = ["python"]
+build = ["python", "pip"]
+
+[build]
+pre_build = ""
+configure = ""
+make = "python3 setup.py build"
+check = ""
+install = "python3 -m pip install --prefix=/usr --root=$PKG --no-deps ."
+post_install = ""
+
+[security]
+hardening = []
+cflags = ""
+ldflags = ""
