@@ -2,11 +2,16 @@
 # OpenPGP implementation for package signing verification, key management.
 # Used by sigil for .ark package signature verification.
 #
+# Moved from 2.4.x stable to 2.5.x (LTS-in-waiting) on 2026-04-17 to address
+# CVE-2026-24881 (CVSS 9.8, stack-based buffer overflow in gpg-agent CMS
+# PKDECRYPT path; crafted S/MIME EnvelopedData can trigger RCE). The 2.4.x
+# branch is EOL 2026-06-30 and the upstream did not backport the fix.
+#
 # BLFS
 
 [package]
 name = "gnupg"
-version = "2.4.9"
+version = "2.5.18"
 description = "GnuPG — GNU Privacy Guard (OpenPGP)"
 license = "GPL-3.0-only"
 groups = ["base", "security", "tier1"]
@@ -14,8 +19,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.4.9.tar.bz2"
-sha256 = "dd17ab2e9a04fd79d39d853f599cbc852062ddb9ab52a4ddeb4176fd8b302964"
+url = "https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.5.18.tar.bz2"
+sha256 = "0dbd64e0322fe1a4813360d46539d5f8daf4a8fa235cf5fce464e8b0214a7e4f"
 patches = []
 
 [depends]

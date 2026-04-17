@@ -6,6 +6,32 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+### Security (audit 2026-04-17)
+
+See `docs/audit/2026-04-17.md` for the full report.
+
+- **`base/gnupg.cyml`** 2.4.9 → **2.5.18** (CVE-2026-24881, CVSS 9.8 CRITICAL — stack-based buffer overflow in gpg-agent CMS `PKDECRYPT` path, crafted S/MIME `EnvelopedData` → RCE/DoS). The 2.4.x stable branch is EOL 2026-06-30 and upstream did not backport; migration to 2.5.x was the only path. SHA256 verified from fresh download (`0dbd64e0...`).
+
+### Security — monitor (no upstream fix yet)
+
+Seven packages at the latest upstream but with known unpatched CVEs. Documented in `docs/development/roadmap.md` §P2 and `docs/audit/2026-04-17.md`:
+
+- `base/sudo.cyml` 1.9.17p2 — CVE-2026-35535 (CVSS 7.4, local privesc)
+- `base/glibc.cyml` 2.43 — CVE-2026-4046 (CVSS 7.5, iconv DoS)
+- `desktops/libtiff.cyml` 4.7.1 — CVE-2025-61144/61143
+- `base/binutils.cyml` 2.46.0 — CVE-2026-4647 + older (RHSA backports available)
+- `desktops/gstreamer.cyml` + plugins 1.28.2 — CVE-2026-5056 (CVSS 7.8 local)
+- `base/libarchive.cyml` 3.8.7 — CVE-2026-4111 (RAR5 DoS)
+- `desktops/libxslt.cyml` 1.1.45 — CVE-2025-11731 + 3 older (project under-maintained)
+
+Plus `base/nss.cyml` 3.122.1 — CVE-2026-2781/4727 status unclear until Mozilla release notes publish.
+
+### Documentation
+
+- New `docs/audit/2026-04-17.md` — first external-research CVE audit. Structure is reusable: one file per audit pass, dated. Next cycle ~2026-05-15.
+
+## [Unreleased]
+
 ### Straggler SHA Population (2026-04-17)
 
 - **`base/gn.cyml`** — pinned to commit `ab5eb178` (main-branch head 2026-04-17); version field `20260417-ab5eb178`. SHA256 verified (`5fbe3e56...`). googlesource archive endpoint requires `Accept: application/x-gzip` header; documented in recipe comment.

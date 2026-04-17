@@ -84,6 +84,25 @@ Check periodically: `for n in $list; do git ls-remote https://github.com/MacCrac
 
 ---
 
+## P2 · Security — CVE audit follow-ups (from docs/audit/2026-04-17.md)
+
+Seven packages have **unpatched-upstream** CVEs; we're already at the latest and must monitor for fixes. Re-audit scheduled ~2026-05-15.
+
+| package | pinned | CVE | CVSS | status |
+|---|---|---|---|---|
+| `base/sudo.cyml` | 1.9.17p2 | CVE-2026-35535 | 7.4 | monitor 1.9.17p3 |
+| `base/glibc.cyml` | 2.43 | CVE-2026-4046 | 7.5 | monitor 2.44 or apply IBM1390/1399 charset-removal mitigation |
+| `desktops/libtiff.cyml` | 4.7.1 | CVE-2025-61144 + CVE-2025-61143 | 7.3 | monitor 4.7.2 |
+| `base/binutils.cyml` | 2.46.0 | CVE-2026-4647 + CVE-2025-1147/1148/11839 | mixed | consider RHSA-2026:0108/2627 backports |
+| `desktops/gstreamer.cyml` + plugins-base/good | 1.28.2 | CVE-2026-5056 | 7.8 (local) | monitor 1.28.3 |
+| `base/libarchive.cyml` | 3.8.7 | CVE-2026-4111 | medium | monitor 3.8.8+ |
+| `desktops/libxslt.cyml` | 1.1.45 | CVE-2025-11731 + 7424/7425/10911 | mixed | evaluate alternatives — project under-maintained |
+
+One uncertain:
+- `base/nss.cyml` 3.122.1 — CVE-2026-2781, CVE-2026-4727 status unclear until Mozilla publishes NSS 3.122.x release notes.
+
+✅ **Resolved in audit:** `base/gnupg.cyml` 2.4.9 → 2.5.18 (CVE-2026-24881, CVSS 9.8 — CMS EnvelopedData RCE; 2.4.x branch EOL, fix only in 2.5.x).
+
 ## P3 · Tooling / process
 
 ### ✅ Validator + CI — resolved 2026-04-17
