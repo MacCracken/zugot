@@ -7,6 +7,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and
 
 ## [Unreleased]
 
+## [1.0.1] - 2026-04-28
+
+A maintenance / drift-cleanup release. No new categories, no semantic changes to the recipe schema. Driven by a P(-1)-style audit pass: the Cyrius toolchain bumped from 5.2 → 5.7.x; AGNOS-native packages that ported from Rust → Cyrius upstream had their recipes updated to match; static sweeps for header drift, naming convention, hardening, broken release_asset globs, and stale cc2 references; root-level `ifran.cyml` moved into `ai/`. Validator clean across all 562+ recipes.
+
 ### Cyrius toolchain bump (2026-04-28)
 
 - **`base/cyrius.cyml`** 5.2.0 → **5.7.25**. Tarball SHA256 verified (`5d964a2e...`) against the live `cyrius-5.7.25-x86_64-linux.tar.gz` release. Install now ships two new binaries that landed during the 5.3–5.7 cycle: `cyriusly` (workspace runner) and `cyrld` (linker driver). Hardening flags populated (`pie`, `fullrelro`, `fortify`, `stackprotector`, `bindnow`) — previous recipe carried an empty `hardening = []` even though the upstream build links these by default.
@@ -91,10 +95,49 @@ Recipes ported from `cargo build` / `build = ["rust"]` / `groups = [..., "rust"]
 
 ### Tier B — what's left
 
-- **Set 2 (10 `cyrius.toml` recipes)** — `agnoshi`, `ai-hwaccel`, `avatara`, `bote`, `hoosh`, `itihas`, `kavach`, `nein`, `shravan`, `t-ron`. Same template, just probing for the newer manifest filename.
+### Root /ifran.cyml moved to ai/ (2026-04-28)
+
+The system-package recipe for ifran was sitting at the repo root — illegal layout per the category-subdirectory convention; predated this audit cycle. Moved via `git mv ifran.cyml ai/ifran.cyml` (history preserved). The marketplace bundle variant `marketplace/ifran.cyml` is unchanged. Ifran upstream is still Rust (`Cargo.toml` at HEAD, no Cyrius manifest), so the recipe stays on `cargo build` for now — port lands when upstream cuts a Cyrius release.
+
+### base/bazaar — Cyrius port (2026-04-28)
+
+- **`base/bazaar.cyml`** 2026.3.18 → **1.0.0** (upstream's first stable release, versioned in lockstep with zugot tags). SHA `85e7c5d5…` verified against `bazaar-1.0.0-src.tar.gz`. Source switched from `local = true` to the upstream release tarball. Build switched from `cargo build --release --bin bazaar` to `cyrius build`. Output binary renamed from `bazaar` to `bazaar-validate` (matches upstream `cyrius.cyml` `output = "build/bazaar-validate"`); the now-meaningless `ark-bazaar` symlink dropped (user-facing commands ride on `ark bazaar <subcommand>` rather than a standalone binary). Default `/etc/agnos/bazaar/config.toml` heredoc preserved verbatim.
+
+### agnos-kernel bump (2026-04-28)
+
+- **`base/agnos-kernel.cyml`** 1.22.0 → **1.26.1**. SHA `c2b82039…` verified against `agnos-1.26.1-src.tar.gz`. Build switched from the bare `cat kernel/agnos.cyr | cc5 > build/agnos` pipe to `cyrius build` (upstream `cyrius.cyml` declares `entry = "kernel/agnos.cyr"`, `output = "build/agnos"`; no external deps so `cyrius deps` is a no-op). Comment added explaining `hardening = []` is intentional for a freestanding multiboot1 ELF.
+- **`marketplace/agnos-kernel.cyml`** 1.22.0 → **1.26.1**. SHA `c2b82039…`. `release_asset` glob `agnos-*-x86_64.tar.gz` (never matched — upstream ships `*-src.tar.gz` + bare `agnos-x86_64`) corrected to `agnos-*-src.tar.gz`. Build step swapped from `cat | cc5` to `cyrius build`. Same `hardening = []` annotation.
+
+### Tier A follow-up — Status header drift (2026-04-28)
+
+The first Tier A pass (anchored on `Status: Released — vX.Y.Z[.]$`) missed Status lines that have prose appended after the version (`v0.29.4 on crates.io + GitHub.`, `v0.29.4 (linux amd64 + arm64).`, etc.). Caught in a second sweep:
+
+- `marketplace/ranga.cyml`: `Status: Published — v0.29.4 on crates.io + GitHub` → `v1.0.0`
+- `marketplace/selah.cyml`: `Status: Published — v0.29.4 (linux amd64 + arm64)` → `v2026.3.17`
+- `marketplace/tarang.cyml`: `Status: Published — v0.21.3 on crates.io + GitHub` → `v2026.3.18`
+- `marketplace/tazama.cyml`: prose cross-ref `tarang 0.20.3` → `tarang 2026.3.18` (tarang's bumped version, not tazama's own)
+
+### Tier B — set 2 ports (10 cyrius.toml recipes, 2026-04-28)
+
+Same daimon/kybernet/vidya template applied. Set 2 upstreams overwhelmingly publish a single bare-binary asset (`<name>` with no version/platform suffix), so 9 of 10 are bare-bin installs. Marketplace metadata, sandbox config, and Landlock blocks preserved verbatim from prior recipe; SHA256 verified against API digest and spot-checked against fresh downloads.
+
+**Bare-binary installs:**
+- `marketplace/agnoshi.cyml` 1.0.0 (rebuild — same version, now Cyrius). SHA `af7aae40…`. Bin renamed `agnsh` → `agnoshi` to match upstream asset name.
+- `marketplace/ai-hwaccel.cyml` 2.0.0 (rebuild). SHA `121e90dd…`.
+- `marketplace/avatara.cyml` 2.3.0 (rebuild). SHA `f2b2e085…`.
+- `marketplace/bote.cyml` 2.5.1 (rebuild). SHA `2aa7359d…`.
+- `marketplace/hoosh.cyml` 2.0.0 (rebuild). SHA `ba417a91…`. Dropped `openssl` runtime dep — upstream `cyrius.toml` confirms TLS via `sandhi` stdlib, no openssl link.
+- `marketplace/itihas.cyml` 2.2.0 (rebuild). SHA `1501480a…`.
+- `marketplace/kavach.cyml` 2.0.0 → **3.0.0**. SHA `7876b104…`.
+- `marketplace/nein.cyml` 1.0.0 (rebuild). SHA `68b5d020…`.
+- `marketplace/t-ron.cyml` 2.0.0 (rebuild). SHA `69e28fe9…`.
+
+**Source-tarball build:**
+- `marketplace/shravan.cyml` 2.3.2 (rebuild). SHA `c9e4d6ce…`. `cyrius build` → `build/shravan`.
+
+This closes the rust→cyrius port pass for the 26 confirmed-ported recipes (16 cyml in set 1 + 10 toml in set 2).
 - **Container-shaped (2)** — `bullshift`, `photisnadi`. Need a recipe-shape decision (do we install upstream's container, or run a build with the upstream Dockerfile, or something else?).
 - **Roadmapped placeholders (6)** — `abacus`, `mela`, `murti`, `samay`, `seema`, `tanur`. Per the user, intentionally unscaffolded — leave the recipes as-is.
-- **`marketplace/agnos-kernel.cyml`** — 1.22.0 → 1.26.1 + `release_asset` glob fix (`agnos-*-x86_64.tar.gz` never matched; actual upstream is `agnos-<v>-src.tar.gz` + bare `agnos-x86_64`) + build-step rework. Distinct from the cargo→cyrius template — kernel boots, doesn't ship a userspace binary.
 
 ### Notes
 

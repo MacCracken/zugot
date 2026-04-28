@@ -4,31 +4,32 @@
 # bridge, discovery, sandbox.
 #
 # Name: Bote (German: messenger)
-# Lib: bote = "2.5.1" in Cargo.toml
+# Bin: bote
+# Lang: Cyrius (was a Rust crate through 0.92.x; 2.x is the Cyrius rewrite)
 #
-# Status: Released — v0.92.0 (pre-1.0 hardening).
+# Status: Released — v2.5.1.
 
 [package]
 name = "bote"
 version = "2.5.1"
 description = "Bote — MCP core service (JSON-RPC 2.0, tool registry, host, dispatch, transport)"
 license = "GPL-3.0-only"
-groups = ["library", "mcp", "rust"]
+groups = ["library", "mcp", "cyrius"]
 release = 1
-arch = "any"
+arch = "x86_64"
 
 [source]
 github_release = "MacCracken/bote"
-release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+release_asset = "bote"
+sha256 = "2aa7359d365888ddf889063c8fd0c0ec5f8c3b910ff37da4ece23bf4a62e7e2a"
 
 [depends]
-runtime = []
-build = ["rust"]
+runtime = ["glibc"]
+build = []
 
 [marketplace]
 category = "library"
-runtime = "rust-crate"
+runtime = "native-binary"
 publisher = "AGNOS"
 tags = ["mcp", "json-rpc", "tools", "protocol", "agent", "host", "transport", "streaming", "rust"]
 min_agnos_version = "2026.3.24"
@@ -38,13 +39,11 @@ seccomp_mode = "basic"
 network_access = false
 
 [build]
-make = "cargo build --release"
-check = "cargo test --all-features"
+make = ""
+check = ""
 install = """
-mkdir -p $PKG/usr/lib/bote
-cp -r src $PKG/usr/lib/bote/
-cp Cargo.toml $PKG/usr/lib/bote/
-cp VERSION $PKG/usr/lib/bote/
+mkdir -p $PKG/usr/bin
+install -Dm755 bote $PKG/usr/bin/bote
 """
 
 [security]

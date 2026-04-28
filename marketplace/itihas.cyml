@@ -2,7 +2,8 @@
 # Civilizations, eras, events, historical figures, calendar metadata.
 #
 # Name: Itihas (Sanskrit: history/thus it was)
-# Lib: itihas = "2.2.0" in Cargo.toml
+# Bin: itihas
+# Lang: Cyrius (was a Rust crate through 1.x; 2.x is the Cyrius rewrite)
 #
 # Status: Released — v2.2.0.
 
@@ -11,22 +12,22 @@ name = "itihas"
 version = "2.2.0"
 description = "Itihas — world history engine"
 license = "GPL-3.0-only"
-groups = ["library", "science", "rust"]
+groups = ["library", "science", "cyrius"]
 release = 1
-arch = "any"
+arch = "x86_64"
 
 [source]
 github_release = "MacCracken/itihas"
-release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+release_asset = "itihas"
+sha256 = "1501480a4f0b9607c98ac13226ccb5dd2810f4b977d5f3832de633aa90c4bea4"
 
 [depends]
-runtime = []
-build = ["rust"]
+runtime = ["glibc"]
+build = []
 
 [marketplace]
 category = "library"
-runtime = "rust-crate"
+runtime = "native-binary"
 publisher = "AGNOS"
 tags = ["history", "civilization", "calendar", "events", "science", "rust"]
 min_agnos_version = "2026.3.24"
@@ -36,13 +37,11 @@ seccomp_mode = "basic"
 network_access = false
 
 [build]
-make = "cargo build --release"
-check = "cargo test --all-features"
+make = ""
+check = ""
 install = """
-mkdir -p $PKG/usr/lib/itihas
-cp -r src $PKG/usr/lib/itihas/
-cp Cargo.toml $PKG/usr/lib/itihas/
-cp VERSION $PKG/usr/lib/itihas/
+mkdir -p $PKG/usr/bin
+install -Dm755 itihas $PKG/usr/bin/itihas
 """
 
 [security]

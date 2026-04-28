@@ -1,33 +1,34 @@
-# T-Ron — MCP security monitor for AGNOS
-# Tool call auditing, rate limiting, injection detection, correlation,
-# safety guardrails, and anomaly analysis. Security middleware for bote.
+# T-RON — Security/MCP integration for the AGNOS ecosystem
+# (Sandbox-aware tool registry; bridges bote MCP dispatch and kavach
+# sandbox policy enforcement.)
 #
-# Name: T-Ron (the security program that fights the MCP)
-# Lib: t-ron = "2.0.0" in Cargo.toml
+# Name: T-RON
+# Bin: t-ron
+# Lang: Cyrius (was a Rust crate through 0.90.x; 2.x is the Cyrius rewrite)
 #
-# Status: Released — v0.90.0 (pre-1.0 hardening).
+# Status: Released — v2.0.0.
 
 [package]
 name = "t-ron"
 version = "2.0.0"
 description = "T-Ron — MCP security monitor (auditing, rate limiting, injection detection, correlation)"
 license = "GPL-3.0-only"
-groups = ["library", "security", "mcp", "rust"]
+groups = ["library", "security", "mcp", "cyrius"]
 release = 1
-arch = "any"
+arch = "x86_64"
 
 [source]
 github_release = "MacCracken/t-ron"
-release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+release_asset = "t-ron"
+sha256 = "69e28fe976db9dcba14221861961c7dd2a9bcb4fe559e8450264db7f29c0a188"
 
 [depends]
-runtime = []
-build = ["rust"]
+runtime = ["glibc"]
+build = []
 
 [marketplace]
 category = "library"
-runtime = "rust-crate"
+runtime = "native-binary"
 publisher = "AGNOS"
 tags = ["mcp", "security", "audit", "firewall", "agent", "injection", "rate-limit", "correlation", "safety", "rust"]
 min_agnos_version = "2026.3.24"
@@ -37,13 +38,11 @@ seccomp_mode = "basic"
 network_access = false
 
 [build]
-make = "cargo build --release"
-check = "cargo test --all-features"
+make = ""
+check = ""
 install = """
-mkdir -p $PKG/usr/lib/t-ron
-cp -r src $PKG/usr/lib/t-ron/
-cp Cargo.toml $PKG/usr/lib/t-ron/
-cp VERSION $PKG/usr/lib/t-ron/
+mkdir -p $PKG/usr/bin
+install -Dm755 t-ron $PKG/usr/bin/t-ron
 """
 
 [security]

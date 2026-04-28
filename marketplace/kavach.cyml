@@ -1,36 +1,34 @@
 # Kavach — Sandbox execution framework for the AGNOS ecosystem
-# Backend abstraction (8 backends), strength scoring (0-100), policy engine,
-# credential proxy, lifecycle FSM. Extracted from SecureYeoman.
+# Backend abstraction, strength scoring (0-100), policy engine, credential
+# proxy, lifecycle FSM. Extracted from SecureYeoman.
 #
 # Name: Kavach (Sanskrit: कवच — armor, shield)
-# Lib: kavach = "2.0.0" in Cargo.toml
+# Bin: kavach
+# Lang: Cyrius (was a Rust crate through 2.x; 3.x is the Cyrius rewrite)
 #
-# Status: Released — v2.0.0.
+# Status: Released — v3.0.0.
 
 [package]
 name = "kavach"
-version = "2.0.0"
+version = "3.0.0"
 description = "Kavach — Sandbox execution framework (8 backends, strength scoring, policy engine)"
 license = "GPL-3.0-only"
-groups = ["library", "security", "sandbox", "rust"]
+groups = ["library", "security", "sandbox", "cyrius"]
 release = 1
-arch = "any"
+arch = "x86_64"
 
 [source]
-crates_io = "kavach"
 github_release = "MacCracken/kavach"
-release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+release_asset = "kavach"
+sha256 = "7876b10434c129d3bf9b603bc65e7c1e5e05bec0580250150a48e7b24350a094"
 
 [depends]
-runtime = []
-build = [
-    "rust",
-]
+runtime = ["glibc"]
+build = []
 
 [marketplace]
 category = "library"
-runtime = "rust-crate"
+runtime = "native-binary"
 publisher = "AGNOS"
 tags = ["sandbox", "security", "isolation", "gvisor", "firecracker", "wasm", "sgx", "sev", "rust"]
 min_agnos_version = "2026.3.21"
@@ -40,16 +38,11 @@ seccomp_mode = "basic"
 network_access = false
 
 [build]
-make = "cargo build --release"
-check = "cargo test"
+make = ""
+check = ""
 install = """
-# Library crate — consumers add to Cargo.toml:
-#   kavach = "2.0.0"
-# Install source for offline/air-gapped Cargo builds.
-mkdir -p $PKG/usr/lib/kavach
-cp -r src $PKG/usr/lib/kavach/
-cp Cargo.toml $PKG/usr/lib/kavach/
-cp VERSION $PKG/usr/lib/kavach/
+mkdir -p $PKG/usr/bin
+install -Dm755 kavach $PKG/usr/bin/kavach
 """
 
 [security]

@@ -6,7 +6,7 @@
 # CLI: library-only (no binary)
 # Lib: ranga = "1.0.0" in Cargo.toml
 #
-# Status: Published — v0.29.4 on crates.io + GitHub.
+# Status: Published — v1.0.0 on crates.io + GitHub.
 
 [package]
 name = "ranga"

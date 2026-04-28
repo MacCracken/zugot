@@ -2,7 +2,8 @@
 # Mythological personality templates for AI agents.
 #
 # Name: Avatara (Sanskrit: incarnation/descent)
-# Lib: avatara = "2.3.0" in Cargo.toml
+# Bin: avatara
+# Lang: Cyrius (was a Rust crate through 1.x; 2.x is the Cyrius rewrite)
 #
 # Status: Released — v2.3.0.
 
@@ -11,22 +12,22 @@ name = "avatara"
 version = "2.3.0"
 description = "Avatara — divine archetype overlay"
 license = "GPL-3.0-only"
-groups = ["library", "science", "rust"]
+groups = ["library", "science", "cyrius"]
 release = 1
-arch = "any"
+arch = "x86_64"
 
 [source]
 github_release = "MacCracken/avatara"
-release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+release_asset = "avatara"
+sha256 = "f2b2e0855e4abf1d872f29086a9ea9f4b26218ae3c874ac12fecc758386e5b79"
 
 [depends]
-runtime = []
-build = ["rust"]
+runtime = ["glibc"]
+build = []
 
 [marketplace]
 category = "library"
-runtime = "rust-crate"
+runtime = "native-binary"
 publisher = "AGNOS"
 tags = ["mythology", "archetype", "personality", "ai", "science", "rust"]
 min_agnos_version = "2026.3.24"
@@ -36,13 +37,11 @@ seccomp_mode = "basic"
 network_access = false
 
 [build]
-make = "cargo build --release"
-check = "cargo test --all-features"
+make = ""
+check = ""
 install = """
-mkdir -p $PKG/usr/lib/avatara
-cp -r src $PKG/usr/lib/avatara/
-cp Cargo.toml $PKG/usr/lib/avatara/
-cp VERSION $PKG/usr/lib/avatara/
+mkdir -p $PKG/usr/bin
+install -Dm755 avatara $PKG/usr/bin/avatara
 """
 
 [security]

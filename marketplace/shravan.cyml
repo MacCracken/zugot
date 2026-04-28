@@ -1,8 +1,10 @@
-# Shravan — Audio codecs for AGNOS
-# Encode/decode for common audio formats.
+# Shravan — Audio analysis library for AGNOS
+# Audio fingerprinting, transcription routing, format detection.
+# Used by hoosh whisper integration and aethersafha sound design.
 #
-# Name: Shravan (Sanskrit: hearing/listening)
-# Lib: shravan = "2.3.2" in Cargo.toml
+# Name: Shravan (Sanskrit: श्रवण — hearing, listening)
+# Bin: shravan (audio CLI)
+# Lang: Cyrius (was a Rust crate through 1.x; 2.x is the Cyrius rewrite)
 #
 # Status: Released — v2.3.2.
 
@@ -11,22 +13,22 @@ name = "shravan"
 version = "2.3.2"
 description = "Shravan — audio codecs"
 license = "GPL-3.0-only"
-groups = ["library", "media", "rust"]
+groups = ["library", "media", "cyrius"]
 release = 1
-arch = "any"
+arch = "x86_64"
 
 [source]
 github_release = "MacCracken/shravan"
-release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+release_asset = "shravan-*-src.tar.gz"
+sha256 = "c9e4d6cea43e9961179ef59a7e69b775e8b5c676550a78702ce947bd15e806e9"
 
 [depends]
-runtime = []
-build = ["rust"]
+runtime = ["glibc"]
+build = ["cyrius"]
 
 [marketplace]
 category = "library"
-runtime = "rust-crate"
+runtime = "native-binary"
 publisher = "AGNOS"
 tags = ["audio", "codec", "decode", "encode", "media", "rust"]
 min_agnos_version = "2026.3.24"
@@ -36,13 +38,12 @@ seccomp_mode = "basic"
 network_access = false
 
 [build]
-make = "cargo build --release"
-check = "cargo test --all-features"
+make = "cyrius build"
+check = "cyrius test"
 install = """
-mkdir -p $PKG/usr/lib/shravan
-cp -r src $PKG/usr/lib/shravan/
-cp Cargo.toml $PKG/usr/lib/shravan/
-cp VERSION $PKG/usr/lib/shravan/
+mkdir -p $PKG/usr/bin
+cp build/shravan $PKG/usr/bin/shravan
+chmod +x $PKG/usr/bin/shravan
 """
 
 [security]

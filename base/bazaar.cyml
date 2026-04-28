@@ -1,16 +1,15 @@
-# bazaar — Community package repository for AGNOS
+# bazaar — Community recipe overlay for AGNOS
 #
-# Persian: بازار — marketplace/gathering. The open bazaar where community
-# members share recipes. Like Arch's AUR with yay, but for ark.
+# Persian: بازار — marketplace/gathering. The community recipe set sitting
+# on top of zugot (the official AGNOS recipe set), like Arch's AUR for ark.
 #
-# Community members submit takumi recipe TOMLs to a git repo. `ark bazaar`
-# fetches recipes and builds locally via takumi, or downloads pre-built
-# packages from a community build server.
+# Recipes are .cyml files. Tooling (validator + helpers) is written in
+# Cyrius. Upstream produces a single `bazaar-validate` binary used in CI
+# and by `ark bazaar` to validate community recipes before install.
 #
-# Status: Planned — 2026.3.18. Ships as part of base system.
 # Source: https://github.com/MacCracken/bazaar
 #
-# Usage:
+# Usage (via ark):
 #   ark bazaar search <query>     — search community recipes
 #   ark bazaar install <package>  — fetch recipe, build via takumi, install
 #   ark bazaar update             — sync recipe index from git
@@ -18,24 +17,27 @@
 #   ark bazaar submit <recipe>    — submit a recipe for review (opens PR)
 #
 # Architecture:
-#   - Recipe index: git repo with TOML files (no binaries)
+#   - Recipe index: git repo with .cyml files (no binaries)
 #   - Build: local via takumi (like makepkg) or pull from build.agnos.org
 #   - Trust: recipes are signed by submitter, reviewed by maintainers
 #   - Sandbox: community packages run in restricted sandbox by default
-#   - Integration: `Community` variant in PackageSource enum (nous.rs)
+#   - Validation: bazaar-validate (this binary) runs in CI per recipe PR
 
 [package]
 name = "bazaar"
-version = "2026.3.18"
-description = "Bazaar — community package repository for ark (user-submitted recipes built via takumi)"
+# Versioned in lockstep with zugot — each bazaar release is validated against
+# a specific zugot tag, so they track version numbers together.
+version = "1.0.0"
+description = "Bazaar — community recipe overlay for AGNOS (validator + ark integration)"
 license = "GPL-3.0-only"
-groups = ["base", "package-management"]
+groups = ["base", "package-management", "cyrius"]
 release = 1
 arch = "x86_64"
 
 [source]
-local = true
-build_dir = "."
+url = "https://github.com/MacCracken/bazaar/releases/download/1.0.0/bazaar-1.0.0-src.tar.gz"
+sha256 = "85e7c5d57963ab58eb2088ef1ccdc63b42c1f9401e48ce5c963636baaa62a235"
+patches = []
 
 [depends]
 runtime = [
@@ -45,20 +47,20 @@ runtime = [
     "gnupg",
     "curl",
 ]
-build = [
-    "rust",
-]
+build = ["cyrius"]
 
 [build]
+pre_build = ""
 configure = ""
-make = "cargo build --release --bin bazaar"
-check = "cargo test --bin bazaar"
-
+make = "cyrius build"
+check = "cyrius test"
 install = """
 mkdir -p $PKG/usr/bin
-cp target/release/bazaar $PKG/usr/bin/
+cp build/bazaar-validate $PKG/usr/bin/bazaar-validate
+chmod +x $PKG/usr/bin/bazaar-validate
 
-# Default config
+# Default config — `ark bazaar` reads this to find the recipe index URL,
+# trust policy, sandbox profile, and build mode.
 mkdir -p $PKG/etc/agnos/bazaar
 cat > $PKG/etc/agnos/bazaar/config.toml << 'CONF'
 # bazaar configuration
@@ -89,10 +91,10 @@ default_profile = "community-restricted"
 # Allow community packages to request network access
 allow_network = false
 CONF
-
-# Symlink so `ark bazaar` works as a subcommand
-ln -sf bazaar $PKG/usr/bin/ark-bazaar
 """
+post_install = ""
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = ""
+ldflags = ""

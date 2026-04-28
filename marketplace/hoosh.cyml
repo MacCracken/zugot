@@ -1,38 +1,32 @@
 # Hoosh — AI inference gateway for the AGNOS ecosystem
-# Multi-provider LLM routing (14 backends), OpenAI-compatible API, token budgets,
-# response caching, speech-to-text (whisper), hardware-aware model placement.
-# Rust library crate + CLI binary (serve, models, infer, health, info).
+# Multi-provider LLM routing (14 backends), OpenAI-compatible API, token
+# budgets, response caching, speech-to-text (whisper), hardware-aware
+# model placement.
 #
 # Name: Hoosh (Persian: هوش — intelligence)
 # CLI: hoosh serve --port 8088
-# Lib: hoosh = "2.0.0" in Cargo.toml
+# Lang: Cyrius (was Rust through 1.x; 2.x is the Cyrius rewrite — uses
+#       sandhi stdlib module for TLS, no openssl link)
 #
-# Status: Stable — v1.2.0 on crates.io + GitHub.
+# Status: Released — v2.0.0.
 
 [package]
 name = "hoosh"
 version = "2.0.0"
 description = "Hoosh — AI inference gateway (14 LLM providers, OpenAI-compatible, token budgets)"
 license = "GPL-3.0-only"
-groups = ["tool", "library", "ai", "rust"]
+groups = ["tool", "library", "ai", "cyrius"]
 release = 1
 arch = "x86_64"
 
 [source]
-crates_io = "hoosh"
 github_release = "MacCracken/hoosh"
-release_asset = "hoosh-*-linux-amd64.tar.gz"
-sha256 = ""  # TODO: populate from release tarball
+release_asset = "hoosh"
+sha256 = "ba417a910b9fb41b410c3afce6ac512031475f57f7e3e9161a8cc9c52d0b7dce"
 
 [depends]
-runtime = [
-    "glibc",
-    "openssl",
-]
-build = [
-    "rust",
-    "openssl",
-]
+runtime = ["glibc"]
+build = []
 
 [marketplace]
 category = "ai-platform"
@@ -89,40 +83,11 @@ access = "ro"
 ports = [8088]
 
 [build]
-make = "cargo build --release"
-check = "cargo test"
+make = ""
+check = ""
 install = """
-# Install the server binary
 mkdir -p $PKG/usr/bin
-cp target/release/hoosh $PKG/usr/bin/hoosh
-chmod +x $PKG/usr/bin/hoosh
-
-# Install source for offline Cargo builds
-mkdir -p $PKG/usr/lib/hoosh
-cp -r src $PKG/usr/lib/hoosh/
-cp Cargo.toml $PKG/usr/lib/hoosh/
-cp VERSION $PKG/usr/lib/hoosh/
-
-# Default config directory
-mkdir -p $PKG/etc/hoosh
-
-# Systemd service
-mkdir -p $PKG/usr/lib/systemd/user
-cat > $PKG/usr/lib/systemd/user/hoosh.service << 'EOF'
-[Unit]
-Description=Hoosh AI Inference Gateway
-After=network.target
-
-[Service]
-Type=simple
-ExecStart=/usr/bin/hoosh serve --port 8088
-Environment=HOOSH_DATA_DIR=%h/.hoosh
-Restart=on-failure
-RestartSec=5
-
-[Install]
-WantedBy=default.target
-EOF
+install -Dm755 hoosh $PKG/usr/bin/hoosh
 """
 
 [security]

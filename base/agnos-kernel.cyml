@@ -5,11 +5,13 @@
 # `agnos-kernel` because it builds/installs just the kernel component.
 #
 # Upstream ships both a pre-built x86_64 binary and a source tarball.
-# Recipe builds from source via the cyrius toolchain (cc5 in 1.x+ line).
+# Recipe builds from source via `cyrius build` (entry kernel/agnos.cyr →
+# build/agnos). The kernel vendors a syscall-free stdlib in kernel/lib/
+# and has no external Cyrius deps, so `cyrius deps` is a no-op.
 
 [package]
 name = "agnos-kernel"
-version = "1.22.0"
+version = "1.26.1"
 description = "AGNOS — sovereign operating system kernel"
 license = "GPL-3.0-only"
 groups = ["base", "core", "kernel", "tier1"]
@@ -17,8 +19,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://github.com/MacCracken/agnos/releases/download/1.22.0/agnos-1.22.0-src.tar.gz"
-sha256 = "177bf9e8f28fbc9a4432ab73610d4ab51d6a3bf3fc61a81b5d376bf719c17d0e"
+url = "https://github.com/MacCracken/agnos/releases/download/1.26.1/agnos-1.26.1-src.tar.gz"
+sha256 = "c2b82039c20d2bd90dcd5498e763b745c8d27a81d979e7d3e87cdfa44b32a69e"
 patches = []
 
 [depends]
@@ -28,7 +30,7 @@ build = ["cyrius"]
 [build]
 pre_build = ""
 configure = ""
-make = "cat kernel/agnos.cyr | cc5 > build/agnos"
+make = "cyrius build"
 check = "sh scripts/test.sh"
 install = """
 install -Dm644 build/agnos $PKG/boot/agnos
@@ -36,6 +38,8 @@ install -Dm644 build/agnos $PKG/boot/agnos
 post_install = ""
 
 [security]
+# Kernel binary — userspace hardening flags (PIE, RELRO, fortify, ...) do
+# not apply to a freestanding multiboot1 ELF. Left empty by design.
 hardening = []
 cflags = ""
 ldflags = ""

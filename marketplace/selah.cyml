@@ -2,7 +2,7 @@
 # Wraps daimon screen capture API, adds annotation, OCR, redaction.
 # Hebrew: סלה — pause/capture a moment.
 #
-# Status: Published — v0.29.4 (linux amd64 + arm64).
+# Status: Published — v2026.3.17 (linux amd64 + arm64).
 # Source: https://github.com/MacCracken/selah
 
 [package]

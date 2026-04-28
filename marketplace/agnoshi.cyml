@@ -3,8 +3,8 @@
 # context-aware completions, LLM-powered assistance.
 #
 # Name: Agnoshi (agnostic + shell)
-# Bin: agnsh
-# Lib: agnoshi = "1.0.0" in Cargo.toml
+# Bin: agnoshi
+# Lang: Cyrius (was Rust through 0.x; 1.x is the Cyrius rewrite)
 #
 # Status: Released — v1.0.0.
 
@@ -13,18 +13,18 @@ name = "agnoshi"
 version = "1.0.0"
 description = "Agnoshi — AI-native natural language shell for AGNOS"
 license = "GPL-3.0-only"
-groups = ["tool", "shell", "ai", "rust"]
+groups = ["tool", "shell", "ai", "cyrius"]
 release = 1
 arch = "x86_64"
 
 [source]
 github_release = "MacCracken/agnoshi"
-release_asset = "agnoshi-*-linux-amd64.tar.gz"
-sha256 = ""  # TODO: populate from release tarball
+release_asset = "agnoshi"
+sha256 = "af7aae409c25902bc498155df23444ae062adb0d98ad2bc7dce63af809f0e97d"
 
 [depends]
 runtime = ["glibc"]
-build = ["rust"]
+build = []
 
 [marketplace]
 category = "shell"
@@ -48,14 +48,11 @@ path = "/run/agnos/"
 access = "rw"
 
 [build]
-make = "cargo build --release"
-check = "cargo test --workspace"
+make = ""
+check = ""
 install = """
 mkdir -p $PKG/usr/bin
-cp target/release/agnsh $PKG/usr/bin/agnsh
-chmod +x $PKG/usr/bin/agnsh
-
-mkdir -p $PKG/etc/agnoshi
+install -Dm755 agnoshi $PKG/usr/bin/agnoshi
 """
 
 [security]

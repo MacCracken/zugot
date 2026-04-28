@@ -2,38 +2,30 @@
 # Detects 13 accelerator families (CUDA, ROCm, Metal, Vulkan, TPU, Gaudi,
 # Inferentia/Trainium, Qualcomm AI 100, Intel oneAPI/NPU, AMD XDNA, Apple ANE)
 # via sysfs, /dev, and CLI tools. Provides quantisation suggestion, sharding
-# plans, and training memory estimation. Rust library crate + CLI binary.
+# plans, and training memory estimation.
 #
 # CLI: ai-hwaccel --table, --pretty, --summary, --watch <secs>, --family gpu
-# Lib: ai-hwaccel = "2.0.0" in Cargo.toml
+# Lang: Cyrius (was Rust through 1.x; 2.x is the Cyrius rewrite)
 #
-# Status: Stable — v1.0.0 on crates.io + GitHub.
-# Used by: AGNOS (hoosh, daimon), Irfan, Agnostic, AgnosAI, consumer apps.
+# Status: Released — v2.0.0.
 
 [package]
 name = "ai-hwaccel"
 version = "2.0.0"
 description = "ai-hwaccel — Universal AI hardware accelerator detection and workload planning"
 license = "GPL-3.0-only"
-groups = ["tool", "library", "ai", "hardware", "rust"]
+groups = ["tool", "library", "ai", "hardware", "cyrius"]
 release = 1
 arch = "x86_64"
 
 [source]
-# crates.io: https://crates.io/crates/ai-hwaccel
-# GitHub: https://github.com/MacCracken/ai-hwaccel/releases
-crates_io = "ai-hwaccel"
 github_release = "MacCracken/ai-hwaccel"
-release_asset = "ai-hwaccel-*-linux-amd64.tar.gz"
-sha256 = ""  # TODO: populate from release tarball
+release_asset = "ai-hwaccel"
+sha256 = "121e90dd605cf855dfb749a3ea4cbca67f2155e464994c99835d178677fb0282"
 
 [depends]
-runtime = [
-    "glibc",
-]
-build = [
-    "rust",
-]
+runtime = ["glibc"]
+build = []
 
 [marketplace]
 category = "system-tools"
@@ -64,21 +56,11 @@ path = "/proc/cpuinfo"
 access = "ro"
 
 [build]
-pre_build = ""
-configure = ""
-make = "cargo build --release"
-check = "cargo test"
+make = ""
+check = ""
 install = """
-# Install the CLI binary
 mkdir -p $PKG/usr/bin
-cp target/release/ai-hwaccel $PKG/usr/bin/ai-hwaccel
-chmod +x $PKG/usr/bin/ai-hwaccel
-
-# Install source for offline/air-gapped Cargo builds
-mkdir -p $PKG/usr/lib/ai-hwaccel
-cp -r src $PKG/usr/lib/ai-hwaccel/
-cp Cargo.toml $PKG/usr/lib/ai-hwaccel/
-cp VERSION $PKG/usr/lib/ai-hwaccel/
+install -Dm755 ai-hwaccel $PKG/usr/bin/ai-hwaccel
 """
 
 [security]

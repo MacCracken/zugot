@@ -7,7 +7,7 @@
 # CLI: tarang probe <file>, tarang analyze <file>, tarang codecs
 # Lib: tarang = "2026.3.18" in Cargo.toml
 #
-# Status: Published — v0.21.3 on crates.io + GitHub.
+# Status: Published — v2026.3.18 on crates.io + GitHub.
 
 [package]
 name = "tarang"

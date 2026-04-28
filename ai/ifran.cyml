@@ -1,6 +1,6 @@
 # Ifran — LLM inference & training engine for AGNOS
 # System package recipe for building from source via takumi.
-# For marketplace .agnos-agent bundles, see marketplace/ifran.cyml
+# For the marketplace agnos-agent bundle variant, see marketplace/ifran.cyml
 #
 # Name: Ifran (Arabic: knowledge/wisdom) — renamed from Synapse/Irfan
 
