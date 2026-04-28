@@ -3,9 +3,9 @@
 # Wraps glam with AGNOS conventions. Foundation for impetus, kiran, joshua.
 #
 # Name: Hisab (Arabic: calculation, mathematics)
-# Lib: hisab = "1.4.0" in Cargo.toml
+# Lib: hisab = "2.2.0" in Cargo.toml
 #
-# Status: Stable — v1.4.0.
+# Status: Stable — v2.2.0.
 
 [package]
 name = "hisab"

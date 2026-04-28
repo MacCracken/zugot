@@ -4,7 +4,7 @@
 # cross-signing, CRL distribution, audit logging.
 #
 # Name: Sigil (Latin: seal)
-# Lib: sigil = "1.0.0" in Cargo.toml
+# Lib: sigil = "2.4.2" in Cargo.toml
 #
 # Status: Released — v1.0.0 stable. Single crypto/trust boundary for AGNOS.
 

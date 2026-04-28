@@ -2,9 +2,9 @@
 # G2P rules, phoneme inventories, pronunciation generation.
 #
 # Name: Shabda (Sanskrit: sound/word)
-# Lib: shabda = "1.1.0" in Cargo.toml
+# Lib: shabda = "2.0.0" in Cargo.toml
 #
-# Status: Released — v1.1.0.
+# Status: Released — v2.0.0.
 
 [package]
 name = "shabda"

@@ -2,14 +2,15 @@
 # The compiler toolchain for AGNOS. Everything else depends on this.
 #
 # Upstream ships a pre-built release tarball containing cc5 (main compiler),
-# cc5_aarch64 (cross-compiler), cyrius (build tool), ark (package manager),
+# cc5_aarch64 (cross-compiler when present), cyrius (build tool), ark
+# (package manager), cyriusly (workspace runner), cyrld (linker driver),
 # cyrc, cyrfmt, cyrlint, cyrdoc, helper scripts, and the stdlib.
 # Recipe installs directly from this tarball — the bootstrap-from-seed
 # flow is only for upstream development, not distribution builds.
 
 [package]
 name = "cyrius"
-version = "5.2.0"
+version = "5.7.25"
 description = "Cyrius — self-hosting systems language compiler and toolchain"
 license = "GPL-3.0-only"
 groups = ["base", "core", "toolchain", "tier1"]
@@ -17,8 +18,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://github.com/MacCracken/cyrius/releases/download/5.2.0/cyrius-5.2.0-x86_64-linux.tar.gz"
-sha256 = "537da95c032719846a8528166171d35b3f2acd9004a0ee1fcaae67f4fabece00"
+url = "https://github.com/MacCracken/cyrius/releases/download/5.7.25/cyrius-5.7.25-x86_64-linux.tar.gz"
+sha256 = "5d964a2e2388b384ba29065ab3205a66383c5dfebd88f961d7cb9a22cdc117d9"
 patches = []
 
 [depends]
@@ -40,6 +41,8 @@ cd "$TARBALL_ROOT"
 mkdir -p $PKG/usr/bin
 install -vm755 bin/cc5             $PKG/usr/bin/cc5
 install -vm755 bin/cyrius          $PKG/usr/bin/cyrius
+install -vm755 bin/cyriusly        $PKG/usr/bin/cyriusly
+install -vm755 bin/cyrld           $PKG/usr/bin/cyrld
 install -vm755 bin/cyrc            $PKG/usr/bin/cyrc
 install -vm755 bin/cyrfmt          $PKG/usr/bin/cyrfmt
 install -vm755 bin/cyrlint         $PKG/usr/bin/cyrlint
@@ -52,9 +55,9 @@ install -vm755 bin/cyrius-repl.sh  $PKG/usr/bin/cyrius-repl
 install -vm755 bin/cyrius-port.sh  $PKG/usr/bin/cyrius-port
 install -vm755 bin/cyrius-watch.sh $PKG/usr/bin/cyrius-watch
 
-# aarch64 cross-compiler (if present)
-if [ -f cc5_aarch64 ]; then
-    install -vm755 cc5_aarch64     $PKG/usr/bin/cc5_aarch64
+# aarch64 cross-compiler (if present in this tarball variant)
+if [ -f bin/cc5_aarch64 ]; then
+    install -vm755 bin/cc5_aarch64 $PKG/usr/bin/cc5_aarch64
 fi
 
 # asm seed (bootstrap helper)
@@ -69,6 +72,6 @@ cp -rv lib/* $PKG/usr/lib/cyrius/lib/
 post_install = ""
 
 [security]
-hardening = []
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
 cflags = ""
 ldflags = ""

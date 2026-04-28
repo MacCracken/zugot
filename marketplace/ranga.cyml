@@ -4,7 +4,7 @@
 #
 # Name: Ranga (Sanskrit: रंग — color, hue)
 # CLI: library-only (no binary)
-# Lib: ranga = "0.29.4" in Cargo.toml
+# Lib: ranga = "1.0.0" in Cargo.toml
 #
 # Status: Published — v0.29.4 on crates.io + GitHub.
 

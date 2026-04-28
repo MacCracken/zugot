@@ -78,7 +78,7 @@ Six recipes have versions newer than the current upstream tag. These are pre-rel
 
 22 recipes reference `MacCracken/*` repos that `git ls-remote` returns no tags for. Branch-based or newly-created projects. Current recipe versions are placeholder; they'll get real SHAs + version bumps when upstream cuts a first tag:
 
-`abacus`, `aegis`, `aethersafha`, `agnova`, `cyrius-seed`, `jantu`, `jivanu`, `kavach`, `libro`, `mabda`, `mastishk`, `mela`, `mneme`, `muharrir`, `murti`, `nazar`, `salai`, `samay`, `seema`, `shakti`, `takumi`, `tanur`
+`abacus`, `aegis`, `aethersafha`, `agnova`, `jantu`, `jivanu`, `kavach`, `libro`, `mabda`, `mastishk`, `mela`, `mneme`, `muharrir`, `murti`, `nazar`, `salai`, `samay`, `seema`, `shakti`, `takumi`, `tanur`
 
 Check periodically: `for n in $list; do git ls-remote https://github.com/MacCracken/$n; done`
 

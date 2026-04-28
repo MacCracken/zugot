@@ -55,6 +55,6 @@ mkdir -p $PKG/var/lib/agnos/gvisor/bundles
 post_install = ""
 
 [security]
-hardening = []
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
 cflags = ""
 ldflags = ""

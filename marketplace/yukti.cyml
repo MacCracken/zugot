@@ -3,9 +3,9 @@
 # Unified device detection, monitoring, mount/eject operations.
 #
 # Name: Yukti (Sanskrit: device, instrument, machine)
-# Lib: yukti = "0.25.3" in Cargo.toml
+# Lib: yukti = "1.2.0" in Cargo.toml
 #
-# Status: Published — v0.25.3.
+# Status: Published — v1.2.0.
 
 [package]
 name = "yukti"

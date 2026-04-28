@@ -58,7 +58,7 @@ build = [
     "clang",
     "llvm",
     "lld",
-    "pkg-config",
+    "pkgconf",
     "gperf",
     "perl",
 ]

@@ -4,7 +4,7 @@
 # bridge, discovery, sandbox.
 #
 # Name: Bote (German: messenger)
-# Lib: bote = "0.92.0" in Cargo.toml
+# Lib: bote = "2.5.1" in Cargo.toml
 #
 # Status: Released — v0.92.0 (pre-1.0 hardening).
 

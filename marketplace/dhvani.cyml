@@ -3,7 +3,7 @@
 # Eliminates duplicate audio implementations across shruti, jalwa, and aethersafta.
 #
 # Name: Dhvani (Sanskrit: ध्वनि — sound, tone, resonance)
-# Lib: dhvani = "1.0.0" in Cargo.toml
+# Lib: dhvani = "1.1.0" in Cargo.toml
 #
 # Status: Stable — v1.0.0 on crates.io.
 

@@ -40,9 +40,8 @@ runtime = [
 ]
 build = [
     "nodejs",
-    "npm",
     "python",
-    "pkg-config",
+    "pkgconf",
 ]
 
 [build]

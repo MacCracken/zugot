@@ -5,7 +5,7 @@
 #
 # Name: Hoosh (Persian: هوش — intelligence)
 # CLI: hoosh serve --port 8088
-# Lib: hoosh = "1.2.0" in Cargo.toml
+# Lib: hoosh = "2.0.0" in Cargo.toml
 #
 # Status: Stable — v1.2.0 on crates.io + GitHub.
 

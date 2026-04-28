@@ -41,7 +41,7 @@ build = [
     "extra-cmake-modules",
     "qt6-tools",
     "ninja",
-    "pkg-config",
+    "pkgconf",
     "python",
 ]
 

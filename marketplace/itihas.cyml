@@ -2,9 +2,9 @@
 # Civilizations, eras, events, historical figures, calendar metadata.
 #
 # Name: Itihas (Sanskrit: history/thus it was)
-# Lib: itihas = "1.0.1" in Cargo.toml
+# Lib: itihas = "2.2.0" in Cargo.toml
 #
-# Status: Released — v1.0.1.
+# Status: Released — v2.2.0.
 
 [package]
 name = "itihas"

@@ -3,9 +3,9 @@
 # Feature-gated: consumers pull only the kernel interfaces they need.
 #
 # Name: Agnosys (agnos + sys / agi + nosys — toward knowledge of the system)
-# Lib: agnosys = "0.51.0" in Cargo.toml
+# Lib: agnosys = "0.97.2" in Cargo.toml
 #
-# Status: Released — v0.51.0.
+# Status: Released — v0.97.2.
 
 [package]
 name = "agnosys"

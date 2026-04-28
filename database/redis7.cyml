@@ -25,7 +25,7 @@ runtime = [
 build = [
     "gcc",
     "make",
-    "pkg-config",
+    "pkgconf",
     "openssl",
 ]
 

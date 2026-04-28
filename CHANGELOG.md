@@ -7,7 +7,59 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and
 
 ## [Unreleased]
 
-Nothing yet. Next audit cycle ~2026-05-15.
+### Cyrius toolchain bump (2026-04-28)
+
+- **`base/cyrius.cyml`** 5.2.0 → **5.7.25**. Tarball SHA256 verified (`5d964a2e...`) against the live `cyrius-5.7.25-x86_64-linux.tar.gz` release. Install now ships two new binaries that landed during the 5.3–5.7 cycle: `cyriusly` (workspace runner) and `cyrld` (linker driver). Hardening flags populated (`pie`, `fullrelro`, `fortify`, `stackprotector`, `bindnow`) — previous recipe carried an empty `hardening = []` even though the upstream build links these by default.
+- **`marketplace/cyrius.cyml`** rewritten on top of the bump. Header was stuck on the pre-self-hosting era ("v0.1.0 / cc2 / asm / cyrb / Assembly up. No Rust."); now reflects the 5.7.x toolchain. Install copies the full set (`cc5`, `cyrius`, `cyrc`, `cyrfmt`, `cyrlint`, `cyrdoc`, `cyriusly`, `cyrld`, `ark`, helper scripts, asm seed, stdlib). `release_asset` glob fixed (`*-x86_64-linux.tar.gz`, the actual upstream pattern; was the never-matching `*-linux-amd64.tar.gz`). Dropped the `rust` group tag (Cyrius is fully self-hosted — no Rust dep at any layer). Hardening populated. SHA256 verified (`5d964a2e...`).
+
+### Language updates — Rust → Cyrius ports
+
+Three marketplace recipes had stale `build = ["rust"]` deps and `groups = [..., "rust"]` tags from before the upstream Cyrius ports landed. Build commands updated to `cyrius build` / `cyrius test`, deps swapped to `cyrius`, group tag swapped to `cyrius`. Headers fixed (each was citing the last Rust version even though `version` had been bumped past the port).
+
+- **`marketplace/kybernet.cyml`** 1.0.1 → **1.0.2**. Header `Lib: kybernet = "0.51.0" in Cargo.toml` replaced with the actual current language line. `release_asset` glob fixed to `*-src.tar.gz`. SHA256 verified (`8a9dc9a3...`). Build switched from `cargo build --release` / `cargo test --workspace` to `cyrius build` / `cyrius test src/test.cyr`.
+- **`marketplace/daimon.cyml`** 1.1.1 → **1.1.4**. Upstream README documents the port: 9,724 LOC Rust → 4,141 LOC Cyrius, 181 KB binary. Recipe header reflects this. `release_asset` glob fixed to `*-src.tar.gz` (was the never-matching `*-linux-amd64.tar.gz`). Dropped `openssl` from runtime+build deps — Cyrius `sandhi` stdlib module handles TLS, no openssl link. SHA256 verified (`132d83a2...`).
+- **`marketplace/vidya.cyml`** 2.1.0 → **2.3.0**. Header `Lib: vidya = "1.0.0" in Cargo.toml` replaced. Upstream `cyrius.cyml` builds `src/main.cyr` → `build/vidya`; recipe now installs that bin plus the read-only content corpus to `/usr/share/vidya/content`. `runtime` switched from `rust-crate` to `native-binary`. Two Landlock blocks added (`/usr/share/vidya` ro, `/tmp` rw) matching daimon's modern sandbox shape. `release_asset` glob fixed to `*-src.tar.gz` (was `"source"`). SHA256 verified (`3359cd66...`).
+
+### base/kybernet build flow
+
+- **`base/kybernet.cyml`** 1.0.1 → **1.0.2**. Build switched from the direct-pipe `cat src/main.cyr | cc5 > build/kybernet` to `cyrius build`. The 1.0.x source tree carries `cyrius.cyml` + `cyrius.lock` with stdlib/agnosys/sakshi/sigil deps that the bare `cc5` pipe cannot resolve; the modern build tool is required. SHA256 verified (`8a9dc9a3...`).
+
+### Added — base OS items (cat / vi-vim counterparts)
+
+Two AGNOS-native CLI tools promoted from "nice to have" to first-class base recipes, sitting alongside `coreutils`/`less` rather than in marketplace. Both ship as prebuilt x86_64 tarballs (same pattern as `base/cyrius`) so they have no build deps and are installable any time after glibc is up.
+
+- **`base/owl.cyml`** — owl 1.1.9. `cat` replacement: pipe-friendly, line numbers, syntax highlighting (eleven starter grammars), git-aware decorations, hex/binary mode, auto-paging. Decorations switch off automatically when stdout is not a TTY. Installed bin to `/usr/bin/owl`, grammars to `/usr/share/owl/grammars/`. SHA256 verified (`b21a9f21...`).
+- **`base/cyim.cyml`** — cyim 1.2.1. `vi`/`vim` replacement: modal editor in the vi → vim → nvim → cyim lineage, written in Cyrius — no Lua, no Vimscript, no plugin sandbox. Drives both interactive (`cyim <file>`) and non-interactive scripted edits (`--write`, `--replace`, `--replace-all`, `--batch`, `--grep`, `--expect`/`--expect-N`). Installed bin to `/usr/bin/cyim`, grammars to `/usr/share/cyim/grammars/`. SHA256 verified (`40f75f09...`).
+
+Note: not added to `build-order.txt` — base/cyrius and base/kybernet aren't in build-order either; that file currently covers only the LFS bootstrap chain. Adding the Cyrius-language toolchain + downstream tools (cyrius, kybernet, owl, cyim) into a new tier 1f is tracked separately in roadmap.
+
+### Removed
+
+- **`marketplace/cyrius-seed.cyml`** — upstream `MacCracken/cyrius-seed` repo returns 404 (deleted upstream). The seed/asm bootstrap flow is now subsumed by the `asm` binary inside the cyrius release tarball (installed by `base/cyrius.cyml` to `/usr/lib/cyrius/asm`). References in `CHANGELOG.md` and `docs/development/roadmap.md` placeholder lists trimmed.
+
+### Recipe sweep — Tier A (drift fixes, 2026-04-28)
+
+Static audit pass across all 562 recipes. Findings categorised; mechanical, zero-risk fixes applied.
+
+- **Header/version drift — 32 recipes.** Header comments cited a stale `vX.Y.Z` from before the last bump. Patched only the tightly-scoped idioms (`Status: Released — vX.Y.Z`, `Lib: name = "X.Y.Z" in Cargo.toml`, `Pre-release vX.Y.Z`, `Hardened — vX.Y.Z`) so prose mentions of unrelated semvers (e.g. `802.15.4` in `edge/esp32-agent.cyml`, `MQTT 3.1.1`, `0.8.5` referencing the old redhat libcap-ng mirror) were left alone. First pass over-matched and was reverted; second pass uses anchored patterns. Files: aethersafta, agnos-kernel, agnoshi, agnostik, agnosys, ai-hwaccel, argonaut, ark, avatara, bote, dhvani, hisab, hoosh, ifran, itihas, kiran, majra, nein, nous, phylax, ranga, sankhya, shabda, shabdakosh, sharira, shravan, sigil, svara, szal, t-ron, tarang, yukti.
+- **`marketplace/agnos-kernel.cyml` — cc2 → cc5.** Install step `cat kernel/agnos.cyr | cc2 > build/agnos` retired the cc2 binary that was removed during the 5.x toolchain transition. Swapped to cc5 to match `base/cyrius`. Note: this recipe still has additional drift (version 1.22.0 vs upstream 1.26.1; `release_asset = "agnos-*-x86_64.tar.gz"` glob never matched — actual asset is `agnos-1.26.1-src.tar.gz` + bare `agnos-x86_64`); deferred to Tier B alongside the cargo→cyrius port sweep.
+
+### Recipe sweep — Tier C (housekeeping, 2026-04-28)
+
+- **`pip` stripped from build deps — 14 recipes.** Per CLAUDE.md naming conventions: `pip` ships with `python`; recipes should depend on `python` and invoke `python -m pip` in build scripts. Cleaned: `base/gyp.cyml`, `marketplace/agnostic.cyml`, and 12 `ai/*` recipes (cython, huggingface-hub-cli, jupyter-server, pycups, pycurl, python-numpy, python-pandas, python-pytorch, python-safetensors, python-scipy, python-transformers, vllm). The `base/pip.cyml` meta-package is preserved (allows bazaar recipes that list `pip` as a dep to resolve).
+- **`pkg-config` → `pkgconf` in build deps — 14 recipes.** Canonical AGNOS dep name is `pkgconf` (which already installs `/usr/bin/pkg-config` as a compat symlink). Cleaned: 7 browser recipes (brave, chromium, falkon, firefox, librewolf, midori, zen), both database recipes (postgresql17, redis7), all four python recipes (3.12, 3.13, 3.13t, 3.14), and `ifran.cyml`. The `base/pkg-config.cyml` meta-package is preserved.
+- **`npm` stripped from `browser/midori.cyml`.** Deps already listed `nodejs`; per convention `npm` ships with it.
+- **Hardening flags filled — 2 base recipes.** `base/firecracker.cyml` and `base/gvisor.cyml` ship binaries but had `hardening = []`. Populated with the standard set (`pie`, `fullrelro`, `fortify`, `stackprotector`, `bindnow`). `base/agnos-kernel.cyml` was left as `hardening = []` — userspace hardening flags don't apply to a bare-metal kernel binary.
+
+### Sweep findings deferred to Tier B (Rust→Cyrius port verification)
+
+- ~80 marketplace MacCracken recipes still declare `build = ["rust"]`, list `"rust"` in groups, or use `make = "cargo build --release"`. Some upstreams genuinely remain Rust; others have ported to Cyrius (daimon/kybernet/vidya pattern). Per-repo `cyrius.cyml` existence check + recipe rewrite is the next pass.
+- 7 marketplace recipes (`agnova`, `shakti`, `ai-hwaccel`, `hoosh`, `ark`, `phylax`, `agnoshi`) have `release_asset` globs that point at a tarball but upstream only ships a bare binary file. These need install-step rewrites, not glob-only edits — folding into the Tier B port pass.
+- `marketplace/agnos-kernel.cyml` 1.22.0 → 1.26.1 + glob fix + build-step rework.
+
+### Notes
+
+- Cyrius 5.7.26 was tagged but swallowed by an in-flight 5.7.27; this bump targets 5.7.25 (latest published at audit time, 2026-04-28T19:12Z). Re-bump once 5.7.27 lands.
 
 ## [1.0.0] - 2026-04-17
 
@@ -189,7 +241,7 @@ These have recipe versions newer than current upstream tags — likely pre-relea
 
 ### Flagged — No upstream tags yet (no action)
 22 recipes where `git ls-remote` returns no tags — repos may exist but haven't had a release cut. Left at current recipe versions:
-abacus, aegis, aethersafha, agnova, cyrius-seed, jantu, jivanu, kavach, libro, mabda, mastishk, mela, mneme, muharrir, murti, nazar, salai, samay, seema, shakti, takumi, tanur
+abacus, aegis, aethersafha, agnova, jantu, jivanu, kavach, libro, mabda, mastishk, mela, mneme, muharrir, murti, nazar, salai, samay, seema, shakti, takumi, tanur
 
 ### Fixed (bazaar-finds pass 2)
 

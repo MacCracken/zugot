@@ -1,36 +1,38 @@
 # Daimon — AGNOS agent orchestrator
-# HTTP API, supervisor, agent lifecycle, service registry, health monitoring.
-# Central nervous system for all AGNOS agents and services.
+# HTTP API (port 8090), agent lifecycle, process supervision, IPC, task
+# scheduling, multi-node federation, edge fleet management, memory/vector/
+# RAG stores, MCP tool dispatch, screen capture. Central nervous system
+# for all AGNOS agents and services.
 #
 # Name: Daimon (Greek: δαίμων — guiding spirit)
 # Bin: daimon serve --port 8090
-# Lib: daimon = "0.6.0" in Cargo.toml
+# Lang: Cyrius (ported from Rust — 9,724 LOC Rust → 4,141 LOC Cyrius, 181 KB binary)
 #
-# Status: Released — v0.6.0.
+# Status: Released — v1.1.4.
 
 [package]
 name = "daimon"
-version = "1.1.1"
+version = "1.1.4"
 description = "Daimon — AGNOS agent orchestrator (HTTP API, supervisor, service registry, port 8090)"
 license = "GPL-3.0-only"
-groups = ["server", "system", "rust"]
+groups = ["server", "system", "cyrius"]
 release = 1
 arch = "x86_64"
 
 [source]
 github_release = "MacCracken/daimon"
-release_asset = "daimon-*-linux-amd64.tar.gz"
-sha256 = ""  # TODO: populate from release tarball
+release_asset = "daimon-*-src.tar.gz"
+sha256 = "132d83a230fded3d6b53e309f39c478ed01885d01fef6c4a056aa6895474b6f6"
 
 [depends]
-runtime = ["glibc", "openssl"]
-build = ["rust", "openssl"]
+runtime = ["glibc"]
+build = ["cyrius"]
 
 [marketplace]
 category = "system"
 runtime = "native-binary"
 publisher = "AGNOS"
-tags = ["orchestrator", "agent", "supervisor", "api", "service-registry", "rust"]
+tags = ["orchestrator", "agent", "supervisor", "api", "service-registry", "cyrius"]
 min_agnos_version = "2026.3.22"
 
 [marketplace.sandbox]
@@ -55,16 +57,16 @@ access = "rw"
 ports = [8090]
 
 [build]
-make = "cargo build --release"
-check = "cargo test --workspace"
+make = "cyrius build"
+check = "cyrius test tests/daimon.tcyr"
 install = """
 mkdir -p $PKG/usr/bin
-cp target/release/daimon $PKG/usr/bin/daimon
+cp build/daimon $PKG/usr/bin/daimon
 chmod +x $PKG/usr/bin/daimon
 
 mkdir -p $PKG/etc/daimon
 mkdir -p $PKG/usr/lib/systemd/system
-cat > $PKG/usr/lib/systemd/system/daimon.service << 'EOF'
+cat > $PKG/usr/lib/systemd/system/daimon.service << 'UNIT'
 [Unit]
 Description=Daimon Agent Orchestrator
 After=network.target
@@ -77,7 +79,7 @@ RestartSec=5
 
 [Install]
 WantedBy=multi-user.target
-EOF
+UNIT
 """
 
 [security]

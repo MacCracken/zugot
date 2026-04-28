@@ -4,9 +4,9 @@
 #
 # Name: Agnoshi (agnostic + shell)
 # Bin: agnsh
-# Lib: agnoshi = "0.90.0" in Cargo.toml
+# Lib: agnoshi = "1.0.0" in Cargo.toml
 #
-# Status: Released — v0.90.0.
+# Status: Released — v1.0.0.
 
 [package]
 name = "agnoshi"

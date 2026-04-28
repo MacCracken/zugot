@@ -29,7 +29,7 @@ build = [
     "openssl",
     "zlib",
     "protobuf",
-    "pkg-config",
+    "pkgconf",
 ]
 
 [build]

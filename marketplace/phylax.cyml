@@ -5,7 +5,7 @@
 # Name: Phylax (Greek: guardian, watchman)
 # Bin: phylax (CLI + daemon mode)
 #
-# Status: Published — v0.5.0.
+# Status: Published — v1.0.0.
 
 [package]
 name = "phylax"

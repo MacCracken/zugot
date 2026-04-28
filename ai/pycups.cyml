@@ -19,7 +19,7 @@ patches = []
 
 [depends]
 runtime = ["python", "cups"]
-build = ["python", "pip", "gcc", "cups"]
+build = ["python", "gcc", "cups"]
 
 [build]
 pre_build = ""

@@ -3,9 +3,9 @@
 # Library crate used by kybernet (PID 1).
 #
 # Name: Argonaut (Greek: Ἀργοναῦται — sailors of the Argo)
-# Lib: argonaut = "0.90.0" in Cargo.toml
+# Lib: argonaut = "1.2.0" in Cargo.toml
 #
-# Status: Released — v0.90.0.
+# Status: Released — v1.2.0.
 
 [package]
 name = "argonaut"

@@ -2,9 +2,9 @@
 # Dependency resolution for system, marketplace, and community packages.
 #
 # Name: Nous (Greek: νοῦς — mind, intellect)
-# Lib: nous = "0.1.0" in Cargo.toml
+# Lib: nous = "1.1.1" in Cargo.toml
 #
-# Status: Released — v0.1.0.
+# Status: Released — v1.1.1.
 
 [package]
 name = "nous"

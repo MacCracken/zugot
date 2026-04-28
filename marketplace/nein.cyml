@@ -3,7 +3,7 @@
 # MCP tool integration, inspection engine.
 #
 # Name: Nein (German: no — as in "access denied")
-# Lib: nein = "0.90.0" in Cargo.toml
+# Lib: nein = "1.0.0" in Cargo.toml
 #
 # Status: Released — v0.90.0 (pre-1.0 hardening).
 

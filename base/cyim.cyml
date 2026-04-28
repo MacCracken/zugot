@@ -1,0 +1,57 @@
+# Cyim — Sovereign Cyrius-native text editor
+# Modal editor in the vi/vim/neovim lineage. Zero attack surface:
+# no Lua, no Vimscript, no plugin sandbox. Drives interactive editing
+# (`cyim <file>`) and non-interactive scripted edits (`--write`,
+# `--replace`, `--replace-all`, `--batch`, `--grep`, with `--expect`
+# and `--expect-N` modifiers for post-write/pre-substitution invariants).
+#
+# Written in Cyrius. Counterpart to base/owl (cat replacement).
+# Recipe installs from the upstream prebuilt x86_64 tarball — same
+# pattern as base/cyrius and base/owl.
+
+[package]
+name = "cyim"
+version = "1.2.1"
+description = "Cyim — sovereign Cyrius-native modal text editor (vi/vim replacement)"
+license = "GPL-3.0-only"
+groups = ["base", "core", "tier1"]
+release = 1
+arch = "x86_64"
+
+[source]
+url = "https://github.com/MacCracken/cyim/releases/download/1.2.1/cyim-1.2.1-x86_64-linux.tar.gz"
+sha256 = "40f75f09a6c123634829cafe4939fe49875186a7a2f4ea9e9c963d2c20b7e837"
+patches = []
+
+[depends]
+runtime = ["glibc"]
+build = []
+
+[build]
+pre_build = ""
+configure = ""
+make = ""
+check = ""
+install = '''
+TARBALL_ROOT=$(find . -maxdepth 1 -type d -name 'cyim-*-x86_64-linux' | head -1)
+cd "$TARBALL_ROOT"
+
+mkdir -p $PKG/usr/bin
+install -vm755 cyim $PKG/usr/bin/cyim
+
+# Syntax-highlighting grammars (read-only at runtime)
+mkdir -p $PKG/usr/share/cyim/grammars
+cp -v grammars/*.cyml $PKG/usr/share/cyim/grammars/
+
+mkdir -p $PKG/usr/share/doc/cyim
+[ -f LICENSE ]     && cp LICENSE     $PKG/usr/share/doc/cyim/
+[ -f README.md ]   && cp README.md   $PKG/usr/share/doc/cyim/
+[ -f SECURITY.md ] && cp SECURITY.md $PKG/usr/share/doc/cyim/
+[ -f VERSION ]     && cp VERSION     $PKG/usr/share/doc/cyim/
+'''
+post_install = ""
+
+[security]
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
+cflags = ""
+ldflags = ""

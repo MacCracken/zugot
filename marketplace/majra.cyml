@@ -3,7 +3,7 @@
 # message dedup. Unifies patterns from daimon, AgnosAI, and SecureYeoman A2A.
 #
 # Name: Majra (Arabic/Persian: مجرا — channel, conduit, waterway)
-# Lib: majra = "1.0.4" in Cargo.toml
+# Lib: majra = "2.2.0" in Cargo.toml
 #
 # Status: Published — v1.0.4 on crates.io.
 

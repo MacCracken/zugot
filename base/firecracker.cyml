@@ -63,6 +63,6 @@ fi
 post_install = ""
 
 [security]
-hardening = []
+hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
 cflags = ""
 ldflags = ""

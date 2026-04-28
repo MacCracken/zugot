@@ -3,7 +3,7 @@
 # Powers the AGNOS desktop compositor (aethersafha) and future streaming apps.
 #
 # Name: Aethersafta (Greek aether + Arabic safha — ethereal surface)
-# Lib: aethersafta = "0.25.3" in Cargo.toml
+# Lib: aethersafta = "0.50.0" in Cargo.toml
 #
 # Status: Published — v0.25.3 on crates.io.
 

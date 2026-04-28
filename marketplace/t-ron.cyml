@@ -3,7 +3,7 @@
 # safety guardrails, and anomaly analysis. Security middleware for bote.
 #
 # Name: T-Ron (the security program that fights the MCP)
-# Lib: t-ron = "0.90.0" in Cargo.toml
+# Lib: t-ron = "2.0.0" in Cargo.toml
 #
 # Status: Released — v0.90.0 (pre-1.0 hardening).
 

@@ -2,9 +2,9 @@
 # Voice generation, formant synthesis, vocal modeling.
 #
 # Name: Svara (Sanskrit: musical note/tone)
-# Lib: svara = "1.1.1" in Cargo.toml
+# Lib: svara = "2.0.0" in Cargo.toml
 #
-# Status: Released — v1.1.1.
+# Status: Released — v2.0.0.
 
 [package]
 name = "svara"

@@ -1,36 +1,37 @@
 # Kybernet — PID 1 helmsman for AGNOS
-# Console setup, signal handling, zombie reaping, unsafe kernel interactions.
-# Uses argonaut library for service management.
+# Console setup, signal handling, zombie reaping, cgroups, mounts, signalfd
+# event loop, capability/privilege drop, seccomp, Landlock. Uses agnosys
+# syscall bindings + agnostik shared types + libro audit chain.
 #
 # Name: Kybernet (Greek: κυβερνήτης — helmsman of the Argo)
 # Bin: kybernet (installed as /sbin/init)
-# Lib: kybernet = "0.51.0" in Cargo.toml
+# Lang: Cyrius (was Rust through 0.51.0; 1.x is fully ported)
 #
-# Status: Released — v0.51.0.
+# Status: Released — v1.0.2.
 
 [package]
 name = "kybernet"
-version = "1.0.1"
-description = "Kybernet — PID 1 helmsman for AGNOS (uses argonaut)"
+version = "1.0.2"
+description = "Kybernet — PID 1 helmsman for AGNOS"
 license = "GPL-3.0-only"
-groups = ["system", "init", "rust"]
+groups = ["system", "init", "cyrius"]
 release = 1
 arch = "x86_64"
 
 [source]
 github_release = "MacCracken/kybernet"
-release_asset = "kybernet-*-linux-amd64.tar.gz"
-sha256 = ""  # TODO: populate from release tarball
+release_asset = "kybernet-*-src.tar.gz"
+sha256 = "8a9dc9a3446e004e07368f90dc4b735a703024ff325c4ed8f3bc2db3c28b3919"
 
 [depends]
-runtime = ["glibc", "argonaut"]
-build = ["rust"]
+runtime = []
+build = ["cyrius"]
 
 [marketplace]
 category = "system"
 runtime = "native-binary"
 publisher = "AGNOS"
-tags = ["init", "pid1", "boot", "helmsman", "rust"]
+tags = ["init", "pid1", "boot", "helmsman", "cyrius"]
 min_agnos_version = "2026.3.22"
 
 [marketplace.sandbox]
@@ -38,11 +39,11 @@ seccomp_mode = "disabled"
 network_access = false
 
 [build]
-make = "cargo build --release"
-check = "cargo test --workspace"
+make = "cyrius build"
+check = "cyrius test src/test.cyr"
 install = """
 mkdir -p $PKG/sbin
-cp target/release/kybernet $PKG/sbin/init
+cp build/kybernet $PKG/sbin/init
 chmod +x $PKG/sbin/init
 
 mkdir -p $PKG/usr/bin

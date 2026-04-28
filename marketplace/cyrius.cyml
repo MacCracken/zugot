@@ -1,25 +1,29 @@
 # Cyrius — Sovereign, self-hosting systems language
-# Assembly up. No Rust. No LLVM. No Python. Just sh + Linux x86_64.
-# Compiler toolchain: assembler (asm.cyr), compiler (cc2), builder (cyrb).
+# Compiler toolchain: cc5 (compiler), cyrius (build tool), ark (package
+# manager), cyriusly (workspace runner), cyrld (linker driver), plus
+# cyrc, cyrfmt, cyrlint, cyrdoc, asm seed, and helper scripts.
+# Self-hosting on x86_64 + aarch64. ~710KB compiler. No Rust, no LLVM,
+# no Python, no libc.
 #
-# Name: Cyrius (sovereign systems language)
-# Bin: cc2, asm, cyrb
+# Name: Cyrius (sovereign self-hosting systems language)
+# Bin: cc5, cyrius, ark, cyrc, cyrfmt, cyrlint, cyrdoc, cyriusly, cyrld
+# Lib: stdlib in /usr/lib/cyrius/lib (65 .cyr modules)
 #
-# Status: Pre-release — v0.1.0.
+# Status: Released — v5.7.25. Self-hosting, multi-target, production.
 
 [package]
 name = "cyrius"
-version = "5.2.0"
+version = "5.7.25"
 description = "Cyrius — sovereign self-hosting systems language and compiler toolchain"
 license = "GPL-3.0-only"
-groups = ["tool", "compiler", "language", "rust"]
+groups = ["tool", "compiler", "language"]
 release = 1
 arch = "x86_64"
 
 [source]
 github_release = "MacCracken/cyrius"
-release_asset = "cyrius-*-linux-amd64.tar.gz"
-sha256 = ""  # TODO: populate from release tarball
+release_asset = "cyrius-*-x86_64-linux.tar.gz"
+sha256 = "5d964a2e2388b384ba29065ab3205a66383c5dfebd88f961d7cb9a22cdc117d9"
 
 [depends]
 runtime = ["glibc"]
@@ -29,30 +33,52 @@ build = []
 category = "developer-tools"
 runtime = "native-binary"
 publisher = "AGNOS"
-tags = ["compiler", "language", "systems", "assembler", "self-hosting", "bootstrap"]
+tags = ["compiler", "language", "systems", "self-hosting", "bootstrap", "cyrius"]
 min_agnos_version = "2026.3.22"
 
 [marketplace.sandbox]
 seccomp_mode = "basic"
 network_access = false
 
+[[marketplace.sandbox.landlock]]
+path = "/tmp"
+access = "rw"
+
 [build]
-make = "sh bootstrap/bootstrap.sh"
-check = "sh scripts/test_all.sh"
+make = ""
+check = ""
 install = """
+TARBALL_ROOT=$(find . -maxdepth 1 -type d -name 'cyrius-*-linux' | head -1)
+cd "$TARBALL_ROOT"
+
 mkdir -p $PKG/usr/bin
-cp build/cc2 $PKG/usr/bin/cc2
-cp build/asm $PKG/usr/bin/asm
-cp build/cyrb $PKG/usr/bin/cyrb
-chmod +x $PKG/usr/bin/cc2 $PKG/usr/bin/asm $PKG/usr/bin/cyrb
+install -vm755 bin/cc5             $PKG/usr/bin/cc5
+install -vm755 bin/cyrius          $PKG/usr/bin/cyrius
+install -vm755 bin/cyriusly        $PKG/usr/bin/cyriusly
+install -vm755 bin/cyrld           $PKG/usr/bin/cyrld
+install -vm755 bin/cyrc            $PKG/usr/bin/cyrc
+install -vm755 bin/cyrfmt          $PKG/usr/bin/cyrfmt
+install -vm755 bin/cyrlint         $PKG/usr/bin/cyrlint
+install -vm755 bin/cyrdoc          $PKG/usr/bin/cyrdoc
+install -vm755 bin/ark             $PKG/usr/bin/ark
 
-# Standard library and includes
-mkdir -p $PKG/usr/lib/cyrius
-cp -r stage1/*.cyr $PKG/usr/lib/cyrius/ 2>/dev/null || true
+install -vm755 bin/cyrius-init.sh  $PKG/usr/bin/cyrius-init
+install -vm755 bin/cyrius-repl.sh  $PKG/usr/bin/cyrius-repl
+install -vm755 bin/cyrius-port.sh  $PKG/usr/bin/cyrius-port
+install -vm755 bin/cyrius-watch.sh $PKG/usr/bin/cyrius-watch
 
-# Documentation
+if [ -f bin/cc5_aarch64 ]; then
+    install -vm755 bin/cc5_aarch64 $PKG/usr/bin/cc5_aarch64
+fi
+if [ -f bin/asm ]; then
+    install -vm755 bin/asm         $PKG/usr/lib/cyrius/asm
+fi
+
+mkdir -p $PKG/usr/lib/cyrius/lib
+cp -rv lib/* $PKG/usr/lib/cyrius/lib/
+
 mkdir -p $PKG/usr/share/doc/cyrius
-cp README.md $PKG/usr/share/doc/cyrius/ 2>/dev/null || true
+[ -f LICENSE ] && cp LICENSE $PKG/usr/share/doc/cyrius/
 """
 
 [security]

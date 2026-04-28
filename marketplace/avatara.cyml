@@ -2,9 +2,9 @@
 # Mythological personality templates for AI agents.
 #
 # Name: Avatara (Sanskrit: incarnation/descent)
-# Lib: avatara = "1.0.1" in Cargo.toml
+# Lib: avatara = "2.3.0" in Cargo.toml
 #
-# Status: Released — v1.0.1.
+# Status: Released — v2.3.0.
 
 [package]
 name = "avatara"

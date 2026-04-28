@@ -18,7 +18,7 @@ patches = []
 
 [depends]
 runtime = ["python", "openblas"]
-build = ["python", "pip", "meson", "cython"]
+build = ["python", "meson", "cython"]
 
 [build]
 pre_build = ""

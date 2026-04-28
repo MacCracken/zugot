@@ -18,7 +18,7 @@ patches = []
 
 [depends]
 runtime = ["python", "python-numpy"]
-build = ["python", "pip", "cython"]
+build = ["python", "cython"]
 
 [build]
 pre_build = ""

@@ -5,7 +5,7 @@
 # Rust library crate + CLI binary (probe, analyze, transcode, fingerprint).
 #
 # CLI: tarang probe <file>, tarang analyze <file>, tarang codecs
-# Lib: tarang = "0.21.3" in Cargo.toml
+# Lib: tarang = "2026.3.18" in Cargo.toml
 #
 # Status: Published — v0.21.3 on crates.io + GitHub.
 

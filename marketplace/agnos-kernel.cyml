@@ -5,7 +5,7 @@
 # Name: AGNOS (Greek: agnosis — unknowing, the blank slate)
 # Bin: agnos (kernel binary)
 #
-# Status: Stable — v1.0.0.
+# Status: Stable — v1.22.0.
 
 [package]
 name = "agnos-kernel"
@@ -38,7 +38,7 @@ network_access = false
 
 [build]
 make = """
-cat kernel/agnos.cyr | cc2 > build/agnos
+cat kernel/agnos.cyr | cc5 > build/agnos
 """
 check = "sh scripts/test.sh"
 install = """

@@ -19,7 +19,7 @@ patches = []
 
 [depends]
 runtime = ["python", "curl", "openssl"]
-build = ["python", "pip", "gcc", "curl", "openssl"]
+build = ["python", "gcc", "curl", "openssl"]
 
 [build]
 pre_build = ""

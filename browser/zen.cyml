@@ -46,7 +46,7 @@ build = [
     "python",
     "clang",
     "llvm",
-    "pkg-config",
+    "pkgconf",
 ]
 
 [build]

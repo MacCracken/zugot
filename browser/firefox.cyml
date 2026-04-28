@@ -57,7 +57,7 @@ build = [
     "clang",
     "llvm",
     "autoconf2.13",
-    "pkg-config",
+    "pkgconf",
     "m4",
     "perl",
     "yasm",

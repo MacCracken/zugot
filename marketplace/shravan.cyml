@@ -2,9 +2,9 @@
 # Encode/decode for common audio formats.
 #
 # Name: Shravan (Sanskrit: hearing/listening)
-# Lib: shravan = "1.0.1" in Cargo.toml
+# Lib: shravan = "2.3.2" in Cargo.toml
 #
-# Status: Released — v1.0.1.
+# Status: Released — v2.3.2.
 
 [package]
 name = "shravan"

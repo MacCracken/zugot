@@ -4,9 +4,9 @@
 #
 # Name: Ark (vessel/container — carries packages)
 # Bin: ark
-# Lib: ark = "0.1.0" in Cargo.toml
+# Lib: ark = "0.8.0" in Cargo.toml
 #
-# Status: Released — v0.1.0.
+# Status: Released — v0.8.0.
 
 [package]
 name = "ark"
