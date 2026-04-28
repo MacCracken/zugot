@@ -4,26 +4,27 @@
 #
 # Name: Phylax (Greek: guardian, watchman)
 # Bin: phylax (CLI + daemon mode)
+# Lang: Cyrius (was Rust; 1.0.x is the Cyrius rewrite)
 #
-# Status: Published — v1.0.0.
+# Status: Released — v1.0.0.
 
 [package]
 name = "phylax"
 version = "1.0.0"
 description = "Phylax — AI-native threat detection engine"
 license = "GPL-3.0-only"
-groups = ["security", "system", "rust"]
+groups = ["security", "system", "cyrius"]
 release = 1
 arch = "x86_64"
 
 [source]
 github_release = "MacCracken/phylax"
-release_asset = "phylax-*-linux-amd64.tar.gz"
-sha256 = ""  # TODO: populate from release tarball
+release_asset = "phylax"
+sha256 = "de88bc114c07bc4f105c5e35ecf94baf73ad266121582ee60cb5008307f4d932"
 
 [depends]
 runtime = ["glibc"]
-build = ["rust"]
+build = []
 
 [marketplace]
 category = "security"
@@ -53,27 +54,11 @@ access = "ro"
 allowed = ["127.0.0.1:8088", "127.0.0.1:8090"]
 
 [build]
-make = "cargo build --release --workspace"
-check = "cargo test --workspace"
+make = ""
+check = ""
 install = """
 mkdir -p $PKG/usr/bin
-cp target/release/phylax $PKG/usr/bin/phylax
-chmod +x $PKG/usr/bin/phylax
-
-mkdir -p $PKG/usr/lib/systemd/system
-cat > $PKG/usr/lib/systemd/system/phylax.service << 'EOF'
-[Unit]
-Description=Phylax Threat Detection Daemon
-After=network.target daimon.service
-
-[Service]
-ExecStart=/usr/bin/phylax daemon
-Restart=always
-RestartSec=5
-
-[Install]
-WantedBy=multi-user.target
-EOF
+install -Dm755 phylax $PKG/usr/bin/phylax
 """
 
 [security]

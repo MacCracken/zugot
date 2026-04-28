@@ -2,12 +2,15 @@
 # Natural language math, unit conversion, currency conversion.
 # Italian/Spanish: abacus.
 #
-# Status: Released — 2026.3.18 (linux amd64 + arm64).
-# Source: https://github.com/MacCracken/abaco
+# Name: Abaco
+# Bin: abaco
+# Lang: Cyrius (was Rust; 2.x is the Cyrius rewrite)
+#
+# Status: Released — v2.2.0.
 
 [package]
 name = "abaco"
-version = "2.1.0"
+version = "2.2.0"
 description = "Abaco — AI-native calculator & unit converter for AGNOS"
 license = "GPL-3.0-only"
 groups = ["desktops", "tools"]
@@ -16,19 +19,12 @@ arch = "x86_64"
 
 [source]
 github_release = "MacCracken/abaco"
-release_asset = "abaco-*-linux-amd64.tar.gz"
-sha256 = ""  # TODO: populate from release tarball
+release_asset = "abaco-*-src.tar.gz"
+sha256 = "5a153ec13c39213d917eb412697281a6f572357c8f5b3b5d617fdd534991801c"
 
 [depends]
-runtime = [
-    "glibc",
-]
-build = [
-    "rust",
-    "gcc",
-    "make",
-    "pkgconf",
-]
+runtime = ["glibc"]
+build = ["cyrius"]
 
 [marketplace]
 category = "desktop"
@@ -55,17 +51,13 @@ access = "rw"
 allowed = ["127.0.0.1:8088"]
 
 [build]
-pre_build = ""
-configure = ""
-make = "cargo build --release --workspace"
-check = "cargo test --workspace"
+make = "cyrius build"
+check = "cyrius test"
 install = """
-mkdir -p $PKG/usr/local/bin
-cp target/release/abaco $PKG/usr/local/bin/abaco
+mkdir -p $PKG/usr/bin
+cp build/abaco $PKG/usr/bin/abaco
+chmod +x $PKG/usr/bin/abaco
 """
-post_install = ""
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]
-cflags = "-O2 -pipe"
-ldflags = "-Wl,--as-needed"

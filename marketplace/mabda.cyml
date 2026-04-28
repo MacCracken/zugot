@@ -1,32 +1,35 @@
 # Mabda — GPU foundation crate for AGNOS
-# Shared GPU abstractions extracted from soorat.
+# Shared GPU abstractions: device lifecycle, buffers, compute, textures,
+# profiling, capability detection. Consumed via `[deps.mabda]` git deps
+# in downstream cyrius.cyml. Recipe ships the source tree for inspection;
+# `cyrius build` only produces a smoke-test binary (build/mabda_smoke).
 #
 # Name: Mabda (Arabic: origin/foundation)
-# Lib: mabda = "1.0.0" in Cargo.toml
+# Lang: Cyrius (was a Rust crate through 1.x; 2.x is the Cyrius rewrite)
 #
-# Status: Released — v1.0.0.
+# Status: Released — v2.5.0.
 
 [package]
 name = "mabda"
-version = "1.0.0"
+version = "2.5.0"
 description = "Mabda — GPU foundation crate"
 license = "GPL-3.0-only"
-groups = ["library", "graphics", "rust"]
+groups = ["library", "graphics", "cyrius"]
 release = 1
 arch = "any"
 
 [source]
 github_release = "MacCracken/mabda"
-release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+release_asset = "mabda-*-src.tar.gz"
+sha256 = "bd4d05bf647c547d32a39661d09a8cb09894590ec0dae309f7ac472c424696c1"
 
 [depends]
 runtime = []
-build = ["rust"]
+build = ["cyrius"]
 
 [marketplace]
 category = "library"
-runtime = "rust-crate"
+runtime = "native-binary"
 publisher = "AGNOS"
 tags = ["gpu", "wgpu", "graphics", "foundation", "rust"]
 min_agnos_version = "2026.3.24"
@@ -36,13 +39,14 @@ seccomp_mode = "basic"
 network_access = false
 
 [build]
-make = "cargo build --release"
-check = "cargo test --all-features"
+make = "cyrius build"
+check = "cyrius test"
 install = """
 mkdir -p $PKG/usr/lib/mabda
-cp -r src $PKG/usr/lib/mabda/
-cp Cargo.toml $PKG/usr/lib/mabda/
-cp VERSION $PKG/usr/lib/mabda/
+[ -f cyrius.cyml ] && cp cyrius.cyml $PKG/usr/lib/mabda/
+[ -f VERSION ]     && cp VERSION     $PKG/usr/lib/mabda/
+[ -d src ]         && cp -r src      $PKG/usr/lib/mabda/
+[ -d dist ]        && cp -r dist     $PKG/usr/lib/mabda/
 """
 
 [security]

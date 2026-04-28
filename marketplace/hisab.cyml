@@ -1,9 +1,11 @@
 # Hisab — Higher mathematics library for AGNOS
 # Linear algebra, calculus, geometry, numerical methods, spatial math.
-# Wraps glam with AGNOS conventions. Foundation for impetus, kiran, joshua.
+# Foundation for impetus, kiran, joshua. Released as a single binary that
+# embeds the math runtime; downstream Cyrius projects also import via
+# `[deps.hisab]` git deps in their cyrius.cyml.
 #
 # Name: Hisab (Arabic: calculation, mathematics)
-# Lib: hisab = "2.2.0" in Cargo.toml
+# Lang: Cyrius (was a Rust crate; 2.x is the Cyrius rewrite)
 #
 # Status: Stable — v2.2.0.
 
@@ -12,22 +14,22 @@ name = "hisab"
 version = "2.2.0"
 description = "Hisab — Higher mathematics library"
 license = "GPL-3.0-only"
-groups = ["library", "math", "rust"]
+groups = ["library", "math", "cyrius"]
 release = 1
-arch = "any"
+arch = "x86_64"
 
 [source]
 github_release = "MacCracken/hisab"
-release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+release_asset = "hisab"
+sha256 = "9e9c598c730124cac7c68b7148d8904c1253e197c21dc27d021834345798bc4c"
 
 [depends]
-runtime = []
-build = ["rust"]
+runtime = ["glibc"]
+build = []
 
 [marketplace]
 category = "library"
-runtime = "rust-crate"
+runtime = "native-binary"
 publisher = "AGNOS"
 tags = ["math", "linear-algebra", "calculus", "geometry", "numerical", "spatial", "glam", "rust"]
 min_agnos_version = "2026.3.22"
@@ -37,13 +39,11 @@ seccomp_mode = "basic"
 network_access = false
 
 [build]
-make = "cargo build --release"
-check = "cargo test --workspace"
+make = ""
+check = ""
 install = """
-mkdir -p $PKG/usr/lib/hisab
-cp -r crates $PKG/usr/lib/hisab/
-cp Cargo.toml $PKG/usr/lib/hisab/
-cp VERSION $PKG/usr/lib/hisab/
+mkdir -p $PKG/usr/bin
+install -Dm755 hisab $PKG/usr/bin/hisab
 """
 
 [security]

@@ -4,7 +4,7 @@
 #
 # Name: Agnova (AGNOS + nova — new beginning)
 # Bin: agnova
-# Lib: agnova = "0.1.0" in Cargo.toml
+# Lang: Cyrius (was Rust through 0.0.x; 0.1.x is the Cyrius rewrite)
 #
 # Status: Released — v0.1.0.
 
@@ -13,24 +13,24 @@ name = "agnova"
 version = "0.1.0"
 description = "Agnova — OS installer for AGNOS"
 license = "GPL-3.0-only"
-groups = ["system", "installer", "rust"]
+groups = ["system", "installer", "cyrius"]
 release = 1
 arch = "x86_64"
 
 [source]
 github_release = "MacCracken/agnova"
-release_asset = "agnova-*-linux-amd64.tar.gz"
-sha256 = ""  # TODO: populate from release tarball
+release_asset = "agnova"
+sha256 = "6fdbbf3ac2f28122235d98c83f3b38e73811b31e5843def3e9b5791336cabf6c"
 
 [depends]
 runtime = ["glibc", "parted", "e2fsprogs"]
-build = ["rust"]
+build = []
 
 [marketplace]
 category = "system"
 runtime = "native-binary"
 publisher = "AGNOS"
-tags = ["installer", "setup", "disk", "partition", "bootstrap", "rust"]
+tags = ["installer", "setup", "disk", "partition", "bootstrap", "cyrius"]
 min_agnos_version = "2026.3.22"
 
 [marketplace.sandbox]
@@ -38,12 +38,11 @@ seccomp_mode = "disabled"
 network_access = true
 
 [build]
-make = "cargo build --release"
-check = "cargo test --workspace"
+make = ""
+check = ""
 install = """
 mkdir -p $PKG/usr/bin
-cp target/release/agnova $PKG/usr/bin/agnova
-chmod +x $PKG/usr/bin/agnova
+install -Dm755 agnova $PKG/usr/bin/agnova
 """
 
 [security]

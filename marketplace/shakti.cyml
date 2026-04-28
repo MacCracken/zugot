@@ -4,27 +4,27 @@
 #
 # Name: Shakti (Sanskrit: शक्ति — power, energy)
 # Bin: shakti
-# Lib: shakti = "0.1.0" in Cargo.toml
+# Lang: Cyrius (was Rust through 0.1.x; 0.2.x is the Cyrius rewrite)
 #
-# Status: Released — v0.1.0.
+# Status: Released — v0.2.2.
 
 [package]
 name = "shakti"
-version = "0.1.0"
+version = "0.2.2"
 description = "Shakti — AGNOS privilege escalation tool with PAM authentication and audit logging"
 license = "GPL-3.0-only"
-groups = ["system", "security", "rust"]
+groups = ["system", "security", "cyrius"]
 release = 1
 arch = "x86_64"
 
 [source]
 github_release = "MacCracken/shakti"
-release_asset = "shakti-*-linux-amd64.tar.gz"
-sha256 = ""  # TODO: populate from release tarball
+release_asset = "shakti"
+sha256 = "a062ad62061106676268c9070129014470d86a256e9fe3ef76a0dd8194e17ecc"
 
 [depends]
 runtime = ["glibc", "linux-pam"]
-build = ["rust", "linux-pam"]
+build = []
 
 [marketplace]
 category = "system"
@@ -38,15 +38,11 @@ seccomp_mode = "disabled"
 network_access = false
 
 [build]
-make = "cargo build --release"
-check = "cargo test --workspace"
+make = ""
+check = ""
 install = """
 mkdir -p $PKG/usr/bin
-cp target/release/shakti $PKG/usr/bin/shakti
-chmod +x $PKG/usr/bin/shakti
-chmod u+s $PKG/usr/bin/shakti
-
-mkdir -p $PKG/etc/shakti
+install -Dm755 shakti $PKG/usr/bin/shakti
 """
 
 [security]

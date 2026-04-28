@@ -1,33 +1,33 @@
 # Agnosys — AGNOS kernel interface
-# Safe Rust bindings for Linux syscalls, Landlock, seccomp, udev, TPM, LUKS, dm-verity.
-# Feature-gated: consumers pull only the kernel interfaces they need.
+# Cyrius bindings for Linux syscalls, Landlock, seccomp, udev, TPM, LUKS,
+# dm-verity. Consumed via `[deps.agnosys]` git deps in downstream cyrius.cyml.
 #
-# Name: Agnosys (agnos + sys / agi + nosys — toward knowledge of the system)
-# Lib: agnosys = "0.97.2" in Cargo.toml
+# Name: Agnosys (agnos + sys — toward knowledge of the system)
+# Lang: Cyrius (was a Rust crate through 0.97.x; 1.x is the Cyrius rewrite)
 #
-# Status: Released — v0.97.2.
+# Status: Released — v1.0.2.
 
 [package]
 name = "agnosys"
-version = "0.97.2"
+version = "1.0.2"
 description = "Agnosys — AGNOS kernel interface"
 license = "GPL-3.0-only"
-groups = ["library", "system", "kernel", "rust"]
+groups = ["library", "system", "kernel", "cyrius"]
 release = 1
 arch = "any"
 
 [source]
 github_release = "MacCracken/agnosys"
-release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+release_asset = "agnosys-*-src.tar.gz"
+sha256 = "71ebd125f63f8c4cdacdd0e8f31b41c8f1c7aaa093f806dfe5209aa5eb74c3b7"
 
 [depends]
 runtime = ["glibc"]
-build = ["rust"]
+build = ["cyrius"]
 
 [marketplace]
 category = "library"
-runtime = "rust-crate"
+runtime = "native-binary"
 publisher = "AGNOS"
 tags = ["kernel", "syscall", "linux", "security", "landlock", "seccomp", "tpm", "udev", "rust"]
 min_agnos_version = "2026.3.22"
@@ -37,13 +37,14 @@ seccomp_mode = "basic"
 network_access = false
 
 [build]
-make = "cargo build --release"
-check = "cargo test --all-features"
+make = "cyrius build"
+check = "cyrius test"
 install = """
 mkdir -p $PKG/usr/lib/agnosys
-cp -r src $PKG/usr/lib/agnosys/
-cp Cargo.toml $PKG/usr/lib/agnosys/
-cp VERSION $PKG/usr/lib/agnosys/
+[ -f cyrius.cyml ] && cp cyrius.cyml $PKG/usr/lib/agnosys/
+[ -f VERSION ]     && cp VERSION     $PKG/usr/lib/agnosys/
+[ -d src ]         && cp -r src      $PKG/usr/lib/agnosys/
+[ -d dist ]        && cp -r dist     $PKG/usr/lib/agnosys/
 """
 
 [security]

@@ -4,7 +4,7 @@
 #
 # Name: Ark (vessel/container — carries packages)
 # Bin: ark
-# Lib: ark = "0.8.0" in Cargo.toml
+# Lang: Cyrius (was a Rust crate through 0.7.x; 0.8.x is the Cyrius rewrite)
 #
 # Status: Released — v0.8.0.
 
@@ -13,18 +13,18 @@ name = "ark"
 version = "0.8.0"
 description = "Ark — unified package manager CLI for AGNOS"
 license = "GPL-3.0-only"
-groups = ["tool", "package-management", "rust"]
+groups = ["tool", "package-management", "cyrius"]
 release = 1
 arch = "x86_64"
 
 [source]
 github_release = "MacCracken/ark"
-release_asset = "ark-*-linux-amd64.tar.gz"
-sha256 = ""  # TODO: populate from release tarball
+release_asset = "ark"
+sha256 = "863ff4b3e4a0c1e8965782a4d0b3bb45dee4626681d5755ed2b3efab8051cc1d"
 
 [depends]
 runtime = ["glibc"]
-build = ["rust"]
+build = []
 
 [marketplace]
 category = "system-tools"
@@ -51,14 +51,11 @@ path = "/tmp"
 access = "rw"
 
 [build]
-make = "cargo build --release"
-check = "cargo test --workspace"
+make = ""
+check = ""
 install = """
 mkdir -p $PKG/usr/bin
-cp target/release/ark $PKG/usr/bin/ark
-chmod +x $PKG/usr/bin/ark
-
-mkdir -p $PKG/var/lib/ark
+install -Dm755 ark $PKG/usr/bin/ark\nmkdir -p $PKG/var/lib/ark
 mkdir -p $PKG/var/cache/ark
 mkdir -p $PKG/etc/ark
 """

@@ -51,11 +51,50 @@ Static audit pass across all 562 recipes. Findings categorised; mechanical, zero
 - **`npm` stripped from `browser/midori.cyml`.** Deps already listed `nodejs`; per convention `npm` ships with it.
 - **Hardening flags filled — 2 base recipes.** `base/firecracker.cyml` and `base/gvisor.cyml` ship binaries but had `hardening = []`. Populated with the standard set (`pie`, `fullrelro`, `fortify`, `stackprotector`, `bindnow`). `base/agnos-kernel.cyml` was left as `hardening = []` — userspace hardening flags don't apply to a bare-metal kernel binary.
 
-### Sweep findings deferred to Tier B (Rust→Cyrius port verification)
+### Tier B — Rust→Cyrius port discovery (2026-04-28)
 
-- ~80 marketplace MacCracken recipes still declare `build = ["rust"]`, list `"rust"` in groups, or use `make = "cargo build --release"`. Some upstreams genuinely remain Rust; others have ported to Cyrius (daimon/kybernet/vidya pattern). Per-repo `cyrius.cyml` existence check + recipe rewrite is the next pass.
-- 7 marketplace recipes (`agnova`, `shakti`, `ai-hwaccel`, `hoosh`, `ark`, `phylax`, `agnoshi`) have `release_asset` globs that point at a tarball but upstream only ships a bare binary file. These need install-step rewrites, not glob-only edits — folding into the Tier B port pass.
-- `marketplace/agnos-kernel.cyml` 1.22.0 → 1.26.1 + glob fix + build-step rework.
+Probed 98 marketplace MacCracken/* recipes against upstream HEAD trees (`cyrius.cyml` / `cyrius.toml` / `Cargo.toml` presence). Classification, used to scope the port pass:
+
+- **26 confirmed ported to Cyrius** — upstream has a Cyrius manifest at root, no `Cargo.toml`. 16 use the older `cyrius.cyml` naming, 10 use the newer `cyrius.toml`.
+- **64 confirmed still Rust** — `Cargo.toml` only. Existing `cargo build` recipes are correct, no action.
+- **8 ambiguous** — split into roadmapped placeholders (`abacus`, `mela`, `murti`, `samay`, `seema`, `tanur` — intentionally unscaffolded, not deletion candidates) and container-shaped repos (`bullshift`, `photisnadi`) that have neither `Cargo.toml` nor a Cyrius manifest at root, only a `Dockerfile`. The container set needs a separate "container-recipe shape" decision before any rewrite.
+
+### Tier B — set 1 ports (16 cyrius.cyml recipes, 2026-04-28)
+
+Recipes ported from `cargo build` / `build = ["rust"]` / `groups = [..., "rust"]` to the daimon/kybernet/vidya template: `cyrius build` / `build = ["cyrius"]` / `groups = [..., "cyrius"]`. `release_asset` globs corrected to actual upstream patterns. SHA256 verified against API-reported digests for every recipe (and against fresh tarball download for the 5 bare-binary ports). Marketplace metadata, sandbox config, and Landlock blocks preserved verbatim from prior recipe.
+
+**Bare-binary installs (upstream ships a single `<name>` file):**
+- `marketplace/agnova.cyml` 0.1.0 (rebuild — same version, now Cyrius). SHA `6fdbbf3a…`.
+- `marketplace/ark.cyml` 0.8.0. SHA `863ff4b3…`.
+- `marketplace/hisab.cyml` 2.2.0. SHA `9e9c598c…`.
+- `marketplace/phylax.cyml` 1.0.0. SHA `de88bc11…`.
+- `marketplace/shakti.cyml` 0.2.2. SHA `a062ad62…`.
+
+**Source-tarball builds (`<name>-<version>-src.tar.gz`, build with `cyrius build`):**
+- `marketplace/abaco.cyml` 2.1.0 → **2.2.0**. SHA `5a153ec1…`.
+- `marketplace/agnostik.cyml` 0.96.0 → **1.0.0**. SHA `5c6b04ac…`. Library — install ships source tree to `/usr/lib/agnostik/` for inspection (real consumers use `[deps.agnostik]` git deps).
+- `marketplace/agnosys.cyml` 0.97.2 → **1.0.2**. SHA `71ebd125…`. Library — same install pattern.
+- `marketplace/argonaut.cyml` 1.2.0 → **1.5.0**. SHA `96447ebe…`. Used by kybernet for service management.
+- `marketplace/libro.cyml` 0.92.0 → **2.0.5**. SHA `0f2226d5…`. Upstream output is `./libro` (not `build/libro`).
+- `marketplace/mabda.cyml` 1.0.0 → **2.5.0**. SHA `bd4d05bf…`. Pure library — `cyrius build` only produces a smoke test (`build/mabda_smoke`); recipe ships source tree, not a binary.
+- `marketplace/majra.cyml` 2.2.0 → **2.4.1**. SHA `9732fb92…`.
+- `marketplace/yukti.cyml` 1.2.0 → **2.1.1**. SHA `a783b379…`.
+
+**Plain tarball (no `-src` suffix):**
+- `marketplace/sigil.cyml` 2.4.2 → **2.9.4**. SHA `b4d8d639…`. Upstream tarball is `sigil-2.9.4.tar.gz`.
+
+**Binary tarball:**
+- `marketplace/nous.cyml` 1.1.1 (rebuild — same version, now Cyrius). SHA `d7c2ab64…`. Upstream ships a prebuilt `nous-1.1.1-x86_64-linux.tar.gz`.
+
+**Scaffold-state (no published release):**
+- `marketplace/takumi.cyml` — kept at 0.1.0 with `# TODO` SHA. Upstream has a default-branch `cyrius.cyml` at 0.8.0 but no published release yet. Switched groups + build deps to Cyrius preemptively; release_asset glob set to anticipated `takumi-*-src.tar.gz` pattern.
+
+### Tier B — what's left
+
+- **Set 2 (10 `cyrius.toml` recipes)** — `agnoshi`, `ai-hwaccel`, `avatara`, `bote`, `hoosh`, `itihas`, `kavach`, `nein`, `shravan`, `t-ron`. Same template, just probing for the newer manifest filename.
+- **Container-shaped (2)** — `bullshift`, `photisnadi`. Need a recipe-shape decision (do we install upstream's container, or run a build with the upstream Dockerfile, or something else?).
+- **Roadmapped placeholders (6)** — `abacus`, `mela`, `murti`, `samay`, `seema`, `tanur`. Per the user, intentionally unscaffolded — leave the recipes as-is.
+- **`marketplace/agnos-kernel.cyml`** — 1.22.0 → 1.26.1 + `release_asset` glob fix (`agnos-*-x86_64.tar.gz` never matched; actual upstream is `agnos-<v>-src.tar.gz` + bare `agnos-x86_64`) + build-step rework. Distinct from the cargo→cyrius template — kernel boots, doesn't ship a userspace binary.
 
 ### Notes
 
