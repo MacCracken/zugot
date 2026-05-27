@@ -4,7 +4,7 @@
 
 [package]
 name = "onnxruntime"
-version = "1.24.4"
+version = "1.26.0"
 description = "onnxruntime — Cross-platform ONNX model inference runtime"
 license = "MIT"
 groups = ["ai", "ml", "inference"]
@@ -12,8 +12,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://github.com/microsoft/onnxruntime/archive/refs/tags/v1.24.4.tar.gz"
-sha256 = "0cf4d2ee4392fbb8aedaabc6b2ba11b4a680d1071fa4f75546c2289ca5b404cf"
+url = "https://github.com/microsoft/onnxruntime/archive/refs/tags/v1.26.0.tar.gz"
+sha256 = "2a90eb9a306c1eeb29213f5b165a55008ac5cb7d27e0935c4458c51a49ef091d"
 patches = []
 
 [depends]

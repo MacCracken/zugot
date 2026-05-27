@@ -4,7 +4,7 @@
 
 [package]
 name = "python-transformers"
-version = "5.5.4"
+version = "5.9.0"
 description = "python-transformers — HuggingFace Transformers for state-of-the-art NLP and ML"
 license = "Apache-2.0"
 groups = ["ai", "ml", "python", "llm"]
@@ -12,8 +12,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://github.com/huggingface/transformers/archive/refs/tags/v5.5.4.tar.gz"
-sha256 = "d9d5a35421d6e6b533b43f5766564ba1e89ee9b1b5f60230546ff6c4a1bef7eb"
+url = "https://github.com/huggingface/transformers/archive/refs/tags/v5.9.0.tar.gz"
+sha256 = "aea88fd01ea5344d4e1a8692ee029258de8040381827211a306c3e2be3ace4ac"
 patches = []
 
 [depends]

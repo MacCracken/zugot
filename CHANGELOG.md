@@ -9,7 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and
 
 ## [1.0.2] - 2026-05-27
 
-A maintenance / drift-cleanup release. P(-1)-style version audit roughly a month after 1.0.1, focused on the fast-moving AGNOS-native (MacCracken/\*) ecosystem. Drift was detected for every GitHub-sourced recipe via `git ls-remote --tags` (no REST rate limit) and confirmed against each repo's authoritative `releases/latest`; SHA256 for every bump was verified against the release asset digest (GitHub-published `digest:` / `SHA256SUMS`). The Cyrius toolchain bumped 5.7.25 → 6.0.3 (binary renames). New `marketplace/patra` recipe. A second pass extended the audit to third-party GitHub recipes: 46 libraries bumped to current point/minor releases with download-verified SHAs (heavy/major jumps deferred). `noted-issues-bazaar-finds.md` retired. Validator clean across all 563 recipes.
+A maintenance / drift-cleanup release. P(-1)-style version audit roughly a month after 1.0.1, focused on the fast-moving AGNOS-native (MacCracken/\*) ecosystem. Drift was detected for every GitHub-sourced recipe via `git ls-remote --tags` (no REST rate limit) and confirmed against each repo's authoritative `releases/latest`; SHA256 for every bump was verified against the release asset digest (GitHub-published `digest:` / `SHA256SUMS`). The Cyrius toolchain bumped 5.7.25 → 6.0.3 (binary renames). New `marketplace/patra` recipe. A second pass extended the audit to third-party GitHub recipes: 51 libraries bumped to current point/minor releases with download-verified SHAs (a few majors/browsers deferred). `noted-issues-bazaar-finds.md` retired. Validator clean across all 563 recipes.
 
 ### Cyrius toolchain bump — 5.7.25 → 6.0.3 (2026-05-27)
 
@@ -97,9 +97,13 @@ A `git ls-remote` sweep of the 156 non-MacCracken GitHub-sourced recipes, de-noi
 
 `base/llvm` (22.1.x patch), `base/boost` (minor), and `desktops/elogind` were the three larger/corrected items pulled forward from the deferred set after confirming their build steps reference no hardcoded version paths; each SHA was verified against the full source tarball (llvm ≈159 MB). `elogind` was corrected to **255.25** — its `releases/latest` (the 257.x git tags are not published releases); the prior recipe also pointed at a non-existent `V255.22` tag, now a canonical `archive/refs/tags/v255.25` URL.
 
+### Third-party — AI/ML stack
+
+Bumped to current `releases/latest`, SHAs verified against the full source tarballs (pytorch ≈410 MB, onnxruntime ≈271 MB downloaded + hashed). These move together coherently (vllm depends on pytorch + transformers): `ai/python-transformers` 5.5.4→5.9.0 and `ai/vllm` 0.19.0→0.21.0 (pure `pip install .`), `ai/ollama` 0.20.7→0.24.0 (`go build`), `ai/python-pytorch` 2.11.0→2.12.0 and `ai/onnxruntime` 1.24.4→1.26.0 (generic `cmake … -DCMAKE_BUILD_TYPE=Release` / `make` — build flags unchanged across the minor bump; CI/takumi validates the actual compile).
+
 ### Third-party — deferred (need individual build-step review)
 
-Genuine drift, but each is a major-version jump and/or a heavy native/CUDA build, so per the "large effort, one at a time — a wrong base recipe breaks the entire build" rule they were **not** batch-applied and need a dedicated pass: `base/protobuf` 34.1→35.0 (major C++ ABI; the ML stack links it), `ai/python-pytorch` 2.11.0→2.12.0, `ai/onnxruntime` 1.24.4→1.26.0, `ai/vllm` 0.19.0→0.21.0, `ai/python-transformers` 5.5.4→5.9.0, `ai/ollama` 0.20.7→0.24.0, `browser/brave` 1.91.64→1.93.1, `browser/midori` 11.6.5.1→12.
+Two items remain deferred. **`base/protobuf` 34.1→35.0** is a major C++ ABI bump with three in-tree dependents (`marketplace/agnosai`, `ai/ifran`, `ai/containerd`) — it wants a coordinated bump-and-rebuild, not an isolated version change. **`browser/brave` 1.91.64→1.93.1** and **`browser/midori` 11.6.5.1→12** are full browser builds (Chromium-scale / npm) that each need their own pass.
 
 Two deliberate non-bumps: **`base/openssl` + `edge/openssl` stay on 3.5.6** — that is the latest 3.5.x patch (no 3.5.7 exists) and the only newer release is the **4.0.0 major**, which is the wrong track for a base distro pinned to the OpenSSL LTS line; a 4.0 migration is its own project. **`base/sysvinit` stays on 3.14** — the 3.15 git tag has no published release asset (404), so 3.14 remains the latest *released* version.
 
