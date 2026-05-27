@@ -3,7 +3,7 @@
 > Consolidated list of open work items across zugot's recipe tree.
 > Not a feature backlog — a snapshot of drift, TODOs, and process gaps surfaced during the current audit pass.
 >
-> **Last updated:** 2026-04-16
+> **Last updated:** 2026-05-27
 
 ## Legend
 
@@ -65,22 +65,25 @@ All four transitions applied:
 
 ---
 
-## P2 · Marketplace — ongoing observation (no action, informational)
+## P2 · Marketplace — placeholder-SHA recipes flagged for later review
 
-### Ahead of upstream — pre-release staging, confirmed intentional
+Surfaced in the 2026-05-27 (`1.0.2`) audit. After populating 48 of the 76 `sha256 = ""` placeholders (see CHANGELOG), **28 remain empty** because no verifiable artifact exists yet. None are blocking; each needs a **review pass** or a **Rust→Cyrius port** before it can be populated. Grouped by cause:
 
-Six recipes have versions newer than the current upstream tag. These are pre-release staging — release asset publication lags the recipe bump. Not an error; recorded here so a future reader doesn't try to "fix" them:
+### No published release/tag (unscaffolded) — await first upstream tag
 
-- `marketplace/secureyeoman*.cyml` (5 variants) — recipe `2026.3.28` vs upstream `2026.3.19`
-- `marketplace/stiva.cyml` — recipe `2.0.0` vs upstream `1.0.0`
+`git ls-remote` returns no usable tag for the recipe's version: `abacus`, `aethersafha`, `agnostic`, `mela`, `murti`, `salai`, `samay`, `seema`, `takumi`, `tanur`.
 
-### Awaiting first upstream tag — no action until upstream releases
+### Release exists but ships no downloadable asset
 
-22 recipes reference `MacCracken/*` repos that `git ls-remote` returns no tags for. Branch-based or newly-created projects. Current recipe versions are placeholder; they'll get real SHAs + version bumps when upstream cuts a first tag:
+The recipe's `*-linux-amd64.tar.gz` glob matches nothing upstream — these tag releases without attaching a Linux tarball. Candidates for the source-build / Cyrius-port review (decide per recipe whether to switch `release_asset = "source"` once the build is confirmed): `aequi`, `agnosai`, `bullshift`, `delta`, `jalwa`, `kiran`, `mneme`, `nazar`, `rahd`, `selah`, `shruti`, `sutra`, `tarang`, `tazama`, `vidhana`.
 
-`abacus`, `aegis`, `aethersafha`, `agnova`, `jantu`, `jivanu`, `kavach`, `libro`, `mabda`, `mastishk`, `mela`, `mneme`, `muharrir`, `murti`, `nazar`, `salai`, `samay`, `seema`, `shakti`, `takumi`, `tanur`
+### Version / asset mismatch — needs a decision
 
-Check periodically: `for n in $list; do git ls-remote https://github.com/MacCracken/$n; done`
+- `marketplace/rasa.cyml` — the `2026.3.23` release ships only `2026.3.18`-named assets.
+- `marketplace/stiva.cyml` — recipe `2.0.0` is ahead of upstream's max tag `1.0.0`.
+- `edge/agnos-edge-agent.cyml` — pinned `agnos-edge-agent-*.tar.xz` is absent from the agnosticos release.
+
+Re-check: `for n in <repo>; do git ls-remote --tags https://github.com/MacCracken/$n; done`
 
 ---
 

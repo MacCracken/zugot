@@ -18,7 +18,7 @@ arch = "any"
 [source]
 github_release = "MacCracken/jantu"
 release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+sha256 = "3b779e1a36562bb551b49060cf022c8a865e5e08d5042e413adab8d15367ca55"
 
 [depends]
 runtime = []

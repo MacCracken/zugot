@@ -18,7 +18,7 @@ arch = "any"
 [source]
 github_release = "MacCracken/hisab-mimamsa"
 release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+sha256 = "35bb024d6eabd12556517cebe4d35614bf14aac9abfb9bb51532695d6d9d0653"
 
 [depends]
 runtime = []

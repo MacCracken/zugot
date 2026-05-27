@@ -18,7 +18,7 @@ arch = "any"
 [source]
 github_release = "MacCracken/ifran"
 release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+sha256 = "bea326e9371ee5e7250653805ea457d0cdbc6595624470ebbb68395e142484a3"
 
 [depends]
 runtime = []

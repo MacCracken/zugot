@@ -20,7 +20,7 @@ arch = "any"
 crates_io = "dhvani"
 github_release = "MacCracken/dhvani"
 release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+sha256 = "27a258e8ba16d0a29dbc1e3563610f6e6be9959d7c7f036c846490422dddc763"
 
 [depends]
 runtime = []

@@ -18,7 +18,7 @@ arch = "any"
 [source]
 github_release = "MacCracken/bijli"
 release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+sha256 = "98dfda6721aa79907947d13aa9f9ebd80b4511e978703f41870019451ead3b45"
 
 [depends]
 runtime = []

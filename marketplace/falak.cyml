@@ -18,7 +18,7 @@ arch = "any"
 [source]
 github_release = "MacCracken/falak"
 release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+sha256 = "db24c1849f8b93e2f9d79e448f145072e8f7c0141651c7bf3653333d1d3096e1"
 
 [depends]
 runtime = []

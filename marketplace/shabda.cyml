@@ -18,7 +18,7 @@ arch = "any"
 [source]
 github_release = "MacCracken/shabda"
 release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+sha256 = "35cb01a1520a150c5878cf1453eab228c5aab316f673b1dc13a1cc8123dc2ff0"
 
 [depends]
 runtime = []

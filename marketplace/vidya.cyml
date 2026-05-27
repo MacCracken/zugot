@@ -22,7 +22,7 @@ arch = "x86_64"
 [source]
 github_release = "MacCracken/vidya"
 release_asset = "vidya-*-src.tar.gz"
-sha256 = ""  # TODO: populate from release tarball
+sha256 = "da43278dbdea2ddf732d127cf5260779517e4fd613512e67bb84d48350f25909"
 
 [depends]
 runtime = []

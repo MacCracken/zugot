@@ -18,7 +18,7 @@ arch = "any"
 [source]
 github_release = "MacCracken/kana"
 release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+sha256 = "d4bd7fb87f2eab68192fbdaca848c8a6b8b6a9ca01d23a0b7ba306909cf0ebeb"
 
 [depends]
 runtime = []

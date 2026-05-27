@@ -16,8 +16,8 @@ arch = "x86_64"
 
 [source]
 github_release = "MacCracken/PhotisNadi"
-release_asset = "photisnadi-*-linux-x64.tar.gz"
-sha256 = ""  # TODO: populate from release tarball
+release_asset = "photisnadi-202603181-linux-x64.tar.gz"
+sha256 = "be446b6bdeaf2ac0250120a9a47fea613f34789b0952fda1b1739236e2194a8e"
 
 [depends]
 runtime = [

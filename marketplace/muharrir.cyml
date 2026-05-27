@@ -19,7 +19,7 @@ arch = "any"
 [source]
 github_release = "MacCracken/muharrir"
 release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+sha256 = "ec30696c34a9bd24daefdb5fc78bbe52a92ba86b18b417c04da85d752a8f3d33"
 
 [depends]
 runtime = ["glibc"]

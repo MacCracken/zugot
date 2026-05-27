@@ -20,7 +20,7 @@ arch = "any"
 crates_io = "aethersafta"
 github_release = "MacCracken/aethersafta"
 release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+sha256 = "6b45c5bae1f9691c730b89f212cb14bdfd1778ddd390bde8ca5d37e7f283fe98"
 
 [depends]
 runtime = []

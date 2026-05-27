@@ -18,7 +18,7 @@ arch = "any"
 [source]
 github_release = "MacCracken/khanij"
 release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+sha256 = "a99ff9282e54cc3647458bc944ffd05d06897ef8e3d68eec67a0d25c279f4767"
 
 [depends]
 runtime = []

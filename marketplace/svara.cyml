@@ -18,7 +18,7 @@ arch = "any"
 [source]
 github_release = "MacCracken/svara"
 release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+sha256 = "32b1e27393ca5c97cc37003fa675e49320e3bcd2d6aa9483c8393eb36320a866"
 
 [depends]
 runtime = []

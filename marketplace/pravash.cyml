@@ -18,7 +18,7 @@ arch = "any"
 [source]
 github_release = "MacCracken/pravash"
 release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+sha256 = "30c0eb68e7468cbf116f7c5f46f8abdc2460a397215342d9356591548c2f0c51"
 
 [depends]
 runtime = []

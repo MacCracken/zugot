@@ -18,7 +18,7 @@ arch = "any"
 [source]
 github_release = "MacCracken/bodh"
 release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+sha256 = "6e2ed6a1835cf43742e4eeac0e120bccf4c3c3c033009ba27e8fa931712de3b4"
 
 [depends]
 runtime = []

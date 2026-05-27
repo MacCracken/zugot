@@ -18,7 +18,7 @@ arch = "any"
 [source]
 github_release = "MacCracken/brahmanda"
 release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+sha256 = "cabb7b752929e08d6007b58a3cbc1e1ffe2dda9cb8fcc8676c975f010e680af9"
 
 [depends]
 runtime = []

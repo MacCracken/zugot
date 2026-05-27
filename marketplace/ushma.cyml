@@ -18,7 +18,7 @@ arch = "any"
 [source]
 github_release = "MacCracken/ushma"
 release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+sha256 = "030aad77f383994b86e5d7d71895c71c263042d27a465ae684dd1bea3ab204f5"
 
 [depends]
 runtime = []

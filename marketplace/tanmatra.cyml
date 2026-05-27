@@ -18,7 +18,7 @@ arch = "any"
 [source]
 github_release = "MacCracken/tanmatra"
 release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+sha256 = "19adfe9da7cf29ae397e42f557cbc734d2e0d360ef6574f68092b8cf5e439261"
 
 [depends]
 runtime = []

@@ -16,7 +16,7 @@ arch = "any"
 crates_io = "szal"
 github_release = "MacCracken/szal"
 release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+sha256 = "bf527fd1d0fa4a8b449b03b655306031a89cbbe1a780bef3834865fa73188c2f"
 
 [depends]
 runtime = []

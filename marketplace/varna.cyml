@@ -18,7 +18,7 @@ arch = "any"
 [source]
 github_release = "MacCracken/varna"
 release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+sha256 = "16034f15edaa82454bd8a48719cb5004c22959c98256bcdd0e7fd46fa2cbc3a4"
 
 [depends]
 runtime = []

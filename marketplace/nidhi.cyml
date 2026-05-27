@@ -18,7 +18,7 @@ arch = "any"
 [source]
 github_release = "MacCracken/nidhi"
 release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+sha256 = "0c477d34c936ce1684f81be4adf9de7bc546d4081851223ca181897dcbf4e259"
 
 [depends]
 runtime = []

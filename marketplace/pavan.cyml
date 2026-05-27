@@ -16,7 +16,7 @@ arch = "any"
 [source]
 github_release = "MacCracken/pavan"
 release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+sha256 = "e8cafff3cb74e24e10ac1e17f3b25a5ad524b516a747585ba25bcf6cbe0604ae"
 
 [depends]
 runtime = []

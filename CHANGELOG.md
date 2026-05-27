@@ -71,11 +71,18 @@ The six SecureYeoman recipes were on the abandoned alpha CalVer scheme (`2026.3.
 
 - **`marketplace/aegis.cyml`** 0.1.0 → **1.0.0**. Upstream ported the security daemon from Rust to Cyrius and now ships a prebuilt static binary. Header `Lib: aegis = "0.1.0" in Cargo.toml` → Cyrius line; `groups`/`tags` `rust` → `cyrius`; `release_asset` `aegis-*-linux-amd64.tar.gz` (never matched) → `aegis-*-x86_64-linux`; build `cargo build`/`cargo test` → none (prebuilt); `build = ["rust"]` → `[]`; install switched from `target/release/aegis` to the prebuilt binary (systemd unit preserved). SHA populated — was an empty `# TODO` (`43bdf813…`).
 
-### Version tracked — SHA still TODO
+### Placeholder SHA population (`sha256 = ""` backlog)
 
-These three releases publish **no downloadable code asset** (`release_asset = "source"`; the latest release has zero or non-code assets), so a SHA cannot be verified. Versions were bumped for metadata accuracy; `sha256` remains an empty `# TODO`. They are not installable until upstream publishes a release asset (and a Rust→Cyrius port check is warranted):
+Swept the 76 recipes carrying an empty `sha256 = ""  # TODO`. **48 are now populated** with verified hashes:
 
-- **`goonj.cyml`** 1.1.1 → **1.4.3**; **`naad.cyml`** 1.0.0 → **1.2.5**; **`mastishk.cyml`** 1.0.0 → **1.1.0**.
+- **46 `release_asset = "source"` recipes** got the sha256 of their pinned tag's GitHub source archive (tag located via `git ls-remote`, `archive/refs/tags/<tag>.tar.gz` downloaded + hashed). This also resolves the three source-only recipes whose versions were bumped earlier this release — `goonj` 1.1.1→1.4.3, `naad` 1.0.0→1.2.5, `mastishk` 1.0.0→1.1.0 — which now carry real SHAs rather than `# TODO`.
+- **`vidya`** 2.7.1 — `vidya-2.7.1-src.tar.gz` (unambiguous `*-src.tar.gz` match).
+- **`photisnadi`** — `release_asset` pinned to the exact `photisnadi-202603181-linux-x64.tar.gz` (the prior `*-linux-x64.tar.gz` glob also matched the `-server` build), SHA populated.
+
+**28 remain empty — no verifiable artifact exists yet**, grouped by cause:
+- *No published release/tag (unscaffolded):* `abacus`, `aethersafha`, `agnostic`, `mela`, `murti`, `salai`, `samay`, `seema`, `takumi`, `tanur`.
+- *Release exists but ships no downloadable asset* (the recipe's `*-linux-amd64.tar.gz` glob matches nothing upstream): `aequi`, `agnosai`, `bullshift`, `delta`, `jalwa`, `kiran`, `mneme`, `nazar`, `rahd`, `selah`, `shruti`, `sutra`, `tarang`, `tazama`, `vidhana`.
+- *Version/asset mismatch:* `rasa` (the 2026.3.23 release ships only `2026.3.18`-named assets), `stiva` (recipe `2.0.0` is ahead of upstream max `1.0.0`), `edge/agnos-edge-agent` (pinned `agnos-edge-agent-*.tar.xz` absent from the agnosticos release). These need an upstream fix or a recipe decision, not a hash.
 
 ### Removed
 

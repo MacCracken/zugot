@@ -18,7 +18,7 @@ arch = "any"
 [source]
 github_release = "MacCracken/vanaspati"
 release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+sha256 = "d01e05ad139ea1f0f5a7012184d9fa496df54e179fbc312297a515fa972d20f2"
 
 [depends]
 runtime = []

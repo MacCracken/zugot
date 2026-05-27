@@ -18,7 +18,7 @@ arch = "any"
 [source]
 github_release = "MacCracken/pramana"
 release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+sha256 = "03a021eca122398524032ccd55f529482c031b13364fb1ec06fffb7abf9ea688"
 
 [depends]
 runtime = []

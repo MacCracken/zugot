@@ -18,7 +18,7 @@ arch = "any"
 [source]
 github_release = "MacCracken/raasta"
 release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+sha256 = "7b1da59f5261e0ec1227a6db064c98c13d950d3bab381e43b8007efa941134c4"
 
 [depends]
 runtime = []

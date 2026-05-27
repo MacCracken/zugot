@@ -18,7 +18,7 @@ arch = "any"
 [source]
 github_release = "MacCracken/dravya"
 release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+sha256 = "2a2423a481a35ef2621326d31a5bcce841ca97ce0fabf6990b9dc2c8382618d8"
 
 [depends]
 runtime = []

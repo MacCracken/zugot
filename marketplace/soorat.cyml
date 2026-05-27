@@ -19,7 +19,7 @@ arch = "x86_64"
 [source]
 github_release = "MacCracken/soorat"
 release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+sha256 = "b51be88ab33169eb44e80b4b518f07045ebe91d909b792ff16cf0204d23d3b69"
 
 [depends]
 runtime = ["glibc"]

@@ -21,7 +21,7 @@ arch = "any"
 crates_io = "ranga"
 github_release = "MacCracken/ranga"
 release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+sha256 = "3ce6ed9de09dc6b449d78f11ce953d9fb83a8d6ca98758681747799878e8bec9"
 
 [depends]
 runtime = []

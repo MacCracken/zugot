@@ -18,7 +18,7 @@ arch = "any"
 [source]
 github_release = "MacCracken/tara"
 release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+sha256 = "c721dc82dd3ee653ea5dba03cfdcf90a4b8114a47f2ff40034ebc90a5a03d462"
 
 [depends]
 runtime = []

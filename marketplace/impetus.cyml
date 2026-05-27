@@ -19,7 +19,7 @@ arch = "any"
 [source]
 github_release = "MacCracken/impetus"
 release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+sha256 = "15fdc33ec1f5ca9b2c06946508fc3ae625ea5cc60390b6ad309f2057c554ae9a"
 
 [depends]
 runtime = []

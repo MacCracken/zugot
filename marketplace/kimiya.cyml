@@ -18,7 +18,7 @@ arch = "any"
 [source]
 github_release = "MacCracken/kimiya"
 release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+sha256 = "979d93bfb736fd7b9e1974bc349d75ee668cf8b23f2b92ba6c9b11a3f95a3f76"
 
 [depends]
 runtime = []

@@ -18,7 +18,7 @@ arch = "any"
 [source]
 github_release = "MacCracken/naad"
 release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+sha256 = "6e3de80f62fff3c18f54cfc5ec86659f4116ea850ae3c46f81a43b81de61ca4f"
 
 [depends]
 runtime = []

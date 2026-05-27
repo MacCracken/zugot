@@ -18,7 +18,7 @@ arch = "any"
 [source]
 github_release = "MacCracken/jyotish"
 release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+sha256 = "2d8085e8e43a8dc81057b5255460eaa2781bfe82cff979811347cf8fc69c9eef"
 
 [depends]
 runtime = []

@@ -20,7 +20,7 @@ arch = "any"
 # No compiled binary. CI needs release asset step to bundle modules.
 github_release = "MacCracken/sutra-community"
 release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+sha256 = "e654beb4d840e4316123f6a26b8b6204d7cd00691419151848371eea3afbb885"
 
 [depends]
 runtime = [

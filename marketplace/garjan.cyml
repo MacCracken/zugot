@@ -18,7 +18,7 @@ arch = "any"
 [source]
 github_release = "MacCracken/garjan"
 release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+sha256 = "ac6a4e5cb6a30e5396384c9a9a5025990f1c86457b6476e6ebbdb0be56adf12c"
 
 [depends]
 runtime = []

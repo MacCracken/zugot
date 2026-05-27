@@ -18,7 +18,7 @@ arch = "any"
 [source]
 github_release = "MacCracken/ghurni"
 release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+sha256 = "fd17e1fe28b3c7bb305ae7e08c96419ad0efcfe285246af6b54d811f42ba863e"
 
 [depends]
 runtime = []

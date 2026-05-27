@@ -18,7 +18,7 @@ arch = "any"
 [source]
 github_release = "MacCracken/badal"
 release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+sha256 = "d7d59c2a66a9d108aed4c6dc50b7edce234eb93ad95e717b3f54a94225f74a80"
 
 [depends]
 runtime = []

@@ -16,7 +16,7 @@ arch = "any"
 [source]
 github_release = "MacCracken/goonj"
 release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+sha256 = "44298052d16b7d291248f0cc7fb846000511479c427b1d55ed7a2757db485034"
 
 [depends]
 runtime = []

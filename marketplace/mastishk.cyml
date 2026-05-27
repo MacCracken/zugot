@@ -18,7 +18,7 @@ arch = "any"
 [source]
 github_release = "MacCracken/mastishk"
 release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+sha256 = "2b7674df98a8bf04bf72abe79803970c55d6bc84511e45c80847295d257e3ba7"
 
 [depends]
 runtime = []

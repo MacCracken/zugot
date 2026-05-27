@@ -18,7 +18,7 @@ arch = "any"
 [source]
 github_release = "MacCracken/sangha"
 release_asset = "source"
-sha256 = ""  # TODO: populate from release tarball
+sha256 = "47f3ee1e99aff45d5ffc4e3999204176d575a1377a3ccc1e952921e180497d3b"
 
 [depends]
 runtime = []
