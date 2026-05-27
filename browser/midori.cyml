@@ -3,7 +3,7 @@
 
 [package]
 name = "midori"
-version = "11.6.5.1"
+version = "11.8"
 description = "Midori — Fast, lightweight web browser"
 license = "LGPL-2.1-only"
 groups = ["desktops", "browser", "internet"]
@@ -11,8 +11,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://github.com/goastian/midori-desktop/archive/refs/tags/v11.6.5.1.tar.gz"
-sha256 = "6f84bb24703a3774c4d2b0c98103767e392e878b139c11beed9760f2b0da5c34"
+url = "https://github.com/goastian/midori-desktop/archive/refs/tags/v11.8.tar.gz"
+sha256 = "0ba7b2ed9500fc0b0214935c83576fa3ea4a47aba6d8ab0c9d5f239ee6886b07"
 patches = ["agnos-defaults.patch"]
 
 [depends]
