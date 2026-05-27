@@ -4,7 +4,7 @@
 
 [package]
 name = "hunspell"
-version = "1.7.2"
+version = "1.7.3"
 description = "Hunspell — Spell checker and morphological analyzer"
 license = "LGPL-2.1-only"
 groups = ["desktops", "libs"]
@@ -12,8 +12,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://github.com/hunspell/hunspell/archive/refs/tags/v1.7.2.tar.gz"
-sha256 = "69fa312d3586c988789266eaf7ffc9861d9f6396c31fc930a014d551b59bbd6e"
+url = "https://github.com/hunspell/hunspell/archive/refs/tags/v1.7.3.tar.gz"
+sha256 = "933be3dac6fd55f6e752331a170efb7e33800e40fae1156d8434cc8c85379a1b"
 patches = []
 
 [depends]

@@ -9,7 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and
 
 ## [1.0.2] - 2026-05-27
 
-A maintenance / drift-cleanup release. P(-1)-style version audit roughly a month after 1.0.1, focused on the fast-moving AGNOS-native (MacCracken/\*) ecosystem. Drift was detected for every GitHub-sourced recipe via `git ls-remote --tags` (no REST rate limit) and confirmed against each repo's authoritative `releases/latest`; SHA256 for every bump was verified against the release asset digest (GitHub-published `digest:` / `SHA256SUMS`). The Cyrius toolchain bumped 5.7.25 → 6.0.3 (binary renames). New `marketplace/patra` recipe. `noted-issues-bazaar-finds.md` retired. Validator clean across all 563 recipes.
+A maintenance / drift-cleanup release. P(-1)-style version audit roughly a month after 1.0.1, focused on the fast-moving AGNOS-native (MacCracken/\*) ecosystem. Drift was detected for every GitHub-sourced recipe via `git ls-remote --tags` (no REST rate limit) and confirmed against each repo's authoritative `releases/latest`; SHA256 for every bump was verified against the release asset digest (GitHub-published `digest:` / `SHA256SUMS`). The Cyrius toolchain bumped 5.7.25 → 6.0.3 (binary renames). New `marketplace/patra` recipe. A second pass extended the audit to third-party GitHub recipes: 43 libraries bumped to current point/minor releases with download-verified SHAs (heavy/major jumps deferred). `noted-issues-bazaar-finds.md` retired. Validator clean across all 563 recipes.
 
 ### Cyrius toolchain bump — 5.7.25 → 6.0.3 (2026-05-27)
 
@@ -86,9 +86,22 @@ These three releases publish **no downloadable code asset** (`release_asset = "s
 - **`marketplace/stiva.cyml`** — recipe declares `2.0.0` but upstream's max tag and `releases/latest` are both `1.0.0`. The recipe is *ahead* of upstream; left untouched (downgrading is riskier than the discrepancy) pending clarification of whether 2.0.0 was anticipated.
 - **`edge/agnos-edge-agent.cyml`** — pins `agnosticos` asset `agnos-edge-agent-2026.3.11.tar.xz`, which does not exist in the current `2026.3.31` release (assets are full-OS images + `agnos-linux-*.tar.gz`). SHA was already an empty `# TODO`; recipe needs an upstream fix to identify the edge-agent asset.
 
-### Deferred — third-party drift
+### Third-party — version bumps (SHA verified by tarball download)
 
-A `git ls-remote` sweep of the 156 non-MacCracken GitHub-sourced recipes surfaced ~64 drift candidates, but the list is noisy (many "latest" hits are pre-release/rc/snapshot or unrelated subproject tags, e.g. `boost-1.91.0.beta1`, `jq-1.8.2rc1`, `llvmorg-23-init`, `FIPS_098_TEST_8`). Several look like genuine, security-relevant updates (e.g. `cups` 2.4.16→2.4.19, `nghttp2` 1.68.1→1.69.0, `openssl`, `pipewire` 1.6.3→1.6.6, `harfbuzz` 14.1.0→14.2.0, `libusb` 1.0.29→1.0.30). Per the "large effort, one at a time" rule for base libraries, these are **not** batch-applied here — each needs an individual stable-release confirmation, tarball SHA, and build-step review. Tracked for a follow-up pass.
+A `git ls-remote` sweep of the 156 non-MacCracken GitHub-sourced recipes, de-noised to genuine stable releases and confirmed against each repo's `releases/latest`, found the drift below. Each tarball was downloaded and SHA256 computed fresh (no GitHub digest exists for source archives); version, URL, and SHA were updated and re-verified (0 mismatches). All are point/minor releases whose recipes reference the version only in the `url` line (build steps use the build system's srcdir handling — no hardcoded version paths).
+
+- **base/** (10): `bc` 7.0.3→7.1.0, `dracut` 110→111, `expat` 2.7.5→2.8.1, `gyp` 0.22.0→0.22.2, `hyprwayland-scanner` 0.4.5→0.4.6, `iana-etc` 20260409→20260511, `intel-ucode` 20260227→20260512, `libnghttp2` 1.68.1→1.69.0, `meson` 1.11.0→1.11.1, `mimalloc` 3.3.0→3.3.2.
+- **ai/** (12): `containerd` 2.2.3→2.3.1, `crun` 1.27→1.28, `cython` 3.2.4→3.2.5, `huggingface-hub-cli` 1.11.0→1.16.4, `jupyter-server` 2.17.0→2.18.2, `nccl` 2.30.3→2.30.4, `openblas` 0.3.32→0.3.33, `pycurl` 7.45.7→7.46.0, `python-numpy` 2.4.4→2.4.6, `python-pandas` 3.0.2→3.0.3, `slirp4netns` 1.3.3→1.3.4, `vulkan-compute-tools` 1.4.341→1.4.352.
+- **desktops/** (19): `aquamarine` 0.10.0→0.11.0, `cups` 2.4.16→2.4.19, `glslang` 16.2.0→16.3.0, `harfbuzz` 14.1.0→14.2.0, `hunspell` 1.7.2→1.7.3, `hwdata` 0.406→0.407, `kitty` 0.46.2→0.47.0, `libblockdev` 3.4.0→3.5.0, `libde265` 1.0.18→1.1.0, `libheif` 1.21.2→1.22.2, `libusb` 1.0.29→1.0.30, `libxmlb` 0.3.26→0.3.27, `minizip` 4.1.0→4.2.1, `pipewire` 1.6.3→1.6.6, `sdbus-cpp` 2.2.1→2.3.1, `tree-sitter` 0.26.8→0.26.9, `vulkan-headers` 1.4.349→1.4.352, `vulkan-loader` 1.4.349→1.4.352, `yazi` 26.1.22→26.5.6.
+- **edge/ + network/** (2): `dhcpcd` 10.3.1→10.3.2 (both recipes).
+
+### Third-party — deferred (need individual build-step review)
+
+Genuine drift, but each is a major-version jump and/or a very large source download, so per the "large effort, one at a time — a wrong base recipe breaks the entire build" rule they were **not** batch-applied: `base/llvm` 22.1.3→22.1.6 (≈130 MB src), `base/protobuf` 34.1→35.0 (major), `base/openssl` + `edge/openssl` 3.5.6→4.0.0 (major, base-critical), `base/boost` 1.90.0→1.91.0, `ai/python-pytorch` 2.11.0→2.12.0, `ai/onnxruntime` 1.24.4→1.26.0, `ai/vllm` 0.19.0→0.21.0, `ai/python-transformers` 5.5.4→5.9.0, `ai/ollama` 0.20.7→0.24.0, `desktops/elogind` 255.22→257.14 (major), `browser/brave` 1.91.64→1.93.1, `browser/midori` 11.6.5.1→12. Also `base/sysvinit`: the 3.15 git tag has no published release asset (404), so the recipe stays on 3.14, the latest *released* version.
+
+### Third-party — filtered as false positives (no change)
+
+The raw max-tag sweep flagged these, but each recipe is already on the latest stable; the "newer" hit was a pre-release, an unrelated subproject/legacy tag, or a different release line: `redis7` (`twitter-20100825`), `desktops/opus` (`draft-15`), `desktops/icu` (`brs/…` branch), `desktops/libva` (`staging-…`), `desktops/libjpeg-turbo` (`jpeg-10` API tag), `desktops/msgpack-c` (recipe tracks the `c-` line, not `cpp-`), `desktops/wxwidgets` (`BKFILE_…`), `network/libnl` (already 3.12.0), `base/c-ares` (`curl-7_19_4`), `base/ninja` (`release-120715`), `base/shadow` (`20001016`), `base/squashfs-tools` (`CVE-…`), `base/bun` (canary date tag), `ai/rocm` (`therock-…` build-system tag).
 
 ## [1.0.1] - 2026-04-28
 

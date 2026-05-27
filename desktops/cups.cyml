@@ -6,7 +6,7 @@
 
 [package]
 name = "cups"
-version = "2.4.16"
+version = "2.4.19"
 description = "CUPS — Common Unix Printing System"
 license = "Apache-2.0"
 groups = ["desktops", "printing"]
@@ -14,8 +14,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://github.com/OpenPrinting/cups/releases/download/v2.4.16/cups-2.4.16-source.tar.gz"
-sha256 = "0339587204b4f9428dd0592eb301dec0bf9ea6ea8dce5d9690d56be585aba92d"
+url = "https://github.com/OpenPrinting/cups/releases/download/v2.4.19/cups-2.4.19-source.tar.gz"
+sha256 = "820984b12a67f98705785aae2dd1347fe0ac097828001d4583ff64574aed6389"
 patches = []
 
 [depends]

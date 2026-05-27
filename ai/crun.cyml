@@ -4,7 +4,7 @@
 
 [package]
 name = "crun"
-version = "1.27"
+version = "1.28"
 description = "crun — Fast and lightweight OCI container runtime written in C"
 license = "GPL-2.0-only"
 groups = ["containers"]
@@ -12,8 +12,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://github.com/containers/crun/releases/download/1.27/crun-1.27.tar.gz"
-sha256 = "99077cc701a9f6842f70384eb05e9429da1ad338cdef3e0bac5a486cbf2ca75d"
+url = "https://github.com/containers/crun/releases/download/1.28/crun-1.28.tar.gz"
+sha256 = "eb8fe73ffe44d868b14bb94fa6c295bd57e8bf023de43b61579da826c07cc406"
 patches = []
 
 [depends]

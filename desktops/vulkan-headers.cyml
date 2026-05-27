@@ -5,7 +5,7 @@
 
 [package]
 name = "vulkan-headers"
-version = "1.4.349"
+version = "1.4.352"
 description = "Vulkan Headers — Vulkan API header files"
 license = "Apache-2.0"
 groups = ["desktops", "graphics"]
@@ -13,8 +13,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://github.com/KhronosGroup/Vulkan-Headers/archive/refs/tags/v1.4.349.tar.gz"
-sha256 = "d7b84712f8469657baa37a436d1a23efbf0a6354fc8835b6758ef036e15dcc14"
+url = "https://github.com/KhronosGroup/Vulkan-Headers/archive/refs/tags/v1.4.352.tar.gz"
+sha256 = "4850909d22a8a9767c27daea2b972e49d7c298560573d5b6221ee50db9bf49db"
 patches = []
 
 [depends]

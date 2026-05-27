@@ -5,7 +5,7 @@
 
 [package]
 name = "pycurl"
-version = "7.45.7"
+version = "7.46.0"
 description = "pycurl — Python bindings for libcurl"
 license = "LGPL-2.1-or-later OR MIT"
 groups = ["desktops", "python"]
@@ -13,8 +13,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://github.com/pycurl/pycurl/archive/refs/tags/REL_7_45_7.tar.gz"
-sha256 = "0f7a8dcb7048f0485c90b66f31f94b89ed41f499a18b874b0ce19209ffebb9c6"
+url = "https://github.com/pycurl/pycurl/archive/refs/tags/REL_7_46_0.tar.gz"
+sha256 = "0e330ddcfea3511a25e8efa276ac3911db3e675c09f98dc5276f260c7908d855"
 patches = []
 
 [depends]

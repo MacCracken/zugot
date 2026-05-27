@@ -5,7 +5,7 @@
 
 [package]
 name = "cython"
-version = "3.2.4"
+version = "3.2.5"
 description = "Cython — C extension compiler for Python"
 license = "Apache-2.0"
 groups = ["ai", "python", "tools"]
@@ -13,8 +13,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://github.com/cython/cython/archive/refs/tags/3.2.4.tar.gz"
-sha256 = "9631e586c49b9d3f72c3962c376119479a6a98e3c0e3c14d5218e199ef563b18"
+url = "https://github.com/cython/cython/archive/refs/tags/3.2.5.tar.gz"
+sha256 = "f78c8c75ca0da74fcc0179eafb789c39f5b33e60558994129a1b646cc22b4293"
 patches = []
 
 [depends]

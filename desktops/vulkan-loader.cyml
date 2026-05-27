@@ -5,7 +5,7 @@
 
 [package]
 name = "vulkan-loader"
-version = "1.4.349"
+version = "1.4.352"
 description = "Vulkan Loader — Vulkan ICD loader library"
 license = "Apache-2.0"
 groups = ["desktops", "graphics"]
@@ -13,8 +13,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://github.com/KhronosGroup/Vulkan-Loader/archive/refs/tags/v1.4.349.tar.gz"
-sha256 = "411d62d2b899193cbba72f3c54b6866eb50549b9ea96cf33034cdf2f6644d941"
+url = "https://github.com/KhronosGroup/Vulkan-Loader/archive/refs/tags/v1.4.352.tar.gz"
+sha256 = "4b0572323a70aca059995407ceecd40ebcc3c2a14b3979a37a3aca9eee3e6a17"
 patches = []
 
 [depends]

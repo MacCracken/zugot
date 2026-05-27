@@ -3,7 +3,7 @@
 
 [package]
 name = "libxmlb"
-version = "0.3.26"
+version = "0.3.27"
 description = "libxmlb — Binary XML library for fast read-only queries"
 license = "LGPL-2.1-only"
 groups = ["desktops", "libs"]
@@ -11,8 +11,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://github.com/hughsie/libxmlb/archive/refs/tags/0.3.26.tar.gz"
-sha256 = "1a34bcfa58617675dafd5251921506b31afcc8384de4d1cb09b62a3ead8460a3"
+url = "https://github.com/hughsie/libxmlb/archive/refs/tags/0.3.27.tar.gz"
+sha256 = "e7a6d493e25b38a85fb3c46ec25be0b4eeae851a5ed1b850c8dd04e7c0a7cef8"
 patches = []
 
 [depends]

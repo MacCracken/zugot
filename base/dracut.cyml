@@ -6,7 +6,7 @@
 
 [package]
 name = "dracut"
-version = "110"
+version = "111"
 description = "Dracut — initramfs infrastructure"
 license = "GPL-2.0-only"
 groups = ["base", "kernel", "tier1"]
@@ -14,8 +14,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://github.com/dracut-ng/dracut-ng/archive/refs/tags/110.tar.gz"
-sha256 = "0d357853f8cf2371d89a8ebcbbb1fd2c1c85a79d8866925fd7385eaeb20a27dc"
+url = "https://github.com/dracut-ng/dracut-ng/archive/refs/tags/111.tar.gz"
+sha256 = "ca949190692e91611ef16ea3642c0f764f63948860f3f742524310728c991493"
 patches = []
 
 [depends]

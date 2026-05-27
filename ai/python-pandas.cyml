@@ -4,7 +4,7 @@
 
 [package]
 name = "python-pandas"
-version = "3.0.2"
+version = "3.0.3"
 description = "python-pandas — Data manipulation and analysis library for Python"
 license = "BSD-3-Clause"
 groups = ["ai", "ml", "python"]
@@ -12,8 +12,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://github.com/pandas-dev/pandas/releases/download/v3.0.2/pandas-3.0.2.tar.gz"
-sha256 = "f4753e73e34c8d83221ba58f232433fca2748be8b18dbca02d242ed153945043"
+url = "https://github.com/pandas-dev/pandas/releases/download/v3.0.3/pandas-3.0.3.tar.gz"
+sha256 = "696a4a00a2a2a35d4e5deb3fc946641b96c944f02230e4f76137fe35d806c4fc"
 patches = []
 
 [depends]

@@ -1,6 +1,6 @@
 [package]
 name = "kitty"
-version = "0.46.2"
+version = "0.47.0"
 description = "GPU-accelerated terminal emulator with kitten tools"
 license = "GPL-3.0-only"
 groups = ["desktops"]
@@ -8,8 +8,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://github.com/kovidgoyal/kitty/archive/refs/tags/v0.46.2.tar.gz"
-sha256 = "25ca6725da2b09d574e571cad44292adaa278d154a89221207bdb598884c133e"
+url = "https://github.com/kovidgoyal/kitty/archive/refs/tags/v0.47.0.tar.gz"
+sha256 = "e75006d2cc0deef6c56f2513d80e0b24c7626d398edbfbf1c76436abdeb0c935"
 patches = []
 
 [depends]
