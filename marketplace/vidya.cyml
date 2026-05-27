@@ -1,18 +1,18 @@
 # Vidya — Programming reference engine for AGNOS
 # Curated, tested, multi-language programming reference: best practices,
-# gotchas, performance notes, examples in 10 languages (Rust, Python, C,
-# Go, TypeScript, Shell, Zig, x86_64 ASM, AArch64 ASM, OpenQASM).
+# gotchas, performance notes, examples in 11 languages (Rust, Python, C,
+# Go, TypeScript, Shell, Zig, x86_64 ASM, AArch64 ASM, OpenQASM, Cyrius).
 # Queryable corpus + searchable knowledge base.
 #
 # Name: Vidya (Sanskrit: विद्या — knowledge, learning)
 # Bin: vidya (queryable CLI)
 # Lang: Cyrius (was a Rust crate through 1.x; 2.x is fully ported)
 #
-# Status: Released — v2.3.0.
+# Status: Released — v2.7.1.
 
 [package]
 name = "vidya"
-version = "2.3.0"
+version = "2.7.1"
 description = "Vidya — programming reference engine"
 license = "GPL-3.0-only"
 groups = ["library", "science", "cyrius"]
@@ -22,7 +22,7 @@ arch = "x86_64"
 [source]
 github_release = "MacCracken/vidya"
 release_asset = "vidya-*-src.tar.gz"
-sha256 = "3359cd66b0c57fab6295a35945e20b790894a314ccbc181bc2f6b541205bc440"
+sha256 = ""  # TODO: populate from release tarball
 
 [depends]
 runtime = []

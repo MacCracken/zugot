@@ -3,14 +3,19 @@
 # context-aware completions, LLM-powered assistance.
 #
 # Name: Agnoshi (agnostic + shell)
-# Bin: agnoshi
-# Lang: Cyrius (was Rust through 0.x; 1.x is the Cyrius rewrite)
+# Bin: agnsh (binary), agnoshi (project name)
+# Lang: Cyrius (was Rust through 0.90.x; 1.0+ is the Cyrius rewrite)
 #
-# Status: Released — v1.0.0.
+# Status: Recipe staged for agnoshi v1.3.1 (shipped upstream 2026-05-11).
+#   sha256 below is the v1.0.0 release asset; update when the v1.3.1
+#   GitHub release is cut. v1.3.1 closes the v1.2.0/v1.3.0 cycle:
+#   approval workflow battle-tested, interactive shell end-to-end,
+#   P(-1) audit with ADR-006 + 14-pattern CI lint shield, both
+#   x86_64 (293,920 B) + aarch64 (337,168 B) static binaries.
 
 [package]
 name = "agnoshi"
-version = "1.0.0"
+version = "1.3.1"
 description = "Agnoshi — AI-native natural language shell for AGNOS"
 license = "GPL-3.0-only"
 groups = ["tool", "shell", "ai", "cyrius"]
@@ -19,7 +24,12 @@ arch = "x86_64"
 
 [source]
 github_release = "MacCracken/agnoshi"
-release_asset = "agnoshi"
+# Release workflow ships `agnsh-${TAG}-x86_64-linux` (per
+# `.github/workflows/release.yml` — the v1.1.0 fix that renamed the
+# entry from src/main.cyr → src/agnsh.cyr also retitled the asset).
+release_asset = "agnsh-*-x86_64-linux"
+# TODO: update sha256 when v1.3.1 GitHub release is cut. Value below
+# is the v1.0.0 asset hash — staging-only until then.
 sha256 = "af7aae409c25902bc498155df23444ae062adb0d98ad2bc7dce63af809f0e97d"
 
 [depends]
@@ -30,17 +40,31 @@ build = []
 category = "shell"
 runtime = "native-binary"
 publisher = "AGNOS"
-tags = ["shell", "ai", "natural-language", "cli", "terminal", "rust"]
+# Dropped "rust" tag — agnoshi is Cyrius-native since 1.0.0 (the
+# rust-old/ tree is preserved for benchmark comparison only).
+tags = ["shell", "ai", "natural-language", "cli", "terminal", "cyrius"]
 min_agnos_version = "2026.3.22"
 
 [marketplace.sandbox]
 seccomp_mode = "desktop"
 network_access = true
 allowed_hosts = ["localhost", "127.0.0.1"]
+# Data dir is mixed by convention: ~/.agnsh_history + ~/.agnsh_audit.log
+# (per agnsh.1) live at $HOME root; ~/.agnoshi/checkpoints/ holds
+# rollback backups for destructive ops (per ADR / SECURITY model).
 data_dir = "~/.agnoshi/"
 
 [[marketplace.sandbox.landlock]]
 path = "~/.agnoshi/"
+access = "rw"
+
+# Allow read+write to history + audit log files at HOME root.
+[[marketplace.sandbox.landlock]]
+path = "~/.agnsh_history"
+access = "rw"
+
+[[marketplace.sandbox.landlock]]
+path = "~/.agnsh_audit.log"
 access = "rw"
 
 [[marketplace.sandbox.landlock]]
@@ -50,9 +74,12 @@ access = "rw"
 [build]
 make = ""
 check = ""
+# Asset is the prebuilt static ELF named `agnsh-1.3.1-x86_64-linux`
+# from the GitHub release; install path uses the canonical bin name
+# `agnsh` (per docs/agnsh.1).
 install = """
 mkdir -p $PKG/usr/bin
-install -Dm755 agnoshi $PKG/usr/bin/agnoshi
+install -Dm755 agnsh-*-x86_64-linux $PKG/usr/bin/agnsh
 """
 
 [security]
