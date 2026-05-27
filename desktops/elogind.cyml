@@ -4,7 +4,7 @@
 
 [package]
 name = "elogind"
-version = "255.22"
+version = "255.25"
 description = "elogind — Standalone logind session manager without full systemd"
 license = "LGPL-2.1-only"
 groups = ["desktops", "libs"]
@@ -12,8 +12,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://github.com/elogind/elogind/archive/V255.22/elogind-V255.22.tar.gz"
-sha256 = "79b5eb96bccf3a6101b35e62d0f80b2d0a47077a1507a6edc705f8cb7bdb0619"
+url = "https://github.com/elogind/elogind/archive/refs/tags/v255.25.tar.gz"
+sha256 = "103d5b5fac8dca30535573c5067c730ed8518a40ac0616442de29f74747778f1"
 patches = []
 
 [depends]
