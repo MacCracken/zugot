@@ -5,11 +5,11 @@
 # Name: AGNOS (Greek: agnosis — unknowing, the blank slate)
 # Bin: agnos (kernel binary)
 #
-# Status: Stable — v1.26.1.
+# Status: Stable — v1.35.3.
 
 [package]
 name = "agnos-kernel"
-version = "1.26.1"
+version = "1.35.3"
 description = "AGNOS — sovereign operating system kernel written in Cyrius"
 license = "GPL-3.0-only"
 groups = ["system", "kernel", "os"]
@@ -19,7 +19,7 @@ arch = "x86_64"
 [source]
 github_release = "MacCracken/agnos"
 release_asset = "agnos-*-src.tar.gz"
-sha256 = "c2b82039c20d2bd90dcd5498e763b745c8d27a81d979e7d3e87cdfa44b32a69e"
+sha256 = "d7b95d2c6828a0bd821050b019293eff9ed1b4d0311e34cb2b99654ffa58551c"
 
 [depends]
 runtime = []

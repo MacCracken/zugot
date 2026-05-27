@@ -5,11 +5,11 @@
 # Name: Agnosys (agnos + sys — toward knowledge of the system)
 # Lang: Cyrius (was a Rust crate through 0.97.x; 1.x is the Cyrius rewrite)
 #
-# Status: Released — v1.0.2.
+# Status: Released — v1.2.7.
 
 [package]
 name = "agnosys"
-version = "1.0.2"
+version = "1.2.7"
 description = "Agnosys — AGNOS kernel interface"
 license = "GPL-3.0-only"
 groups = ["library", "system", "kernel", "cyrius"]
@@ -19,7 +19,7 @@ arch = "any"
 [source]
 github_release = "MacCracken/agnosys"
 release_asset = "agnosys-*-src.tar.gz"
-sha256 = "71ebd125f63f8c4cdacdd0e8f31b41c8f1c7aaa093f806dfe5209aa5eb74c3b7"
+sha256 = "52b91f125396c97a6815757f78ac657af42b541edc6a8650ac4b3309145f3f1a"
 
 [depends]
 runtime = ["glibc"]

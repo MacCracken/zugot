@@ -75,4 +75,3 @@ zero-build recipe that depends only on the canonical package.
 
 - CLAUDE.md §Naming Conventions (rules 1-9)
 - `scripts/validate_recipes.py` — enforces dep resolution against these names
-- `noted-issues-bazaar-finds.md` — captures the bazaar cross-ref rationale

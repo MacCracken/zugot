@@ -6,11 +6,11 @@
 # Bin: abaco
 # Lang: Cyrius (was Rust; 2.x is the Cyrius rewrite)
 #
-# Status: Released — v2.2.0.
+# Status: Released — v2.2.4.
 
 [package]
 name = "abaco"
-version = "2.2.0"
+version = "2.2.4"
 description = "Abaco — AI-native calculator & unit converter for AGNOS"
 license = "GPL-3.0-only"
 groups = ["desktops", "tools"]
@@ -20,7 +20,7 @@ arch = "x86_64"
 [source]
 github_release = "MacCracken/abaco"
 release_asset = "abaco-*-src.tar.gz"
-sha256 = "5a153ec13c39213d917eb412697281a6f572357c8f5b3b5d617fdd534991801c"
+sha256 = "d759f0d168334c70d1b6b6ef0ab7fc086f77cbca97bd82346db604b15f150d87"
 
 [depends]
 runtime = ["glibc"]

@@ -7,6 +7,89 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and
 
 ## [Unreleased]
 
+## [1.0.2] - 2026-05-27
+
+A maintenance / drift-cleanup release. P(-1)-style version audit roughly a month after 1.0.1, focused on the fast-moving AGNOS-native (MacCracken/\*) ecosystem. Drift was detected for every GitHub-sourced recipe via `git ls-remote --tags` (no REST rate limit) and confirmed against each repo's authoritative `releases/latest`; SHA256 for every bump was verified against the release asset digest (GitHub-published `digest:` / `SHA256SUMS`). The Cyrius toolchain bumped 5.7.25 → 6.0.3 (binary renames). New `marketplace/patra` recipe. `noted-issues-bazaar-finds.md` retired. Validator clean across all 563 recipes.
+
+### Cyrius toolchain bump — 5.7.25 → 6.0.3 (2026-05-27)
+
+- **`base/cyrius.cyml`** and **`marketplace/cyrius.cyml`** 5.7.25 → **6.0.3**. Tarball SHA256 verified (`8a49fb40…`) two ways: GitHub asset digest and the upstream `cyrius-6.0.3-x86_64-linux.tar.gz.sha256` companion file. **6.0.0 renamed the toolchain binaries** — install steps were rewritten to match (the old script referenced `bin/cc5`/`bin/cyrc` which no longer exist and would have failed):
+  - `cc5` → **`cycc`** (main compiler); `cc5_aarch64` → **`cycc_aarch64`** (cross-compiler).
+  - `cyrc` → **`cybs`** (build-script tool).
+  - New tools installed: `cyaudit`, `cyrius-lsp` (guarded with `[ -f ]` so a future minor that renames/drops one fails soft; the core compiler/build/ark set stays unconditional).
+  - Retired binaries no longer installed: `cyrc`, and the `cyrius-init/repl/port` shims are now installed only when present.
+  - **v6.0.x back-compat symlinks** added (`cc5 → cycc`, `cyrc → cybs`), mirroring upstream's own installer; to be dropped at the 6.1 bump when upstream retires them.
+  - Stdlib install made recursive (6.x nests subdirs, e.g. `lib/unicode/`); module count 65 → 88. `asm` seed install switched to `install -Dvm755` so its parent dir is created.
+- **`base/kybernet.cyml`** header comment `cc5 toolchain` → `cycc toolchain`.
+
+### base — version bumps (SHA verified)
+
+- **`base/agnos-kernel.cyml`** 1.26.1 → **1.35.3** (`agnos-1.35.3-src.tar.gz`, `d7b95d2c…`).
+- **`base/bazaar.cyml`** 1.0.0 → **1.0.1** (`bazaar-1.0.1-src.tar.gz`, `d755ce58…`).
+- **`base/cyim.cyml`** 1.2.1 → **1.7.1** (`cyim-1.7.1-x86_64-linux.tar.gz`, `85a19aba…`).
+- **`base/owl.cyml`** 1.1.9 → **1.3.6** (`owl-1.3.6-x86_64-linux.tar.gz`, `0212b066…`).
+- **`base/kybernet.cyml`** 1.0.2 → **1.2.1** (`kybernet-1.2.1-src.tar.gz`, `96d3f18f…`).
+
+### marketplace — version bumps (SHA verified)
+
+- **`nous.cyml`** 1.1.1 → **1.2.5**. Asset shape changed: 1.2.x ships a bare prebuilt binary (`nous-1.2.5-x86_64-linux`), not a tarball. `release_asset` and install rewritten to glob the bare binary; stale `rust` tag → `cyrius`. SHA `3d3b61d6…`.
+- **`agnos-kernel.cyml`** 1.26.1 → **1.35.3** (`d7b95d2c…`).
+- **`abaco.cyml`** 2.2.0 → **2.2.4** (`d759f0d1…`).
+- **`agnoshi.cyml`** 1.3.1 → **1.3.3** (`918659a2…`). Recipe was "staged" against a not-yet-cut release with a placeholder note pointing at the v1.0.0 hash; the v1.3.3 release is now live, so the SHA is real and the staging comments were removed.
+- **`agnostik.cyml`** 1.0.0 → **1.2.2** (`fa572a58…`).
+- **`agnosys.cyml`** 1.0.2 → **1.2.7** (`52b91f12…`).
+- **`ai-hwaccel.cyml`** 2.0.0 → **2.2.6** (`71fff27e…`).
+- **`argonaut.cyml`** 1.5.0 → **1.7.0** (`c5c1e733…`).
+- **`bote.cyml`** 2.5.1 → **2.7.2** (`3ec38609…`).
+- **`daimon.cyml`** 1.1.4 → **1.2.3** (`71aea9ea…`).
+- **`kavach.cyml`** 3.0.0 → **3.2.1** (`0d0841e8…`).
+- **`kybernet.cyml`** 1.0.2 → **1.2.1** (`96d3f18f…`).
+- **`libro.cyml`** 2.0.5 → **2.6.3** (`34ac5044…`).
+- **`majra.cyml`** 2.4.1 → **2.4.4** (`5e37340b…`).
+- **`nein.cyml`** 1.0.0 → **1.5.1** (`b540b9be…`).
+- **`phylax.cyml`** 1.0.0 → **1.1.1** (`fc694a51…`).
+- **`sigil.cyml`** 2.9.4 → **3.4.3** (`13f39680…`).
+- **`t-ron.cyml`** 2.0.0 → **2.1.4** (`3b9e5c1d…`).
+- **`yukti.cyml`** 2.1.1 → **2.2.3** (`cd07fe59…`). (The `2.2.4` git tag is not a published release; tracked `releases/latest` = 2.2.3.)
+
+**release_asset shape fix — bare → versioned binary:** `ai-hwaccel`, `bote`, `kavach`, `phylax`, `t-ron` upstream renamed their release binary from a bare `<name>` to `<name>-<version>-x86_64-linux`. `release_asset` changed to the `<name>-*-x86_64-linux` glob and the install line to `install -Dm755 <name>-*-x86_64-linux …`.
+
+### SecureYeoman — CalVer → semver, build-from-source → prebuilt binary
+
+The six SecureYeoman recipes were on the abandoned alpha CalVer scheme (`2026.3.x`, with the `version` field already drifted to `2026.3.28` while headers said `2026.3.18`), carried empty `# TODO` SHAs, and built from source (Bun/npm; Go for edge) in a flow that no longer matches upstream. Upstream dropped CalVer (it didn't match release frequency) and now publishes semver **0.5.0** as **prebuilt signed binaries** (per-platform, `.sig`/`.cert` + `SHA256SUMS`; backend rewritten to Rust, Cyrius port pending → v1). All six bumped to **0.5.0** and reworked to install the prebuilt binary directly (`pre_build`/`make`/`check` cleared, `build` deps emptied, real SHAs populated). The icon and `.env.example` install steps were dropped (those assets are not in the release); inline `.desktop` entries and systemd/init units are preserved. Binary mapping:
+
+- **`secureyeoman.cyml`** (flagship) + **`secureyeoman-primary.cyml`** → `secureyeoman-0.5.0-linux-x64` (`2ecfcb60…`; primary sets `SY_ROLE=primary`).
+- **`secureyeoman-agent.cyml`** + **`secureyeoman-lite.cyml`** → `secureyeoman-0.5.0-agent-linux-x64` (`9e306a41…`).
+- **`secureyeoman-sqlite.cyml`** → `secureyeoman-0.5.0-sqlite-linux-x64` (`3c985759…`).
+- **`edge/secureyeoman-edge.cyml`** → `secureyeoman-0.5.0-edge-linux-x64` (`ef5e2412…`); AGPL-3.0-only retained.
+
+### Added
+
+- **`marketplace/patra.cyml`** — patra **1.9.5**, "the sovereign database": embedded SQL/structured storage for Cyrius (B-tree, WAL, paged I/O, JSONL). GPL-3.0-only. Modeled on the agnosys/agnostik library template (ships the source tree to `/usr/lib/patra/`; downstream consumers use `[deps.patra]` git deps). Builds with `cyrius`; pulls the `sakshi` test lib as a build-time git dep. SHA verified against `patra-1.9.5-src.tar.gz` (`a0865463…`).
+
+### Language updates — Rust → Cyrius port
+
+- **`marketplace/aegis.cyml`** 0.1.0 → **1.0.0**. Upstream ported the security daemon from Rust to Cyrius and now ships a prebuilt static binary. Header `Lib: aegis = "0.1.0" in Cargo.toml` → Cyrius line; `groups`/`tags` `rust` → `cyrius`; `release_asset` `aegis-*-linux-amd64.tar.gz` (never matched) → `aegis-*-x86_64-linux`; build `cargo build`/`cargo test` → none (prebuilt); `build = ["rust"]` → `[]`; install switched from `target/release/aegis` to the prebuilt binary (systemd unit preserved). SHA populated — was an empty `# TODO` (`43bdf813…`).
+
+### Version tracked — SHA still TODO
+
+These three releases publish **no downloadable code asset** (`release_asset = "source"`; the latest release has zero or non-code assets), so a SHA cannot be verified. Versions were bumped for metadata accuracy; `sha256` remains an empty `# TODO`. They are not installable until upstream publishes a release asset (and a Rust→Cyrius port check is warranted):
+
+- **`goonj.cyml`** 1.1.1 → **1.4.3**; **`naad.cyml`** 1.0.0 → **1.2.5**; **`mastishk.cyml`** 1.0.0 → **1.1.0**.
+
+### Removed
+
+- **`noted-issues-bazaar-finds.md`** — the bazaar cross-reference audit doc. All issues it tracked are resolved: the two remaining unresolved deps (`pycups`, `pycurl`) now exist in `ai/`; the filename≠name cases were fixed (files renamed to `base/pip.cyml`, `base/npm.cyml`); validator is clean against bazaar. Its four references were redirected to CLAUDE.md §Naming Conventions (`CLAUDE.md`, `README.md`, `CONTRIBUTING.md`, `docs/adr/0003-naming-conventions.md`).
+
+### Audit notes — flagged, no change
+
+- **`marketplace/stiva.cyml`** — recipe declares `2.0.0` but upstream's max tag and `releases/latest` are both `1.0.0`. The recipe is *ahead* of upstream; left untouched (downgrading is riskier than the discrepancy) pending clarification of whether 2.0.0 was anticipated.
+- **`edge/agnos-edge-agent.cyml`** — pins `agnosticos` asset `agnos-edge-agent-2026.3.11.tar.xz`, which does not exist in the current `2026.3.31` release (assets are full-OS images + `agnos-linux-*.tar.gz`). SHA was already an empty `# TODO`; recipe needs an upstream fix to identify the edge-agent asset.
+
+### Deferred — third-party drift
+
+A `git ls-remote` sweep of the 156 non-MacCracken GitHub-sourced recipes surfaced ~64 drift candidates, but the list is noisy (many "latest" hits are pre-release/rc/snapshot or unrelated subproject tags, e.g. `boost-1.91.0.beta1`, `jq-1.8.2rc1`, `llvmorg-23-init`, `FIPS_098_TEST_8`). Several look like genuine, security-relevant updates (e.g. `cups` 2.4.16→2.4.19, `nghttp2` 1.68.1→1.69.0, `openssl`, `pipewire` 1.6.3→1.6.6, `harfbuzz` 14.1.0→14.2.0, `libusb` 1.0.29→1.0.30). Per the "large effort, one at a time" rule for base libraries, these are **not** batch-applied here — each needs an individual stable-release confirmation, tarball SHA, and build-step review. Tracked for a follow-up pass.
+
 ## [1.0.1] - 2026-04-28
 
 A maintenance / drift-cleanup release. No new categories, no semantic changes to the recipe schema. Driven by a P(-1)-style audit pass: the Cyrius toolchain bumped from 5.2 → 5.7.x; AGNOS-native packages that ported from Rust → Cyrius upstream had their recipes updated to match; static sweeps for header drift, naming convention, hardening, broken release_asset globs, and stale cc2 references; root-level `ifran.cyml` moved into `ai/`. Validator clean across all 562+ recipes.

@@ -6,11 +6,11 @@
 # Bin: nein
 # Lang: Cyrius (was a Rust crate through 0.90.x; 1.x is the Cyrius rewrite)
 #
-# Status: Released — v1.0.0.
+# Status: Released — v1.5.1.
 
 [package]
 name = "nein"
-version = "1.0.0"
+version = "1.5.1"
 description = "Nein — programmatic nftables firewall (policy, NAT, port mapping, MCP, inspection)"
 license = "GPL-3.0-only"
 groups = ["library", "networking", "security", "cyrius"]
@@ -20,7 +20,7 @@ arch = "x86_64"
 [source]
 github_release = "MacCracken/nein"
 release_asset = "nein"
-sha256 = "68b5d0200d2a019318054050fa2da7bfc4ba73d894c985daf8f0ccec7822455b"
+sha256 = "b540b9be418cd1e4874b91d23505a99591b5c5ea758ac4dac5709b4b2feaacb8"
 
 [depends]
 runtime = ["glibc", "nftables"]

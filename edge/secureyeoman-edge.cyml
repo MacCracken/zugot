@@ -1,5 +1,5 @@
 # SecureYeoman Edge — Lightweight IoT agent for AGNOS edge devices
-# Statically linked Go binary (~6.5 MB) for constrained hardware.
+# Statically linked prebuilt binary for constrained hardware.
 # Connects to a parent SecureYeoman instance for orchestration, runs
 # local agent tasks, reports telemetry, and accepts OTA updates.
 #
@@ -10,7 +10,7 @@
 
 [package]
 name = "secureyeoman-edge"
-version = "2026.3.18"
+version = "0.5.0"
 description = "SecureYeoman Edge — lightweight IoT agent for constrained hardware"
 license = "AGPL-3.0-only"
 groups = ["edge", "tier1"]
@@ -18,18 +18,16 @@ release = 1
 arch = "x86_64"
 
 [source]
-# Static Go binary built by SecureYeoman CI.
+# Upstream prebuilt signed binary (edge target) from SecureYeoman CI.
 # Release: https://github.com/MacCracken/SecureYeoman/releases
-# Asset: secureyeoman-edge-linux-amd64 (~6.5 MB, statically linked, signed)
-local = true
-build_dir = "dist"
 github_release = "MacCracken/SecureYeoman"
-release_asset = "secureyeoman-edge-linux-amd64"
+release_asset = "secureyeoman-*-edge-linux-x64"
+sha256 = "ef5e24125c60a44b1ba327d8890b744f70a462cfae5295220115986c42a5d887"
 
 [depends]
 # Statically linked — zero runtime dependencies
 runtime = []
-build = ["go"]
+build = []  # prebuilt binary — no build toolchain required
 
 [marketplace]
 category = "ai-agent"
@@ -78,23 +76,13 @@ strip = true
 install_docs = false
 pre_build = ""
 configure = ""
-make = """
-CGO_ENABLED=0 go build \
-    -ldflags '-s -w -extldflags "-static"' \
-    -tags 'netgo osusergo edge' \
-    -trimpath \
-    -o dist/secureyeoman-edge \
-    ./cmd/secureyeoman-edge
-"""
-check = """
-go test -tags edge ./cmd/secureyeoman-edge/... ./pkg/edge/...
-"""
+make = ""
+check = ""
 
 install = """
-# Install the static binary directly into /usr/bin (no lib dir needed)
+# Install the prebuilt static binary directly into /usr/bin (no lib dir needed)
 mkdir -p $PKG/usr/bin
-cp dist/secureyeoman-edge $PKG/usr/bin/secureyeoman-edge
-chmod +x $PKG/usr/bin/secureyeoman-edge
+install -Dm755 secureyeoman-*-edge-linux-x64 $PKG/usr/bin/secureyeoman-edge
 
 # Install edge configuration
 mkdir -p $PKG/etc/secureyeoman

@@ -8,12 +8,12 @@
 # primary-mode configuration (SY_ROLE=primary) and additional peer networking
 # allowances for accepting inbound worker connections.
 #
-# Status: Released — 2026.3.18 (linux-x64 + linux-arm64)
+# Status: Released — v0.5.0 (linux-x64 + linux-arm64)
 # Source: https://github.com/MacCracken/SecureYeoman
 
 [package]
 name = "secureyeoman-primary"
-version = "2026.3.28"
+version = "0.5.0"
 description = "SecureYeoman Primary — Full primary server with multi-node orchestration"
 license = "GPL-3.0-only"
 groups = ["server", "ai", "agents"]
@@ -21,12 +21,12 @@ release = 1
 arch = "x86_64"
 
 [source]
-# Single binary compiled via Bun, built by GitHub Actions CI.
+# Upstream prebuilt signed binary — same base binary as the main release;
+# the primary role is set via env (SY_ROLE=primary). Installed directly.
 # Release: https://github.com/MacCracken/SecureYeoman/releases
-# Asset: secureyeoman-linux-x64 — same binary as main release; role set via env
 github_release = "MacCracken/SecureYeoman"
-release_asset = "secureyeoman-????????-linux-x64"
-sha256 = ""  # TODO: populate from release tarball
+release_asset = "secureyeoman-0.5.0-linux-x64"
+sha256 = "2ecfcb60a95fd1a4bfd8a543e6ba061250c6844c37893f5e4537b3fc51b54d16"
 
 [depends]
 runtime = [
@@ -36,13 +36,7 @@ runtime = [
     "postgresql17",
     "zlib",
 ]
-build = [
-    "bun",
-    "nodejs",
-    "openssl",
-    "zlib",
-    "postgresql17",
-]
+build = []  # prebuilt binary — no build toolchain required
 
 [marketplace]
 category = "ai-platform"
@@ -124,30 +118,14 @@ depends_on = ["llm-gateway", "agent-runtime"]
 requirements = ["core", "xdg-shell"]
 
 [build]
-pre_build = """
-# Install dependencies
-npm install --frozen-lockfile
-"""
+pre_build = ""
 configure = ""
-make = """
-# Build all packages
-npm run build
-
-# Compile single binary (Bun standalone)
-npm run build:binary
-"""
-check = """
-npm run test
-"""
+make = ""
+check = ""
 install = """
-# Install the single binary
+# Install the prebuilt signed binary (base binary; primary role set via env)
 mkdir -p $PKG/usr/lib/secureyeoman-primary/bin
-cp dist/secureyeoman-linux-x64 $PKG/usr/lib/secureyeoman-primary/bin/secureyeoman-primary
-chmod +x $PKG/usr/lib/secureyeoman-primary/bin/secureyeoman-primary
-
-# Install default configuration
-mkdir -p $PKG/etc/secureyeoman-primary
-cp .env.example $PKG/etc/secureyeoman-primary/env.defaults
+install -Dm755 secureyeoman-0.5.0-linux-x64 $PKG/usr/lib/secureyeoman-primary/bin/secureyeoman-primary
 
 # Symlink into PATH
 mkdir -p $PKG/usr/bin

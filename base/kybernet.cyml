@@ -3,11 +3,11 @@
 # Written in Cyrius. Zero external dependencies at runtime.
 #
 # Upstream ships pre-built source tarball with cyrius.cyml + cyrius.lock.
-# Recipe builds from source via `cyrius build` using the cc5 toolchain.
+# Recipe builds from source via `cyrius build` using the cycc toolchain.
 
 [package]
 name = "kybernet"
-version = "1.0.2"
+version = "1.2.1"
 description = "Kybernet — PID 1 init system for AGNOS"
 license = "GPL-3.0-only"
 groups = ["base", "core", "init", "tier1"]
@@ -15,8 +15,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://github.com/MacCracken/kybernet/releases/download/1.0.2/kybernet-1.0.2-src.tar.gz"
-sha256 = "8a9dc9a3446e004e07368f90dc4b735a703024ff325c4ed8f3bc2db3c28b3919"
+url = "https://github.com/MacCracken/kybernet/releases/download/1.2.1/kybernet-1.2.1-src.tar.gz"
+sha256 = "96d3f18f399bfbc9dd346a3eb9609d364b54adcfc13150b1ebaadb4d8dc96cf0"
 patches = []
 
 [depends]

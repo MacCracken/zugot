@@ -2,13 +2,13 @@
 # Neurotransmitters, sleep cycles, HPA axis, DMN, chronobiology.
 #
 # Name: Mastishk (Hindi: brain)
-# Lib: mastishk = "1.0.0" in Cargo.toml
+# Lib: mastishk = "1.1.0" in Cargo.toml
 #
-# Status: Released — v1.0.0.
+# Status: Released — v1.1.0.
 
 [package]
 name = "mastishk"
-version = "1.0.0"
+version = "1.1.0"
 description = "Mastishk — neuroscience engine"
 license = "GPL-3.0-only"
 groups = ["library", "science", "rust"]

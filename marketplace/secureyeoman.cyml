@@ -1,13 +1,14 @@
 # SecureYeoman — Sovereign AI agent platform for AGNOS marketplace
 # Multi-agent orchestration with 279 MCP tools, 31 platform integrations,
-# enterprise security, and real-time dashboard. TypeScript/Bun + React.
+# enterprise security, and real-time dashboard. Rust backend; Cyrius
+# port pending (→ v1). Installs the upstream prebuilt signed binary.
 #
-# Status: Released — 2026.3.18. Feature-complete flagship AI agent platform.
+# Status: Released — v0.5.0. Feature-complete flagship AI agent platform.
 # Already uses ghcr.io/maccracken/agnosticos:latest as Docker base.
 
 [package]
 name = "secureyeoman"
-version = "2026.3.28"
+version = "0.5.0"
 description = "SecureYeoman — Sovereign AI agent platform with multi-agent orchestration"
 license = "GPL-3.0-only"
 groups = ["server", "ai", "agents"]
@@ -15,14 +16,12 @@ release = 1
 arch = "x86_64"
 
 [source]
-# Single binary compiled via Bun, built by GitHub Actions CI.
+# Upstream ships a prebuilt signed binary (.sig + .cert) per platform,
+# built by GitHub Actions CI. Installed directly — no source build.
 # Release: https://github.com/MacCracken/SecureYeoman/releases
-# Asset: secureyeoman-linux-x64 (~128 MB, signed with .sig + .cert)
-local = true
-build_dir = "dist"
 github_release = "MacCracken/SecureYeoman"
-release_asset = "secureyeoman-????????-linux-x64"
-sha256 = ""  # TODO: populate from release tarball
+release_asset = "secureyeoman-0.5.0-linux-x64"
+sha256 = "2ecfcb60a95fd1a4bfd8a543e6ba061250c6844c37893f5e4537b3fc51b54d16"
 
 [depends]
 runtime = [
@@ -31,12 +30,7 @@ runtime = [
     "sqlite",
     "zlib",
 ]
-build = [
-    "bun",
-    "nodejs",
-    "openssl",
-    "zlib",
-]
+build = []  # prebuilt binary — no build toolchain required
 
 [marketplace]
 category = "ai-platform"
@@ -118,44 +112,21 @@ depends_on = ["llm-gateway", "agent-runtime"]
 requirements = ["core", "xdg-shell"]
 
 [build]
-pre_build = """
-# Install dependencies
-npm install --frozen-lockfile
-"""
+pre_build = ""
 configure = ""
-make = """
-# Build all packages
-npm run build
-
-# Compile single binary (Bun standalone)
-npm run build:binary
-"""
-check = """
-npm run test
-"""
+make = ""
+check = ""
 install = """
-# Install the single binary
+# Install the prebuilt signed binary
 mkdir -p $PKG/usr/lib/secureyeoman/bin
-cp dist/secureyeoman-linux-x64 $PKG/usr/lib/secureyeoman/bin/secureyeoman
-chmod +x $PKG/usr/lib/secureyeoman/bin/secureyeoman
-
-# Install default configuration
-mkdir -p $PKG/etc/secureyeoman
-cp .env.example $PKG/etc/secureyeoman/env.defaults
+install -Dm755 secureyeoman-0.5.0-linux-x64 $PKG/usr/lib/secureyeoman/bin/secureyeoman
 
 # Symlink into PATH
 mkdir -p $PKG/usr/bin
 ln -sf /usr/lib/secureyeoman/bin/secureyeoman $PKG/usr/bin/secureyeoman
 
-# Install app icons (hicolor theme)
-for size in 64 128 256 512; do
-    mkdir -p $PKG/usr/share/icons/hicolor/${size}x${size}/apps
-    cp assets/secureyeoman-${size}.png $PKG/usr/share/icons/hicolor/${size}x${size}/apps/secureyeoman.png
-done
-mkdir -p $PKG/usr/share/icons/hicolor/scalable/apps
-cp assets/secureyeoman.svg $PKG/usr/share/icons/hicolor/scalable/apps/secureyeoman.svg
-
-# Desktop entry for aethersafha (opens dashboard)
+# Desktop entry for aethersafha (opens dashboard). Icons are not in the
+# release artifact set yet; the entry references the themed name anyway.
 mkdir -p $PKG/usr/share/applications
 cat > $PKG/usr/share/applications/secureyeoman.desktop << 'EOF'
 [Desktop Entry]

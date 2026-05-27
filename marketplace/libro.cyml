@@ -5,11 +5,11 @@
 # Bin: libro (audit-chain CLI)
 # Lang: Cyrius (was a Rust crate through 0.92.x; 2.x is the Cyrius rewrite)
 #
-# Status: Released — v2.0.5.
+# Status: Released — v2.6.3.
 
 [package]
 name = "libro"
-version = "2.0.5"
+version = "2.6.3"
 description = "Libro — cryptographic audit chain (SHA-256, BLAKE3, extensible hash types)"
 license = "GPL-3.0-only"
 groups = ["library", "security", "audit", "cyrius"]
@@ -19,7 +19,7 @@ arch = "x86_64"
 [source]
 github_release = "MacCracken/libro"
 release_asset = "libro-*-src.tar.gz"
-sha256 = "0f2226d52790701e4fbe6afaa377f8190c333a2fce9ba635e946bac9088aa836"
+sha256 = "34ac5044e52beb41a26666527d1540ec0997202a66ca9ea0cedfd2d067643c1a"
 
 [depends]
 runtime = ["glibc"]

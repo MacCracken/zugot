@@ -129,7 +129,7 @@ Zugot's package names are Linux-distribution-agnostic. See [CLAUDE.md §Naming C
 - `linux-pam` (not `pam`), `x264` (not `libx264`)
 - PyPI packages don't get zugot recipes; apps use `python -m pip install` in a virtualenv
 
-Bazaar contributors should cross-check against the zugot naming rules — see [`noted-issues-bazaar-finds.md`](./noted-issues-bazaar-finds.md).
+Bazaar contributors should cross-check against the zugot naming rules above (and CLAUDE.md §Naming Conventions).
 
 ## Build Order
 

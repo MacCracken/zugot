@@ -8,11 +8,11 @@
 # Bin: daimon serve --port 8090
 # Lang: Cyrius (ported from Rust — 9,724 LOC Rust → 4,141 LOC Cyrius, 181 KB binary)
 #
-# Status: Released — v1.1.4.
+# Status: Released — v1.2.3.
 
 [package]
 name = "daimon"
-version = "1.1.4"
+version = "1.2.3"
 description = "Daimon — AGNOS agent orchestrator (HTTP API, supervisor, service registry, port 8090)"
 license = "GPL-3.0-only"
 groups = ["server", "system", "cyrius"]
@@ -22,7 +22,7 @@ arch = "x86_64"
 [source]
 github_release = "MacCracken/daimon"
 release_asset = "daimon-*-src.tar.gz"
-sha256 = "132d83a230fded3d6b53e309f39c478ed01885d01fef6c4a056aa6895474b6f6"
+sha256 = "71aea9ea4455b03e3a5d045165b05c9e03044fb4eb9328049315f0ff65957a66"
 
 [depends]
 runtime = ["glibc"]

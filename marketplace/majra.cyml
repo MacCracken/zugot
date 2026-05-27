@@ -7,11 +7,11 @@
 # Bin: majra (queue introspection CLI)
 # Lang: Cyrius (was a Rust crate through 2.2.x; 2.4.x is the Cyrius rewrite)
 #
-# Status: Released — v2.4.1.
+# Status: Released — v2.4.4.
 
 [package]
 name = "majra"
-version = "2.4.1"
+version = "2.4.4"
 description = "Majra — Distributed queue and multiplex engine"
 license = "GPL-3.0-only"
 groups = ["library", "networking", "concurrency", "cyrius"]
@@ -21,7 +21,7 @@ arch = "x86_64"
 [source]
 github_release = "MacCracken/majra"
 release_asset = "majra-*-src.tar.gz"
-sha256 = "9732fb9268a54876d741c9b94ab7055060e909f679fba234f5c9935b584b405a"
+sha256 = "5e37340ba2388ed6514ce928c0fd17c132883faae99f1cb70ade1c7f46bc80f1"
 
 [depends]
 runtime = ["glibc"]

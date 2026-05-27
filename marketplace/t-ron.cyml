@@ -6,11 +6,11 @@
 # Bin: t-ron
 # Lang: Cyrius (was a Rust crate through 0.90.x; 2.x is the Cyrius rewrite)
 #
-# Status: Released — v2.0.0.
+# Status: Released — v2.1.4.
 
 [package]
 name = "t-ron"
-version = "2.0.0"
+version = "2.1.4"
 description = "T-Ron — MCP security monitor (auditing, rate limiting, injection detection, correlation)"
 license = "GPL-3.0-only"
 groups = ["library", "security", "mcp", "cyrius"]
@@ -19,8 +19,8 @@ arch = "x86_64"
 
 [source]
 github_release = "MacCracken/t-ron"
-release_asset = "t-ron"
-sha256 = "69e28fe976db9dcba14221861961c7dd2a9bcb4fe559e8450264db7f29c0a188"
+release_asset = "t-ron-*-x86_64-linux"
+sha256 = "3b9e5c1da8b076ad3fa30c4b871ae64262cd2bd61e2998cd4cbcca28a930d69e"
 
 [depends]
 runtime = ["glibc"]
@@ -42,7 +42,7 @@ make = ""
 check = ""
 install = """
 mkdir -p $PKG/usr/bin
-install -Dm755 t-ron $PKG/usr/bin/t-ron
+install -Dm755 t-ron-*-x86_64-linux $PKG/usr/bin/t-ron
 """
 
 [security]

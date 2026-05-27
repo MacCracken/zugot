@@ -7,11 +7,11 @@
 # CLI: ai-hwaccel --table, --pretty, --summary, --watch <secs>, --family gpu
 # Lang: Cyrius (was Rust through 1.x; 2.x is the Cyrius rewrite)
 #
-# Status: Released — v2.0.0.
+# Status: Released — v2.2.6.
 
 [package]
 name = "ai-hwaccel"
-version = "2.0.0"
+version = "2.2.6"
 description = "ai-hwaccel — Universal AI hardware accelerator detection and workload planning"
 license = "GPL-3.0-only"
 groups = ["tool", "library", "ai", "hardware", "cyrius"]
@@ -20,8 +20,8 @@ arch = "x86_64"
 
 [source]
 github_release = "MacCracken/ai-hwaccel"
-release_asset = "ai-hwaccel"
-sha256 = "121e90dd605cf855dfb749a3ea4cbca67f2155e464994c99835d178677fb0282"
+release_asset = "ai-hwaccel-*-x86_64-linux"
+sha256 = "71fff27e802967320398f2d62ce57b2c10dcb1eb39948cb1c59ee25818e6f963"
 
 [depends]
 runtime = ["glibc"]
@@ -60,7 +60,7 @@ make = ""
 check = ""
 install = """
 mkdir -p $PKG/usr/bin
-install -Dm755 ai-hwaccel $PKG/usr/bin/ai-hwaccel
+install -Dm755 ai-hwaccel-*-x86_64-linux $PKG/usr/bin/ai-hwaccel
 """
 
 [security]

@@ -6,12 +6,12 @@
 #
 # Same repo as SecureYeoman, different build target (build:agent).
 #
-# Status: Released — 2026.3.18 (linux-x64 + linux-arm64)
+# Status: Released — v0.5.0 (linux-x64 + linux-arm64)
 # Source: https://github.com/MacCracken/SecureYeoman
 
 [package]
 name = "secureyeoman-agent"
-version = "2026.3.28"
+version = "0.5.0"
 description = "SecureYeoman Agent — Standalone headless AI agent worker"
 license = "GPL-3.0-only"
 groups = ["agent", "ai", "automation"]
@@ -19,12 +19,11 @@ release = 1
 arch = "x86_64"
 
 [source]
-# Bun-compiled standalone binary from GitHub Actions CI (agent target).
+# Upstream prebuilt signed binary (agent target) from GitHub Actions CI.
 # Release: https://github.com/MacCracken/SecureYeoman/releases
-# Asset: secureyeoman-agent-linux-x64
 github_release = "MacCracken/SecureYeoman"
 release_asset = "secureyeoman-*-agent-linux-x64"
-sha256 = ""  # TODO: populate from release tarball
+sha256 = "9e306a41795ee70a98f70682d4219cdfad4097fa7ef00a395a1906d07c605e0c"
 
 [depends]
 runtime = [
@@ -32,12 +31,7 @@ runtime = [
     "openssl",
     "zlib",
 ]
-build = [
-    "bun",
-    "nodejs",
-    "openssl",
-    "zlib",
-]
+build = []  # prebuilt binary — no build toolchain required
 
 [marketplace]
 category = "ai-agent"
@@ -89,13 +83,12 @@ depends_on = ["llm-gateway"]
 [build]
 pre_build = ""
 configure = ""
-make = "npm run build:agent"
-check = "npm run test"
+make = ""
+check = ""
 install = """
-# Install the single binary
+# Install the prebuilt signed binary
 mkdir -p $PKG/usr/lib/secureyeoman-agent/bin
-cp dist/secureyeoman-agent-linux-x64 $PKG/usr/lib/secureyeoman-agent/bin/secureyeoman-agent
-chmod +x $PKG/usr/lib/secureyeoman-agent/bin/secureyeoman-agent
+install -Dm755 secureyeoman-*-agent-linux-x64 $PKG/usr/lib/secureyeoman-agent/bin/secureyeoman-agent
 
 # Symlink into PATH
 mkdir -p $PKG/usr/bin

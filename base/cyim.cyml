@@ -11,7 +11,7 @@
 
 [package]
 name = "cyim"
-version = "1.2.1"
+version = "1.7.1"
 description = "Cyim — sovereign Cyrius-native modal text editor (vi/vim replacement)"
 license = "GPL-3.0-only"
 groups = ["base", "core", "tier1"]
@@ -19,8 +19,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://github.com/MacCracken/cyim/releases/download/1.2.1/cyim-1.2.1-x86_64-linux.tar.gz"
-sha256 = "40f75f09a6c123634829cafe4939fe49875186a7a2f4ea9e9c963d2c20b7e837"
+url = "https://github.com/MacCracken/cyim/releases/download/1.7.1/cyim-1.7.1-x86_64-linux.tar.gz"
+sha256 = "85a19abab550436c9bb0c4347639310cc5a70474065807c09b8a84958b9f52d7"
 patches = []
 
 [depends]

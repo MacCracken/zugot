@@ -6,11 +6,11 @@
 # Name: Agnostik (agnostic — OS-agnostic shared types)
 # Lang: Cyrius (was a Rust crate through 0.96.x; 1.x is the Cyrius rewrite)
 #
-# Status: Released — v1.0.0.
+# Status: Released — v1.2.2.
 
 [package]
 name = "agnostik"
-version = "1.0.0"
+version = "1.2.2"
 description = "Agnostik — shared types and domain primitives for AGNOS"
 license = "GPL-3.0-only"
 groups = ["library", "types", "cyrius"]
@@ -20,7 +20,7 @@ arch = "any"
 [source]
 github_release = "MacCracken/agnostik"
 release_asset = "agnostik-*-src.tar.gz"
-sha256 = "5c6b04ac79f6564a62db3fc8e713ca07a40f28efa12fbd0ba7a947c79e01856b"
+sha256 = "fa572a583c6e5970b92ea92cd5a761b149fb7e3005d62a46fe9a500087e58f5f"
 
 [depends]
 runtime = []

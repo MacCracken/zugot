@@ -11,7 +11,7 @@
 
 [package]
 name = "agnos-kernel"
-version = "1.26.1"
+version = "1.35.3"
 description = "AGNOS — sovereign operating system kernel"
 license = "GPL-3.0-only"
 groups = ["base", "core", "kernel", "tier1"]
@@ -19,8 +19,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://github.com/MacCracken/agnos/releases/download/1.26.1/agnos-1.26.1-src.tar.gz"
-sha256 = "c2b82039c20d2bd90dcd5498e763b745c8d27a81d979e7d3e87cdfa44b32a69e"
+url = "https://github.com/MacCracken/agnos/releases/download/1.35.3/agnos-1.35.3-src.tar.gz"
+sha256 = "d7b95d2c6828a0bd821050b019293eff9ed1b4d0311e34cb2b99654ffa58551c"
 patches = []
 
 [depends]

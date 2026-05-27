@@ -3,33 +3,33 @@
 #
 # Name: Aegis (Greek: αἰγίς — shield of Zeus)
 # Bin: aegis
-# Lib: aegis = "0.1.0" in Cargo.toml
+# Lang: Cyrius (was a Rust crate at 0.1.0; 1.x is the Cyrius rewrite)
 #
-# Status: Released — v0.1.0.
+# Status: Released — v1.0.0.
 
 [package]
 name = "aegis"
-version = "0.1.0"
+version = "1.0.0"
 description = "Aegis — security daemon for AGNOS"
 license = "GPL-3.0-only"
-groups = ["system", "security", "rust"]
+groups = ["system", "security", "cyrius"]
 release = 1
 arch = "x86_64"
 
 [source]
 github_release = "MacCracken/aegis"
-release_asset = "aegis-*-linux-amd64.tar.gz"
-sha256 = ""  # TODO: populate from release tarball
+release_asset = "aegis-*-x86_64-linux"
+sha256 = "43bdf81314b99e3bba7dc6237fd0130de84d06b8088db84904ba63dbfb9a8d39"
 
 [depends]
 runtime = ["glibc"]
-build = ["rust"]
+build = []
 
 [marketplace]
 category = "security"
 runtime = "native-binary"
 publisher = "AGNOS"
-tags = ["security", "daemon", "policy", "access-control", "audit", "rust"]
+tags = ["security", "daemon", "policy", "access-control", "audit", "cyrius"]
 min_agnos_version = "2026.3.22"
 
 [marketplace.sandbox]
@@ -41,12 +41,11 @@ path = "/run/agnos/"
 access = "rw"
 
 [build]
-make = "cargo build --release"
-check = "cargo test --workspace"
+make = ""
+check = ""
 install = """
 mkdir -p $PKG/usr/bin
-cp target/release/aegis $PKG/usr/bin/aegis
-chmod +x $PKG/usr/bin/aegis
+install -Dm755 aegis-*-x86_64-linux $PKG/usr/bin/aegis
 
 mkdir -p $PKG/usr/lib/systemd/system
 cat > $PKG/usr/lib/systemd/system/aegis.service << 'EOF'

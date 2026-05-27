@@ -1,16 +1,17 @@
 # Cyrius — Sovereign self-hosting systems language
 # The compiler toolchain for AGNOS. Everything else depends on this.
 #
-# Upstream ships a pre-built release tarball containing cc5 (main compiler),
-# cc5_aarch64 (cross-compiler when present), cyrius (build tool), ark
-# (package manager), cyriusly (workspace runner), cyrld (linker driver),
-# cyrc, cyrfmt, cyrlint, cyrdoc, helper scripts, and the stdlib.
+# Upstream ships a pre-built release tarball containing cycc (main compiler,
+# renamed from cc5 at 6.0.0), cycc_aarch64 (cross-compiler when present),
+# cyrius (build tool), ark (package manager), cyriusly (workspace runner),
+# cyrld (linker driver), cybs (build-script tool, renamed from cyrc),
+# cyaudit, cyrius-lsp, cyrfmt, cyrlint, cyrdoc, helper scripts, and the stdlib.
 # Recipe installs directly from this tarball — the bootstrap-from-seed
 # flow is only for upstream development, not distribution builds.
 
 [package]
 name = "cyrius"
-version = "5.7.25"
+version = "6.0.3"
 description = "Cyrius — self-hosting systems language compiler and toolchain"
 license = "GPL-3.0-only"
 groups = ["base", "core", "toolchain", "tier1"]
@@ -18,8 +19,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://github.com/MacCracken/cyrius/releases/download/5.7.25/cyrius-5.7.25-x86_64-linux.tar.gz"
-sha256 = "5d964a2e2388b384ba29065ab3205a66383c5dfebd88f961d7cb9a22cdc117d9"
+url = "https://github.com/MacCracken/cyrius/releases/download/6.0.3/cyrius-6.0.3-x86_64-linux.tar.gz"
+sha256 = "8a49fb4014023dd00fe7c06838ea5901f8a038afd80b1f902281427977bc5a46"
 patches = []
 
 [depends]
@@ -37,35 +38,45 @@ install = '''
 TARBALL_ROOT=$(find . -maxdepth 1 -type d -name 'cyrius-*-linux' | head -1)
 cd "$TARBALL_ROOT"
 
-# Main toolchain binaries
+# Core toolchain — must always be present. (6.0.0 renamed cc5 → cycc.)
 mkdir -p $PKG/usr/bin
-install -vm755 bin/cc5             $PKG/usr/bin/cc5
+install -vm755 bin/cycc            $PKG/usr/bin/cycc
 install -vm755 bin/cyrius          $PKG/usr/bin/cyrius
 install -vm755 bin/cyriusly        $PKG/usr/bin/cyriusly
 install -vm755 bin/cyrld           $PKG/usr/bin/cyrld
-install -vm755 bin/cyrc            $PKG/usr/bin/cyrc
 install -vm755 bin/cyrfmt          $PKG/usr/bin/cyrfmt
 install -vm755 bin/cyrlint         $PKG/usr/bin/cyrlint
 install -vm755 bin/cyrdoc          $PKG/usr/bin/cyrdoc
 install -vm755 bin/ark             $PKG/usr/bin/ark
 
-# Helper scripts
-install -vm755 bin/cyrius-init.sh  $PKG/usr/bin/cyrius-init
-install -vm755 bin/cyrius-repl.sh  $PKG/usr/bin/cyrius-repl
-install -vm755 bin/cyrius-port.sh  $PKG/usr/bin/cyrius-port
-install -vm755 bin/cyrius-watch.sh $PKG/usr/bin/cyrius-watch
+# Tools that landed during the 6.x cycle — guarded so a future minor
+# that renames or drops one fails soft (the core set above must not).
+for tool in cybs cyaudit cyrius-lsp; do
+    [ -f "bin/$tool" ] && install -vm755 "bin/$tool" "$PKG/usr/bin/$tool"
+done
+
+# Helper scripts — drop the .sh suffix on the user-facing names.
+for s in cyrius-init cyrius-port cyrius-repl cyrius-watch; do
+    [ -f "bin/$s.sh" ] && install -vm755 "bin/$s.sh" "$PKG/usr/bin/$s"
+done
 
 # aarch64 cross-compiler (if present in this tarball variant)
-if [ -f bin/cc5_aarch64 ]; then
-    install -vm755 bin/cc5_aarch64 $PKG/usr/bin/cc5_aarch64
+if [ -f bin/cycc_aarch64 ]; then
+    install -vm755 bin/cycc_aarch64 $PKG/usr/bin/cycc_aarch64
 fi
 
 # asm seed (bootstrap helper)
 if [ -f bin/asm ]; then
-    install -vm755 bin/asm         $PKG/usr/lib/cyrius/asm
+    install -Dvm755 bin/asm        $PKG/usr/lib/cyrius/asm
 fi
 
-# Stdlib
+# v6.0.x back-compat symlinks (cc5 → cycc, cyrc → cybs). Upstream's own
+# installer ships these through the 6.0 line for 5.x consumers; drop at
+# the 6.1 bump when upstream retires them.
+ln -sf cycc $PKG/usr/bin/cc5
+[ -f $PKG/usr/bin/cybs ] && ln -sf cybs $PKG/usr/bin/cyrc
+
+# Stdlib (6.x nests subdirs, e.g. lib/unicode/ — copy recursively)
 mkdir -p $PKG/usr/lib/cyrius/lib
 cp -rv lib/* $PKG/usr/lib/cyrius/lib/
 '''

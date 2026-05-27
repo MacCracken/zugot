@@ -5,11 +5,11 @@
 # Bin: nous
 # Lang: Cyrius (was a Rust crate through 0.x; 1.x is the Cyrius rewrite)
 #
-# Status: Released — v1.1.1.
+# Status: Released — v1.2.5.
 
 [package]
 name = "nous"
-version = "1.1.1"
+version = "1.2.5"
 description = "Nous — package resolver for AGNOS (system, marketplace, community)"
 license = "GPL-3.0-only"
 groups = ["library", "package-management", "cyrius"]
@@ -18,8 +18,8 @@ arch = "x86_64"
 
 [source]
 github_release = "MacCracken/nous"
-release_asset = "nous-1.1.1-x86_64-linux.tar.gz"
-sha256 = "d7c2ab64e4b72be80aa0f3f9c420b9bb8cc1d6214869efa4a9060ecaffd6f27e"
+release_asset = "nous-1.2.5-x86_64-linux"
+sha256 = "3d3b61d642fab16c72bff66e106d3e043fff7c8cd224e1a93033cd9bff5e9e3a"
 
 [depends]
 runtime = ["glibc"]
@@ -29,7 +29,7 @@ build = []
 category = "library"
 runtime = "native-binary"
 publisher = "AGNOS"
-tags = ["resolver", "dependency", "package", "rust"]
+tags = ["resolver", "dependency", "package", "cyrius"]
 min_agnos_version = "2026.3.22"
 
 [marketplace.sandbox]
@@ -40,10 +40,12 @@ network_access = false
 make = ""
 check = ""
 install = """
-TARBALL_ROOT=$(find . -maxdepth 1 -type d -name 'nous-*-x86_64-linux' | head -1)
+# 1.2.x ships a bare prebuilt binary asset (nous-<version>-x86_64-linux),
+# not a tarball. Locate it by glob; fall back to a plain `nous`.
 mkdir -p $PKG/usr/bin
-if [ -n "$TARBALL_ROOT" ] && [ -f "$TARBALL_ROOT/nous" ]; then
-    install -Dm755 "$TARBALL_ROOT/nous" $PKG/usr/bin/nous
+BIN=$(find . -maxdepth 1 -type f -name 'nous-*-x86_64-linux' | head -1)
+if [ -n "$BIN" ]; then
+    install -Dm755 "$BIN" $PKG/usr/bin/nous
 elif [ -f nous ]; then
     install -Dm755 nous $PKG/usr/bin/nous
 fi

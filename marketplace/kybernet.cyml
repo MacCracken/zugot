@@ -7,11 +7,11 @@
 # Bin: kybernet (installed as /sbin/init)
 # Lang: Cyrius (was Rust through 0.51.0; 1.x is fully ported)
 #
-# Status: Released — v1.0.2.
+# Status: Released — v1.2.1.
 
 [package]
 name = "kybernet"
-version = "1.0.2"
+version = "1.2.1"
 description = "Kybernet — PID 1 helmsman for AGNOS"
 license = "GPL-3.0-only"
 groups = ["system", "init", "cyrius"]
@@ -21,7 +21,7 @@ arch = "x86_64"
 [source]
 github_release = "MacCracken/kybernet"
 release_asset = "kybernet-*-src.tar.gz"
-sha256 = "8a9dc9a3446e004e07368f90dc4b735a703024ff325c4ed8f3bc2db3c28b3919"
+sha256 = "96d3f18f399bfbc9dd346a3eb9609d364b54adcfc13150b1ebaadb4d8dc96cf0"
 
 [depends]
 runtime = []

@@ -5,12 +5,12 @@
 #
 # Same repo as SecureYeoman, different build target (SY_DB_BACKEND=sqlite).
 #
-# Status: Released — 2026.3.18 (linux-x64 + linux-arm64)
+# Status: Released — v0.5.0 (linux-x64 + linux-arm64)
 # Source: https://github.com/MacCracken/SecureYeoman
 
 [package]
 name = "secureyeoman-sqlite"
-version = "2026.3.28"
+version = "0.5.0"
 description = "SecureYeoman SQLite — Lightweight single-user AI agent platform"
 license = "GPL-3.0-only"
 groups = ["server", "ai", "agents"]
@@ -18,12 +18,11 @@ release = 1
 arch = "x86_64"
 
 [source]
-# Bun-compiled standalone binary from GitHub Actions CI (sqlite target).
+# Upstream prebuilt signed binary (sqlite target) from GitHub Actions CI.
 # Release: https://github.com/MacCracken/SecureYeoman/releases
-# Asset: secureyeoman-sqlite-linux-x64
 github_release = "MacCracken/SecureYeoman"
 release_asset = "secureyeoman-*-sqlite-linux-x64"
-sha256 = ""  # TODO: populate from release tarball
+sha256 = "3c985759faebb1c4509d6b20b9a61826aaaa3b4e861cbed86eaa237047574c59"
 
 [depends]
 runtime = [
@@ -32,13 +31,7 @@ runtime = [
     "sqlite",
     "zlib",
 ]
-build = [
-    "bun",
-    "nodejs",
-    "openssl",
-    "sqlite",
-    "zlib",
-]
+build = []  # prebuilt binary — no build toolchain required
 
 [marketplace]
 category = "ai-platform"
@@ -114,30 +107,14 @@ depends_on = ["llm-gateway", "agent-runtime"]
 requirements = ["core", "xdg-shell"]
 
 [build]
-pre_build = """
-# Install dependencies
-npm install --frozen-lockfile
-"""
+pre_build = ""
 configure = ""
-make = """
-# Build all packages with SQLite backend
-SY_DB_BACKEND=sqlite npm run build
-
-# Compile single binary (Bun standalone)
-SY_DB_BACKEND=sqlite npm run build:binary
-"""
-check = """
-SY_DB_BACKEND=sqlite npm run test
-"""
+make = ""
+check = ""
 install = """
-# Install the single binary
+# Install the prebuilt signed binary (sqlite target)
 mkdir -p $PKG/usr/lib/secureyeoman-sqlite/bin
-cp dist/secureyeoman-sqlite-linux-x64 $PKG/usr/lib/secureyeoman-sqlite/bin/secureyeoman-sqlite
-chmod +x $PKG/usr/lib/secureyeoman-sqlite/bin/secureyeoman-sqlite
-
-# Install default configuration
-mkdir -p $PKG/etc/secureyeoman-sqlite
-cp .env.example $PKG/etc/secureyeoman-sqlite/env.defaults
+install -Dm755 secureyeoman-*-sqlite-linux-x64 $PKG/usr/lib/secureyeoman-sqlite/bin/secureyeoman-sqlite
 
 # Symlink into PATH
 mkdir -p $PKG/usr/bin

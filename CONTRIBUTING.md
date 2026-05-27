@@ -104,7 +104,7 @@ Bazaar (the community recipe overlay) is cross-checked against zugot via
 needs a package that zugot doesn't provide, either:
 
 - Rename to zugot's canonical name (most common case — see
-  `noted-issues-bazaar-finds.md` for examples), or
+  CLAUDE.md §Naming Conventions for the canonical names), or
 - Add the missing recipe to zugot under the appropriate category
 
 ## License

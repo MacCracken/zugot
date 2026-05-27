@@ -6,11 +6,11 @@
 # Bin: argonaut (CLI for service introspection)
 # Lang: Cyrius (was a Rust crate through 1.2.x; 1.5.x is the Cyrius rewrite)
 #
-# Status: Released — v1.5.0.
+# Status: Released — v1.7.0.
 
 [package]
 name = "argonaut"
-version = "1.5.0"
+version = "1.7.0"
 description = "Argonaut — init system and service manager for AGNOS (wave-parallel startup)"
 license = "GPL-3.0-only"
 groups = ["library", "system", "init", "cyrius"]
@@ -20,7 +20,7 @@ arch = "x86_64"
 [source]
 github_release = "MacCracken/argonaut"
 release_asset = "argonaut-*-src.tar.gz"
-sha256 = "96447ebe585a8ac64b2bfeac9abf3a59ad6fe206cf6462c98b89f8e1dda6e9a4"
+sha256 = "c5c1e73353bdfa62df98064e5081f96b934570e3ef39ce8e648a1858c7494c79"
 
 [depends]
 runtime = ["glibc"]

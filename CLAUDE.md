@@ -74,8 +74,6 @@ Packages in zugot follow Linux-distribution-agnostic naming. The short rules:
 8. **Use `x265`, not `libx265`; `x264`, not `libx264`.** Upstream project names don't have the `lib` prefix.
 9. **PyPI packages** (e.g. `pycups`, `pycurl`): don't create zugot recipes unless needed as a system runtime. Applications should invoke `python -m pip install <pkg>` in a virtualenv during build, or list the pip package in an app-level manifest.
 
-See `noted-issues-bazaar-finds.md` for cross-referenced examples from the bazaar audit.
-
 ### Recipe Work Rules
 
 Every recipe change requires a full field audit — **never just bump a version**.
@@ -128,7 +126,6 @@ zugot/
 ├── LICENSE                              — GPL-3.0-only
 ├── CONTRIBUTING.md                      — contributor guide
 ├── SECURITY.md                          — security reporting
-├── noted-issues-bazaar-finds.md         — bazaar cross-reference audit
 │
 ├── build-order.txt                      — 225-package dependency-sorted sequence
 │

@@ -6,11 +6,11 @@
 # Bin: phylax (CLI + daemon mode)
 # Lang: Cyrius (was Rust; 1.0.x is the Cyrius rewrite)
 #
-# Status: Released — v1.0.0.
+# Status: Released — v1.1.1.
 
 [package]
 name = "phylax"
-version = "1.0.0"
+version = "1.1.1"
 description = "Phylax — AI-native threat detection engine"
 license = "GPL-3.0-only"
 groups = ["security", "system", "cyrius"]
@@ -19,8 +19,8 @@ arch = "x86_64"
 
 [source]
 github_release = "MacCracken/phylax"
-release_asset = "phylax"
-sha256 = "de88bc114c07bc4f105c5e35ecf94baf73ad266121582ee60cb5008307f4d932"
+release_asset = "phylax-*-x86_64-linux"
+sha256 = "fc694a5177cd436236a2c3395b3054a91dd9bf99424d6d1cced58aff9f1d41e5"
 
 [depends]
 runtime = ["glibc"]
@@ -58,7 +58,7 @@ make = ""
 check = ""
 install = """
 mkdir -p $PKG/usr/bin
-install -Dm755 phylax $PKG/usr/bin/phylax
+install -Dm755 phylax-*-x86_64-linux $PKG/usr/bin/phylax
 """
 
 [security]
