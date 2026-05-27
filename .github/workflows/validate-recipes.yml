@@ -5,6 +5,12 @@ on:
   push:
     branches: [main]
 
+env:
+  # Pin to the Cyrius release base/cyrius.cyml ships, so the generated
+  # dist/zugot.cyr index is validated against the toolchain AGNOS targets.
+  # Bump in lockstep with base/cyrius.cyml.
+  CYRIUS_VERSION: "6.0.3"
+
 jobs:
   validate:
     runs-on: ubuntu-latest
@@ -17,3 +23,39 @@ jobs:
 
       - name: Validate zugot recipes
         run: python3 scripts/validate_recipes.py
+
+      - name: Verify dist/zugot.cyr is current
+        run: |
+          sh scripts/gen-dist.sh
+          # The generated header carries a regeneration timestamp + commit
+          # SHA that change every run; ignore that one line and fail only if
+          # the package-name set itself drifted (i.e. someone added/renamed a
+          # recipe without running gen-dist.sh).
+          drift=$(git diff -U0 -- dist/zugot.cyr \
+            | grep -E '^[+-]' | grep -vE '^(\+\+\+|---)' | grep -v '^[+-]# Source:' || true)
+          if [ -n "$drift" ]; then
+            echo "::error::dist/zugot.cyr is stale — run 'sh scripts/gen-dist.sh' and commit the result."
+            git --no-pager diff -- dist/zugot.cyr
+            exit 1
+          fi
+          echo "dist/zugot.cyr is current."
+
+  toolchain:
+    name: Validate dist/zugot.cyr against Cyrius
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Same installer one-liner the upstream Cyrius projects (sigil, etc.)
+      # use in their own CI — fetches the pinned release into ~/.cyrius.
+      - name: Install Cyrius ${{ env.CYRIUS_VERSION }}
+        run: |
+          curl -sSf https://raw.githubusercontent.com/MacCracken/cyrius/main/scripts/install.sh | \
+            CYRIUS_VERSION="${CYRIUS_VERSION}" sh
+          echo "$HOME/.cyrius/bin" >> "$GITHUB_PATH"
+
+      # zugot ships dist/zugot.cyr as a consumable Cyrius module (bazaar et al.
+      # import it for dep-resolution checks). Confirm it lints clean so a
+      # malformed index can't reach consumers.
+      - name: Lint generated index module
+        run: cyrius lint dist/zugot.cyr

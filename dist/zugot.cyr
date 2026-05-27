@@ -1,7 +1,7 @@
 # dist/zugot.cyr — auto-generated index of zugot package names.
 # Do not edit by hand. Regenerate with scripts/gen-dist.sh
 #
-# Source: 515 packages at zugot 7dd05d5d4a9d (2026-04-17T05:41:29Z)
+# Source: 535 packages at zugot 1f77d3c5112a (2026-05-27T20:11:09Z)
 #
 # Consumers (e.g. bazaar) declare this repo as a cyrius dep and call
 # zugot_names(vec) to populate a vec with every package name in zugot.
@@ -35,11 +35,13 @@ fn zugot_names(out) {
     vec_push(out, str_from("aquamarine"));
     vec_push(out, str_from("argonaut"));
     vec_push(out, str_from("ark"));
+    vec_push(out, str_from("at-spi2-core"));
     vec_push(out, str_from("atk"));
     vec_push(out, str_from("atkmm"));
     vec_push(out, str_from("attr"));
     vec_push(out, str_from("audit"));
     vec_push(out, str_from("autoconf"));
+    vec_push(out, str_from("autoconf2.13"));
     vec_push(out, str_from("automake"));
     vec_push(out, str_from("avahi"));
     vec_push(out, str_from("avatara"));
@@ -61,12 +63,14 @@ fn zugot_names(out) {
     vec_push(out, str_from("brave"));
     vec_push(out, str_from("brotli"));
     vec_push(out, str_from("bullshift"));
+    vec_push(out, str_from("bun"));
     vec_push(out, str_from("busybox"));
     vec_push(out, str_from("bzip2"));
     vec_push(out, str_from("c-ares"));
     vec_push(out, str_from("ca-certificates"));
     vec_push(out, str_from("cairo"));
     vec_push(out, str_from("cairomm"));
+    vec_push(out, str_from("cbindgen"));
     vec_push(out, str_from("chromium"));
     vec_push(out, str_from("clang"));
     vec_push(out, str_from("cliphist"));
@@ -81,11 +85,12 @@ fn zugot_names(out) {
     vec_push(out, str_from("cryptsetup"));
     vec_push(out, str_from("cups"));
     vec_push(out, str_from("curl"));
+    vec_push(out, str_from("cyim"));
     vec_push(out, str_from("cyrius"));
-    vec_push(out, str_from("cyrius-seed"));
     vec_push(out, str_from("cython"));
     vec_push(out, str_from("daimon"));
     vec_push(out, str_from("dbus"));
+    vec_push(out, str_from("dbus-glib"));
     vec_push(out, str_from("delta"));
     vec_push(out, str_from("desktop-file-utils"));
     vec_push(out, str_from("device-mapper"));
@@ -106,6 +111,7 @@ fn zugot_names(out) {
     vec_push(out, str_from("eudev"));
     vec_push(out, str_from("exo"));
     vec_push(out, str_from("expat"));
+    vec_push(out, str_from("extra-cmake-modules"));
     vec_push(out, str_from("falak"));
     vec_push(out, str_from("falkon"));
     vec_push(out, str_from("fcft"));
@@ -235,6 +241,7 @@ fn zugot_names(out) {
     vec_push(out, str_from("libgbm"));
     vec_push(out, str_from("libgcrypt"));
     vec_push(out, str_from("libgpg-error"));
+    vec_push(out, str_from("libgtop"));
     vec_push(out, str_from("libhandy"));
     vec_push(out, str_from("libheif"));
     vec_push(out, str_from("libice"));
@@ -253,6 +260,7 @@ fn zugot_names(out) {
     vec_push(out, str_from("libplacebo"));
     vec_push(out, str_from("libpng"));
     vec_push(out, str_from("libportal"));
+    vec_push(out, str_from("libpsl"));
     vec_push(out, str_from("libpwquality"));
     vec_push(out, str_from("librewolf"));
     vec_push(out, str_from("libro"));
@@ -265,6 +273,7 @@ fn zugot_names(out) {
     vec_push(out, str_from("libsm"));
     vec_push(out, str_from("libsndfile"));
     vec_push(out, str_from("libsodium"));
+    vec_push(out, str_from("libsoup"));
     vec_push(out, str_from("libspectre"));
     vec_push(out, str_from("libtasn1"));
     vec_push(out, str_from("libtiff"));
@@ -280,7 +289,9 @@ fn zugot_names(out) {
     vec_push(out, str_from("libx11"));
     vec_push(out, str_from("libxau"));
     vec_push(out, str_from("libxcb"));
+    vec_push(out, str_from("libxcomposite"));
     vec_push(out, str_from("libxcrypt"));
+    vec_push(out, str_from("libxdamage"));
     vec_push(out, str_from("libxdmcp"));
     vec_push(out, str_from("libxext"));
     vec_push(out, str_from("libxfce4ui"));
@@ -290,10 +301,12 @@ fn zugot_names(out) {
     vec_push(out, str_from("libxinerama"));
     vec_push(out, str_from("libxkbcommon"));
     vec_push(out, str_from("libxml2"));
+    vec_push(out, str_from("libxmlb"));
     vec_push(out, str_from("libxrandr"));
     vec_push(out, str_from("libxrender"));
     vec_push(out, str_from("libxslt"));
     vec_push(out, str_from("libxt"));
+    vec_push(out, str_from("libyaml"));
     vec_push(out, str_from("libzip"));
     vec_push(out, str_from("linux"));
     vec_push(out, str_from("linux-api-headers"));
@@ -319,6 +332,7 @@ fn zugot_names(out) {
     vec_push(out, str_from("mesa"));
     vec_push(out, str_from("meson"));
     vec_push(out, str_from("midori"));
+    vec_push(out, str_from("mimalloc"));
     vec_push(out, str_from("minizip"));
     vec_push(out, str_from("mm-common"));
     vec_push(out, str_from("mneme"));
@@ -356,10 +370,13 @@ fn zugot_names(out) {
     vec_push(out, str_from("openssh"));
     vec_push(out, str_from("openssl"));
     vec_push(out, str_from("opus"));
+    vec_push(out, str_from("owl"));
     vec_push(out, str_from("p11-kit"));
     vec_push(out, str_from("pango"));
     vec_push(out, str_from("pangomm"));
+    vec_push(out, str_from("parted"));
     vec_push(out, str_from("patch"));
+    vec_push(out, str_from("patra"));
     vec_push(out, str_from("pavan"));
     vec_push(out, str_from("pcre2"));
     vec_push(out, str_from("perl"));
@@ -412,6 +429,7 @@ fn zugot_names(out) {
     vec_push(out, str_from("redis7"));
     vec_push(out, str_from("rocm"));
     vec_push(out, str_from("rsync"));
+    vec_push(out, str_from("ruby"));
     vec_push(out, str_from("runc"));
     vec_push(out, str_from("rust"));
     vec_push(out, str_from("salai"));
@@ -445,6 +463,7 @@ fn zugot_names(out) {
     vec_push(out, str_from("spdlog"));
     vec_push(out, str_from("speexdsp"));
     vec_push(out, str_from("sqlite"));
+    vec_push(out, str_from("squashfs-tools"));
     vec_push(out, str_from("startup-notification"));
     vec_push(out, str_from("stiva"));
     vec_push(out, str_from("sudo"));
@@ -493,6 +512,7 @@ fn zugot_names(out) {
     vec_push(out, str_from("vulkan-loader"));
     vec_push(out, str_from("wayland"));
     vec_push(out, str_from("wayland-protocols"));
+    vec_push(out, str_from("webkit2gtk-4.1"));
     vec_push(out, str_from("wget"));
     vec_push(out, str_from("which"));
     vec_push(out, str_from("wireguard-tools"));
@@ -524,5 +544,5 @@ fn zugot_names(out) {
     vec_push(out, str_from("zip"));
     vec_push(out, str_from("zlib"));
     vec_push(out, str_from("zstd"));
-    return 515;
+    return 535;
 }
