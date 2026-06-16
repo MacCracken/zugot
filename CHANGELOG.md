@@ -7,6 +7,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and
 
 ## [Unreleased]
 
+### marketplace — drift sweep (local repos → recipes, SHA verified)
+
+Sweep of the locally checked-out `MacCracken/*` projects against their marketplace recipes (`VERSION` / git tag / CHANGELOG cross-checked, then each repo's GitHub `releases/<tag>` confirmed to publish the asset). **9 recipes bumped**, each SHA256 downloaded and recomputed against the upstream release asset (matched the published `SHA256SUMS` / `.sha256` companion). Full field audit per recipe — a license error surfaced and was fixed (see below). Validator clean.
+
+- **`base/cyrius.cyml`** + **`marketplace/cyrius.cyml`** 6.2.11 → **6.2.12** (`cyrius-6.2.12-x86_64-linux.tar.gz`, `ff2f05eb…`; both bumped in lockstep).
+- **`itihas.cyml`** 2.3.4 → **2.3.5** (bare `itihas` asset = `build/itihas`, `527e9283…`).
+- **`shakti.cyml`** 0.6.2 → **0.7.0** (`shakti-0.7.0-x86_64-linux`, `332e212f…`; upstream 0.x releases flagged pre-release, so `releases/latest` lags — confirmed against the explicit `0.7.0` release). Header verification note advanced 0.6.2 → 0.7.0.
+- **`sigil.cyml`** 3.7.14 → **3.7.16** (`sigil-3.7.16.tar.gz`, `236dc72a…`).
+
+### marketplace — SecureYeoman 0.5.0 → 0.5.3 + license fix (AGPL)
+
+- All five **`secureyeoman*.cyml`** recipes 0.5.0 → **0.5.3**, SHA verified per variant: main/primary `secureyeoman-0.5.3-linux-x64` (`678c0576…`); agent/lite `secureyeoman-0.5.3-agent-linux-x64` (`a4d55c93…`); sqlite `secureyeoman-0.5.3-sqlite-linux-x64` (`0146caa3…`). Hardcoded `release_asset` + install-script asset names advanced 0.5.0 → 0.5.3 in the main and primary recipes.
+- **License corrected `GPL-3.0-only` → `AGPL-3.0-only`** on all five. Upstream `LICENSE` is GNU AGPLv3, and `package.json` / README both declare `AGPL-3.0-only` (a commercial dual-license is offered separately). The prior `GPL-3.0-only` field was wrong.
+
+### Not bumped — flagged
+
+- **`varna.cyml`** stays at **1.0.0**: the local repo is at 2.0.0 (CHANGELOG dated 2026-06-16) but 2.0.0 is **not tagged or released** on GitHub — only the 1.0.0 release exists and it ships no assets. Revisit once a 2.0.0 release with a `source`-resolvable artifact is published.
+
 ## [1.0.3] - 2026-06-15
 
 A maintenance / drift-cleanup release, roughly three weeks after 1.0.2. Drift was re-detected across all 112 GitHub-sourced `MacCracken/*` recipes via `git ls-remote --tags`, then **confirmed against each repo's authoritative `releases/latest`** (tag-sorting alone was unreliable — several repos still carry stale CalVer tags that sort above their current semver). **35 recipes bumped**, each with its SHA256 verified against the upstream release asset (GitHub-published asset `digest:` cross-checked against the `.sha256` / `SHA256SUMS` companion). Dependency, license, and field audits run per recipe; the two major bumps (`mabda` 2→3, `szal` 1→2) cross-checked against upstream manifests — no new deps. Validator clean across all recipes.

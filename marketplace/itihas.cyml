@@ -5,11 +5,11 @@
 # Bin: itihas
 # Lang: Cyrius (was a Rust crate through 1.x; 2.x is the Cyrius rewrite)
 #
-# Status: Released — v2.3.4.
+# Status: Released — v2.3.5.
 
 [package]
 name = "itihas"
-version = "2.3.4"
+version = "2.3.5"
 description = "Itihas — world history engine"
 license = "GPL-3.0-only"
 groups = ["library", "science", "cyrius"]
@@ -19,7 +19,7 @@ arch = "x86_64"
 [source]
 github_release = "MacCracken/itihas"
 release_asset = "itihas"
-sha256 = "a3f7d846d208a71d45783630968cd87b31e45131b23ce2f5b9b6870227798bb4"
+sha256 = "527e928386bcc5868c19ac16981da9a6e544a4f68fe2e7260bad0c86fbe0d73a"
 
 [depends]
 runtime = ["glibc"]

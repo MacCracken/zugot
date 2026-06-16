@@ -6,11 +6,11 @@
 # Bin: shakti
 # Lang: Cyrius (was Rust through 0.1.x; 0.2.x is the Cyrius rewrite)
 #
-# Status: Released — v0.6.2. (Upstream 0.x tags are flagged pre-release.)
+# Status: Released — v0.7.0. (Upstream 0.x tags are flagged pre-release.)
 
 [package]
 name = "shakti"
-version = "0.6.2"
+version = "0.7.0"
 description = "Shakti — AGNOS privilege escalation tool with PAM authentication and audit logging"
 license = "GPL-3.0-only"
 groups = ["system", "security", "cyrius"]
@@ -21,9 +21,9 @@ arch = "x86_64"
 github_release = "MacCracken/shakti"
 # 0.4.0+ ships a versioned binary asset (shakti-<version>-x86_64-linux);
 # the bare `shakti` asset no longer exists. Verified against the
-# shakti-0.6.2-x86_64-linux release asset (GitHub asset digest + SHA256SUMS).
+# shakti-0.7.0-x86_64-linux release asset (GitHub asset digest + SHA256SUMS).
 release_asset = "shakti-*-x86_64-linux"
-sha256 = "bff63c2f52fd5a91e723f0e3701019e9e620a583d4a0efef55f4fe9d889bcb2c"
+sha256 = "332e212f83986247994f31176c5c4b594b731f244ac540f36329633c673f40e6"
 
 [depends]
 runtime = ["glibc", "linux-pam"]

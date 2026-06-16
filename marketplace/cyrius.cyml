@@ -9,11 +9,11 @@
 # Bin: cycc, cyrius, ark, cybs, cyaudit, cyrius-lsp, cyrfmt, cyrlint, cyrdoc, cyriusly, cyrld
 # Lib: stdlib in /usr/lib/cyrius/lib (88 .cyr modules)
 #
-# Status: Released — v6.2.11. Self-hosting, multi-target, production.
+# Status: Released — v6.2.12. Self-hosting, multi-target, production.
 
 [package]
 name = "cyrius"
-version = "6.2.11"
+version = "6.2.12"
 description = "Cyrius — sovereign self-hosting systems language and compiler toolchain"
 license = "GPL-3.0-only"
 groups = ["tool", "compiler", "language"]
@@ -23,7 +23,7 @@ arch = "x86_64"
 [source]
 github_release = "MacCracken/cyrius"
 release_asset = "cyrius-*-x86_64-linux.tar.gz"
-sha256 = "bed1a7e3fc0c05353dacbd383d7fc35246d954d765c4af72b85f353433bba0bd"
+sha256 = "ff2f05eb87b5318e555f8c55720859c6553d3453ec7311c9023b12d7836e3ec3"
 
 [depends]
 runtime = ["glibc"]

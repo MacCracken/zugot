@@ -7,11 +7,11 @@
 # Bin: sigil (smoke verifier CLI; the library is consumed via `[deps.sigil]`)
 # Lang: Cyrius (was a Rust crate through 2.4.x; 2.9.x is the Cyrius rewrite)
 #
-# Status: Released — v3.7.14.
+# Status: Released — v3.7.16.
 
 [package]
 name = "sigil"
-version = "3.7.14"
+version = "3.7.16"
 description = "Sigil — system-wide trust verification (signing, integrity, revocation, delegation)"
 license = "GPL-3.0-only"
 groups = ["library", "security", "crypto", "cyrius"]
@@ -21,7 +21,7 @@ arch = "x86_64"
 [source]
 github_release = "MacCracken/sigil"
 release_asset = "sigil-*.tar.gz"
-sha256 = "514640bd125b708815191b080a28ea3cd65cdfa54e73705a41d518e6ae783c4a"
+sha256 = "236dc72aa968bfee9bb171218ed0697810f93f20410f286c3a1157b4737168cd"
 
 [depends]
 runtime = ["glibc"]

@@ -8,14 +8,14 @@
 # primary-mode configuration (SY_ROLE=primary) and additional peer networking
 # allowances for accepting inbound worker connections.
 #
-# Status: Released — v0.5.0 (linux-x64 + linux-arm64)
+# Status: Released — v0.5.3 (linux-x64 + linux-arm64)
 # Source: https://github.com/MacCracken/SecureYeoman
 
 [package]
 name = "secureyeoman-primary"
-version = "0.5.0"
+version = "0.5.3"
 description = "SecureYeoman Primary — Full primary server with multi-node orchestration"
-license = "GPL-3.0-only"
+license = "AGPL-3.0-only"
 groups = ["server", "ai", "agents"]
 release = 1
 arch = "x86_64"
@@ -25,8 +25,8 @@ arch = "x86_64"
 # the primary role is set via env (SY_ROLE=primary). Installed directly.
 # Release: https://github.com/MacCracken/SecureYeoman/releases
 github_release = "MacCracken/SecureYeoman"
-release_asset = "secureyeoman-0.5.0-linux-x64"
-sha256 = "2ecfcb60a95fd1a4bfd8a543e6ba061250c6844c37893f5e4537b3fc51b54d16"
+release_asset = "secureyeoman-0.5.3-linux-x64"
+sha256 = "678c05766a3efbdc64f672fef25d4c1472eaedfd8e7bcd5032df502532de25a4"
 
 [depends]
 runtime = [
@@ -125,7 +125,7 @@ check = ""
 install = """
 # Install the prebuilt signed binary (base binary; primary role set via env)
 mkdir -p $PKG/usr/lib/secureyeoman-primary/bin
-install -Dm755 secureyeoman-0.5.0-linux-x64 $PKG/usr/lib/secureyeoman-primary/bin/secureyeoman-primary
+install -Dm755 secureyeoman-0.5.3-linux-x64 $PKG/usr/lib/secureyeoman-primary/bin/secureyeoman-primary
 
 # Symlink into PATH
 mkdir -p $PKG/usr/bin

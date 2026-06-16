@@ -6,14 +6,14 @@
 #
 # Same repo as SecureYeoman, different build target (build:agent).
 #
-# Status: Released — v0.5.0 (linux-x64 + linux-arm64)
+# Status: Released — v0.5.3 (linux-x64 + linux-arm64)
 # Source: https://github.com/MacCracken/SecureYeoman
 
 [package]
 name = "secureyeoman-agent"
-version = "0.5.0"
+version = "0.5.3"
 description = "SecureYeoman Agent — Standalone headless AI agent worker"
-license = "GPL-3.0-only"
+license = "AGPL-3.0-only"
 groups = ["agent", "ai", "automation"]
 release = 1
 arch = "x86_64"
@@ -23,7 +23,7 @@ arch = "x86_64"
 # Release: https://github.com/MacCracken/SecureYeoman/releases
 github_release = "MacCracken/SecureYeoman"
 release_asset = "secureyeoman-*-agent-linux-x64"
-sha256 = "9e306a41795ee70a98f70682d4219cdfad4097fa7ef00a395a1906d07c605e0c"
+sha256 = "a4d55c93b7d5fcf7a7b7c7d6825a5cb2ace6cd8308562b27ddcbd41a22ffa2c2"
 
 [depends]
 runtime = [

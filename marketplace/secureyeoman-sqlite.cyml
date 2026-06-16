@@ -5,14 +5,14 @@
 #
 # Same repo as SecureYeoman, different build target (SY_DB_BACKEND=sqlite).
 #
-# Status: Released — v0.5.0 (linux-x64 + linux-arm64)
+# Status: Released — v0.5.3 (linux-x64 + linux-arm64)
 # Source: https://github.com/MacCracken/SecureYeoman
 
 [package]
 name = "secureyeoman-sqlite"
-version = "0.5.0"
+version = "0.5.3"
 description = "SecureYeoman SQLite — Lightweight single-user AI agent platform"
-license = "GPL-3.0-only"
+license = "AGPL-3.0-only"
 groups = ["server", "ai", "agents"]
 release = 1
 arch = "x86_64"
@@ -22,7 +22,7 @@ arch = "x86_64"
 # Release: https://github.com/MacCracken/SecureYeoman/releases
 github_release = "MacCracken/SecureYeoman"
 release_asset = "secureyeoman-*-sqlite-linux-x64"
-sha256 = "3c985759faebb1c4509d6b20b9a61826aaaa3b4e861cbed86eaa237047574c59"
+sha256 = "0146caa3f1af3796e4200e342838533de87ac6ae8f089229906708c37de581d2"
 
 [depends]
 runtime = [

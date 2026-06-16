@@ -3,14 +3,14 @@
 # enterprise security, and real-time dashboard. Rust backend; Cyrius
 # port pending (→ v1). Installs the upstream prebuilt signed binary.
 #
-# Status: Released — v0.5.0. Feature-complete flagship AI agent platform.
+# Status: Released — v0.5.3. Feature-complete flagship AI agent platform.
 # Already uses ghcr.io/maccracken/agnosticos:latest as Docker base.
 
 [package]
 name = "secureyeoman"
-version = "0.5.0"
+version = "0.5.3"
 description = "SecureYeoman — Sovereign AI agent platform with multi-agent orchestration"
-license = "GPL-3.0-only"
+license = "AGPL-3.0-only"
 groups = ["server", "ai", "agents"]
 release = 1
 arch = "x86_64"
@@ -20,8 +20,8 @@ arch = "x86_64"
 # built by GitHub Actions CI. Installed directly — no source build.
 # Release: https://github.com/MacCracken/SecureYeoman/releases
 github_release = "MacCracken/SecureYeoman"
-release_asset = "secureyeoman-0.5.0-linux-x64"
-sha256 = "2ecfcb60a95fd1a4bfd8a543e6ba061250c6844c37893f5e4537b3fc51b54d16"
+release_asset = "secureyeoman-0.5.3-linux-x64"
+sha256 = "678c05766a3efbdc64f672fef25d4c1472eaedfd8e7bcd5032df502532de25a4"
 
 [depends]
 runtime = [
@@ -119,7 +119,7 @@ check = ""
 install = """
 # Install the prebuilt signed binary
 mkdir -p $PKG/usr/lib/secureyeoman/bin
-install -Dm755 secureyeoman-0.5.0-linux-x64 $PKG/usr/lib/secureyeoman/bin/secureyeoman
+install -Dm755 secureyeoman-0.5.3-linux-x64 $PKG/usr/lib/secureyeoman/bin/secureyeoman
 
 # Symlink into PATH
 mkdir -p $PKG/usr/bin
