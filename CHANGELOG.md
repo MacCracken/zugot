@@ -20,6 +20,13 @@ Deferred from this batch (need deliberate handling, not batch bumps):
 - **`coreutils` 9.10 → 9.11** — build applies a local `coreutils-9.10-agnos-dircolors.patch`; needs the patch re-cut/renamed for 9.11 first.
 - **`autoconf2.13`** stays at **2.13** — intentional legacy pin (Firefox SpiderMonkey `js/src/`); the scraper matched the shared `autoconf/` dir (false positive).
 
+### Non-GitHub upstream sweep — batch 8: singletons, part 1 (flat-listing hosts)
+
+First pass over the ~61 single-host recipes — the flat directory-listing tarball hosts (cairographics, xiph/osuosl, curl.se, alsa-project, gimp, ffmpeg, samba, busybox, astron, webkitgtk, …). **9 packages bumped (10 files)**, SHA verified:
+- **`alsa-lib`** 1.2.15.3 → **1.2.16.1** (`f740db7f…`). **`alsa-utils`** 1.2.15.2 → **1.2.16** (`092399d5…`). **`busybox`** 1.37.0 → **1.38.0** (`34f9ea6f…`). **`cairomm`** 1.19.0 → **1.19.1** (`06881a01…`). **`curl`** (base + edge) 8.19.0 → **8.20.0** (`63fe2dc1…`). **`ffmpeg`** 8.1 → **8.1.1** (`b6863add…`). **`file`** 5.47 → **5.48** (`ed146568…`). **`rsync`** 3.4.1 → **3.4.4** (`bd88cf82…`). **`webkit2gtk-4.1`** 2.52.3 → **2.52.4** (`cf4076a1…`; held on the stable even-minor 2.52 line — 2.53.x is WebKitGTK's dev branch).
+- In sync: `cairo` 1.18.4, `pixman`, `flac`, `libogg`, `libvorbis`, `babl`, `gegl`, `ncurses`, `openssh`, `pkgconf`, `ruby`, `sudo`, `libtiff`, **`perl` 5.42.2** (the 5.43.x the raw listing showed is Perl's odd-minor dev series).
+- Deferred: **`lua` 5.4.8 → 5.5.0** — 5.5 is a new language major with API changes; many recipes depend on the 5.4 ABI, so it needs the careful/major treatment. **`less`** — listing format didn't parse, needs a targeted recheck.
+
 ### Non-GitHub upstream sweep — batch 7: small host families
 
 ~40 recipes across codeberg, sourcehut, Python.org, pwmt, Qt, sourceware, XFCE, Mozilla, netfilter. **16 bumped**, SHA verified (firefox SHA from Mozilla's signed `SHA256SUMS`; the rest recomputed from re-downloaded artifacts):
