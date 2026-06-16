@@ -20,6 +20,12 @@ Deferred from this batch (need deliberate handling, not batch bumps):
 - **`coreutils` 9.10 → 9.11** — build applies a local `coreutils-9.10-agnos-dircolors.patch`; needs the patch re-cut/renamed for 9.11 first.
 - **`autoconf2.13`** stays at **2.13** — intentional legacy pin (Firefox SpiderMonkey `js/src/`); the scraper matched the shared `autoconf/` dir (false positive).
 
+### Non-GitHub upstream sweep — batch 8: singletons, part 2 (version-dir + git forges)
+
+Second singleton pass — version-directory listings and git forges (bitbucket/gitlab/salsa/cgit). **8 bumped**, SHA verified:
+- **`nodejs`** 24.15.0 → **24.16.0** (`2ff84a6d…`; stays on the 24.x LTS line). **`postgresql17`** 17.9 → **17.10** (`078a0351…`; latest 17.x). **`cmake`** 4.3.1 → **4.3.3** (`cba4bb7a…`; v4.4 has no stable tarball yet). **`extra-cmake-modules`** 6.25.0 → **6.27.0** (`f3b5af57…`). **`falkon`** 26.04.0 → **26.04.2** (`8f9a6e36…`). **`dropbear`** 2025.89 → **2026.91** (`defa9244…`). **`x265`** 4.1 → **4.2** (`40b1ea04…`). **`sqlite`** 3.53.0 → **3.53.2** (`588ad519…`; `sqlite-autoconf-3530200`).
+- In sync: `nasm` 2.16.03, `audit` 4.0.2, `wpa-supplicant` 2.11, `xmlto` 0.0.29, `libdvdread` 7.0.1, `libplacebo` 7.360.1, `tree` 2.3.2, `iso-codes` 4.20.1, `wireguard-tools` 1.0.20260223.
+
 ### Non-GitHub upstream sweep — batch 8: singletons, part 1 (flat-listing hosts)
 
 First pass over the ~61 single-host recipes — the flat directory-listing tarball hosts (cairographics, xiph/osuosl, curl.se, alsa-project, gimp, ffmpeg, samba, busybox, astron, webkitgtk, …). **9 packages bumped (10 files)**, SHA verified:

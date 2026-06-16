@@ -3,7 +3,7 @@
 
 [package]
 name = "extra-cmake-modules"
-version = "6.25.0"
+version = "6.27.0"
 description = "extra-cmake-modules — KDE Frameworks CMake utility scripts"
 license = "BSD-3-Clause"
 groups = ["desktops", "build"]
@@ -11,8 +11,8 @@ release = 1
 arch = "any"
 
 [source]
-url = "https://download.kde.org/stable/frameworks/6.25/extra-cmake-modules-6.25.0.tar.xz"
-sha256 = "ffeb4951bf09b2b8ee17ef24a28b6de650c0db0f59ddffb9009b37cac63af348"
+url = "https://download.kde.org/stable/frameworks/6.27/extra-cmake-modules-6.27.0.tar.xz"
+sha256 = "f3b5af578017a6a0f127fb1c31609db2e4f016e99b900d5a11f6ffb6c55006a3"
 patches = []
 
 [depends]

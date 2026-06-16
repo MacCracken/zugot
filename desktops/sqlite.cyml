@@ -1,6 +1,6 @@
 [package]
 name = "sqlite"
-version = "3.53.0"
+version = "3.53.2"
 description = "Self-contained, serverless, zero-configuration SQL database engine"
 license = "Public Domain"
 groups = ["desktops"]
@@ -8,8 +8,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://www.sqlite.org/2026/sqlite-autoconf-3530000.tar.gz"
-sha256 = "851e9b38192fe2ceaa65e0baa665e7fa06230c3d9bd1a6a9662d02380d73365a"
+url = "https://www.sqlite.org/2026/sqlite-autoconf-3530200.tar.gz"
+sha256 = "588ad51949419a56ebe81fe56193d510c559eb94c9a57748387860b5d3069316"
 patches = []
 
 [depends]
