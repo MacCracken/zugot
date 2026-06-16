@@ -5,7 +5,7 @@
 
 [package]
 name = "parted"
-version = "1.9.0"
+version = "3.7"
 description = "parted — GNU Parted disk partition manipulation tool"
 license = "GPL-3.0-only"
 groups = ["base", "tools", "tier1"]
@@ -13,8 +13,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://ftp.gnu.org/gnu/parted/parted-1.9.0.tar.xz"
-sha256 = "a6ee9f595f9887d4740086e89aa4fb049527f14165ec1fe2c6e6fec9f5e00eb7"
+url = "https://ftp.gnu.org/gnu/parted/parted-3.7.tar.xz"
+sha256 = "008de57561a4f3c25a0648e66ed11e7b30be493889b64334a6d70f2c1951ef7b"
 patches = []
 
 [depends]

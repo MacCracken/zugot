@@ -7,6 +7,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and
 
 ## [Unreleased]
 
+### Non-GitHub upstream sweep — batch 1: GNU (ftp.gnu.org / savannah)
+
+First batch of the non-GitHub tarball recipes (265 total, scraped from per-host directory listings rather than the GitHub tag method). Of 49 GNU-family recipes, 35 were already in sync. **6 low-risk leaf tools bumped**, each tarball downloaded, archive-checked, and SHA256 computed:
+
+- **`binutils`** 2.46.0 → **2.46.1** (`e127a709…`). **`inetutils`** 2.6 → **2.8** (`57b3cf4f…`; upstream dropped the `.xz` tarball, URL moved to `.tar.gz`). **`mpc`** 1.3.1 → **1.4.1** (`91204cd3…`; `.gz`→`.xz`, docdir path updated). **`sed`** 4.9 → **4.10** (`b8e72182…`, docdir path updated). **`which`** 2.23 → **2.25** (`1cb83e4f…`). **`parted`** 1.9.0 → **3.7** (`008de575…`; recipe was on a very stale pin — deps verified for 3.7: `libuuid`, `device-mapper`, `readline` all present).
+
+Deferred from this batch (need deliberate handling, not batch bumps):
+- **`gcc` 15.2.0 → 16.1.0** — system compiler, highest blast radius. Major-version decision, to be done individually with a build pass.
+- **`nettle` 3.10.2 → 4.0** — crypto lib; 4.0 is a new major (potential `libnettle`/`libhogweed` soname bump). Verify against `gnutls` before bumping.
+- **`glibc`** `edge/glibc.cyml` 2.42 → 2.43 (align to the already-shipped `base/glibc.cyml` 2.43) — core, handle with the libc-careful path.
+- **`coreutils` 9.10 → 9.11** — build applies a local `coreutils-9.10-agnos-dircolors.patch`; needs the patch re-cut/renamed for 9.11 first.
+- **`autoconf2.13`** stays at **2.13** — intentional legacy pin (Firefox SpiderMonkey `js/src/`); the scraper matched the shared `autoconf/` dir (false positive).
+
+### Non-GitHub upstream sweep — batch 2: X.org
+
+20 X.org-family recipes (www.x.org / xorg.freedesktop.org listings); 18 in sync. **2 bumped**, SHA verified:
+- **`libxi`** 1.8.2 → **1.8.3** (`7ad60056…`). **`xwayland`** 24.1.10 → **24.1.12** (`6df02c51…`).
+
 ## [1.0.4] - 2026-06-16
 
 A version-sync release. **40 recipes bumped** across four passes, each SHA256 recomputed from the re-downloaded upstream artifact (archive type checked; no placeholder hashes): (1) a drift sweep of the locally checked-out `MacCracken/*` projects against their recipes; (2) completion of the **SecureYeoman 0.5.3** set across all six variants, with a `GPL-3.0-only` → **`AGPL-3.0-only`** license correction (upstream is GNU AGPLv3); (3) a **full-tree third-party sync** — all 563 recipes scanned via `git ls-remote --tags`, then de-noised against authoritative `releases/latest` (the raw tag scan threw ~39 false positives from junk historical tags); and (4) a deliberate pass over the high-blast-radius majors. **OpenSSL was held on the 3.5 LTS line** (3.5.6 → 3.5.7) rather than taking the 4.0.1 `SHLIB_VERSION` 3 → 4 ABI break. Per-category breakdown: desktops 12, base 8, ai 8, marketplace 9, edge 2, browser 1. Validator clean across all recipes. (The ~281 non-GitHub upstream packages — gnu.org, gnome, x.org, kernel.org, freedesktop — were not version-checked this cycle; they need per-host scraping and are slated for a follow-up sweep.)
