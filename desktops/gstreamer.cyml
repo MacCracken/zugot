@@ -4,7 +4,7 @@
 
 [package]
 name = "gstreamer"
-version = "1.28.2"
+version = "1.28.4"
 description = "gstreamer — Pipeline-based multimedia framework"
 license = "LGPL-2.0-only"
 groups = ["desktops", "libs"]
@@ -12,8 +12,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://gstreamer.freedesktop.org/src/gstreamer/gstreamer-1.28.2.tar.xz"
-sha256 = "ce5cd44d4ffeafdcc3dddaa072b2179c0b7cb1abf4e6c5d18d4375f8a39fe491"
+url = "https://gstreamer.freedesktop.org/src/gstreamer/gstreamer-1.28.4.tar.xz"
+sha256 = "f5adc7e8f448c10260b3b25aa101c9d540674c8d9a54c2b77a86d04f2b3b50dd"
 patches = []
 
 [depends]

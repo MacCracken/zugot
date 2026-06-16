@@ -20,6 +20,12 @@ Deferred from this batch (need deliberate handling, not batch bumps):
 - **`coreutils` 9.10 → 9.11** — build applies a local `coreutils-9.10-agnos-dircolors.patch`; needs the patch re-cut/renamed for 9.11 first.
 - **`autoconf2.13`** stays at **2.13** — intentional legacy pin (Firefox SpiderMonkey `js/src/`); the scraper matched the shared `autoconf/` dir (false positive).
 
+### Non-GitHub upstream sweep — batch 5: freedesktop.org
+
+24 freedesktop-family recipes — gitlab.freedesktop.org projects checked via `git ls-remote --tags`, the rest by directory listing. 13 in sync. **11 bumped**, SHA verified:
+- **`fontconfig`** 2.17.1 → **2.18.1** (`2300f3db…`). **`libinput`** 1.31.1 → **1.31.3** (`b6749bf6…`). **`wayland-protocols`** 1.48 → **1.49** (`ec4c8f74…`). **`wlroots`** 0.20.0 → **0.20.1** (`e9e699a0…`). **`dbus-glib`** 0.100.2 → **0.114** (`c09c5c08…`). **`libdrm`** 2.4.131 → **2.4.134** (`ac5e74d1…`). **`mesa`** 26.0.5 → **26.1.2** (`bac2bca9…`; newest stable branch). **`poppler`** 26.04.0 → **26.06.0** (`4cb4e5a3…`).
+- **GStreamer** `gstreamer` / `gst-plugins-base` / `gst-plugins-good` 1.28.2 → **1.28.4** (`f5adc7e8…` / `a898afd5…` / `c825ea73…`). Held on the **stable even-minor 1.28 line** — the 1.29.x the raw listing surfaced is GStreamer's development branch (same even/odd convention as GNOME).
+
 ### Non-GitHub upstream sweep — batch 4: kernel.org
 
 21 kernel.org-family recipes (direct listings + version-subdir parents for cryptsetup/util-linux; Linux kept on its **6.6 LTS pin**, not jumped to a newer series). **11 files bumped** across 8 packages:

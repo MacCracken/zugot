@@ -1,6 +1,6 @@
 [package]
 name = "gst-plugins-good"
-version = "1.28.2"
+version = "1.28.4"
 description = "GStreamer good plugins — LGPL codecs, PulseAudio, PipeWire, V4L2"
 license = "LGPL-2.1-only"
 groups = ["desktops", "multimedia"]
@@ -8,8 +8,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.28.2.tar.xz"
-sha256 = "1ace2d8ec74f632d82eab5006753a27fe0c2402db4ca94d63271e494b62f50bf"
+url = "https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.28.4.tar.xz"
+sha256 = "c825ea737c59cea0e4a0c41da2388045ff5dd32d162220ac93a7a82ee4a04e61"
 patches = []
 
 [depends]

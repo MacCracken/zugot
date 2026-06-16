@@ -1,6 +1,6 @@
 [package]
 name = "gst-plugins-base"
-version = "1.28.2"
+version = "1.28.4"
 description = "GStreamer base plugins — essential codecs, audio/video support"
 license = "LGPL-2.0-only"
 groups = ["desktops", "multimedia"]
@@ -8,8 +8,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-1.28.2.tar.xz"
-sha256 = "4db76b3619280037a4047de7d9dbb38613a4272dcc40efb333257124635a888d"
+url = "https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-1.28.4.tar.xz"
+sha256 = "a898afd5766172b0049e6781558e0689098bf87b9d82b846c652e571c01d60d8"
 patches = []
 
 [depends]

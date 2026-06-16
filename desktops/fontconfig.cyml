@@ -6,7 +6,7 @@
 
 [package]
 name = "fontconfig"
-version = "2.17.1"
+version = "2.18.1"
 description = "Fontconfig — Font configuration and discovery library"
 license = "MIT"
 groups = ["desktops", "graphics"]
@@ -14,8 +14,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://gitlab.freedesktop.org/api/v4/projects/890/packages/generic/fontconfig/2.17.1/fontconfig-2.17.1.tar.xz"
-sha256 = "9f5cae93f4fffc1fbc05ae99cdfc708cd60dfd6612ffc0512827025c026fa541"
+url = "https://gitlab.freedesktop.org/api/v4/projects/890/packages/generic/fontconfig/2.18.1/fontconfig-2.18.1.tar.xz"
+sha256 = "2300f3dbfa7253b3a44f4feecdbc8dfa45dde5dc2cfb71fceaf31f394cb41031"
 patches = []
 
 [depends]

@@ -5,7 +5,7 @@
 
 [package]
 name = "mesa"
-version = "26.0.5"
+version = "26.1.2"
 description = "Mesa — OpenGL/Vulkan/EGL graphics library"
 license = "MIT"
 groups = ["desktops", "graphics", "gpu"]
@@ -13,8 +13,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://mesa.freedesktop.org/archive/mesa-26.0.5.tar.xz"
-sha256 = "d229c9937d9a25ca0a8958c59f425174563d300ec42acbea2dbe84a055023368"
+url = "https://mesa.freedesktop.org/archive/mesa-26.1.2.tar.xz"
+sha256 = "bac2bca9121897a2b8162e79636b50ac998fca799c8e6cf914edd85962babdf0"
 patches = []
 
 [depends]
