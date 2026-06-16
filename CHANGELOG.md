@@ -7,6 +7,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and
 
 ## [Unreleased]
 
+## [1.0.5] - 2026-06-16
+
+The **end-of-spring recipe sync** — a full upstream-version audit of the non-GitHub-hosted recipes, plus the deferred high-blast-radius majors. **86 recipes bumped** (desktops 40, base 31, edge 7, python 3, browser 2, ai/database/network 1 each), each SHA256 recomputed from the re-downloaded artifact — or taken from an upstream-signed checksum (`sha256sums.asc`, `.sha256`, Mozilla/go.dev manifests) for the kernel/firmware/firefox/gcc/Qt-sized artifacts. All 265 non-GitHub tarball recipes were checked against upstream across nine host-family batches (GNU, X.org, GNOME, kernel.org, freedesktop, GnuPG/SourceForge, and the smaller hosts + singletons), using directory listings, GNOME `cache.json`, git-forge `ls-remote`, SourceForge `best_release.json`, and per-host APIs. Even/odd development-version conventions were applied throughout (GNOME, GStreamer, Perl, WebKitGTK, gnupg) so no stable recipe was moved onto a devel branch.
+
+Conservative calls at the milestone: OpenSSL held on the 3.5 LTS line (3.5.7, not 4.0.1), the Linux kernel on its 6.6 LTS pin (6.6.142), **gcc on the 15 series** (15.3.0, not 16.1.0), and **nettle on 3.10.2** (4.0 soname break declined). Opt-in majors taken: **lua 5.5.0** and **Qt6 6.11.1**. Recipes intentionally left un-bumped (proprietary/binary/rapid browsers, branch/commit-tracking sources, and the netfilter/XFCE listing recheck) are itemised in the batch notes below. Validator clean across all recipes.
+
 ### Non-GitHub upstream sweep — batch 1: GNU (ftp.gnu.org / savannah)
 
 First batch of the non-GitHub tarball recipes (265 total, scraped from per-host directory listings rather than the GitHub tag method). Of 49 GNU-family recipes, 35 were already in sync. **6 low-risk leaf tools bumped**, each tarball downloaded, archive-checked, and SHA256 computed:
