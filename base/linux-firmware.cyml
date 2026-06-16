@@ -6,7 +6,7 @@
 
 [package]
 name = "linux-firmware"
-version = "20260410"
+version = "20260519"
 description = "Linux firmware — hardware firmware blobs"
 license = "Proprietary"
 groups = ["base", "kernel", "tier1"]
@@ -14,8 +14,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://cdn.kernel.org/pub/linux/kernel/firmware/linux-firmware-20260410.tar.xz"
-sha256 = "b7812ed6d59f6b09ecceddaa0be842a7e82a79cc0e46ca60478a4ebf02f1e178"
+url = "https://cdn.kernel.org/pub/linux/kernel/firmware/linux-firmware-20260519.tar.xz"
+sha256 = "b14e7197a290a7e5569f5ef790cde289bddc47e32126f2eb262a8e677fc39727"
 patches = []
 
 [depends]

@@ -20,6 +20,18 @@ Deferred from this batch (need deliberate handling, not batch bumps):
 - **`coreutils` 9.10 → 9.11** — build applies a local `coreutils-9.10-agnos-dircolors.patch`; needs the patch re-cut/renamed for 9.11 first.
 - **`autoconf2.13`** stays at **2.13** — intentional legacy pin (Firefox SpiderMonkey `js/src/`); the scraper matched the shared `autoconf/` dir (false positive).
 
+### Non-GitHub upstream sweep — batch 4: kernel.org
+
+21 kernel.org-family recipes (direct listings + version-subdir parents for cryptsetup/util-linux; Linux kept on its **6.6 LTS pin**, not jumped to a newer series). **11 files bumped** across 8 packages:
+- **`git`** 2.53.0 → **2.54.0** (`f6891623…`). **`kbd`** 2.9.0 → **2.10.0** (`6e5ca4f8…`). **`man-pages`** 6.17 → **6.18** (`c934fadc…`). **`iproute2`** (base + edge) 6.19.0 → **7.1.0** (`fd9fa1b9…`; upstream moved to the 7.x line). **`util-linux`** (base) 2.42 → **2.42.2** (`03a05d3a…`; `v2.42/` dir preserved).
+- **Linux kernel LTS patch** 6.6.134 → **6.6.142** across `base/linux.cyml`, `edge/kernel-edge.cyml`, `base/linux-api-headers.cyml` (hardcoded `6.6.134-agnos`/`-edge` boot + module-dir strings updated in lockstep). **`linux-firmware`** 20260410 → **20260519** (`.xz`, `b14e7197…`) and **`amd-ucode`** 20260410 → **20260519** (`.gz`, `b2929856…`). The kernel and firmware SHA256s were taken from kernel.org's signed `sha256sums.asc` rather than re-downloading the multi-hundred-MB / ~1 GB artifacts.
+- In sync (incl. intentional pins): `iwd`, `kmod`, `libcap`, `bluez`, `iw`, `cryptsetup` (both v2.7/v2.8), `edge/util-linux` (latest 2.40.x on its pinned series).
+
+### Non-GitHub upstream sweep — batch 3: GNOME (download.gnome.org)
+
+29 GNOME-family recipes, checked via each package's `cache.json` with GNOME's even/odd + `<90`-minor dev-version rules applied (so stable recipes never jump onto a devel train — `gtk+ 3.94`, `pango 1.90`, `gtkmm 4.x` previews correctly excluded). 23 in sync. **6 micro bumps**, SHA verified:
+- **`at-spi2-core`** 2.60.0 → **2.60.4** (`1a1f5ba9…`). **`atkmm`** 2.36.3 → **2.36.4** (`19cd0758…`). **`glib`** 2.88.0 → **2.88.1** (`51ab804c…`). **`gtk4`** 4.22.2 → **4.22.4** (`51bd9f60…`). **`gtkmm3`** 3.24.10 → **3.24.11** (`19e383c8…`). **`librsvg`** 2.62.1 → **2.62.3** (`7eb449b2…`).
+
 ### Non-GitHub upstream sweep — batch 2: X.org
 
 20 X.org-family recipes (www.x.org / xorg.freedesktop.org listings); 18 in sync. **2 bumped**, SHA verified:

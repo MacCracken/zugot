@@ -5,7 +5,7 @@
 
 [package]
 name = "git"
-version = "2.53.0"
+version = "2.54.0"
 description = "Git — distributed version control system"
 license = "GPL-2.0-only"
 groups = ["base", "tools", "tier1"]
@@ -13,8 +13,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.53.0.tar.xz"
-sha256 = "5818bd7d80b061bbbdfec8a433d609dc8818a05991f731ffc4a561e2ca18c653"
+url = "https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.54.0.tar.xz"
+sha256 = "f689162364c10de79ef89aa8dbf48731eb057e34edbbd20aca510ce0154681a3"
 patches = []
 
 [depends]

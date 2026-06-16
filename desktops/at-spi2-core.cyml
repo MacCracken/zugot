@@ -5,7 +5,7 @@
 
 [package]
 name = "at-spi2-core"
-version = "2.60.0"
+version = "2.60.4"
 description = "at-spi2-core — Assistive Technology Service Provider Interface"
 license = "LGPL-2.1-only"
 groups = ["desktops", "libs"]
@@ -13,8 +13,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://download.gnome.org/sources/at-spi2-core/2.60/at-spi2-core-2.60.0.tar.xz"
-sha256 = "80e50c1a97d8fd660a3fadb02ca35876df881c266d3d6108fc5b4c113614cb99"
+url = "https://download.gnome.org/sources/at-spi2-core/2.60/at-spi2-core-2.60.4.tar.xz"
+sha256 = "1a1f5ba9805917f41fc6aa6823dcf887a291d607a427e2d5afb6b5dfa65070c7"
 patches = []
 
 [depends]
