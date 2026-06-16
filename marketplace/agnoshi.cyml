@@ -6,14 +6,13 @@
 # Bin: agnsh (binary), agnoshi (project name)
 # Lang: Cyrius (was Rust through 0.90.x; 1.0+ is the Cyrius rewrite)
 #
-# Status: Released — v1.3.3 (shipped upstream 2026-05-11). Closes the
-#   v1.2.0/v1.3.0 cycle: approval workflow battle-tested, interactive
-#   shell end-to-end, P(-1) audit with ADR-006 + 14-pattern CI lint
-#   shield, both x86_64 + aarch64 static binaries.
+# Status: Released — v1.7.0. Approval workflow, interactive shell, P(-1)
+#   audit with ADR-006 + CI lint shield, both x86_64 + aarch64 static
+#   binaries. (Asset is the prebuilt agnsh-<version>-x86_64-linux ELF.)
 
 [package]
 name = "agnoshi"
-version = "1.3.3"
+version = "1.7.0"
 description = "Agnoshi — AI-native natural language shell for AGNOS"
 license = "GPL-3.0-only"
 groups = ["tool", "shell", "ai", "cyrius"]
@@ -26,8 +25,8 @@ github_release = "MacCracken/agnoshi"
 # `.github/workflows/release.yml` — the v1.1.0 fix that renamed the
 # entry from src/main.cyr → src/agnsh.cyr also retitled the asset).
 release_asset = "agnsh-*-x86_64-linux"
-# Verified against the agnsh-1.3.3-x86_64-linux release asset.
-sha256 = "918659a28276ea08120869b5cfdb7b751c3e322aef6dcd1fb26f36fb3635d627"
+# Verified against the agnsh-1.7.0-x86_64-linux release asset.
+sha256 = "9690f65ef23220ef71fccecc02f2aa823057aeee32afb633a81aff5fc4073785"
 
 [depends]
 runtime = ["glibc"]
@@ -71,7 +70,7 @@ access = "rw"
 [build]
 make = ""
 check = ""
-# Asset is the prebuilt static ELF named `agnsh-1.3.3-x86_64-linux`
+# Asset is the prebuilt static ELF named `agnsh-1.7.0-x86_64-linux`
 # from the GitHub release; install path uses the canonical bin name
 # `agnsh` (per docs/agnsh.1).
 install = """

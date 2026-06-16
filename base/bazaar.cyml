@@ -27,7 +27,7 @@
 name = "bazaar"
 # Versioned in lockstep with zugot — each bazaar release is validated against
 # a specific zugot tag, so they track version numbers together.
-version = "1.0.1"
+version = "1.0.2"
 description = "Bazaar — community recipe overlay for AGNOS (validator + ark integration)"
 license = "GPL-3.0-only"
 groups = ["base", "package-management", "cyrius"]
@@ -35,8 +35,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://github.com/MacCracken/bazaar/releases/download/1.0.1/bazaar-1.0.1-src.tar.gz"
-sha256 = "d755ce587ef90dba7507a6f1cced3df30f50bf5c957a2382da8ec8586ef7c8cf"
+url = "https://github.com/MacCracken/bazaar/releases/download/1.0.2/bazaar-1.0.2-src.tar.gz"
+sha256 = "81c5a3833566555d99864b665b8349b77ce9cefe53e31d160b7c7a3338553f05"
 patches = []
 
 [depends]

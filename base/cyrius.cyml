@@ -11,7 +11,7 @@
 
 [package]
 name = "cyrius"
-version = "6.0.3"
+version = "6.2.11"
 description = "Cyrius — self-hosting systems language compiler and toolchain"
 license = "GPL-3.0-only"
 groups = ["base", "core", "toolchain", "tier1"]
@@ -19,8 +19,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://github.com/MacCracken/cyrius/releases/download/6.0.3/cyrius-6.0.3-x86_64-linux.tar.gz"
-sha256 = "8a49fb4014023dd00fe7c06838ea5901f8a038afd80b1f902281427977bc5a46"
+url = "https://github.com/MacCracken/cyrius/releases/download/6.2.11/cyrius-6.2.11-x86_64-linux.tar.gz"
+sha256 = "bed1a7e3fc0c05353dacbd383d7fc35246d954d765c4af72b85f353433bba0bd"
 patches = []
 
 [depends]

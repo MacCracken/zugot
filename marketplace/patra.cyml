@@ -7,11 +7,11 @@
 # Name: Patra (Sanskrit: पत्र — leaf, page, record, vessel)
 # Lang: Cyrius (self-hosting; pulls the sakshi test lib as a build-time git dep)
 #
-# Status: Released — v1.9.5.
+# Status: Released — v1.11.2.
 
 [package]
 name = "patra"
-version = "1.9.5"
+version = "1.11.2"
 description = "Patra — structured storage and SQL queries for Cyrius. The sovereign database."
 license = "GPL-3.0-only"
 groups = ["library", "database", "storage", "cyrius"]
@@ -21,7 +21,7 @@ arch = "any"
 [source]
 github_release = "MacCracken/patra"
 release_asset = "patra-*-src.tar.gz"
-sha256 = "a08654633160240257a800d13b2361fc18d661eece341855e8d3f0e92280a844"
+sha256 = "08bcfa8dd83f2e6a0d2f7ed38cf591c8f2e55f2a5a50cf6c60db250440760784"
 
 [depends]
 runtime = ["glibc"]

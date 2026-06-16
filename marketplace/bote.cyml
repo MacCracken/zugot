@@ -7,11 +7,11 @@
 # Bin: bote
 # Lang: Cyrius (was a Rust crate through 0.92.x; 2.x is the Cyrius rewrite)
 #
-# Status: Released — v2.7.2.
+# Status: Released — v2.7.6.
 
 [package]
 name = "bote"
-version = "2.7.2"
+version = "2.7.6"
 description = "Bote — MCP core service (JSON-RPC 2.0, tool registry, host, dispatch, transport)"
 license = "GPL-3.0-only"
 groups = ["library", "mcp", "cyrius"]
@@ -21,7 +21,7 @@ arch = "x86_64"
 [source]
 github_release = "MacCracken/bote"
 release_asset = "bote-*-x86_64-linux"
-sha256 = "3ec3860975de0c3e6f84db9b26e4fa509b0022504c3a254d01c34721385e45cf"
+sha256 = "f401994746eaef22db8f26397b22df9a0ebd6141ccc1f7bdf8db44e31e53b7db"
 
 [depends]
 runtime = ["glibc"]

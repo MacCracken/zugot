@@ -7,11 +7,11 @@
 # Name: Hisab (Arabic: calculation, mathematics)
 # Lang: Cyrius (was a Rust crate; 2.x is the Cyrius rewrite)
 #
-# Status: Stable — v2.2.0.
+# Status: Stable — v2.6.6.
 
 [package]
 name = "hisab"
-version = "2.2.0"
+version = "2.6.6"
 description = "Hisab — Higher mathematics library"
 license = "GPL-3.0-only"
 groups = ["library", "math", "cyrius"]
@@ -20,8 +20,8 @@ arch = "x86_64"
 
 [source]
 github_release = "MacCracken/hisab"
-release_asset = "hisab"
-sha256 = "9e9c598c730124cac7c68b7148d8904c1253e197c21dc27d021834345798bc4c"
+release_asset = "hisab-*-x86_64-linux"
+sha256 = "32ba0fe4f1b159e46c74a4ca03be18c065d84500eef315568a7773150f3a5a5a"
 
 [depends]
 runtime = ["glibc"]
@@ -43,7 +43,8 @@ make = ""
 check = ""
 install = """
 mkdir -p $PKG/usr/bin
-install -Dm755 hisab $PKG/usr/bin/hisab
+BIN=$(find . -maxdepth 1 -type f -name 'hisab-*-x86_64-linux' | head -1)
+install -Dm755 "$BIN" $PKG/usr/bin/hisab
 """
 
 [security]

@@ -5,11 +5,11 @@
 # Bin: nous
 # Lang: Cyrius (was a Rust crate through 0.x; 1.x is the Cyrius rewrite)
 #
-# Status: Released — v1.2.5.
+# Status: Released — v1.2.6.
 
 [package]
 name = "nous"
-version = "1.2.5"
+version = "1.2.6"
 description = "Nous — package resolver for AGNOS (system, marketplace, community)"
 license = "GPL-3.0-only"
 groups = ["library", "package-management", "cyrius"]
@@ -18,8 +18,8 @@ arch = "x86_64"
 
 [source]
 github_release = "MacCracken/nous"
-release_asset = "nous-1.2.5-x86_64-linux"
-sha256 = "3d3b61d642fab16c72bff66e106d3e043fff7c8cd224e1a93033cd9bff5e9e3a"
+release_asset = "nous-1.2.6-x86_64-linux"
+sha256 = "dec324f0a95250b18381f3c29c53c3761261c1a2af633efac61728d9ba4581fa"
 
 [depends]
 runtime = ["glibc"]

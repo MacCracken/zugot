@@ -3,7 +3,7 @@
 > Consolidated list of open work items across zugot's recipe tree.
 > Not a feature backlog — a snapshot of drift, TODOs, and process gaps surfaced during the current audit pass.
 >
-> **Last updated:** 2026-05-27
+> **Last updated:** 2026-06-15
 
 ## Legend
 
@@ -105,6 +105,10 @@ One uncertain:
 - `base/nss.cyml` 3.122.1 — CVE-2026-2781, CVE-2026-4727 status unclear until Mozilla publishes NSS 3.122.x release notes.
 
 ✅ **Resolved in audit:** `base/gnupg.cyml` 2.4.9 → 2.5.18 (CVE-2026-24881, CVSS 9.8 — CMS EnvelopedData RCE; 2.4.x branch EOL, fix only in 2.5.x).
+
+## P2 · Cyrius back-compat symlinks — confirm retirement
+
+Surfaced in the 1.0.3 (2026-06-15) toolchain bump to **6.2.11**. `base/cyrius.cyml` and `marketplace/cyrius.cyml` still create the v6.0.x back-compat symlinks `cc5 → cycc` and `cyrc → cybs` unconditionally in their install steps, with an inline note to "drop at the 6.1 bump when upstream retires them." We are now two minors past that (6.2.x) but the symlinks were left in place because nothing was confirmed to have retired the legacy consumers. **Action:** check whether the upstream 6.2.x installer still ships these shims and whether any zugot/bazaar recipe still invokes `cc5`/`cyrc`; if not, drop both `ln -sf` lines. The symlinks are harmless until then (the recipe creates them itself, independent of the tarball).
 
 ## P3 · Tooling / process
 

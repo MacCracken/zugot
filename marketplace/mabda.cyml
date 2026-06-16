@@ -7,11 +7,11 @@
 # Name: Mabda (Arabic: origin/foundation)
 # Lang: Cyrius (was a Rust crate through 1.x; 2.x is the Cyrius rewrite)
 #
-# Status: Released — v2.5.0.
+# Status: Released — v3.2.2.
 
 [package]
 name = "mabda"
-version = "2.5.0"
+version = "3.2.2"
 description = "Mabda — GPU foundation crate"
 license = "GPL-3.0-only"
 groups = ["library", "graphics", "cyrius"]
@@ -21,7 +21,7 @@ arch = "any"
 [source]
 github_release = "MacCracken/mabda"
 release_asset = "mabda-*-src.tar.gz"
-sha256 = "bd4d05bf647c547d32a39661d09a8cb09894590ec0dae309f7ac472c424696c1"
+sha256 = "91cf4e5ff53317261f2808ba5f7610a85e7653442c7a5e9a41cd2527d46e75a6"
 
 [depends]
 runtime = []

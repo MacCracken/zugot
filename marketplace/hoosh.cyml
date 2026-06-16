@@ -8,11 +8,11 @@
 # Lang: Cyrius (was Rust through 1.x; 2.x is the Cyrius rewrite — uses
 #       sandhi stdlib module for TLS, no openssl link)
 #
-# Status: Released — v2.0.0.
+# Status: Released — v2.4.6.
 
 [package]
 name = "hoosh"
-version = "2.0.0"
+version = "2.4.6"
 description = "Hoosh — AI inference gateway (14 LLM providers, OpenAI-compatible, token budgets)"
 license = "GPL-3.0-only"
 groups = ["tool", "library", "ai", "cyrius"]
@@ -21,8 +21,8 @@ arch = "x86_64"
 
 [source]
 github_release = "MacCracken/hoosh"
-release_asset = "hoosh"
-sha256 = "ba417a910b9fb41b410c3afce6ac512031475f57f7e3e9161a8cc9c52d0b7dce"
+release_asset = "hoosh-*-x86_64-linux"
+sha256 = "b0d9e6b5d0b5260b03543016152d5b7b4dea7f7dd68499c62b430f0ce8639bc7"
 
 [depends]
 runtime = ["glibc"]
@@ -87,7 +87,8 @@ make = ""
 check = ""
 install = """
 mkdir -p $PKG/usr/bin
-install -Dm755 hoosh $PKG/usr/bin/hoosh
+BIN=$(find . -maxdepth 1 -type f -name 'hoosh-*-x86_64-linux' | head -1)
+install -Dm755 "$BIN" $PKG/usr/bin/hoosh
 """
 
 [security]

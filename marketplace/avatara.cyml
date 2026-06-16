@@ -5,11 +5,11 @@
 # Bin: avatara
 # Lang: Cyrius (was a Rust crate through 1.x; 2.x is the Cyrius rewrite)
 #
-# Status: Released — v2.3.0.
+# Status: Released — v2.7.2.
 
 [package]
 name = "avatara"
-version = "2.3.0"
+version = "2.7.2"
 description = "Avatara — divine archetype overlay"
 license = "GPL-3.0-only"
 groups = ["library", "science", "cyrius"]
@@ -19,7 +19,7 @@ arch = "x86_64"
 [source]
 github_release = "MacCracken/avatara"
 release_asset = "avatara"
-sha256 = "f2b2e0855e4abf1d872f29086a9ea9f4b26218ae3c874ac12fecc758386e5b79"
+sha256 = "dc5b630710a838dfcd53f376484419ba2797d2dcf0a7e09c3e295afe7909303e"
 
 [depends]
 runtime = ["glibc"]

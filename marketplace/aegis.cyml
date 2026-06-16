@@ -5,11 +5,11 @@
 # Bin: aegis
 # Lang: Cyrius (was a Rust crate at 0.1.0; 1.x is the Cyrius rewrite)
 #
-# Status: Released — v1.0.0.
+# Status: Released — v1.0.1.
 
 [package]
 name = "aegis"
-version = "1.0.0"
+version = "1.0.1"
 description = "Aegis — security daemon for AGNOS"
 license = "GPL-3.0-only"
 groups = ["system", "security", "cyrius"]
@@ -19,7 +19,7 @@ arch = "x86_64"
 [source]
 github_release = "MacCracken/aegis"
 release_asset = "aegis-*-x86_64-linux"
-sha256 = "43bdf81314b99e3bba7dc6237fd0130de84d06b8088db84904ba63dbfb9a8d39"
+sha256 = "450a424a4a9ae2e55b237bdf1862e32e5061b4fdc1189b0bae66f25e5f32501c"
 
 [depends]
 runtime = ["glibc"]

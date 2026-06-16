@@ -6,11 +6,11 @@
 # Bin: yukti (device introspection CLI)
 # Lang: Cyrius (was a Rust crate through 1.2.x; 2.x is the Cyrius rewrite)
 #
-# Status: Released — v2.2.3.
+# Status: Released — v2.2.5.
 
 [package]
 name = "yukti"
-version = "2.2.3"
+version = "2.2.5"
 description = "Yukti — Device abstraction layer"
 license = "GPL-3.0-only"
 groups = ["library", "hardware", "cyrius"]
@@ -20,7 +20,7 @@ arch = "x86_64"
 [source]
 github_release = "MacCracken/yukti"
 release_asset = "yukti-*-src.tar.gz"
-sha256 = "cd07fe5934e641f5a770fdbb976a80d21d3e8c5352c95814ca58f18ba10428e0"
+sha256 = "5ded3ea4d20649ce068e6437504c9c099d9e68df1194e641901f5ce5932888d1"
 
 [depends]
 runtime = ["glibc"]

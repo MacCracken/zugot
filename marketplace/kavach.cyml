@@ -6,11 +6,11 @@
 # Bin: kavach
 # Lang: Cyrius (was a Rust crate through 2.x; 3.x is the Cyrius rewrite)
 #
-# Status: Released — v3.2.1.
+# Status: Released — v3.4.2.
 
 [package]
 name = "kavach"
-version = "3.2.1"
+version = "3.4.2"
 description = "Kavach — Sandbox execution framework (8 backends, strength scoring, policy engine)"
 license = "GPL-3.0-only"
 groups = ["library", "security", "sandbox", "cyrius"]
@@ -20,7 +20,7 @@ arch = "x86_64"
 [source]
 github_release = "MacCracken/kavach"
 release_asset = "kavach-*-x86_64-linux"
-sha256 = "0d0841e8c4e2428916f1a8e6da5b300166caa1cb3a42f3acf415228d2963309c"
+sha256 = "0df872cf2a525d8666c7a45e356ec74aef98f119517b3db369a0a278d7192cee"
 
 [depends]
 runtime = ["glibc"]

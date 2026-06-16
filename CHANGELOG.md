@@ -7,6 +7,42 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and
 
 ## [Unreleased]
 
+## [1.0.3] - 2026-06-15
+
+A maintenance / drift-cleanup release, roughly three weeks after 1.0.2. Drift was re-detected across all 112 GitHub-sourced `MacCracken/*` recipes via `git ls-remote --tags`, then **confirmed against each repo's authoritative `releases/latest`** (tag-sorting alone was unreliable — several repos still carry stale CalVer tags that sort above their current semver). **35 recipes bumped**, each with its SHA256 verified against the upstream release asset (GitHub-published asset `digest:` cross-checked against the `.sha256` / `SHA256SUMS` companion). Dependency, license, and field audits run per recipe; the two major bumps (`mabda` 2→3, `szal` 1→2) cross-checked against upstream manifests — no new deps. Validator clean across all recipes.
+
+### Cyrius toolchain bump — 6.0.3 → 6.2.11
+
+- **`base/cyrius.cyml`** and **`marketplace/cyrius.cyml`** 6.0.3 → **6.2.11**. Tarball SHA256 `bed1a7e3…` verified two ways (GitHub asset digest + the upstream `cyrius-6.2.11-x86_64-linux.tar.gz.sha256` companion). Install steps unchanged — the 6.x binary set (`cycc`, `cyrius`, `ark`, `cybs`, `cyaudit`, `cyrius-lsp`, …) is stable. The v6.0.x `cc5`/`cyrc` back-compat symlinks are retained pending confirmation that upstream has retired the legacy consumers (the install creates them itself, so they are harmless; flagged for the next pass).
+
+### base — version bumps (SHA verified)
+
+- **`base/agnos-kernel.cyml`** + **`marketplace/agnos-kernel.cyml`** 1.35.3 → **1.45.10** (`agnos-1.45.10-src.tar.gz`, `d14af566…`).
+- **`base/bazaar.cyml`** 1.0.1 → **1.0.2** (`bazaar-1.0.2-src.tar.gz`, `81c5a383…`). Tracks the zugot 1.0.3 tag.
+- **`base/cyim.cyml`** 1.7.1 → **1.7.3** (`cyim-1.7.3-x86_64-linux.tar.gz`, `916e046e…`).
+- **`base/kybernet.cyml`** + **`marketplace/kybernet.cyml`** 1.2.1 → **1.3.4** (`kybernet-1.3.4-src.tar.gz`, `a72ea8a8…`).
+- **`base/owl.cyml`** 1.3.6 → **1.4.0** (`owl-1.4.0-x86_64-linux.tar.gz`, `3382b683…`).
+
+### marketplace — version bumps (SHA verified)
+
+- **`abaco.cyml`** 2.2.4 → **2.3.0** (`5951277c…`). **`aegis.cyml`** 1.0.0 → **1.0.1** (`450a424a…`). **`agnoshi.cyml`** 1.3.3 → **1.7.0** (`agnsh-1.7.0-x86_64-linux`, `9690f65e…`; stale ship-date narrative in the header trimmed). **`agnostik.cyml`** 1.2.2 → **1.3.1** (`0772c085…`). **`agnosys.cyml`** 1.2.7 → **1.4.3** (`578eddd3…`).
+- **`ai-hwaccel.cyml`** 2.2.6 → **2.3.12** (`9c04f276…`). **`argonaut.cyml`** 1.7.0 → **1.8.3** (`140d3517…`). **`avatara.cyml`** 2.3.0 → **2.7.2** (`dc5b6307…`). **`bote.cyml`** 2.7.2 → **2.7.6** (`f4019947…`). **`daimon.cyml`** 1.2.3 → **1.2.9** (`b46a0775…`).
+- **`itihas.cyml`** 2.2.0 → **2.3.4** (`a3f7d846…`). **`kavach.cyml`** 3.2.1 → **3.4.2** (`0df872cf…`). **`libro.cyml`** 2.6.3 → **2.7.4** (`ad1ebb07…`). **`majra.cyml`** 2.4.4 → **2.4.7** (`9169894d…`). **`patra.cyml`** 1.9.5 → **1.11.2** (`08bcfa8d…`).
+- **`phylax.cyml`** 1.1.1 → **1.2.0** (`be856115…`). **`sigil.cyml`** 3.4.3 → **3.7.14** (`sigil-3.7.14.tar.gz`, `514640bd…`). **`t-ron.cyml`** 2.1.4 → **2.1.6** (`5785bced…`). **`vidya.cyml`** 2.7.1 → **2.7.3** (`471e7832…`). **`yukti.cyml`** 2.2.3 → **2.2.5** (`5ded3ea4…`).
+- **`nous.cyml`** 1.2.5 → **1.2.6** (`dec324f0…`); hardcoded `release_asset` version advanced 1.2.5 → 1.2.6.
+
+### marketplace — major bumps (deps cross-checked, SHA verified)
+
+- **`mabda.cyml`** 2.5.0 → **3.2.2** (`mabda-3.2.2-src.tar.gz`, `91cf4e5f…`). Upstream `cyrius.cyml` declares no external runtime deps (vendored Cyrius modules) — recipe `runtime=[]` / `build=["cyrius"]` unchanged.
+- **`szal.cyml`** 1.1.0 → **2.0.0** (`ec777223…`). `release_asset = "source"` resolves to the GitHub auto-generated source archive (`/archive/refs/tags/2.0.0.tar.gz`) — confirmed by matching the prior 1.1.0 SHA to that artifact, not the `-src.tar.gz` asset or the crates.io checksum. Upstream `Cargo.toml` has no dependencies — recipe unchanged.
+
+### marketplace — asset-shape fixes (bare → versioned binary)
+
+Upstream stopped shipping the bare `<name>` release asset; the latest releases publish only `<name>-<version>-x86_64-linux`. `release_asset` switched to the `<name>-*-x86_64-linux` glob and the install step rewritten to locate the binary by glob (`find … -name '<name>-*-x86_64-linux'`):
+
+- **`hisab.cyml`** 2.2.0 → **2.6.6** (`32ba0fe4…`). **`hoosh.cyml`** 2.0.0 → **2.4.6** (`b0d9e6b5…`). **`nein.cyml`** 1.5.1 → **1.5.3** (`06d62880…`).
+- **`shakti.cyml`** → **0.6.2** (`bff63c2f…`). Supersedes the staged 0.4.0 edit (which carried the stale 0.2.2 binary's hash and a `# TODO` blocking install). The bare `shakti` asset is gone; switched to the versioned glob with a verified SHA, so install is no longer blocked. Note: upstream 0.x tags are all flagged pre-release.
+
 ## [1.0.2] - 2026-05-27
 
 A maintenance / drift-cleanup release. P(-1)-style version audit roughly a month after 1.0.1, focused on the fast-moving AGNOS-native (MacCracken/\*) ecosystem. Drift was detected for every GitHub-sourced recipe via `git ls-remote --tags` (no REST rate limit) and confirmed against each repo's authoritative `releases/latest`; SHA256 for every bump was verified against the release asset digest (GitHub-published `digest:` / `SHA256SUMS`). The Cyrius toolchain bumped 5.7.25 → 6.0.3 (binary renames). New `marketplace/patra` recipe. A second pass extended the audit to third-party GitHub recipes: 53 libraries bumped to current releases with download-verified SHAs (only `brave` left untouched, on a release-channel mismatch). `noted-issues-bazaar-finds.md` retired. Validator clean across all 563 recipes.

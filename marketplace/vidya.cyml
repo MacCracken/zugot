@@ -8,11 +8,11 @@
 # Bin: vidya (queryable CLI)
 # Lang: Cyrius (was a Rust crate through 1.x; 2.x is fully ported)
 #
-# Status: Released — v2.7.1.
+# Status: Released — v2.7.3.
 
 [package]
 name = "vidya"
-version = "2.7.1"
+version = "2.7.3"
 description = "Vidya — programming reference engine"
 license = "GPL-3.0-only"
 groups = ["library", "science", "cyrius"]
@@ -22,7 +22,7 @@ arch = "x86_64"
 [source]
 github_release = "MacCracken/vidya"
 release_asset = "vidya-*-src.tar.gz"
-sha256 = "da43278dbdea2ddf732d127cf5260779517e4fd613512e67bb84d48350f25909"
+sha256 = "471e78329de00850dd664164773abd23d7630555730de8a84715a29a2edb071b"
 
 [depends]
 runtime = []
