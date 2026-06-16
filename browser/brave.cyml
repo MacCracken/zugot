@@ -3,7 +3,7 @@
 
 [package]
 name = "brave"
-version = "1.91.64"
+version = "1.91.172"
 description = "Brave Browser — Privacy-first Chromium-based browser"
 license = "MPL-2.0"
 groups = ["desktops", "browser", "internet"]
@@ -11,8 +11,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://github.com/brave/brave-browser/archive/refs/tags/v1.91.64.tar.gz"
-sha256 = "48f8af273812700e5181fabff03488c46ecacf0b52783190985fdbd5d95d8851"
+url = "https://github.com/brave/brave-browser/archive/refs/tags/v1.91.172.tar.gz"
+sha256 = "3621fd7b1b63a93c9db2a68f2702d4c0eab06732e45034dc8755fb45c37b15b4"
 patches = ["agnos-defaults.patch", "wayland-ozone.patch"]
 
 [depends]

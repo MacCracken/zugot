@@ -30,11 +30,21 @@ Swept all 563 recipes against upstream. GitHub-sourced recipes (282) checked via
 - **desktops** — `fmt` 12.1.0 → **12.2.0** (`a2f4a8d5…`). `graphite2` 1.3.14 → **1.3.15** (`c6bc8b42…`). `harfbuzz` 14.2.0 → **14.2.1** (`a54a5d8e…`). `hwdata` 0.407 → **0.408** (`ac7c34ef…`). `kitty` 0.47.0 → **0.47.4** (`85c21929…`). `libde265` 1.1.0 → **1.1.1** (`fd48a927…`). `libheif` 1.22.2 → **1.23.0** (`4c9182b1…`). `libxkbcommon` 1.13.1 → **1.13.2** (`acc4d5f7…`). `msgpack-c` 6.1.0 → **7.0.1** (`2d80f190…`; release-tag scheme `c-7.0.1`). `pugixml` 1.15 → **1.16** (`357bcab8…`).
 - **ai** — `fuse-overlayfs` 1.16 → **1.17** (`cefffecf…`). `runc` 1.4.2 → **1.4.3** (`e0a89f9e…`). `huggingface-hub-cli` 1.16.4 → **1.19.0** (`a2a89bf5…`). `jupyter-server` 2.18.2 → **2.19.0** (`08bca832…`). `ollama` 0.24.0 → **0.30.8** (`9f353130…`). `python-transformers` 5.9.0 → **5.12.1** (`c27e47bc…`). `vllm` 0.21.0 → **0.23.0** (`a32a008b…`). `rocm` 7.2.2 → **7.2.4** (`a80fc166…`). System-level deps (`python`, `glibc`, `go`, `pytorch`, `numpy`, `cmake`) unchanged across these bumps — pip-level deps resolve at build time.
 
+### Major / high-blast-radius bumps (worked individually, SHA verified)
+
+- **OpenSSL 3.5.6 → 3.5.7** (`base/openssl.cyml` + `edge/openssl.cyml`, SHA `a8c0d28a…`). Stayed on the **3.5 LTS line** rather than jumping to the newly-released 4.0.1: 4.0 bumps `SHLIB_VERSION` 3 → 4 (`libcrypto.so.3` → `.so.4`), a hard ABI break requiring a coordinated rebuild of every OpenSSL consumer. 3.5.7 is a drop-in patch (soname unchanged), supported to 2030. License `Apache-2.0` and `./config` unchanged.
+- **elogind 255.25 → 257.16** (`desktops/elogind.cyml`, SHA `3c814640…`). Major series jump; verified the recipe's only meson flag (`-Dcgroup-controller=elogind`) still exists in 257.16's `meson_options.txt`, and deps (`dbus`, `polkit`, `linux-pam`) + `LGPL-2.1-only` license unchanged.
+- **llvm 22.1.6 → 22.1.8** (`base/llvm.cyml`, SHA `922f1817…`) — patch within 22.1.x, cmake build unchanged.
+- **firecracker 1.15.1 → 1.16.0** (`base/firecracker.cyml`, SHA `bd04e269…`) — binary release tarball; install uses version-wildcard globs, no build change.
+- **brave 1.91.64 → 1.91.172** (`browser/brave.cyml`, SHA `3621fd7b…`) — same 1.91 line.
+- **aquamarine 0.11.0 → 0.12.1** (`desktops/aquamarine.cyml`, SHA `80120257…`) — Hyprland backend lib, cmake build unchanged.
+
 ### Not bumped — flagged
 
 - **`varna.cyml`** stays at **1.0.0**: 2.0.0 is the in-progress Cyrius port (local CHANGELOG dated 2026-06-16) and is **not yet tagged or released** on GitHub — only the 1.0.0 release exists and it ships no assets. Revisit once the 2.0.0 Cyrius-port release with a `source`-resolvable artifact is published.
 - **`agnos-edge-agent.cyml`** stays at **2026.3.11** (empty SHA + TODO): upstream `agnosticos` is at 2026.3.31, but that release ships only OS images (`.iso`/`.img`) — no `agnos-edge-agent-*.tar.xz` asset — and the tag dropped its `v` prefix. Pending a published agent artifact, not a missed sync.
-- **Deferred to per-recipe major passes** (high blast radius, build-tested individually): **openssl** 3.5.6 → 4.0.1, **elogind** 255.25 → 257.16, **llvm** 22.1.6 → 22.1.8, **firecracker** 1.15.1 → 1.16.0. Also pending: `brave` 1.91.64 → 1.91.172, `aquamarine` 0.11.0 → 0.12.1.
+- **`network/libnl.cyml`** stays at **3.12.0** — tag-scan false positive: upstream's latest release tag `libnl3_12_0` *is* 3.12.0 (already in sync).
+- **`vulkan-headers` / `vulkan-loader`** (1.4.352): tag-scan saw 1.4.354 but neither repo publishes a GitHub "latest" release (SDK-tagged). Needs a manual Vulkan-SDK-tag check — left for a per-SDK pass.
 
 ## [1.0.3] - 2026-06-15
 
