@@ -7,6 +7,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and
 
 ## [Unreleased]
 
+## [1.0.4] - 2026-06-16
+
+A version-sync release. **40 recipes bumped** across four passes, each SHA256 recomputed from the re-downloaded upstream artifact (archive type checked; no placeholder hashes): (1) a drift sweep of the locally checked-out `MacCracken/*` projects against their recipes; (2) completion of the **SecureYeoman 0.5.3** set across all six variants, with a `GPL-3.0-only` → **`AGPL-3.0-only`** license correction (upstream is GNU AGPLv3); (3) a **full-tree third-party sync** — all 563 recipes scanned via `git ls-remote --tags`, then de-noised against authoritative `releases/latest` (the raw tag scan threw ~39 false positives from junk historical tags); and (4) a deliberate pass over the high-blast-radius majors. **OpenSSL was held on the 3.5 LTS line** (3.5.6 → 3.5.7) rather than taking the 4.0.1 `SHLIB_VERSION` 3 → 4 ABI break. Per-category breakdown: desktops 12, base 8, ai 8, marketplace 9, edge 2, browser 1. Validator clean across all recipes. (The ~281 non-GitHub upstream packages — gnu.org, gnome, x.org, kernel.org, freedesktop — were not version-checked this cycle; they need per-host scraping and are slated for a follow-up sweep.)
+
 ### marketplace — drift sweep (local repos → recipes, SHA verified)
 
 Sweep of the locally checked-out `MacCracken/*` projects against their marketplace recipes (`VERSION` / git tag / CHANGELOG cross-checked, then each repo's GitHub `releases/<tag>` confirmed to publish the asset). **9 recipes bumped**, each SHA256 downloaded and recomputed against the upstream release asset (matched the published `SHA256SUMS` / `.sha256` companion). Full field audit per recipe — a license error surfaced and was fixed (see below). Validator clean.
