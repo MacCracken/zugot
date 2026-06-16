@@ -20,6 +20,19 @@ Deferred from this batch (need deliberate handling, not batch bumps):
 - **`coreutils` 9.10 → 9.11** — build applies a local `coreutils-9.10-agnos-dircolors.patch`; needs the patch re-cut/renamed for 9.11 first.
 - **`autoconf2.13`** stays at **2.13** — intentional legacy pin (Firefox SpiderMonkey `js/src/`); the scraper matched the shared `autoconf/` dir (false positive).
 
+### Non-GitHub upstream sweep — batch 9: toolchains + sweep closeout
+
+Final singleton pass. **2 bumped**, SHA from canonical sources:
+- **`go`** 1.26.2 → **1.26.4** (`1153d3d5…`; SHA from go.dev's release JSON; stays on the 1.26.x line). **`rust`** 1.95.0 → **1.96.0** (`b99ce16c…`; SHA from the upstream `.sha256` companion; `docdir` + `description` version strings updated in lockstep).
+- In sync / frozen (at last upstream release): `duktape` 2.7.0, `json-c` 0.18, `itstool` 2.0.7, `libatasmart` 0.19, `mtdev` 1.1.7, `yasm` 1.3.0, `intltool` 0.51.0, `portaudio` 19.7.0, `libaio` 0.3.113, `less` 692.
+
+**Non-GitHub upstream sweep — done.** Of 265 non-GitHub tarball recipes, ~80 were behind and bumped across batches 1–9 (every SHA256 recomputed from the re-downloaded artifact, or taken from an upstream-signed checksum for the multi-hundred-MB/GB artifacts); the rest were already current. The following are intentionally **not** auto-bumped and tracked for deliberate handling:
+
+- **Major / blast-radius (need a build pass):** `gcc` 15.2.0 → 16.1.0 (system compiler), `nettle` 3.10.2 → 4.0 (soname), `lua` 5.4.8 → 5.5.0 (language major), `glibc` (edge) 2.42 → 2.43, `coreutils` 9.10 → 9.11 (local patch re-cut), Qt6 6.10.3 → 6.11.
+- **Browsers / proprietary / pinned (deliberate, often binary):** `chromium` 147.x, `librewolf` 152.0-1 (Codeberg API exposes no artifact SHA — needs a ~600 MB hash), `vivaldi` 7.9.x (.deb), `nvidia-driver` 595.58.03, `nvidia-cuda-toolkit` 12.8.1 (`.run` installers).
+- **Branch/commit-tracking (no semver pin):** `x264` (`stable` branch tarball), `gn` (Chromium build tool, commit-hash pinned), `gvisor` (dated `runsc` binary; a newer dated build exists).
+- **Recheck (listing format didn't parse):** `netfilter` (`libmnl`/`libnftnl`/`nftables`), XFCE (`exo`/`libxfce4ui`/`libxfce4util`/`xfconf`) — likely already current.
+
 ### Non-GitHub upstream sweep — batch 8: singletons, part 2 (version-dir + git forges)
 
 Second singleton pass — version-directory listings and git forges (bitbucket/gitlab/salsa/cgit). **8 bumped**, SHA verified:
