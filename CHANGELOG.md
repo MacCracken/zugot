@@ -20,6 +20,11 @@ Deferred from this batch (need deliberate handling, not batch bumps):
 - **`coreutils` 9.10 → 9.11** — build applies a local `coreutils-9.10-agnos-dircolors.patch`; needs the patch re-cut/renamed for 9.11 first.
 - **`autoconf2.13`** stays at **2.13** — intentional legacy pin (Firefox SpiderMonkey `js/src/`); the scraper matched the shared `autoconf/` dir (false positive).
 
+### Non-GitHub upstream sweep — batch 6: GnuPG + SourceForge
+
+- **GnuPG** (7 recipes, gnupg.org listings): **4 bumped**, SHA verified — **`gnupg`** 2.5.18 → **2.5.20** (`6461266e…`; stays on the recipe's existing 2.5 dev train), **`gnutls`** 3.8.12 → **3.8.13** (`ffed8ec1…`, latest 3.8.x patch), **`libgpg-error`** 1.59 → **1.61** (`7a85413f…`), **`libksba`** 1.6.8 → **1.8.0** (`296b9db9…`). `libassuan`, `libgcrypt`, `npth` in sync.
+- **SourceForge** (10 recipes, `best_release.json`): **all in sync** — `e2fsprogs` 1.47.4, `libpng` 1.6.58, `procps-ng` 4.0.6, `psmisc` 23.7, `giflib` 6.1.3, `djvulibre` 3.5.29 all current. `unzip` 6.0 / `zip` 3.0 (Info-ZIP) and `lame` 3.100 are upstream-frozen (no releases in years) — left as-is.
+
 ### Non-GitHub upstream sweep — batch 5: freedesktop.org
 
 24 freedesktop-family recipes — gitlab.freedesktop.org projects checked via `git ls-remote --tags`, the rest by directory listing. 13 in sync. **11 bumped**, SHA verified:

@@ -11,7 +11,7 @@
 
 [package]
 name = "gnupg"
-version = "2.5.18"
+version = "2.5.20"
 description = "GnuPG — GNU Privacy Guard (OpenPGP)"
 license = "GPL-3.0-only"
 groups = ["base", "security", "tier1"]
@@ -19,8 +19,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.5.18.tar.bz2"
-sha256 = "0dbd64e0322fe1a4813360d46539d5f8daf4a8fa235cf5fce464e8b0214a7e4f"
+url = "https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.5.20.tar.bz2"
+sha256 = "6461266e99c308419a379abe6c356d54c214136c4589bd65951091138989ffc6"
 patches = []
 
 [depends]
