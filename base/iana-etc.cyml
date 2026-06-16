@@ -5,7 +5,7 @@
 
 [package]
 name = "iana-etc"
-version = "20260511"
+version = "20260612"
 description = "IANA-Etc — /etc/services and /etc/protocols"
 license = "MIT"
 groups = ["base", "core", "tier1"]
@@ -13,8 +13,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://github.com/Mic92/iana-etc/releases/download/20260511/iana-etc-20260511.tar.gz"
-sha256 = "3079eadb6d52f5f80c311370e6b3ac01864dd223de4213fbc033ead6c3a0de04"
+url = "https://github.com/Mic92/iana-etc/releases/download/20260612/iana-etc-20260612.tar.gz"
+sha256 = "f12153a2b291e7b745cc28817d3e11f53256edc53e4e2b317e88969538cbd613"
 patches = []
 
 [depends]

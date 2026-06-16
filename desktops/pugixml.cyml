@@ -4,7 +4,7 @@
 
 [package]
 name = "pugixml"
-version = "1.15"
+version = "1.16"
 description = "pugixml — Light-weight C++ XML parsing library"
 license = "MIT"
 groups = ["desktops", "libs"]
@@ -12,8 +12,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://github.com/zeux/pugixml/archive/refs/tags/v1.15.tar.gz"
-sha256 = "b39647064d9e28297a34278bfb897092bf33b7c487906ddfc094c9e8868bddcb"
+url = "https://github.com/zeux/pugixml/archive/refs/tags/v1.16.tar.gz"
+sha256 = "357bcab8877dc9943f355d3a72daba1b053238ba955f50fa81586afb65090219"
 patches = []
 
 [depends]

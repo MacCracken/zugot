@@ -10,7 +10,7 @@
 
 [package]
 name = "secureyeoman-edge"
-version = "0.5.0"
+version = "0.5.3"
 description = "SecureYeoman Edge — lightweight IoT agent for constrained hardware"
 license = "AGPL-3.0-only"
 groups = ["edge", "tier1"]
@@ -22,7 +22,7 @@ arch = "x86_64"
 # Release: https://github.com/MacCracken/SecureYeoman/releases
 github_release = "MacCracken/SecureYeoman"
 release_asset = "secureyeoman-*-edge-linux-x64"
-sha256 = "ef5e24125c60a44b1ba327d8890b744f70a462cfae5295220115986c42a5d887"
+sha256 = "57db404829d9fda75920fabeb3aec93c9a38594c55d6c004da7edc13950ce332"
 
 [depends]
 # Statically linked — zero runtime dependencies

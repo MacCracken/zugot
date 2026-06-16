@@ -5,7 +5,7 @@
 
 [package]
 name = "protobuf"
-version = "35.0"
+version = "35.1"
 description = "Protocol Buffers — Google's data interchange format compiler and runtime"
 license = "BSD-3-Clause"
 groups = ["base", "libs", "tier1"]
@@ -13,8 +13,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://github.com/protocolbuffers/protobuf/archive/refs/tags/v35.0.tar.gz"
-sha256 = "e127ea69dd7be4e88abdd95845fb6c30d25d96971d95827e92b70e2e910d46a1"
+url = "https://github.com/protocolbuffers/protobuf/archive/refs/tags/v35.1.tar.gz"
+sha256 = "22775f9376938295efa2d59a59bde4cd075a42df5a9b4d27aa9b99fa6a413bd2"
 patches = []
 
 [depends]
