@@ -11,7 +11,7 @@
 
 [package]
 name = "gcc"
-version = "15.2.0"
+version = "15.3.0"
 description = "GNU Compiler Collection — C, C++ compilers"
 license = "GPL-3.0-only"
 groups = ["base", "toolchain", "tier0"]
@@ -19,8 +19,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://ftp.gnu.org/gnu/gcc/gcc-15.2.0/gcc-15.2.0.tar.xz"
-sha256 = "438fd996826b0c82485a29da03a72d71d6e3541a83ec702df4271f6fe025d24e"
+url = "https://ftp.gnu.org/gnu/gcc/gcc-15.3.0/gcc-15.3.0.tar.xz"
+sha256 = "fa59c1beef8995f27c4d71c1df227587189315d3e6faff1bb4306e61b0c530eb"
 patches = []
 
 [depends]
@@ -95,7 +95,7 @@ ln -sv gcc.1 $PKG/usr/share/man/man1/cc.1
 # LTO plugin for binutils — enables link-time optimisation
 GCC_MACHINE=$(gcc -dumpmachine 2>/dev/null || echo "x86_64-pc-linux-gnu")
 mkdir -p $PKG/usr/lib/bfd-plugins
-ln -sfv "../../libexec/gcc/${GCC_MACHINE}/15.2.0/liblto_plugin.so" \
+ln -sfv "../../libexec/gcc/${GCC_MACHINE}/15.3.0/liblto_plugin.so" \
     $PKG/usr/lib/bfd-plugins/ 2>/dev/null || true
 
 # Move GDB auto-load scripts to the proper location

@@ -6,7 +6,7 @@
 
 [package]
 name = "qt6-base"
-version = "6.10.3"
+version = "6.11.1"
 description = "Qt 6 Base — Core framework modules (QtCore, QtGui, QtWidgets, QtNetwork)"
 license = "LGPL-3.0-only OR GPL-2.0-only"
 groups = ["desktops", "libs"]
@@ -14,8 +14,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://download.qt.io/official_releases/qt/6.10/6.10.3/submodules/qtbase-everywhere-src-6.10.3.tar.xz"
-sha256 = "383dc907816338f0cba72088a524c07458dfc69ce684ca9132fcc4fe91c24b0b"
+url = "https://download.qt.io/official_releases/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.tar.xz"
+sha256 = "d9594a31228aa23ad6b531719a29b45f0f3989fe6c136d45767ea179f233c1ac"
 patches = []
 
 [depends]

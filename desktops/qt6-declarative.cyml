@@ -5,7 +5,7 @@
 
 [package]
 name = "qt6-declarative"
-version = "6.10.3"
+version = "6.11.1"
 description = "Qt 6 Declarative — QML and Quick modules for declarative UI"
 license = "LGPL-3.0-only OR GPL-2.0-only"
 groups = ["desktops", "libs"]
@@ -13,8 +13,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://download.qt.io/official_releases/qt/6.10/6.10.3/submodules/qtdeclarative-everywhere-src-6.10.3.tar.xz"
-sha256 = "dadf80d43b8e08ca63aa65d46859a42b920a7777cf7e0ecfcb4c4537f9e65c76"
+url = "https://download.qt.io/official_releases/qt/6.11/6.11.1/submodules/qtdeclarative-everywhere-src-6.11.1.tar.xz"
+sha256 = "52e670f670b0304f534b24f98c47ceb8a41bb710464414ebc9527ec71cc86aa4"
 patches = []
 
 [depends]

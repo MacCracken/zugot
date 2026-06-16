@@ -5,7 +5,7 @@
 
 [package]
 name = "qt6-wayland"
-version = "6.10.3"
+version = "6.11.1"
 description = "Qt 6 Wayland — Wayland platform integration"
 license = "LGPL-3.0-only OR GPL-2.0-only"
 groups = ["desktops", "libs"]
@@ -13,8 +13,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://download.qt.io/official_releases/qt/6.10/6.10.3/submodules/qtwayland-everywhere-src-6.10.3.tar.xz"
-sha256 = "2e93322a86b562113cfa3a5f0aa8b1e4e185d6284af49b529578d27d52ca85d3"
+url = "https://download.qt.io/official_releases/qt/6.11/6.11.1/submodules/qtwayland-everywhere-src-6.11.1.tar.xz"
+sha256 = "95788aa502f75441d4edf65932b235f76523084e13dbbb7b9ee2d207b32bd9b3"
 patches = []
 
 [depends]

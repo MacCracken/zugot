@@ -20,6 +20,19 @@ Deferred from this batch (need deliberate handling, not batch bumps):
 - **`coreutils` 9.10 → 9.11** — build applies a local `coreutils-9.10-agnos-dircolors.patch`; needs the patch re-cut/renamed for 9.11 first.
 - **`autoconf2.13`** stays at **2.13** — intentional legacy pin (Firefox SpiderMonkey `js/src/`); the scraper matched the shared `autoconf/` dir (false positive).
 
+### Spring recipe sync — capstone: deferred majors
+
+Worked through the deferred high-blast-radius majors to close out the spring sync. **10 files bumped**, each SHA verified (gcc/lua/coreutils recomputed from re-downloaded tarballs; Qt6 from upstream `.sha256` companions; glibc-edge copied from the already-verified `base/glibc.cyml`):
+
+- **`gcc`** 15.2.0 → **15.3.0** — held on the **gcc 15 series** (latest point release; libstdc++/libgcc ABI unchanged, no world rebuild) rather than jumping to 16.1.0. The hardcoded `15.2.0` in the `liblto_plugin.so` install symlink was updated in lockstep.
+- **`lua`** 5.4.8 → **5.5.0** — opt-in language major (recipe carried no `5.4` path refs, so a clean version/url/sha bump).
+- **Qt6** `qt6-base` / `qt6-declarative` / `qt6-tools` / `qt6-wayland` / `qt6-webengine` 6.10.3 → **6.11.1** — new feature series; URLs moved `/6.10/6.10.3/` → `/6.11/6.11.1/`, SHAs `d9594a31…` / `52e670f6…` / `8e61835a…` / `95788aa5…` / `679c66cc…`.
+- **`coreutils`** (base + edge) 9.10 → **9.11** (`394024ed…`; the conditional `coreutils-9.x-agnos-dircolors.patch` reference — a file not present in-tree — was advanced to 9.11 for tidiness).
+- **`glibc`** (edge) 2.42 → **2.43** — aligned `edge/glibc.cyml` to the already-shipping `base/glibc.cyml` 2.43.
+- **`nettle`** kept at **3.10.2** (latest on the stable 3.10 line) — 4.0 deliberately not taken (would bump the `libnettle`/`libhogweed` soname and force a gnutls/consumer rebuild).
+
+This marks the end of the spring recipe sync. Remaining un-bumped recipes are all by design: proprietary/binary or rapid-release browsers (`chromium`, `librewolf`, `vivaldi`, `nvidia-driver`, `nvidia-cuda-toolkit`), branch/commit-tracking sources (`x264` stable branch, `gn` commit, `gvisor` dated binary), and the `netfilter`/XFCE recipes whose listing pages need a targeted recheck.
+
 ### Non-GitHub upstream sweep — batch 9: toolchains + sweep closeout
 
 Final singleton pass. **2 bumped**, SHA from canonical sources:
