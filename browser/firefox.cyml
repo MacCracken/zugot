@@ -3,7 +3,7 @@
 
 [package]
 name = "firefox"
-version = "149.0.2"
+version = "152.0"
 description = "Mozilla Firefox — Privacy-focused web browser"
 license = "MPL-2.0"
 groups = ["desktops", "browser", "internet"]
@@ -11,8 +11,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://archive.mozilla.org/pub/firefox/releases/149.0.2/source/firefox-149.0.2.source.tar.xz"
-sha256 = "6a931a2cf087164c689099c3856b3091a7e156a7b94fab8ab5712affe87870ce"
+url = "https://archive.mozilla.org/pub/firefox/releases/152.0/source/firefox-152.0.source.tar.xz"
+sha256 = "5e5f9acb550d065a43934e0fcd11ed3ec22f7266fc9ad63df757406b432a5127"
 patches = ["agnos-defaults.patch", "wayland-primary.patch"]
 
 [depends]

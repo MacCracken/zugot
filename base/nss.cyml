@@ -5,7 +5,7 @@
 
 [package]
 name = "nss"
-version = "3.122.1"
+version = "3.125"
 description = "NSS — Mozilla Network Security Services (TLS/crypto library)"
 license = "MPL-2.0"
 groups = ["base", "security", "tier1"]
@@ -13,8 +13,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://archive.mozilla.org/pub/security/nss/releases/NSS_3_122_1_RTM/src/nss-3.122.1.tar.gz"
-sha256 = "de5a655da82a67e502b802ae0b53f3eb02ea53f509c3fc0ab54a892e04493bbf"
+url = "https://archive.mozilla.org/pub/security/nss/releases/NSS_3_125_RTM/src/nss-3.125.tar.gz"
+sha256 = "1ad541f10da7c58dec01f540ecc44d28cbbc033f741a57473de5a0893d91606d"
 patches = []
 
 [depends]

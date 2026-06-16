@@ -4,7 +4,7 @@
 
 [package]
 name = "python3.14"
-version = "3.14.4"
+version = "3.14.6"
 description = "CPython 3.14 — Python interpreter"
 license = "PSF-2.0"
 groups = ["system", "runtime", "python"]
@@ -12,8 +12,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://www.python.org/ftp/python/3.14.4/Python-3.14.4.tar.xz"
-sha256 = "d923c51303e38e249136fc1bdf3568d56ecb03214efdef48516176d3d7faaef8"
+url = "https://www.python.org/ftp/python/3.14.6/Python-3.14.6.tar.xz"
+sha256 = "143b1dddefaec3bd2e21e3b839b34a2b7fb9842272883c576420d605e9f30c63"
 patches = []
 
 [depends]

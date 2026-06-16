@@ -20,6 +20,20 @@ Deferred from this batch (need deliberate handling, not batch bumps):
 - **`coreutils` 9.10 → 9.11** — build applies a local `coreutils-9.10-agnos-dircolors.patch`; needs the patch re-cut/renamed for 9.11 first.
 - **`autoconf2.13`** stays at **2.13** — intentional legacy pin (Firefox SpiderMonkey `js/src/`); the scraper matched the shared `autoconf/` dir (false positive).
 
+### Non-GitHub upstream sweep — batch 7: small host families
+
+~40 recipes across codeberg, sourcehut, Python.org, pwmt, Qt, sourceware, XFCE, Mozilla, netfilter. **16 bumped**, SHA verified (firefox SHA from Mozilla's signed `SHA256SUMS`; the rest recomputed from re-downloaded artifacts):
+- **git forges:** `foot` 1.26.1 → **1.27.0** (`d1e1d04c…`), `seatd` 0.9.2 → **0.9.3** (`302564d5…`), `scdoc` 1.9.7 → **1.11.4** (`e1a9c200…`). (fcft, fuzzel, tllist, imv, greetd in sync.)
+- **Python.org:** `python` + `python3.13` + `python3.13t` 3.13.13 → **3.13.14** (`639e4324…`), `python3.14` 3.14.4 → **3.14.6** (`143b1ddd…`). (python3.12 in sync.)
+- **pwmt/zathura:** `zathura` 2026.03.27 → **2026.05.20** (`e2e6dc69…`); plugins moved off semver onto upstream's CalVer — `zathura-djvu` 0.2.11 → **2026.05.10** (`a0815efe…`), `zathura-pdf-poppler` 0.3.4 → **2026.05.10** (`364c3863…`), `zathura-ps` 0.2.9 → **2026.02.03** (`b3556ff2…`). (girara in sync.)
+- **sourceware:** `lvm2` + `device-mapper` (shared LVM2 tarball) 2.03.39 → **2.03.41** (`d58011b8…`). (elfutils, bzip2[frozen] in sync.)
+- **Mozilla:** `nspr` 4.38.2 → **4.39** (`bbd02ee8…`), `nss` 3.122.1 → **3.125** (`1ad541f1…`; `NSS_3_125_RTM`), `firefox` 149.0.2 → **152.0** (`5e5f9acb…`).
+
+Deferred from this batch:
+- **`librewolf`** 149.0.2-2 → **152.0-1** — confirmed behind (tracks Firefox), but Codeberg's generic-package API doesn't expose the artifact SHA256; needs a ~600 MB source download to hash. Next pass.
+- **Qt6** (`qt6-base`/`-declarative`/`-tools`/`-wayland`/`-webengine`) on 6.10.3 (latest 6.10.x) — a **6.11** series is out; moving 5 large submodules (incl. webengine) is a deliberate feature-branch decision, not a batch bump.
+- **netfilter** (`libmnl`/`libnftnl`/`nftables`) and **XFCE** (`exo`/`libxfce4ui`/`libxfce4util`/`xfconf`) — listing pages didn't yield parseable version links (JS/format/transient server issues); need a targeted re-check (likely already current).
+
 ### Non-GitHub upstream sweep — batch 6: GnuPG + SourceForge
 
 - **GnuPG** (7 recipes, gnupg.org listings): **4 bumped**, SHA verified — **`gnupg`** 2.5.18 → **2.5.20** (`6461266e…`; stays on the recipe's existing 2.5 dev train), **`gnutls`** 3.8.12 → **3.8.13** (`ffed8ec1…`, latest 3.8.x patch), **`libgpg-error`** 1.59 → **1.61** (`7a85413f…`), **`libksba`** 1.6.8 → **1.8.0** (`296b9db9…`). `libassuan`, `libgcrypt`, `npth` in sync.

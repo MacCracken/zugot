@@ -1,6 +1,6 @@
 [package]
 name = "foot"
-version = "1.26.1"
+version = "1.27.0"
 description = "Fast, lightweight, Wayland-native terminal emulator"
 license = "MIT"
 groups = ["desktops"]
@@ -8,8 +8,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://codeberg.org/dnkl/foot/releases/download/1.26.1/foot-1.26.1.tar.gz"
-sha256 = "4beb43f2d80719f53eb427f2185d43fe65bb82a763e25b3b1fe088d8947c2d73"
+url = "https://codeberg.org/dnkl/foot/releases/download/1.27.0/foot-1.27.0.tar.gz"
+sha256 = "d1e1d04cd7a3a1615b4d8dbf9645b9a35cdc3f36fba4e1c0fd252ad0bd6651c8"
 patches = []
 
 [depends]

@@ -1,6 +1,6 @@
 [package]
 name = "scdoc"
-version = "1.9.7"
+version = "1.11.4"
 description = "Simple man page generator written in C99"
 license = "MIT"
 groups = ["desktops"]
@@ -8,8 +8,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://git.sr.ht/~sircmpwn/scdoc/archive/1.9.7.tar.gz"
-sha256 = "155709f1838b19dbc85c9c8dc4dee9f4c340e6a3974c96bd77bdccc928b8a07d"
+url = "https://git.sr.ht/~sircmpwn/scdoc/archive/1.11.4.tar.gz"
+sha256 = "e1a9c2000f855123a1a50c8f897073e0ee95fc41787431efe3864c2f1c2e7092"
 patches = []
 
 [depends]

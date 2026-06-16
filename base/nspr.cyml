@@ -5,7 +5,7 @@
 
 [package]
 name = "nspr"
-version = "4.38.2"
+version = "4.39"
 description = "NSPR — Netscape Portable Runtime"
 license = "MPL-2.0"
 groups = ["base", "libs", "tier1"]
@@ -13,8 +13,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://archive.mozilla.org/pub/nspr/releases/v4.38.2/src/nspr-4.38.2.tar.gz"
-sha256 = "e4092faeab77bdc9b32db1113e4215948ee768e26c4666db3b5a60b35f2c9105"
+url = "https://archive.mozilla.org/pub/nspr/releases/v4.39/src/nspr-4.39.tar.gz"
+sha256 = "bbd02ee87a55676063a63e5bc819e0227de2666b47307b2a0134414cdf42368e"
 patches = []
 
 [depends]

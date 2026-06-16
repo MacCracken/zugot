@@ -1,6 +1,6 @@
 [package]
 name = "zathura-pdf-poppler"
-version = "0.3.4"
+version = "2026.05.10"
 description = "PDF support plugin for zathura using the Poppler rendering backend"
 license = "Zlib"
 groups = ["desktops"]
@@ -8,8 +8,8 @@ release = 1
 arch = "x86_64"
 
 [source]
-url = "https://pwmt.org/projects/zathura-pdf-poppler/download/zathura-pdf-poppler-0.3.4.tar.xz"
-sha256 = "389fd46e27c7bb0ecb266dbdb0dca4aa9c90a5a0ef5096912f8faebeff939813"
+url = "https://pwmt.org/projects/zathura-pdf-poppler/download/zathura-pdf-poppler-2026.05.10.tar.xz"
+sha256 = "364c38634273c06252087324bf01dbde2885b932795265aee44006aa2701fe23"
 patches = []
 
 [depends]
