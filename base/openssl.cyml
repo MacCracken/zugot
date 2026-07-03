@@ -24,20 +24,20 @@ build = ["gcc", "make", "perl"]
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 ./config \
     --prefix=/usr \
     --openssldir=/etc/ssl \
     --libdir=lib \
     shared \
     zlib-dynamic
-"""
+'''
 make = "make -j$(nproc)"
 check = "make test || true"
-install = """
+install = '''
 sed -i '/INSTALL_LIBS/s/libcrypto.a libssl.a//' Makefile
 make DESTDIR=$PKG MANSUFFIX=ssl install
-"""
+'''
 post_install = ""
 
 [security]

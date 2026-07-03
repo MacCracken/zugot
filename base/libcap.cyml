@@ -23,10 +23,10 @@ runtime = ["glibc"]
 build = ["gcc", "make"]
 
 [build]
-pre_build = """
+pre_build = '''
 # Prevent installing the static library
 sed -i '/install -m.*STA/d' libcap/Makefile
-"""
+'''
 configure = ""
 make = "make prefix=/usr lib=lib -j$(nproc)"
 check = "make test"

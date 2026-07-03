@@ -26,7 +26,7 @@ build = ["gcc", "make", "cmake", "ninja", "pkgconf", "python", "gperf", "perl", 
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 cmake -B build -G Ninja \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
@@ -34,7 +34,7 @@ cmake -B build -G Ninja \
     -DUSE_GTK4=OFF \
     -DUSE_LIBHYPHEN=OFF \
     -DENABLE_DOCUMENTATION=OFF
-"""
+'''
 make = "cmake --build build --parallel"
 check = ""
 install = "DESTDIR=$PKG cmake --install build"

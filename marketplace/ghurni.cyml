@@ -38,12 +38,12 @@ network_access = false
 [build]
 make = "cargo build --release"
 check = "cargo test --all-features"
-install = """
+install = '''
 mkdir -p $PKG/usr/lib/ghurni
 cp -r src $PKG/usr/lib/ghurni/
 cp Cargo.toml $PKG/usr/lib/ghurni/
 cp VERSION $PKG/usr/lib/ghurni/
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

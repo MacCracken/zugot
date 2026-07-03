@@ -23,12 +23,12 @@ build = ["gcc", "make"]
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 ./configure \
     --prefix=/usr \
     --disable-static \
     --enable-libgdbm-compat
-"""
+'''
 make = "make -j$(nproc)"
 check = "make check"
 install = "make DESTDIR=$PKG install"

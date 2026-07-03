@@ -51,7 +51,7 @@ access = "ro"
 [build]
 make = ""
 check = ""
-install = """
+install = '''
 # Install community modules into sutra's module directory
 mkdir -p $PKG/usr/lib/sutra/modules/community
 for mod in nftables sysctl aegis daimon edge; do
@@ -62,7 +62,7 @@ done
 
 mkdir -p $PKG/usr/share/sutra/community
 cp README.md $PKG/usr/share/sutra/community/ 2>/dev/null || true
-"""
+'''
 
 [security]
 hardening = []

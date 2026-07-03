@@ -26,7 +26,7 @@ build = ["gcc", "make", "bc", "flex", "bison", "elfutils", "openssl", "perl"]
 [build]
 strip = true
 install_docs = false
-pre_build = """
+pre_build = '''
 # Copy edge defconfig — stripped-down config for headless IoT/edge nodes
 cp -v ../kernel-edge-defconfig .config || make tinyconfig
 # Overlay edge-specific options
@@ -60,7 +60,7 @@ scripts/config --disable CONFIG_CIFS
 scripts/config --disable CONFIG_WIRELESS
 scripts/config --set-val CONFIG_LOG_BUF_SHIFT 14
 make olddefconfig
-"""
+'''
 configure = ""
 make = "make -j$(nproc) bzImage modules"
 check = ""

@@ -53,12 +53,12 @@ access = "rw"
 [build]
 make = ""
 check = ""
-install = """
+install = '''
 mkdir -p $PKG/usr/bin
 install -Dm755 ark $PKG/usr/bin/ark\nmkdir -p $PKG/var/lib/ark
 mkdir -p $PKG/var/cache/ark
 mkdir -p $PKG/etc/ark
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

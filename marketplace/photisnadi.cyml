@@ -66,7 +66,7 @@ depends_on = ["daimon"]
 [build]
 make = "cargo build --release --workspace"
 check = "cargo test --workspace"
-install = """
+install = '''
 mkdir -p $PKG/usr/local/bin
 cp target/release/photisnadi $PKG/usr/local/bin/photisnadi
 
@@ -84,7 +84,7 @@ Categories=Office;ProjectManagement;
 StartupNotify=true
 StartupWMClass=photisnadi
 EOF
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

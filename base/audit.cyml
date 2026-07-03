@@ -24,7 +24,7 @@ build = ["gcc", "make"]
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 ./configure \
     --prefix=/usr \
     --sbindir=/usr/sbin \
@@ -33,15 +33,15 @@ configure = """
     --enable-zos-remote=no \
     --with-python=no \
     --with-python3=no
-"""
+'''
 make = "make -j$(nproc)"
 check = ""
-install = """
+install = '''
 make DESTDIR=$PKG install
 
 # Create default audit rules directory
 mkdir -p $PKG/etc/audit/rules.d
-"""
+'''
 post_install = ""
 
 [security]

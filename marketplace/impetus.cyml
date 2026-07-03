@@ -39,12 +39,12 @@ network_access = false
 [build]
 make = "cargo build --release"
 check = "cargo test"
-install = """
+install = '''
 mkdir -p $PKG/usr/lib/impetus
 cp -r src $PKG/usr/lib/impetus/
 cp Cargo.toml $PKG/usr/lib/impetus/
 cp VERSION $PKG/usr/lib/impetus/
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

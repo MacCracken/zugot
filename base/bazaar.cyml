@@ -54,7 +54,7 @@ pre_build = ""
 configure = ""
 make = "cyrius build"
 check = "cyrius test"
-install = """
+install = '''
 mkdir -p $PKG/usr/bin
 cp build/bazaar-validate $PKG/usr/bin/bazaar-validate
 chmod +x $PKG/usr/bin/bazaar-validate
@@ -91,7 +91,7 @@ default_profile = "community-restricted"
 # Allow community packages to request network access
 allow_network = false
 CONF
-"""
+'''
 post_install = ""
 
 [security]

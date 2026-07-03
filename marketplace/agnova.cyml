@@ -40,10 +40,10 @@ network_access = true
 [build]
 make = ""
 check = ""
-install = """
+install = '''
 mkdir -p $PKG/usr/bin
 install -Dm755 agnova $PKG/usr/bin/agnova
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

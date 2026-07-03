@@ -19,14 +19,14 @@ optional = []
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 ./configure \
     --prefix=/usr \
     --enable-fts5 \
     --enable-json1 \
     --enable-session \
     CFLAGS="$CFLAGS -DSQLITE_ENABLE_FTS3=1 -DSQLITE_ENABLE_FTS4=1 -DSQLITE_ENABLE_COLUMN_METADATA=1 -DSQLITE_ENABLE_UNLOCK_NOTIFY=1 -DSQLITE_SECURE_DELETE=1"
-"""
+'''
 make = "make -j$(nproc)"
 check = "make check || true"
 install = "make DESTDIR=$PKG install"

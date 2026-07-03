@@ -26,11 +26,11 @@ pre_build = ""
 configure = ""
 make = "make -j$(nproc) OPTTARGET=none"
 check = "make test || true"
-install = """
+install = '''
 make PREFIX=/usr LIBRARY_REL=lib DESTDIR=$PKG install
 # Remove static library
 rm -f $PKG/usr/lib/libargon2.a
-"""
+'''
 post_install = ""
 
 [security]

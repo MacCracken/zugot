@@ -23,26 +23,26 @@ runtime = ["glibc", "acl", "attr", "libcap", "gmp"]
 build = ["gcc", "make", "perl"]
 
 [build]
-pre_build = """
+pre_build = '''
 # Apply AGNOS-specific patch for dircolors if present
 [ -f ../coreutils-9.11-agnos-dircolors.patch ] && \
     patch -Np1 -i ../coreutils-9.11-agnos-dircolors.patch || true
-"""
-configure = """
+'''
+configure = '''
 # --enable-no-install-program: skip programs provided by other packages
 # (kill → procps-ng, uptime → procps-ng, hostname → inetutils)
 ./configure \
     --prefix=/usr \
     --enable-no-install-program=kill,uptime,hostname \
     --enable-single-binary=symlinks
-"""
+'''
 make = "make -j$(nproc)"
-check = """
+check = '''
 # Run tests — some require root or specific locales, skip those.
 make NON_ROOT_USERNAME=tester check-root || true
 make RUN_EXPENSIVE_TESTS=yes check || true
-"""
-install = """
+'''
+install = '''
 make DESTDIR=$PKG install
 
 # Move critical binaries to /usr/sbin as expected by some scripts
@@ -52,7 +52,7 @@ mv -v $PKG/usr/bin/chroot $PKG/usr/sbin/chroot
 # Install AGNOS default dircolors
 mkdir -p $PKG/etc
 dircolors -p > $PKG/etc/dircolors 2>/dev/null || true
-"""
+'''
 post_install = ""
 
 [security]

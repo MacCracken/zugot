@@ -22,14 +22,14 @@ build = ["gcc", "make", "yasm"]
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 ./configure \
     --prefix=/usr \
     --enable-shared \
     --disable-static \
     --enable-vp8 --enable-vp9 \
     --enable-postproc
-"""
+'''
 make = "make -j$(nproc)"
 check = ""
 install = "make DESTDIR=$PKG install"

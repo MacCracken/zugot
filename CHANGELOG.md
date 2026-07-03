@@ -7,6 +7,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and
 
 ## [Unreleased]
 
+## [1.0.6] - 2026-07-03 — multi-line build-step delimiter normalization
+
+### Changed
+
+- **Multi-line build steps normalized from `"""` to `'''` (436 recipes).** All
+  multi-line `pre_build`/`configure`/`make`/`check`/`install`/`post_install`
+  blocks now use TOML triple-**single**-quote (`'''`, a *literal* string) instead
+  of triple-**double**-quote (`"""`, a *basic* string). Rationale: shell build
+  steps must be captured **verbatim** — `'''` is literal (no escape processing),
+  so backslash line-continuations (`./configure \`), `$VAR`, and quotes round-trip
+  intact, and it is robust on any spec-compliant TOML parser. This is also a hard
+  fix for the current toolchain: the stdlib TOML parser (bayan ≤1.0.3) recognized
+  only `'''` for multi-line strings, so every `"""` build step parsed to an *empty*
+  string — takumi silently produced zero-payload `.ark` packages. Fixed at the
+  parser in bayan 1.0.4 (adds `"""` support), but the sweep unblocks the producer
+  chain immediately without waiting for the stdlib fold, and leaves recipes on the
+  semantically-correct literal form. Pure delimiter normalization — no recipe body
+  contained the other triple-delimiter, so parsed step content is byte-identical;
+  verified end-to-end (takumi now captures e.g. attr `configure` = 78 B,
+  esp32-agent `install` = 6338 B, previously 0).
+
 ## [1.0.5] - 2026-06-16
 
 The **end-of-spring recipe sync** — a full upstream-version audit of the non-GitHub-hosted recipes, plus the deferred high-blast-radius majors. **86 recipes bumped** (desktops 40, base 31, edge 7, python 3, browser 2, ai/database/network 1 each), each SHA256 recomputed from the re-downloaded artifact — or taken from an upstream-signed checksum (`sha256sums.asc`, `.sha256`, Mozilla/go.dev manifests) for the kernel/firmware/firefox/gcc/Qt-sized artifacts. All 265 non-GitHub tarball recipes were checked against upstream across nine host-family batches (GNU, X.org, GNOME, kernel.org, freedesktop, GnuPG/SourceForge, and the smaller hosts + singletons), using directory listings, GNOME `cache.json`, git-forge `ls-remote`, SourceForge `best_release.json`, and per-host APIs. Even/odd development-version conventions were applied throughout (GNOME, GStreamer, Perl, WebKitGTK, gnupg) so no stable recipe was moved onto a devel branch.

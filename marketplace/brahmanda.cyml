@@ -38,12 +38,12 @@ network_access = false
 [build]
 make = "cargo build --release"
 check = "cargo test --all-features"
-install = """
+install = '''
 mkdir -p $PKG/usr/lib/brahmanda
 cp -r src $PKG/usr/lib/brahmanda/
 cp Cargo.toml $PKG/usr/lib/brahmanda/
 cp VERSION $PKG/usr/lib/brahmanda/
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

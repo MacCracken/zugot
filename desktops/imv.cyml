@@ -19,17 +19,17 @@ optional = []
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 meson setup build \
     --prefix=/usr \
     --buildtype=release \
     -Dwindows=wayland \
     -Dman=enabled
-"""
+'''
 make = "ninja -C build -j$(nproc)"
 check = "ninja -C build test || true"
 install = "DESTDIR=$PKG ninja -C build install"
-post_install = """
+post_install = '''
 mkdir -p $PKG/usr/share/applications
 cat > $PKG/usr/share/applications/imv.desktop << 'EOF'
 [Desktop Entry]
@@ -42,7 +42,7 @@ Categories=Graphics;Viewer;
 Keywords=image;viewer;picture;photo;
 MimeType=image/png;image/jpeg;image/gif;image/bmp;image/tiff;image/svg+xml;image/webp;image/heif;
 EOF
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

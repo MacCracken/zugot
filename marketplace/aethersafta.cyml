@@ -42,7 +42,7 @@ network_access = false
 [build]
 make = "cargo build --release"
 check = "cargo test"
-install = """
+install = '''
 # Library crate — consumers add to Cargo.toml:
 #   aethersafta = "0.25.3"
 # Install source for offline/air-gapped Cargo builds.
@@ -50,7 +50,7 @@ mkdir -p $PKG/usr/lib/aethersafta
 cp -r src $PKG/usr/lib/aethersafta/
 cp Cargo.toml $PKG/usr/lib/aethersafta/
 cp VERSION $PKG/usr/lib/aethersafta/
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

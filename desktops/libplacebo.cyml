@@ -19,7 +19,7 @@ optional = []
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 meson setup build \
     --prefix=/usr \
     --buildtype=release \
@@ -28,7 +28,7 @@ meson setup build \
     -Dlcms=enabled \
     -Dd3d11=disabled \
     -Ddemos=false
-"""
+'''
 make = "ninja -C build -j$(nproc)"
 check = "ninja -C build test || true"
 install = "DESTDIR=$PKG ninja -C build install"

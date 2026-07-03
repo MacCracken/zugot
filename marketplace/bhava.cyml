@@ -39,12 +39,12 @@ network_access = false
 [build]
 make = "cargo build --release"
 check = "cargo test --all-features"
-install = """
+install = '''
 mkdir -p $PKG/usr/lib/bhava
 cp -r src $PKG/usr/lib/bhava/
 cp Cargo.toml $PKG/usr/lib/bhava/
 cp VERSION $PKG/usr/lib/bhava/
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

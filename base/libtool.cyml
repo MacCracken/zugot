@@ -28,10 +28,10 @@ configure = "./configure --prefix=/usr"
 make = "make -j$(nproc)"
 check = "make -k check || true"
 install = "make DESTDIR=$PKG install"
-post_install = """
+post_install = '''
 # Remove static .la files — they cause issues with modern linkers
 rm -f $PKG/usr/lib/libltdl.a
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

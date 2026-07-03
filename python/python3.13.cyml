@@ -38,11 +38,11 @@ build = [
 ]
 
 [build]
-pre_build = """
+pre_build = '''
 # PGO + LTO for optimized build.
 # 3.13 adds improved error messages and experimental free-threaded mode.
-"""
-configure = """
+'''
+configure = '''
 ./configure \
     --prefix=/usr \
     --libdir=/usr/lib/agnos/python/3.13 \
@@ -55,10 +55,10 @@ configure = """
     --with-ssl-default-suites=openssl \
     --enable-loadable-sqlite-extensions \
     --without-static-libpython
-"""
+'''
 make = "make -j$(nproc)"
 check = "make test TESTOPTS='--timeout=120 -x test_socket test_asyncio' || true"
-install = """
+install = '''
 DESTDIR=$PKG make install
 
 # Versioned binary stays at /usr/bin/python3.13
@@ -79,14 +79,14 @@ rm -rf $PKG/usr/lib/python3.13/ctypes/test
 rm -rf $PKG/usr/lib/python3.13/idlelib/idle_test
 rm -rf $PKG/usr/lib/python3.13/tkinter/test
 rm -rf $PKG/usr/lib/python3.13/unittest/test
-"""
-post_install = """
+'''
+post_install = '''
 # Byte-compile the standard library at optimization level 2
 $PKG/usr/bin/python3.13 -O -m compileall -q $PKG/usr/lib/python3.13/ 2>/dev/null || true
 
 # Ensure pip/setuptools are current
 $PKG/usr/bin/python3.13 -m ensurepip --upgrade 2>/dev/null || true
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

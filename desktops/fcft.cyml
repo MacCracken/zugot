@@ -19,13 +19,13 @@ optional = []
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 meson setup build \
     --prefix=/usr \
     --buildtype=release \
     -Ddocs=enabled \
     -Dtest-text-shaping=false
-"""
+'''
 make = "ninja -C build -j$(nproc)"
 check = "ninja -C build test || true"
 install = "DESTDIR=$PKG ninja -C build install"

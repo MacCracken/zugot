@@ -38,12 +38,12 @@ network_access = false
 [build]
 make = "cargo build --release"
 check = "cargo test --all-features"
-install = """
+install = '''
 mkdir -p $PKG/usr/lib/falak
 cp -r src $PKG/usr/lib/falak/
 cp Cargo.toml $PKG/usr/lib/falak/
 cp VERSION $PKG/usr/lib/falak/
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

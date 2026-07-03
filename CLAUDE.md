@@ -6,7 +6,7 @@
 
 - **Type**: Recipe database (CYML files, not a Rust crate)
 - **License**: GPL-3.0-only
-- **Version**: 1.0.0 (released 2026-04-17)
+- **Version**: 1.0.6 (2026-07-03)
 - **Genesis repo**: [agnosticos](https://github.com/MacCracken/agnosticos)
 - **Philosophy**: [AGNOS Philosophy & Intention](https://github.com/MacCracken/agnosticos/blob/main/docs/philosophy.md)
 - **Standards**: [First-Party Standards](https://github.com/MacCracken/agnosticos/blob/main/docs/development/applications/first-party-standards.md)
@@ -119,7 +119,7 @@ Every recipe change requires a full field audit — **never just bump a version*
 
 ```
 zugot/
-├── VERSION                              — current release (1.0.0)
+├── VERSION                              — current release (1.0.6)
 ├── README.md                            — what zugot is, recipe format, categories
 ├── CHANGELOG.md                         — every change, grouped by category
 ├── CLAUDE.md                            — this file (AI-agent instructions)

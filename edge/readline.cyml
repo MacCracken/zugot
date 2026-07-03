@@ -25,19 +25,19 @@ build = ["gcc", "make"]
 strip = true
 install_docs = false
 pre_build = ""
-configure = """
+configure = '''
 ./configure \
     --prefix=/usr \
     --disable-static \
     --with-curses
-"""
+'''
 make = "make -j$(nproc) SHLIB_LIBS='-lncursesw'"
 check = ""
-install = """
+install = '''
 make DESTDIR=$PKG SHLIB_LIBS='-lncursesw' install
 rm -rf $PKG/usr/share/man $PKG/usr/share/info $PKG/usr/share/doc
 rm -f $PKG/usr/lib/libreadline.a $PKG/usr/lib/libhistory.a
-"""
+'''
 post_install = ""
 
 [security]

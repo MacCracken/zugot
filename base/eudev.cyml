@@ -24,27 +24,27 @@ build = ["gcc", "make", "gperf"]
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 ./configure \
     --prefix=/usr \
     --bindir=/usr/sbin \
     --sysconfdir=/etc \
     --enable-manpages \
     --disable-static
-"""
+'''
 make = "make -j$(nproc)"
-check = """
+check = '''
 mkdir -p /usr/lib/udev/rules.d 2>/dev/null || true
 mkdir -p /etc/udev/rules.d 2>/dev/null || true
 make check || true
-"""
-install = """
+'''
+install = '''
 make DESTDIR=$PKG install
 
 # Create udev rules directories
 mkdir -p $PKG/etc/udev/rules.d
 mkdir -p $PKG/usr/lib/udev/rules.d
-"""
+'''
 post_install = ""
 
 [security]

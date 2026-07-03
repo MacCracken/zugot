@@ -26,24 +26,24 @@ build = ["gcc", "make"]
 [build]
 strip = true
 install_docs = false
-pre_build = """
+pre_build = '''
 # Start from default config, then trim for edge
 make defconfig
 # Disable applets already provided by full packages
 sed -i 's/CONFIG_BASH=y/# CONFIG_BASH is not set/' .config
 sed -i 's/CONFIG_SH_IS_BASH=y/# CONFIG_SH_IS_BASH is not set/' .config
 sed -i 's/CONFIG_FEATURE_SH_IS_ASH=y/CONFIG_FEATURE_SH_IS_ASH=y/' .config
-"""
+'''
 configure = ""
 make = "make -j$(nproc)"
 check = ""
-install = """
+install = '''
 make CONFIG_PREFIX=$PKG/usr install
 
 # Remove symlinks that conflict with coreutils/bash
 rm -f $PKG/usr/bin/bash $PKG/usr/bin/sh
 rm -f $PKG/usr/sbin/chroot
-"""
+'''
 post_install = ""
 
 [security]

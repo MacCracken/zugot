@@ -38,12 +38,12 @@ network_access = false
 [build]
 make = "cargo build --release"
 check = "cargo test --all-features"
-install = """
+install = '''
 mkdir -p $PKG/usr/lib/bodh
 cp -r src $PKG/usr/lib/bodh/
 cp Cargo.toml $PKG/usr/lib/bodh/
 cp VERSION $PKG/usr/lib/bodh/
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

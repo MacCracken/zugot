@@ -23,13 +23,13 @@ build = ["gcc", "make", "pkgconf", "cmake", "ninja", "qt6-base", "qt6-declarativ
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 mkdir -p build && cd build && \
 cmake .. \
     -G Ninja \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release
-"""
+'''
 make = "cd build && ninja -j$(nproc)"
 check = ""
 install = "cd build && DESTDIR=$PKG ninja install"

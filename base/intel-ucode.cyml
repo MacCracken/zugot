@@ -22,7 +22,7 @@ pre_build = ""
 configure = ""
 make = ""
 check = ""
-install = """
+install = '''
 mkdir -p $PKG/lib/firmware/intel-ucode
 if command -v iucode_tool >/dev/null 2>&1; then
     iucode_tool -w $PKG/lib/firmware/intel-ucode intel-ucode/
@@ -35,7 +35,7 @@ mkdir -p $PKG/boot
 if command -v iucode_tool >/dev/null 2>&1; then
     iucode_tool --write-earlyfw=$PKG/boot/intel-ucode.img intel-ucode/
 fi
-"""
+'''
 post_install = ""
 
 [security]

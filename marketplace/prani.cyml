@@ -38,12 +38,12 @@ network_access = false
 [build]
 make = "cargo build --release"
 check = "cargo test --all-features"
-install = """
+install = '''
 mkdir -p $PKG/usr/lib/prani
 cp -r src $PKG/usr/lib/prani/
 cp Cargo.toml $PKG/usr/lib/prani/
 cp VERSION $PKG/usr/lib/prani/
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

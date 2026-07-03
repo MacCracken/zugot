@@ -25,7 +25,7 @@ build = ["gcc", "make"]
 strip = true
 install_docs = false
 pre_build = ""
-configure = """
+configure = '''
 ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
@@ -33,13 +33,13 @@ configure = """
     --dbdir=/var/lib/dhcpcd \
     --disable-nls \
     --without-hook-ntp
-"""
+'''
 make = "make -j$(nproc)"
 check = ""
-install = """
+install = '''
 make DESTDIR=$PKG install
 rm -rf $PKG/usr/share/man $PKG/usr/share/doc
-"""
+'''
 post_install = ""
 
 [security]

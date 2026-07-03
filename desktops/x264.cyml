@@ -25,13 +25,13 @@ build = ["gcc", "make", "nasm"]
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 ./configure \
     --prefix=/usr \
     --enable-shared \
     --disable-cli \
     --disable-opencl
-"""
+'''
 make = "make -j$(nproc)"
 check = ""
 install = "make DESTDIR=$PKG install"

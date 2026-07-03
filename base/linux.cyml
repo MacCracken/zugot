@@ -23,7 +23,7 @@ runtime = []
 build = ["gcc", "make", "bc", "flex", "bison", "elfutils", "openssl", "perl", "kmod"]
 
 [build]
-pre_build = """
+pre_build = '''
 # Clean the source tree
 make mrproper
 
@@ -37,11 +37,11 @@ fi
 
 # Ensure config is complete
 make olddefconfig
-"""
+'''
 configure = ""
 make = "make -j$(nproc)"
 check = ""
-install = """
+install = '''
 mkdir -p $PKG/boot
 mkdir -p $PKG/usr/lib/modules
 
@@ -60,7 +60,7 @@ install -vm644 .config $PKG/boot/config-6.6.142-agnos
 # Remove build/source symlinks (they point to the build host)
 rm -fv $PKG/usr/lib/modules/6.6.142-agnos/build
 rm -fv $PKG/usr/lib/modules/6.6.142-agnos/source
-"""
+'''
 post_install = ""
 
 [security]

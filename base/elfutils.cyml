@@ -24,15 +24,15 @@ build = ["gcc", "make"]
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 ./configure \
     --prefix=/usr \
     --disable-debuginfod \
     --enable-libdebuginfod=dummy
-"""
+'''
 make = "make -j$(nproc)"
 check = "make check || true"
-install = """
+install = '''
 make -C libelf DESTDIR=$PKG install
 make -C libdw DESTDIR=$PKG install
 
@@ -42,7 +42,7 @@ install -vm644 config/libdw.pc $PKG/usr/lib/pkgconfig/ 2>/dev/null || true
 
 # Install the eu- tools
 make DESTDIR=$PKG install
-"""
+'''
 post_install = ""
 
 [security]

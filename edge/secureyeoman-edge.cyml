@@ -79,7 +79,7 @@ configure = ""
 make = ""
 check = ""
 
-install = """
+install = '''
 # Install the prebuilt static binary directly into /usr/bin (no lib dir needed)
 mkdir -p $PKG/usr/bin
 install -Dm755 secureyeoman-*-edge-linux-x64 $PKG/usr/bin/secureyeoman-edge
@@ -174,7 +174,7 @@ chmod 755 $PKG/etc/init.d/secureyeoman-edge
 
 # Data directory
 mkdir -p $PKG/var/lib/secureyeoman-edge
-"""
+'''
 post_install = ""
 
 [security]

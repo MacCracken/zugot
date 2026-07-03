@@ -23,7 +23,7 @@ build = ["gcc", "make", "pkgconf"]
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
@@ -32,7 +32,7 @@ configure = """
     --with-browser=/usr/bin/lynx \
     --with-vgrind=/usr/bin/vgrind \
     --with-grap=/usr/bin/grap
-"""
+'''
 make = "make -j$(nproc)"
 check = "make check || true"
 install = "make DESTDIR=$PKG install"

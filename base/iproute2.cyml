@@ -22,11 +22,11 @@ runtime = ["glibc", "elfutils", "libmnl", "libcap"]
 build = ["gcc", "make", "pkgconf", "bison", "flex"]
 
 [build]
-pre_build = """
+pre_build = '''
 # Remove arpd (requires Berkeley DB, not needed)
 sed -i /ARPD/d Makefile
 rm -fv man/man8/arpd.8
-"""
+'''
 configure = ""
 make = "make NETNS_RUN_DIR=/run/netns -j$(nproc)"
 check = ""

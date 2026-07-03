@@ -64,7 +64,7 @@ pre_build = ""
 configure = ""
 make = "cargo build --release --workspace"
 check = "cargo test --workspace"
-install = """
+install = '''
 # Install binary
 mkdir -p $PKG/usr/local/bin
 cp target/release/mneme $PKG/usr/local/bin/mneme
@@ -102,7 +102,7 @@ RestartSec=3
 [Install]
 WantedBy=default.target
 SVCEOF
-"""
+'''
 post_install = ""
 
 [security]

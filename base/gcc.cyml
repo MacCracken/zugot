@@ -44,7 +44,7 @@ build = [
 ]
 
 [build]
-pre_build = """
+pre_build = '''
 # On x86_64: fix the default library directory to /lib instead of /lib64.
 # AGNOS uses a unified /usr/lib directory (no multilib).
 case $(uname -m) in
@@ -56,8 +56,8 @@ esac
 
 mkdir -v build
 cd build
-"""
-configure = """
+'''
+configure = '''
 cd build
 ../configure \
     --prefix=/usr \
@@ -70,15 +70,15 @@ cd build
     --disable-bootstrap \
     --disable-fixincludes \
     --with-system-zlib
-"""
+'''
 make = "cd build && make -j$(nproc)"
-check = """
+check = '''
 # GCC test suite — run as non-root for accuracy.
 # Some tests are known to fail; LFS documents expected failures.
 cd build
 make -k check || true
-"""
-install = """
+'''
+install = '''
 cd build
 make DESTDIR=$PKG install
 
@@ -108,7 +108,7 @@ echo 'int main(){}' > /tmp/gcc-sanity.c
 $PKG/usr/bin/gcc /tmp/gcc-sanity.c -o /tmp/gcc-sanity 2>/dev/null && \
     echo "GCC sanity check: PASS" || echo "GCC sanity check: FAIL"
 rm -f /tmp/gcc-sanity.c /tmp/gcc-sanity
-"""
+'''
 post_install = ""
 
 [security]

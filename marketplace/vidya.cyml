@@ -50,7 +50,7 @@ access = "rw"
 [build]
 make = "cyrius build"
 check = "cyrius test"
-install = """
+install = '''
 mkdir -p $PKG/usr/bin
 cp build/vidya $PKG/usr/bin/vidya
 chmod +x $PKG/usr/bin/vidya
@@ -58,7 +58,7 @@ chmod +x $PKG/usr/bin/vidya
 # Content corpus — read-only at runtime, queried by the CLI
 mkdir -p $PKG/usr/share/vidya
 cp -r content $PKG/usr/share/vidya/
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

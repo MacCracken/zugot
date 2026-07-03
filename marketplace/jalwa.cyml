@@ -78,7 +78,7 @@ pre_build = ""
 configure = ""
 make = "cargo build --release"
 check = "cargo test"
-install = """
+install = '''
 mkdir -p $PKG/usr/lib/jalwa/bin
 cp target/release/jalwa $PKG/usr/lib/jalwa/bin/jalwa
 chmod +x $PKG/usr/lib/jalwa/bin/jalwa
@@ -101,7 +101,7 @@ MimeType=audio/mpeg;audio/flac;audio/ogg;audio/wav;audio/aac;audio/opus;video/mp
 StartupNotify=true
 StartupWMClass=jalwa
 EOF
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

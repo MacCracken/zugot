@@ -22,10 +22,10 @@ pre_build = ""
 configure = ""
 make = "cargo build --release"
 check = ""
-install = """
+install = '''
 mkdir -p $PKG/usr/bin
 cp target/release/tuigreet $PKG/usr/bin/
-"""
+'''
 post_install = ""
 
 [security]

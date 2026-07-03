@@ -39,13 +39,13 @@ network_access = false
 [build]
 make = "cyrius build"
 check = "cyrius test"
-install = """
+install = '''
 mkdir -p $PKG/usr/lib/agnosys
 [ -f cyrius.cyml ] && cp cyrius.cyml $PKG/usr/lib/agnosys/
 [ -f VERSION ]     && cp VERSION     $PKG/usr/lib/agnosys/
 [ -d src ]         && cp -r src      $PKG/usr/lib/agnosys/
 [ -d dist ]        && cp -r dist     $PKG/usr/lib/agnosys/
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

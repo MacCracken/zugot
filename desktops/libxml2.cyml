@@ -19,14 +19,14 @@ optional = []
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 cmake -B build -G Ninja \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_SHARED_LIBS=ON \
     -DLIBXML2_WITH_PYTHON=OFF \
     -DLIBXML2_WITH_ICU=ON
-"""
+'''
 make = "ninja -C build -j$(nproc)"
 check = "ninja -C build test || true"
 install = "DESTDIR=$PKG ninja -C build install"

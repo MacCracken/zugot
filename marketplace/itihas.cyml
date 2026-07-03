@@ -39,10 +39,10 @@ network_access = false
 [build]
 make = ""
 check = ""
-install = """
+install = '''
 mkdir -p $PKG/usr/bin
 install -Dm755 itihas $PKG/usr/bin/itihas
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

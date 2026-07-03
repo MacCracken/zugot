@@ -45,7 +45,7 @@ network_access = true
 [build]
 make = "cargo build --release"
 check = "cargo test"
-install = """
+install = '''
 # Library crate — consumers add to Cargo.toml:
 #   stiva = "2.0.0"
 # Install source for offline/air-gapped Cargo builds.
@@ -53,7 +53,7 @@ mkdir -p $PKG/usr/lib/stiva
 cp -r src $PKG/usr/lib/stiva/
 cp Cargo.toml $PKG/usr/lib/stiva/
 cp VERSION $PKG/usr/lib/stiva/
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

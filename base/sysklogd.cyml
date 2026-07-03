@@ -23,16 +23,16 @@ build = ["gcc", "make"]
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
     --runstatedir=/run \
     --without-logger
-"""
+'''
 make = "make -j$(nproc)"
 check = ""
-install = """
+install = '''
 make DESTDIR=$PKG install
 
 # Create default syslog.conf
@@ -49,7 +49,7 @@ user.*              -/var/log/user.log
 SYSEOF
 
 mkdir -p $PKG/var/log
-"""
+'''
 post_install = ""
 
 [security]

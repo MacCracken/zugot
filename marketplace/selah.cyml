@@ -58,10 +58,10 @@ pre_build = ""
 configure = ""
 make = "cargo build --release --workspace"
 check = "cargo test --workspace"
-install = """
+install = '''
 mkdir -p $PKG/usr/local/bin
 cp target/release/selah $PKG/usr/local/bin/selah
-"""
+'''
 post_install = ""
 
 [security]

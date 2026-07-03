@@ -70,7 +70,7 @@ pre_build = ""
 configure = ""
 make = "cargo build --release --workspace"
 check = "cargo test --workspace"
-install = """
+install = '''
 # Install binary
 mkdir -p $PKG/usr/local/bin
 cp target/release/delta-api $PKG/usr/local/bin/delta-server
@@ -112,7 +112,7 @@ ReadWritePaths=/var/lib/delta
 [Install]
 WantedBy=multi-user.target
 SVCEOF
-"""
+'''
 post_install = ""
 
 [security]

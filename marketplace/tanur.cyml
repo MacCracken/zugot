@@ -60,7 +60,7 @@ access = "rw"
 [build]
 make = "cargo build --release"
 check = "cargo test"
-install = """
+install = '''
 mkdir -p $PKG/usr/bin
 cp target/release/tanur $PKG/usr/bin/tanur
 chmod +x $PKG/usr/bin/tanur
@@ -77,7 +77,7 @@ Terminal=false
 Type=Application
 Categories=Science;ArtificialIntelligence;
 EOF
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

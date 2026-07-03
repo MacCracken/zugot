@@ -23,21 +23,21 @@ build = ["gcc", "make"]
 
 [build]
 pre_build = "cd nspr"
-configure = """
+configure = '''
 cd nspr && ./configure \
     --prefix=/usr \
     --with-mozilla \
     --with-pthreads \
     --enable-64bit
-"""
+'''
 make = "cd nspr && make -j$(nproc)"
 check = ""
-install = """
+install = '''
 cd nspr
 make DESTDIR=$PKG install
 # Remove static libraries
 rm -f $PKG/usr/lib/*.a
-"""
+'''
 post_install = ""
 
 [security]

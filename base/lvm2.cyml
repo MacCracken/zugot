@@ -23,7 +23,7 @@ build = ["gcc", "make", "pkgconf"]
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 ./configure \
     --prefix=/usr \
     --enable-cmdlib \
@@ -31,7 +31,7 @@ configure = """
     --enable-udev_sync \
     --with-thin=internal \
     --with-cache=internal
-"""
+'''
 make = "make -j$(nproc)"
 check = ""
 install = "make DESTDIR=$PKG install"

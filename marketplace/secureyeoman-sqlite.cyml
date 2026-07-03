@@ -111,7 +111,7 @@ pre_build = ""
 configure = ""
 make = ""
 check = ""
-install = """
+install = '''
 # Install the prebuilt signed binary (sqlite target)
 mkdir -p $PKG/usr/lib/secureyeoman-sqlite/bin
 install -Dm755 secureyeoman-*-sqlite-linux-x64 $PKG/usr/lib/secureyeoman-sqlite/bin/secureyeoman-sqlite
@@ -157,7 +157,7 @@ RestartSec=5
 [Install]
 WantedBy=default.target
 EOF
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

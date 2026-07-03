@@ -25,21 +25,21 @@ build = ["gcc", "make"]
 strip = true
 install_docs = false
 pre_build = ""
-configure = """
+configure = '''
 ./configure \
     --prefix=/usr \
     --disable-static \
     --disable-docs \
     --disable-maintainer-mode \
     --with-oniguruma=builtin
-"""
+'''
 make = "make -j$(nproc)"
 check = ""
-install = """
+install = '''
 make DESTDIR=$PKG install
 rm -rf $PKG/usr/share/man $PKG/usr/share/doc
 rm -f $PKG/usr/lib/libjq.a
-"""
+'''
 post_install = ""
 
 [security]

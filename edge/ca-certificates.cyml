@@ -28,7 +28,7 @@ pre_build = ""
 configure = ""
 make = ""
 check = ""
-install = """
+install = '''
 mkdir -p $PKG/etc/ssl/certs
 cp -v cacert-2026-03-19.pem $PKG/etc/ssl/certs/ca-certificates.crt
 ln -sfv certs/ca-certificates.crt $PKG/etc/ssl/cert.pem
@@ -37,7 +37,7 @@ ln -sfv certs/ca-certificates.crt $PKG/etc/ssl/cert.pem
 mkdir -p $PKG/etc/ssl/certs
 cd $PKG/etc/ssl/certs
 openssl rehash . 2>/dev/null || true
-"""
+'''
 post_install = ""
 
 [security]

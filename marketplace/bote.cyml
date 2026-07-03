@@ -41,10 +41,10 @@ network_access = false
 [build]
 make = ""
 check = ""
-install = """
+install = '''
 mkdir -p $PKG/usr/bin
 install -Dm755 bote-*-x86_64-linux $PKG/usr/bin/bote
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

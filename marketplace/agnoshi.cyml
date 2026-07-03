@@ -73,10 +73,10 @@ check = ""
 # Asset is the prebuilt static ELF named `agnsh-1.7.0-x86_64-linux`
 # from the GitHub release; install path uses the canonical bin name
 # `agnsh` (per docs/agnsh.1).
-install = """
+install = '''
 mkdir -p $PKG/usr/bin
 install -Dm755 agnsh-*-x86_64-linux $PKG/usr/bin/agnsh
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

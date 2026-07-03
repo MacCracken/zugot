@@ -23,7 +23,7 @@ build = ["gcc", "make", "pkgconf"]
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
@@ -34,16 +34,16 @@ configure = """
     --disable-xml-docs \
     --with-system-socket=/run/dbus/system_bus_socket \
     --with-console-auth-dir=/run/console
-"""
+'''
 make = "make -j$(nproc)"
 check = "make check || true"
-install = """
+install = '''
 make DESTDIR=$PKG install
 
 # Create runtime directories
 mkdir -p $PKG/var/lib/dbus
 mkdir -p $PKG/run/dbus
-"""
+'''
 post_install = ""
 
 [security]

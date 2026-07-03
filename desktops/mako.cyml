@@ -19,18 +19,18 @@ optional = ["gdk-pixbuf"]
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 meson setup build \
     --prefix=/usr \
     --buildtype=release \
     -Dman-pages=enabled \
     -Dbash-completions=true \
     -Dzsh-completions=true
-"""
+'''
 make = "ninja -C build -j$(nproc)"
 check = "ninja -C build test || true"
 install = "DESTDIR=$PKG ninja -C build install"
-post_install = """
+post_install = '''
 mkdir -p $PKG/etc/mako
 cat > $PKG/etc/mako/config << 'CONF'
 # AGNOS default mako configuration
@@ -67,7 +67,7 @@ Restart=on-failure
 [Install]
 WantedBy=graphical-session.target
 EOF
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

@@ -45,11 +45,11 @@ build = [
 ]
 
 [build]
-pre_build = """
+pre_build = '''
 # Create postgres system user/group (handled by argonaut post-install)
 # uid/gid 70 is conventional for postgres
-"""
-configure = """
+'''
+configure = '''
 ./configure \
     --prefix=/usr \
     --sysconfdir=/etc/postgresql \
@@ -68,10 +68,10 @@ configure = """
     --with-uuid=e2fs \
     --with-system-tzdata=/usr/share/zoneinfo \
     --disable-nls
-"""
+'''
 make = "make -j$(nproc) world-bin"
 check = "make check || true"
-install = """
+install = '''
 DESTDIR=$PKG make install-world-bin
 
 # Data directory — owned by postgres user
@@ -173,11 +173,11 @@ if [ ! -s "$PGDATA/PG_VERSION" ]; then
 fi
 SCRIPT
 chmod +x $PKG/usr/bin/postgresql-check-db-dir
-"""
-post_install = """
+'''
+post_install = '''
 # Create postgres user if it doesn't exist (argonaut handles this on real installs)
 # chown -R postgres:postgres /var/lib/postgresql /var/log/postgresql /run/postgresql
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

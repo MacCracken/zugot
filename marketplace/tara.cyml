@@ -38,12 +38,12 @@ network_access = false
 [build]
 make = "cargo build --release"
 check = "cargo test --all-features"
-install = """
+install = '''
 mkdir -p $PKG/usr/lib/tara
 cp -r src $PKG/usr/lib/tara/
 cp Cargo.toml $PKG/usr/lib/tara/
 cp VERSION $PKG/usr/lib/tara/
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

@@ -23,7 +23,7 @@ build = ["gcc", "make", "pkgconf"]
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 ./configure \
     ADJTIME_PATH=/var/lib/hwclock/adjtime \
     --prefix=/usr \
@@ -43,7 +43,7 @@ configure = """
     --disable-runuser \
     --disable-pylibmount \
     --runstatedir=/run
-"""
+'''
 make = "make -j$(nproc)"
 check = ""
 install = "make DESTDIR=$PKG install"

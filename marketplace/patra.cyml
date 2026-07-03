@@ -41,13 +41,13 @@ network_access = false
 [build]
 make = "cyrius build"
 check = "cyrius test"
-install = """
+install = '''
 mkdir -p $PKG/usr/lib/patra
 [ -f cyrius.cyml ] && cp cyrius.cyml $PKG/usr/lib/patra/
 [ -f VERSION ]     && cp VERSION     $PKG/usr/lib/patra/
 [ -d src ]         && cp -r src      $PKG/usr/lib/patra/
 [ -d dist ]        && cp -r dist     $PKG/usr/lib/patra/
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

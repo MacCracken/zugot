@@ -22,20 +22,20 @@ build = ["gcc", "make", "pkgconf"]
 [build]
 pre_build = "cd squashfs-tools"
 configure = ""
-make = """
+make = '''
 cd squashfs-tools && make -j$(nproc) \
     XZ_SUPPORT=1 \
     LZO_SUPPORT=0 \
     LZ4_SUPPORT=1 \
     ZSTD_SUPPORT=1 \
     XATTR_SUPPORT=1
-"""
+'''
 check = ""
-install = """
+install = '''
 cd squashfs-tools
 install -Dm755 mksquashfs $PKG/usr/bin/mksquashfs
 install -Dm755 unsquashfs $PKG/usr/bin/unsquashfs
-"""
+'''
 post_install = ""
 
 [security]

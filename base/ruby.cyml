@@ -21,14 +21,14 @@ build = ["gcc", "make", "pkgconf"]
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 ./configure \
     --prefix=/usr \
     --enable-shared \
     --disable-install-doc \
     --with-openssl-dir=/usr \
     --disable-install-static-library
-"""
+'''
 make = "make -j$(nproc)"
 check = ""
 install = "make DESTDIR=$PKG install"

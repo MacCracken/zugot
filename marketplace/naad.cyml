@@ -38,12 +38,12 @@ network_access = false
 [build]
 make = "cargo build --release"
 check = "cargo test --all-features"
-install = """
+install = '''
 mkdir -p $PKG/usr/lib/naad
 cp -r src $PKG/usr/lib/naad/
 cp Cargo.toml $PKG/usr/lib/naad/
 cp VERSION $PKG/usr/lib/naad/
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

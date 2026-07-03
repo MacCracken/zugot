@@ -38,12 +38,12 @@ network_access = false
 [build]
 make = "cargo build --release"
 check = "cargo test --all-features"
-install = """
+install = '''
 mkdir -p $PKG/usr/lib/kimiya
 cp -r src $PKG/usr/lib/kimiya/
 cp Cargo.toml $PKG/usr/lib/kimiya/
 cp VERSION $PKG/usr/lib/kimiya/
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

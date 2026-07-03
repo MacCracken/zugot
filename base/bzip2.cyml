@@ -24,7 +24,7 @@ runtime = ["glibc"]
 build = ["gcc", "make"]
 
 [build]
-pre_build = """
+pre_build = '''
 # Apply docs installation patch if present
 [ -f ../bzip2-1.0.8-install_docs-1.patch ] && \
     patch -Np1 -i ../bzip2-1.0.8-install_docs-1.patch || true
@@ -32,16 +32,16 @@ pre_build = """
 # Fix relative symlinks and ensure shared library is built
 sed -i 's@\\(ln -s -f \\)$(PREFIX)/bin/@\\1@' Makefile
 sed -i "s@(PREFIX)/man@(PREFIX)/share/man@g" Makefile
-"""
+'''
 configure = ""
-make = """
+make = '''
 # Build shared library first, then static
 make -f Makefile-libbz2_so -j$(nproc)
 make clean
 make -j$(nproc)
-"""
+'''
 check = ""
-install = """
+install = '''
 make PREFIX=$PKG/usr install
 
 # Install shared library
@@ -56,7 +56,7 @@ done
 
 # Remove static library
 rm -fv $PKG/usr/lib/libbz2.a
-"""
+'''
 post_install = ""
 
 [security]

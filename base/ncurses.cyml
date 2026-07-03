@@ -23,7 +23,7 @@ build = ["gcc", "make"]
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 ./configure \
     --prefix=/usr \
     --mandir=/usr/share/man \
@@ -34,10 +34,10 @@ configure = """
     --enable-pc-files \
     --with-pkg-config-libdir=/usr/lib/pkgconfig \
     --enable-widec
-"""
+'''
 make = "make -j$(nproc)"
 check = ""
-install = """
+install = '''
 make DESTDIR=$PKG install
 
 # Trick applications that look for non-wide ncurses libraries.
@@ -50,7 +50,7 @@ done
 # Compatibility symlinks for -lcurses
 echo "INPUT(-lncursesw)" > $PKG/usr/lib/libcursesw.so
 ln -sfv libncurses.so $PKG/usr/lib/libcurses.so
-"""
+'''
 post_install = ""
 
 [security]

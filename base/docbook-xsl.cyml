@@ -27,7 +27,7 @@ pre_build = ""
 configure = ""
 make = ""
 check = ""
-install = """
+install = '''
 # DocBook XSL ships as a data-only package; copy stylesheets to /usr/share.
 mkdir -p $PKG/usr/share/xml/docbook/xsl-stylesheets-nons-1.79.2
 cp -r VERSION common eclipse epub extensions fo highlighting html htmlhelp \
@@ -37,7 +37,7 @@ cp -r VERSION common eclipse epub extensions fo highlighting html htmlhelp \
 
 # Stable symlink without the version suffix
 ln -sfv xsl-stylesheets-nons-1.79.2 $PKG/usr/share/xml/docbook/xsl-stylesheets
-"""
+'''
 post_install = ""
 
 [security]

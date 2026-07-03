@@ -23,7 +23,7 @@ build = ["gcc", "make"]
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 sh Configure -des \
     -Dprefix=/usr \
     -Dvendorprefix=/usr \
@@ -38,7 +38,7 @@ sh Configure -des \
     -Dpager="/usr/bin/less -isR" \
     -Duseshrplib \
     -Dusethreads
-"""
+'''
 make = "make -j$(nproc)"
 check = "make test || true"
 install = "make DESTDIR=$PKG install"

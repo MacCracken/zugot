@@ -41,11 +41,11 @@ network_access = false
 [build]
 make = "cyrius build"
 check = "cyrius test"
-install = """
+install = '''
 mkdir -p $PKG/usr/bin
 cp build/majra $PKG/usr/bin/majra
 chmod +x $PKG/usr/bin/majra
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

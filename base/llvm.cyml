@@ -22,7 +22,7 @@ build = ["gcc", "make", "cmake", "python"]
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 mkdir -p build && cd build && \
 cmake ../llvm \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -32,7 +32,7 @@ cmake ../llvm \
     -DLLVM_LINK_LLVM_DYLIB=ON \
     -DLLVM_TARGETS_TO_BUILD="X86;AArch64;AMDGPU;NVPTX" \
     -DLLVM_ENABLE_RTTI=ON
-"""
+'''
 make = "cd build && make -j$(nproc)"
 check = "cd build && make check-llvm || true"
 install = "cd build && make DESTDIR=$PKG install"

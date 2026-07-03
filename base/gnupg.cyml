@@ -29,13 +29,13 @@ build = ["gcc", "make"]
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 ./configure \
     --prefix=/usr \
     --localstatedir=/var \
     --sysconfdir=/etc \
     --disable-doc
-"""
+'''
 make = "make -j$(nproc)"
 check = "make check || true"
 install = "make DESTDIR=$PKG install"

@@ -59,7 +59,7 @@ ports = [8090]
 [build]
 make = "cyrius build"
 check = "cyrius test tests/daimon.tcyr"
-install = """
+install = '''
 mkdir -p $PKG/usr/bin
 cp build/daimon $PKG/usr/bin/daimon
 chmod +x $PKG/usr/bin/daimon
@@ -80,7 +80,7 @@ RestartSec=5
 [Install]
 WantedBy=multi-user.target
 UNIT
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

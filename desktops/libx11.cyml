@@ -19,14 +19,14 @@ optional = []
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
     --enable-xthreads \
     --enable-loadable-i18n \
     --enable-xlocaledir
-"""
+'''
 make = "make -j$(nproc)"
 check = ""
 install = "make DESTDIR=$PKG install"

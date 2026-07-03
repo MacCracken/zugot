@@ -24,16 +24,16 @@ build = ["gcc", "make", "cmake"]
 [build]
 pre_build = ""
 configure = ""
-make = """
+make = '''
 make -j$(nproc) prefix=/usr
-"""
+'''
 check = "make check || true"
-install = """
+install = '''
 make prefix=/usr DESTDIR=$PKG install
 
 # Remove static library
 rm -fv $PKG/usr/lib/libzstd.a
-"""
+'''
 post_install = ""
 
 [security]

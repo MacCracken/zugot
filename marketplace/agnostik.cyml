@@ -40,13 +40,13 @@ network_access = false
 [build]
 make = "cyrius build"
 check = "cyrius test"
-install = """
+install = '''
 mkdir -p $PKG/usr/lib/agnostik
 [ -f cyrius.cyml ] && cp cyrius.cyml $PKG/usr/lib/agnostik/
 [ -f VERSION ]     && cp VERSION     $PKG/usr/lib/agnostik/
 [ -d src ]         && cp -r src      $PKG/usr/lib/agnostik/
 [ -d dist ]        && cp -r dist     $PKG/usr/lib/agnostik/
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

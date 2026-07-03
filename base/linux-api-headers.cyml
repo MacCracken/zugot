@@ -23,17 +23,17 @@ runtime = []
 build = ["make"]
 
 [build]
-pre_build = """
+pre_build = '''
 # Sanitise the headers — remove stale files from previous builds.
 make mrproper
-"""
+'''
 configure = ""
-make = """
+make = '''
 # Extract userspace API headers only — no kernel compilation.
 make headers
-"""
+'''
 check = ""
-install = """
+install = '''
 # Install sanitised headers to /usr/include.
 # find removes non-header files (.install, ..install.cmd) left by kbuild.
 find usr/include -type f ! -name '*.h' -delete
@@ -44,7 +44,7 @@ cp -rv usr/include/* $PKG/usr/include/
 for hdr in linux/types.h linux/limits.h asm/unistd.h; do
     test -f "$PKG/usr/include/$hdr" || { echo "MISSING: $hdr"; exit 1; }
 done
-"""
+'''
 post_install = ""
 
 [security]

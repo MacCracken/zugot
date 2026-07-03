@@ -39,7 +39,7 @@ network_access = false
 [build]
 make = ""
 check = ""
-install = """
+install = '''
 # 1.2.x ships a bare prebuilt binary asset (nous-<version>-x86_64-linux),
 # not a tarball. Locate it by glob; fall back to a plain `nous`.
 mkdir -p $PKG/usr/bin
@@ -49,7 +49,7 @@ if [ -n "$BIN" ]; then
 elif [ -f nous ]; then
     install -Dm755 nous $PKG/usr/bin/nous
 fi
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

@@ -38,12 +38,12 @@ network_access = false
 [build]
 make = "cargo build --release"
 check = "cargo test --all-features"
-install = """
+install = '''
 mkdir -p $PKG/usr/lib/garjan
 cp -r src $PKG/usr/lib/garjan/
 cp Cargo.toml $PKG/usr/lib/garjan/
 cp VERSION $PKG/usr/lib/garjan/
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

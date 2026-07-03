@@ -30,7 +30,7 @@ build = ["gcc", "make", "pkgconf", "cmake", "ninja", "python", "perl"]
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 mkdir -p build && cd build && \
 cmake .. \
     -G Ninja \
@@ -46,7 +46,7 @@ cmake .. \
     -DINSTALL_PLUGINSDIR=/usr/lib/qt6/plugins \
     -DQT_FEATURE_openssl_linked=ON \
     -DQT_FEATURE_system_sqlite=ON
-"""
+'''
 make = "cd build && ninja -j$(nproc)"
 check = ""
 install = "cd build && DESTDIR=$PKG ninja install"

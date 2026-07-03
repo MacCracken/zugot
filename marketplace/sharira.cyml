@@ -38,12 +38,12 @@ network_access = false
 [build]
 make = "cargo build --release"
 check = "cargo test --all-features"
-install = """
+install = '''
 mkdir -p $PKG/usr/lib/sharira
 cp -r src $PKG/usr/lib/sharira/
 cp Cargo.toml $PKG/usr/lib/sharira/
 cp VERSION $PKG/usr/lib/sharira/
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

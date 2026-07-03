@@ -52,13 +52,13 @@ access = "rw"
 [build]
 make = "cargo build --release"
 check = "cargo test --workspace"
-install = """
+install = '''
 mkdir -p $PKG/usr/bin
 cp target/release/aethersafha $PKG/usr/bin/aethersafha
 chmod +x $PKG/usr/bin/aethersafha
 
 mkdir -p $PKG/etc/aethersafha
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

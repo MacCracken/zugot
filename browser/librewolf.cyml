@@ -59,7 +59,7 @@ build = [
 ]
 
 [build]
-pre_build = """
+pre_build = '''
 cat > mozconfig << 'MOZEOF'
 # AGNOS LibreWolf build configuration
 ac_add_options --enable-application=browser
@@ -98,11 +98,11 @@ ac_add_options --with-system-webp
 ac_add_options --disable-necko-wifi
 ac_add_options --enable-alsa
 MOZEOF
-"""
+'''
 configure = ""
 make = "./mach build"
 check = ""
-install = """
+install = '''
 DESTDIR=$PKG ./mach install
 
 # Desktop entry for aethersafha
@@ -144,7 +144,7 @@ EOF
 # Symlink for PATH
 mkdir -p $PKG/usr/bin
 ln -sf /usr/lib/librewolf/librewolf $PKG/usr/bin/librewolf
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

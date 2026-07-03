@@ -31,7 +31,7 @@ pre_build = ""
 configure = ""
 make = ""
 check = ""
-install = """
+install = '''
 mkdir -p $PKG/usr/bin
 
 # runsc is a static binary — just install it
@@ -51,7 +51,7 @@ EOF
 
 # Bundle directory for daimon's gVisor backend
 mkdir -p $PKG/var/lib/agnos/gvisor/bundles
-"""
+'''
 post_install = ""
 
 [security]

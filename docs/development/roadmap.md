@@ -202,6 +202,24 @@ Package-name adjustments (filename kept):
 
 ---
 
+## Sovereign-ark recipe portability (ark v2 path — M6, server-stage)
+
+zugot's share of the **ark v2 sovereignty path** (self-host "build agnos on agnos").
+Orchestration spine:
+[`agnosticos/docs/development/planning/ark-v2-sovereignty-path.md`](https://github.com/MacCracken/agnosticos/blob/main/docs/development/planning/ark-v2-sovereignty-path.md).
+Server-stage; rides takumi's M5 native build executor (agnos has no `/bin/sh`).
+
+- [ ] **Port `base/` recipes off the Debian `/bin/sh` multi-step build model** to a
+      structured step model the agnos-native executor can run (or coordinate a sovereign
+      step-interpreter with takumi). Drop `*-linux-amd64` GitHub-release-asset assumptions
+      + Debian-upstream assumptions in the base set.
+- [ ] **First proving ground = `marketplace/MacCracken/*`** (builds via `cyrius build` —
+      sovereign by construction), then the `base/` toolchain (`build-order.txt`, 225-pkg topo).
+- [ ] **Native repo/index format** — co-design with takumi: a signed index + content-addressed
+      `.ark` (by root-hash) that ark/nous resolve against (the native-store format).
+
+---
+
 ## Resolved this pass (2026-04-16)
 
 Summary of what the current audit pass closed; kept here so the next roadmap refresh starts from accurate state:

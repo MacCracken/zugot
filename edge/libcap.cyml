@@ -29,11 +29,11 @@ pre_build = ""
 configure = ""
 make = "make -j$(nproc) lib=lib prefix=/usr"
 check = ""
-install = """
+install = '''
 make DESTDIR=$PKG lib=lib prefix=/usr install
 rm -f $PKG/usr/lib/libcap.a $PKG/usr/lib/libpsx.a
 rm -rf $PKG/usr/share/man $PKG/usr/share/doc
-"""
+'''
 post_install = ""
 
 [security]

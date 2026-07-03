@@ -78,7 +78,7 @@ pre_build = ""
 configure = ""
 make = "cargo build --release --workspace"
 check = "cargo test --workspace"
-install = """
+install = '''
 # Install binary
 mkdir -p $PKG/usr/local/bin
 cp target/release/rasa $PKG/usr/local/bin/rasa
@@ -99,7 +99,7 @@ Categories=Graphics;2DGraphics;RasterGraphics;
 MimeType=image/png;image/jpeg;image/svg+xml;image/webp;
 Keywords=image;editor;ai;creative;design;graphics;
 DSKEOF
-"""
+'''
 post_install = ""
 
 [security]

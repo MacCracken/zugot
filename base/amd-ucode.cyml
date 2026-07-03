@@ -22,7 +22,7 @@ pre_build = ""
 configure = ""
 make = ""
 check = ""
-install = """
+install = '''
 mkdir -p $PKG/lib/firmware/amd-ucode
 cp amd-ucode/*.bin $PKG/lib/firmware/amd-ucode/ 2>/dev/null || true
 
@@ -34,7 +34,7 @@ if [ -f kernel/x86/microcode/AuthenticAMD.bin ]; then
     echo kernel/x86/microcode/AuthenticAMD.bin | \
         cpio -o -H newc > $PKG/boot/amd-ucode.img 2>/dev/null || true
 fi
-"""
+'''
 post_install = ""
 
 [security]

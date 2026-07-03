@@ -36,12 +36,12 @@ network_access = false
 [build]
 make = "cargo build --release"
 check = "cargo test"
-install = """
+install = '''
 mkdir -p $PKG/usr/lib/szal
 cp -r src $PKG/usr/lib/szal/
 cp Cargo.toml $PKG/usr/lib/szal/
 cp VERSION $PKG/usr/lib/szal/
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

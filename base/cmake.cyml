@@ -23,7 +23,7 @@ build = ["gcc", "make"]
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 ./bootstrap \
     --prefix=/usr \
     --system-libs \
@@ -32,7 +32,7 @@ configure = """
     --no-system-librhash \
     -- \
     -DCMAKE_BUILD_TYPE=Release
-"""
+'''
 make = "make -j$(nproc)"
 check = ""
 install = "make DESTDIR=$PKG install"

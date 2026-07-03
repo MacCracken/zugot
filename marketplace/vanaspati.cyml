@@ -38,12 +38,12 @@ network_access = false
 [build]
 make = "cargo build --release"
 check = "cargo test --all-features"
-install = """
+install = '''
 mkdir -p $PKG/usr/lib/vanaspati
 cp -r src $PKG/usr/lib/vanaspati/
 cp Cargo.toml $PKG/usr/lib/vanaspati/
 cp VERSION $PKG/usr/lib/vanaspati/
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

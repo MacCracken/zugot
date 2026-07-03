@@ -23,7 +23,7 @@ build = ["gcc", "make", "pkgconf", "gettext", "perl", "python"]
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
@@ -32,7 +32,7 @@ configure = """
     --with-openssl \
     --with-curl \
     --with-expat
-"""
+'''
 make = "make -j$(nproc) all"
 check = "make test || true"
 install = "make DESTDIR=$PKG install"

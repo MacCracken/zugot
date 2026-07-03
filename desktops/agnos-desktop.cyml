@@ -149,7 +149,7 @@ pre_build = ""
 configure = ""
 make = ""
 check = ""
-install = """
+install = '''
 # Install AGNOS desktop compositor binary + systemd unit
 mkdir -p $PKG/usr/bin
 mkdir -p $PKG/usr/lib/systemd/user
@@ -179,7 +179,7 @@ To enable on boot:
 To rebuild agent-runtime with desktop support:
   cargo build --release -p agent_runtime  (default features include desktop)
 EOF
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

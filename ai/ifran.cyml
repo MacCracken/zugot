@@ -37,7 +37,7 @@ pre_build = ""
 configure = ""
 make = "cargo build --release"
 check = "cargo test"
-install = """
+install = '''
 # Install binary
 mkdir -p $PKG/usr/lib/ifran/bin
 cp target/release/ifran $PKG/usr/lib/ifran/bin/ifran
@@ -74,7 +74,7 @@ d /var/lib/ifran/models 0750 ifran ifran -
 d /var/lib/ifran/checkpoints 0750 ifran ifran -
 d /var/log/ifran 0750 ifran ifran -
 EOF
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

@@ -22,10 +22,10 @@ build = ["gcc", "make", "pkgconf", "cmake", "python"]
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 mkdir -p build && cd build && \
 cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
-"""
+'''
 make = "cd build && make -j$(nproc)"
 check = "cd build && make test || true"
 install = "pip install --prefix=/usr --root=$PKG --no-deps ."

@@ -48,11 +48,11 @@ access = "rw"
 [build]
 make = "cargo build --release --workspace"
 check = "cargo test --workspace"
-install = """
+install = '''
 mkdir -p $PKG/usr/bin
 cp target/release/kiran $PKG/usr/bin/kiran
 chmod +x $PKG/usr/bin/kiran
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

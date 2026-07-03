@@ -66,7 +66,7 @@ build = [
 ]
 
 [build]
-pre_build = """
+pre_build = '''
 cat > mozconfig << 'MOZEOF'
 # AGNOS Firefox build configuration
 ac_add_options --enable-application=browser
@@ -101,11 +101,11 @@ ac_add_options --with-system-webp
 ac_add_options --disable-necko-wifi
 ac_add_options --enable-alsa
 MOZEOF
-"""
+'''
 configure = ""
 make = "./mach build"
 check = ""
-install = """
+install = '''
 DESTDIR=$PKG ./mach install
 
 # Desktop entry for aethersafha
@@ -141,12 +141,12 @@ pref("privacy.trackingprotection.enabled", true);
 pref("dom.security.https_only_mode", true);
 pref("browser.contentblocking.category", "strict");
 EOF
-"""
-post_install = """
+'''
+post_install = '''
 # Symlink for PATH
 mkdir -p $PKG/usr/bin
 ln -sf /usr/lib/firefox/firefox $PKG/usr/bin/firefox
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

@@ -32,9 +32,9 @@ pre_build = ""
 configure = ""
 make = "cyrius build"
 check = "sh scripts/test.sh"
-install = """
+install = '''
 install -Dm644 build/agnos $PKG/boot/agnos
-"""
+'''
 post_install = ""
 
 [security]

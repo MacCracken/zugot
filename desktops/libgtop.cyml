@@ -21,10 +21,10 @@ build = ["gcc", "make", "pkgconf", "meson", "ninja", "gobject-introspection"]
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 mkdir -p build && cd build && \
 meson setup .. --prefix=/usr --buildtype=release
-"""
+'''
 make = "cd build && ninja -j$(nproc)"
 check = ""
 install = "cd build && DESTDIR=$PKG ninja install"

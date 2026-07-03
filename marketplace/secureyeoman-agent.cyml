@@ -85,7 +85,7 @@ pre_build = ""
 configure = ""
 make = ""
 check = ""
-install = """
+install = '''
 # Install the prebuilt signed binary
 mkdir -p $PKG/usr/lib/secureyeoman-agent/bin
 install -Dm755 secureyeoman-*-agent-linux-x64 $PKG/usr/lib/secureyeoman-agent/bin/secureyeoman-agent
@@ -115,7 +115,7 @@ RestartSec=5
 [Install]
 WantedBy=default.target
 EOF
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

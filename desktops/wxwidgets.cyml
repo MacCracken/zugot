@@ -22,14 +22,14 @@ build = ["gcc", "make", "pkgconf"]
 
 [build]
 pre_build = "mkdir -p build-wx"
-configure = """
+configure = '''
 cd build-wx && ../configure \
     --prefix=/usr \
     --with-gtk=3 \
     --with-opengl \
     --enable-unicode \
     --disable-static
-"""
+'''
 make = "cd build-wx && make -j$(nproc)"
 check = ""
 install = "cd build-wx && make DESTDIR=$PKG install"

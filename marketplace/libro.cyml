@@ -39,11 +39,11 @@ network_access = false
 [build]
 make = "cyrius build"
 check = "cyrius test"
-install = """
+install = '''
 mkdir -p $PKG/usr/bin
 cp libro $PKG/usr/bin/libro
 chmod +x $PKG/usr/bin/libro
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

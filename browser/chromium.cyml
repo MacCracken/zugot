@@ -64,7 +64,7 @@ build = [
 ]
 
 [build]
-pre_build = """
+pre_build = '''
 # Generate build config with GN
 cat > args.gn << 'GNEOF'
 # AGNOS Chromium build configuration
@@ -111,11 +111,11 @@ GNEOF
 mkdir -p out/Release
 cp args.gn out/Release/
 gn gen out/Release
-"""
+'''
 configure = ""
 make = "ninja -C out/Release chrome"
 check = ""
-install = """
+install = '''
 mkdir -p $PKG/usr/lib/chromium
 mkdir -p $PKG/usr/bin
 
@@ -158,7 +158,7 @@ exec /usr/lib/chromium/chromium \
     "$@"
 LAUNCHER
 chmod +x $PKG/usr/bin/chromium
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

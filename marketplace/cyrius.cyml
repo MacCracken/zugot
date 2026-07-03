@@ -47,7 +47,7 @@ access = "rw"
 [build]
 make = ""
 check = ""
-install = """
+install = '''
 TARBALL_ROOT=$(find . -maxdepth 1 -type d -name 'cyrius-*-linux' | head -1)
 cd "$TARBALL_ROOT"
 
@@ -89,7 +89,7 @@ cp -rv lib/* $PKG/usr/lib/cyrius/lib/
 
 mkdir -p $PKG/usr/share/doc/cyrius
 [ -f LICENSE ] && cp LICENSE $PKG/usr/share/doc/cyrius/
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

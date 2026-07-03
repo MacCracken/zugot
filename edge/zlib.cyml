@@ -28,11 +28,11 @@ pre_build = ""
 configure = "./configure --prefix=/usr --shared"
 make = "make -j$(nproc)"
 check = ""
-install = """
+install = '''
 make DESTDIR=$PKG install
 rm -f $PKG/usr/lib/libz.a
 rm -rf $PKG/usr/share/man $PKG/usr/share/doc
-"""
+'''
 post_install = ""
 
 [security]

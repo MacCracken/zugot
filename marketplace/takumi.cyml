@@ -41,11 +41,11 @@ network_access = false
 [build]
 make = "cyrius build"
 check = "cyrius test"
-install = """
+install = '''
 mkdir -p $PKG/usr/bin
 cp takumi $PKG/usr/bin/takumi
 chmod +x $PKG/usr/bin/takumi
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

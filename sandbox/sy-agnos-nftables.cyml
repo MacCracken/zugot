@@ -35,7 +35,7 @@ install_docs = false
 pre_build = ""
 configure = ""
 
-make = """
+make = '''
 mkdir -p $PKG/etc/nftables
 mkdir -p $PKG/etc/sy-agnos
 
@@ -187,7 +187,7 @@ if [ -n "$EGRESS_RULES" ]; then
 fi
 LOADER
 chmod 755 $PKG/etc/nftables/sy-agnos-policy-loader.sh
-"""
+'''
 
 check = ""
 install = ""

@@ -29,10 +29,10 @@ pre_build = ""
 configure = ""
 make = "make -C src -j$(nproc) WITH_BASHCOMPLETION=no WITH_WGQUICK=yes WITH_SYSTEMDUNITS=no"
 check = ""
-install = """
+install = '''
 make -C src DESTDIR=$PKG PREFIX=/usr WITH_BASHCOMPLETION=no WITH_WGQUICK=yes WITH_SYSTEMDUNITS=no install
 rm -rf $PKG/usr/share/man $PKG/usr/share/doc
-"""
+'''
 post_install = ""
 
 [security]

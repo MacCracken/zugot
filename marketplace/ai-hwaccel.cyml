@@ -58,10 +58,10 @@ access = "ro"
 [build]
 make = ""
 check = ""
-install = """
+install = '''
 mkdir -p $PKG/usr/bin
 install -Dm755 ai-hwaccel-*-x86_64-linux $PKG/usr/bin/ai-hwaccel
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

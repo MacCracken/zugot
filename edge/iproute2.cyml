@@ -25,22 +25,22 @@ build = ["gcc", "make", "pkgconf", "flex", "bison"]
 strip = true
 install_docs = false
 pre_build = ""
-configure = """
+configure = '''
 # iproute2 uses a configure script but not autoconf
 ./configure \
     --prefix=/usr \
     --libdir=/usr/lib
-"""
+'''
 make = "make -j$(nproc) SUBDIRS='lib ip misc'"
 check = ""
-install = """
+install = '''
 make DESTDIR=$PKG SUBDIRS='lib ip misc' install
 
 # Keep only ip, ss, bridge; remove tc/nstat/routel etc.
 rm -f $PKG/usr/sbin/tc $PKG/usr/sbin/nstat $PKG/usr/sbin/routel
 rm -f $PKG/usr/sbin/lnstat $PKG/usr/sbin/ifstat $PKG/usr/sbin/rtstat
 rm -rf $PKG/usr/share/man $PKG/usr/share/doc
-"""
+'''
 post_install = ""
 
 [security]

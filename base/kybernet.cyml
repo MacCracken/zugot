@@ -28,9 +28,9 @@ pre_build = ""
 configure = ""
 make = "cyrius build"
 check = "cyrius test src/test.cyr"
-install = """
+install = '''
 install -Dm755 build/kybernet $PKG/usr/bin/kybernet
-"""
+'''
 post_install = ""
 
 [security]

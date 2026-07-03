@@ -25,7 +25,7 @@ build = ["gcc", "make", "pkgconf", "gperf"]
 strip = true
 install_docs = false
 pre_build = ""
-configure = """
+configure = '''
 ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
@@ -34,16 +34,16 @@ configure = """
     --disable-static \
     --disable-introspection \
     --enable-hwdb
-"""
+'''
 make = "make -j$(nproc)"
 check = ""
-install = """
+install = '''
 make DESTDIR=$PKG install
 
 # Install minimal hardware database
 udevadm hwdb --update --root=$PKG 2>/dev/null || true
 rm -rf $PKG/usr/share/man $PKG/usr/share/doc
-"""
+'''
 post_install = "udevadm control --reload 2>/dev/null || true"
 
 [security]

@@ -23,20 +23,20 @@ build = ["gcc", "make"]
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 ./configure \
     --prefix=/usr \
     --disable-static
-"""
+'''
 make = "make -j$(nproc)"
 check = "make check"
-install = """
+install = '''
 make DESTDIR=$PKG install
 
 # lex → flex compatibility symlink
 ln -sv flex $PKG/usr/bin/lex
 ln -sv flex.1 $PKG/usr/share/man/man1/lex.1 2>/dev/null || true
-"""
+'''
 post_install = ""
 
 [security]

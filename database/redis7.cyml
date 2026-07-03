@@ -30,19 +30,19 @@ build = [
 ]
 
 [build]
-pre_build = """
+pre_build = '''
 # Redis builds from the top-level Makefile — no configure step.
 # Use jemalloc (bundled) for production memory allocator.
-"""
+'''
 configure = ""
-make = """
+make = '''
 make -j$(nproc) \
     BUILD_TLS=yes \
     USE_SYSTEMD=yes \
     MALLOC=jemalloc
-"""
+'''
 check = "make test || true"
-install = """
+install = '''
 make install PREFIX=$PKG/usr
 
 # Configuration directory
@@ -152,8 +152,8 @@ MemoryDenyWriteExecute=true
 [Install]
 WantedBy=multi-user.target
 EOF
-"""
-post_install = """
+'''
+post_install = '''
 # Create redis user if it doesn't exist (argonaut handles this on real installs)
 # chown -R redis:redis /var/lib/redis /var/log/redis /run/redis
 
@@ -161,7 +161,7 @@ post_install = """
 # vm.overcommit_memory = 1
 # net.core.somaxconn = 511
 # Disable THP: echo never > /sys/kernel/mm/transparent_hugepage/enabled
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

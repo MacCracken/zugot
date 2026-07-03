@@ -35,7 +35,7 @@ build = [
 ]
 
 [build]
-pre_build = """
+pre_build = '''
 # Apply FHS patch for /var/cache/nscd and /var/db
 patch -Np1 -i ../glibc-2.43-fhs-1.patch
 
@@ -50,8 +50,8 @@ esac
 mkdir -v build
 cd build
 echo "rootsbindir=/usr/sbin" > configparms
-"""
-configure = """
+'''
+configure = '''
 cd build
 ../configure \
     --prefix=/usr \
@@ -62,14 +62,14 @@ cd build
     --enable-bind-now \
     --with-headers=/usr/include \
     libc_cv_slibdir=/usr/lib
-"""
+'''
 make = "cd build && make -j$(nproc)"
-check = """
+check = '''
 # Glibc tests are critical but some are known to fail in constrained envs.
 cd build
 make check || true
-"""
-install = """
+'''
+install = '''
 cd build
 
 # Prevent a warning about missing /etc/ld.so.conf
@@ -111,11 +111,11 @@ cat > $PKG/etc/ld.so.conf << 'EOF'
 include /etc/ld.so.conf.d/*.conf
 EOF
 mkdir -p $PKG/etc/ld.so.conf.d
-"""
-post_install = """
+'''
+post_install = '''
 # Regenerate shared library cache
 ldconfig 2>/dev/null || true
-"""
+'''
 
 [security]
 # Glibc uses its own hardening — do NOT pass external hardening flags,

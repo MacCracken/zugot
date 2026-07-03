@@ -39,7 +39,7 @@ network_access = false
 [build]
 make = "cyrius build"
 check = "sh scripts/test.sh"
-install = """
+install = '''
 mkdir -p $PKG/usr/lib/agnos
 cp build/agnos $PKG/usr/lib/agnos/agnos
 chmod +x $PKG/usr/lib/agnos/agnos
@@ -49,7 +49,7 @@ mkdir -p $PKG/usr/src/agnos
 
 mkdir -p $PKG/usr/share/doc/agnos
 [ -f README.md ] && cp README.md $PKG/usr/share/doc/agnos/
-"""
+'''
 
 [security]
 # Kernel binary — userspace hardening flags don't apply to a freestanding

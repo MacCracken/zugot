@@ -23,11 +23,11 @@ runtime = ["glibc"]
 build = ["gcc", "make"]
 
 [build]
-pre_build = """
+pre_build = '''
 # Apply LFS patch to remove programs provided by other packages
 # (wall from util-linux, mountpoint from util-linux, etc.)
 sed -i 's:wall.1: :;s:mountpoint.1: :;s:mountpoint: :' src/Makefile
-"""
+'''
 configure = ""
 make = "make -j$(nproc)"
 check = ""

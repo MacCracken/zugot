@@ -40,11 +40,11 @@ network_access = false
 [build]
 make = "cyrius build"
 check = "cyrius test"
-install = """
+install = '''
 mkdir -p $PKG/usr/bin
 cp build/shravan $PKG/usr/bin/shravan
 chmod +x $PKG/usr/bin/shravan
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

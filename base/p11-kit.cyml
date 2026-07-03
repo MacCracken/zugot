@@ -24,16 +24,16 @@ build = ["gcc", "make", "meson", "ninja"]
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 mkdir build && cd build
 meson setup .. \
     --prefix=/usr \
     --buildtype=release \
     -Dtrust_paths=/etc/pki/anchors
-"""
+'''
 make = "cd build && ninja -j$(nproc)"
 check = "cd build && ninja test || true"
-install = """
+install = '''
 cd build
 DESTDIR=$PKG ninja install
 
@@ -43,7 +43,7 @@ mkdir -p $PKG/etc/pki/anchors
 # Symlink for the system trust module
 ln -sfv /usr/lib/pkcs11/p11-kit-trust.so \
     $PKG/usr/lib/libnssckbi.so 2>/dev/null || true
-"""
+'''
 post_install = ""
 
 [security]

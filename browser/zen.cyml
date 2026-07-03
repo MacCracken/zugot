@@ -50,7 +50,7 @@ build = [
 ]
 
 [build]
-pre_build = """
+pre_build = '''
 cat > mozconfig << 'MOZEOF'
 # AGNOS Zen Browser build configuration (Firefox-based)
 ac_add_options --enable-application=browser
@@ -77,11 +77,11 @@ ac_add_options --with-system-icu
 ac_add_options --with-system-nss
 ac_add_options --with-system-nspr
 MOZEOF
-"""
+'''
 configure = ""
 make = "./mach build"
 check = ""
-install = """
+install = '''
 DESTDIR=$PKG ./mach install
 
 # Desktop entry for aethersafha
@@ -104,7 +104,7 @@ EOF
 # Symlink for PATH
 mkdir -p $PKG/usr/bin
 ln -sf /usr/lib/zen-browser/zen-browser $PKG/usr/bin/zen
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

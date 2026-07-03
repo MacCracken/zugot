@@ -19,7 +19,7 @@ optional = []
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 ./configure \
     --prefix=/usr \
     --enable-gpl \
@@ -39,7 +39,7 @@ configure = """
     --enable-pthreads \
     --disable-debug \
     --disable-doc
-"""
+'''
 make = "make -j$(nproc)"
 check = ""
 install = "make DESTDIR=$PKG install"

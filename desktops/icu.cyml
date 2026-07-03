@@ -19,12 +19,12 @@ optional = []
 
 [build]
 pre_build = "cd source"
-configure = """
+configure = '''
 cd source && ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
     --enable-shared
-"""
+'''
 make = "cd source && make -j$(nproc)"
 check = "cd source && make check || true"
 install = "cd source && make DESTDIR=$PKG install"

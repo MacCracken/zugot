@@ -23,14 +23,14 @@ build = ["gcc", "make", "cmake", "ninja", "pkgconf", "abseil-cpp"]
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 cmake -B build -G Ninja \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -Dprotobuf_BUILD_SHARED_LIBS=ON \
     -Dprotobuf_BUILD_TESTS=OFF \
     -Dprotobuf_ABSL_PROVIDER=package
-"""
+'''
 make = "cmake --build build --parallel"
 check = ""
 install = "DESTDIR=$PKG cmake --install build"

@@ -102,7 +102,7 @@ pre_build = ""
 configure = ""
 make = "cargo build --release"
 check = "cargo test --workspace"
-install = """
+install = '''
 # Install the server binary
 mkdir -p $PKG/usr/lib/agnosai/bin
 cp target/release/agnosai-server $PKG/usr/lib/agnosai/bin/agnosai-server
@@ -149,7 +149,7 @@ RestartSec=5
 [Install]
 WantedBy=default.target
 EOF
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

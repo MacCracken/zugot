@@ -38,12 +38,12 @@ network_access = false
 [build]
 make = "cargo build --release"
 check = "cargo test --all-features"
-install = """
+install = '''
 mkdir -p $PKG/usr/lib/raasta
 cp -r src $PKG/usr/lib/raasta/
 cp Cargo.toml $PKG/usr/lib/raasta/
 cp VERSION $PKG/usr/lib/raasta/
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

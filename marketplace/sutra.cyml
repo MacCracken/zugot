@@ -70,13 +70,13 @@ depends_on = ["daimon"]
 [build]
 make = "cargo build --release --workspace"
 check = "cargo test --workspace"
-install = """
+install = '''
 mkdir -p $PKG/usr/local/bin
 cp target/release/sutra $PKG/usr/local/bin/sutra
 
 mkdir -p $PKG/etc/sutra
 mkdir -p $PKG/usr/share/sutra/playbooks
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

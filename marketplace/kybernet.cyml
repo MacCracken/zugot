@@ -41,14 +41,14 @@ network_access = false
 [build]
 make = "cyrius build"
 check = "cyrius test src/test.cyr"
-install = """
+install = '''
 mkdir -p $PKG/sbin
 cp build/kybernet $PKG/sbin/init
 chmod +x $PKG/sbin/init
 
 mkdir -p $PKG/usr/bin
 ln -sf /sbin/init $PKG/usr/bin/kybernet
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

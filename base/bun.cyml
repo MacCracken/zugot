@@ -25,13 +25,13 @@ pre_build = ""
 configure = ""
 make = ""
 check = ""
-install = """
+install = '''
 # The zip extracts to bun-linux-x64/bun
 mkdir -p $PKG/usr/bin
 install -vm755 bun-linux-x64/bun $PKG/usr/bin/bun
 # bunx is a symlink to bun
 ln -sfv bun $PKG/usr/bin/bunx
-"""
+'''
 post_install = ""
 
 [security]

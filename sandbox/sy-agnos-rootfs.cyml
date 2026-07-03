@@ -39,15 +39,15 @@ optional = ["cryptsetup"]  # Provides veritysetup for dm-verity (Phase 2)
 strip = true
 install_docs = false
 
-pre_build = """
+pre_build = '''
 # Stage 1: Start from edge base rootfs layout
 # (build-sy-agnos.sh populates $ROOTFS before invoking this recipe)
 echo "sy-agnos rootfs: starting hardening stages"
-"""
+'''
 
 configure = ""
 
-make = """
+make = '''
 # Stage 2: Strip -- remove everything unnecessary from the rootfs
 # No shells
 rm -f $ROOTFS/bin/sh $ROOTFS/bin/bash $ROOTFS/bin/ash $ROOTFS/bin/dash $ROOTFS/bin/zsh
@@ -227,11 +227,11 @@ VERIFYBOOT
 chmod 755 $ROOTFS/etc/agnos/verify-rootfs.sh
 
 echo "sy-agnos rootfs: hardening complete"
-"""
+'''
 
 check = ""
 
-install = """
+install = '''
 # Create squashfs from the hardened rootfs
 mksquashfs $ROOTFS $PKG/sy-agnos-rootfs.squashfs \
     -comp zstd -Xcompression-level 19 \
@@ -258,7 +258,7 @@ if command -v veritysetup >/dev/null 2>&1; then
 else
     echo "sy-agnos: veritysetup not found -- skipping dm-verity (install cryptsetup for production)"
 fi
-"""
+'''
 
 post_install = ""
 

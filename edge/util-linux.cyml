@@ -26,7 +26,7 @@ build = ["gcc", "make", "pkgconf"]
 strip = true
 install_docs = false
 pre_build = ""
-configure = """
+configure = '''
 ./configure \
     --prefix=/usr \
     --libdir=/usr/lib \
@@ -48,13 +48,13 @@ configure = """
     --disable-raw \
     --without-python \
     --without-systemd
-"""
+'''
 make = "make -j$(nproc)"
 check = ""
-install = """
+install = '''
 make DESTDIR=$PKG install
 rm -rf $PKG/usr/share/man $PKG/usr/share/doc $PKG/usr/share/bash-completion
-"""
+'''
 post_install = ""
 
 [security]

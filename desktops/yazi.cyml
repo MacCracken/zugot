@@ -22,7 +22,7 @@ pre_build = ""
 configure = ""
 make = "cargo build --release --locked"
 check = "cargo test --release || true"
-install = """
+install = '''
 mkdir -p $PKG/usr/bin
 cp target/release/yazi $PKG/usr/bin/yazi
 chmod +x $PKG/usr/bin/yazi
@@ -31,8 +31,8 @@ mkdir -p $PKG/usr/share/yazi
 if [ -d yazi-config ]; then
     cp -r yazi-config $PKG/usr/share/yazi/config
 fi
-"""
-post_install = """
+'''
+post_install = '''
 mkdir -p $PKG/usr/share/applications
 cat > $PKG/usr/share/applications/yazi.desktop << 'EOF'
 [Desktop Entry]
@@ -44,7 +44,7 @@ Type=Application
 Categories=System;FileManager;
 Keywords=file;manager;
 EOF
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

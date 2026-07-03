@@ -24,14 +24,14 @@ build = ["gcc", "make", "pkgconf", "perl", "gyp"]
 [build]
 pre_build = "cd nss"
 configure = ""
-make = """
+make = '''
 cd nss && ./build.sh \
     -v \
     --opt \
     --system-sqlite \
     --system-nspr \
     --disable-tests
-"""
+'''
 check = ""
 install = '''
 # NSS doesn't have a standard 'make install' — files must be copied manually.

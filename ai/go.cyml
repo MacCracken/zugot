@@ -25,13 +25,13 @@ pre_build = ""
 configure = ""
 make = ""
 check = ""
-install = """
+install = '''
 mkdir -p $PKG/usr/local
 cp -a . $PKG/usr/local/go
 mkdir -p $PKG/usr/bin
 ln -s /usr/local/go/bin/go $PKG/usr/bin/go
 ln -s /usr/local/go/bin/gofmt $PKG/usr/bin/gofmt
-"""
+'''
 post_install = ""
 
 [security]

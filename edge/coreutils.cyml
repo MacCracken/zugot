@@ -26,7 +26,7 @@ build = ["gcc", "make"]
 strip = true
 install_docs = false
 pre_build = ""
-configure = """
+configure = '''
 ./configure \
     --prefix=/usr \
     --enable-single-binary=symlinks \
@@ -34,10 +34,10 @@ configure = """
     --disable-nls \
     --without-gmp \
     --without-selinux
-"""
+'''
 make = "make -j$(nproc)"
 check = ""
-install = """
+install = '''
 make DESTDIR=$PKG install
 
 # Move chroot to sbin
@@ -46,7 +46,7 @@ mv -v $PKG/usr/bin/chroot $PKG/usr/sbin/chroot
 
 # Remove man/info pages
 rm -rf $PKG/usr/share/man $PKG/usr/share/info
-"""
+'''
 post_install = ""
 
 [security]

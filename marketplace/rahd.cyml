@@ -59,10 +59,10 @@ pre_build = ""
 configure = ""
 make = "cargo build --release --workspace"
 check = "cargo test --workspace"
-install = """
+install = '''
 mkdir -p $PKG/usr/local/bin
 cp target/release/rahd $PKG/usr/local/bin/rahd
-"""
+'''
 post_install = ""
 
 [security]

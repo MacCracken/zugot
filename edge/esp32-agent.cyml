@@ -80,7 +80,7 @@ build = [
 strip = false
 install_docs = false
 
-pre_build = """
+pre_build = '''
 # Install esp-rs toolchain if not present
 # espup handles both xtensa (custom LLVM fork) and riscv32 (upstream stable)
 if ! command -v espup >/dev/null 2>&1; then
@@ -96,12 +96,12 @@ fi
 # For ESP32-S3 (xtensa): requires nightly + xtensa LLVM
 # For ESP32-C3 (riscv32): works with stable Rust
 export ESP_IDF_VERSION=none
-"""
+'''
 
 configure = ""
 
 # Build for ESP32-S3 (xtensa) by default; ESP32-C3 built with --target override
-make = """
+make = '''
 # ESP32-S3 build (xtensa, primary target)
 cargo build --release \
     --target xtensa-esp32s3-none-elf \
@@ -113,11 +113,11 @@ cargo build --release \
     --target riscv32imc-unknown-none-elf \
     --no-default-features \
     --features esp32c3,wifi,mqtt,sensors,heartbeat,provisioning
-"""
+'''
 
 check = ""
 
-install = """
+install = '''
 # Install firmware binaries for both targets
 mkdir -p $PKG/usr/lib/agnos/esp32/s3
 mkdir -p $PKG/usr/lib/agnos/esp32/c3
@@ -291,7 +291,7 @@ echo "Flashing ESP32 ($TARGET) via $PORT..."
 espflash flash $MONITOR --port "$PORT" "$FIRMWARE"
 FLASHSCRIPT
 chmod 755 $PKG/usr/bin/agnos-esp32-flash
-"""
+'''
 
 post_install = ""
 

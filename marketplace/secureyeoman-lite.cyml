@@ -80,7 +80,7 @@ pre_build = ""
 configure = ""
 make = ""
 check = ""
-install = """
+install = '''
 # Install the prebuilt signed binary (the standalone agent binary)
 mkdir -p $PKG/usr/lib/secureyeoman-lite/bin
 install -Dm755 secureyeoman-*-agent-linux-x64 $PKG/usr/lib/secureyeoman-lite/bin/secureyeoman-lite
@@ -104,7 +104,7 @@ Type=Application
 Categories=Development;ArtificialIntelligence;
 StartupNotify=false
 EOF
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

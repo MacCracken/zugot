@@ -38,12 +38,12 @@ network_access = false
 [build]
 make = "cargo build --release"
 check = "cargo test --all-features"
-install = """
+install = '''
 mkdir -p $PKG/usr/lib/svara
 cp -r src $PKG/usr/lib/svara/
 cp Cargo.toml $PKG/usr/lib/svara/
 cp VERSION $PKG/usr/lib/svara/
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

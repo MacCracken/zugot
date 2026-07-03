@@ -23,14 +23,14 @@ build = ["gcc", "make"]
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 # bc uses its own configure script (not autotools)
 CC=gcc ./configure \
     --prefix=/usr \
     -G \
     -O3 \
     -r
-"""
+'''
 make = "make -j$(nproc)"
 check = "make test || true"
 install = "make DESTDIR=$PKG install"

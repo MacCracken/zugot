@@ -36,12 +36,12 @@ network_access = false
 [build]
 make = "cargo build --release"
 check = "cargo test --all-features"
-install = """
+install = '''
 mkdir -p $PKG/usr/lib/pavan
 cp -r src $PKG/usr/lib/pavan/
 cp Cargo.toml $PKG/usr/lib/pavan/
 cp VERSION $PKG/usr/lib/pavan/
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

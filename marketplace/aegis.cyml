@@ -43,7 +43,7 @@ access = "rw"
 [build]
 make = ""
 check = ""
-install = """
+install = '''
 mkdir -p $PKG/usr/bin
 install -Dm755 aegis-*-x86_64-linux $PKG/usr/bin/aegis
 
@@ -62,7 +62,7 @@ RestartSec=5
 [Install]
 WantedBy=multi-user.target
 EOF
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

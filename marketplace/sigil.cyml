@@ -41,11 +41,11 @@ network_access = false
 [build]
 make = "cyrius build"
 check = "cyrius test"
-install = """
+install = '''
 mkdir -p $PKG/usr/bin
 cp build/sigil $PKG/usr/bin/sigil
 chmod +x $PKG/usr/bin/sigil
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

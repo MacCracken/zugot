@@ -19,17 +19,17 @@ optional = ["zathura-pdf-poppler", "zathura-djvu", "zathura-ps"]
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 meson setup build \
     --prefix=/usr \
     --buildtype=release \
     -Dmanpages=enabled \
     -Dsqlite=enabled
-"""
+'''
 make = "ninja -C build -j$(nproc)"
 check = "ninja -C build test || true"
 install = "DESTDIR=$PKG ninja -C build install"
-post_install = """
+post_install = '''
 mkdir -p $PKG/usr/share/applications
 cat > $PKG/usr/share/applications/zathura.desktop << 'EOF'
 [Desktop Entry]
@@ -42,7 +42,7 @@ Categories=Office;Viewer;
 Keywords=pdf;document;viewer;
 MimeType=application/pdf;application/x-pdf;image/vnd.djvu;application/postscript;
 EOF
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

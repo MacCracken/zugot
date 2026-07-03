@@ -22,19 +22,19 @@ runtime = ["glibc", "readline", "mpfr"]
 build = ["gcc", "make"]
 
 [build]
-pre_build = """
+pre_build = '''
 # Ensure the unnecessary extras are not installed
 sed -i 's/extras//' Makefile.in
-"""
+'''
 configure = "./configure --prefix=/usr"
 make = "make -j$(nproc)"
 check = "make check || true"
-install = """
+install = '''
 make DESTDIR=$PKG install
 
 # Create awk → gawk symlink (POSIX compat)
 ln -sv gawk $PKG/usr/bin/awk
-"""
+'''
 post_install = ""
 
 [security]

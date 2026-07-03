@@ -26,10 +26,10 @@ pre_build = ""
 configure = ""
 make = "python3 configure.py --bootstrap"
 check = "./ninja ninja_test && ./ninja_test --gtest_filter=-SubprocessTest.SetWithLots || true"
-install = """
+install = '''
 mkdir -p $PKG/usr/bin
 install -vm755 ninja $PKG/usr/bin/
-"""
+'''
 post_install = ""
 
 [security]

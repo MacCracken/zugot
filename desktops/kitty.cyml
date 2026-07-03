@@ -22,11 +22,11 @@ pre_build = ""
 configure = ""
 make = "python3 setup.py linux-package --prefix=/usr"
 check = ""
-install = """
+install = '''
 mkdir -p $PKG/usr
 cp -r linux-package/* $PKG/usr/
-"""
-post_install = """
+'''
+post_install = '''
 mkdir -p $PKG/usr/share/applications
 cat > $PKG/usr/share/applications/kitty.desktop << 'EOF'
 [Desktop Entry]
@@ -38,7 +38,7 @@ Type=Application
 Categories=System;TerminalEmulator;
 Keywords=terminal;shell;
 EOF
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

@@ -19,7 +19,7 @@ optional = ["pipewire"]
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 meson setup build \
     --prefix=/usr \
     --buildtype=release \
@@ -34,7 +34,7 @@ meson setup build \
     -Dogg=enabled \
     -Dvorbis=enabled \
     -Dpango=enabled
-"""
+'''
 make = "ninja -C build -j$(nproc)"
 check = ""
 install = "DESTDIR=$PKG ninja -C build install"

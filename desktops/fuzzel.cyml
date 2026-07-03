@@ -19,16 +19,16 @@ optional = []
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 meson setup build \
     --prefix=/usr \
     --buildtype=release \
     -Ddocs=enabled
-"""
+'''
 make = "ninja -C build -j$(nproc)"
 check = "ninja -C build test || true"
 install = "DESTDIR=$PKG ninja -C build install"
-post_install = """
+post_install = '''
 mkdir -p $PKG/usr/share/applications
 cat > $PKG/usr/share/applications/fuzzel.desktop << 'EOF'
 [Desktop Entry]
@@ -40,7 +40,7 @@ Type=Application
 Categories=Utility;
 Keywords=launcher;run;search;
 EOF
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

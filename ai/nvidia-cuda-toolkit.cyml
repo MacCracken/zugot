@@ -25,9 +25,9 @@ pre_build = ""
 configure = ""
 make = ""
 check = ""
-install = """
+install = '''
 sh cuda_*.run --silent --toolkit --installpath=$PKG/usr/local/cuda
-"""
+'''
 post_install = ""
 
 [security]

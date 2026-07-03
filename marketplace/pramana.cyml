@@ -38,12 +38,12 @@ network_access = false
 [build]
 make = "cargo build --release"
 check = "cargo test --all-features"
-install = """
+install = '''
 mkdir -p $PKG/usr/lib/pramana
 cp -r src $PKG/usr/lib/pramana/
 cp Cargo.toml $PKG/usr/lib/pramana/
 cp VERSION $PKG/usr/lib/pramana/
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

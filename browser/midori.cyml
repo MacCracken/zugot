@@ -45,13 +45,13 @@ build = [
 ]
 
 [build]
-pre_build = """
+pre_build = '''
 npm install
-"""
+'''
 configure = ""
 make = "npm run build -- --linux"
 check = ""
-install = """
+install = '''
 mkdir -p $PKG/usr/lib/midori
 mkdir -p $PKG/usr/bin
 
@@ -87,7 +87,7 @@ exec /usr/lib/midori/midori \
     "$@"
 LAUNCHER
 chmod +x $PKG/usr/bin/midori
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

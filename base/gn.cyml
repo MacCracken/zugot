@@ -29,10 +29,10 @@ pre_build = ""
 configure = "python build/gen.py"
 make = "ninja -C out"
 check = ""
-install = """
+install = '''
 mkdir -p $PKG/usr/bin
 install -vm755 out/gn $PKG/usr/bin/gn
-"""
+'''
 post_install = ""
 
 [security]

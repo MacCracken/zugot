@@ -25,19 +25,19 @@ build = ["gcc", "make", "python", "pkgconf"]
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 ./configure \
     --prefix=/usr \
     --shared-openssl \
     --shared-zlib \
     --with-intl=system-icu
-"""
+'''
 make = "make -j$(nproc)"
 check = ""
-install = """
+install = '''
 make DESTDIR=$PKG install
 # npm ships with Node.js — no separate dep needed.
-"""
+'''
 post_install = ""
 
 [security]

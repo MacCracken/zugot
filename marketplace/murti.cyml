@@ -41,7 +41,7 @@ network_access = true
 [build]
 make = "cargo build --release"
 check = "cargo test"
-install = """
+install = '''
 # Library crate — consumers add to Cargo.toml:
 #   murti = "0.1.0"
 # Install source for offline/air-gapped Cargo builds.
@@ -49,7 +49,7 @@ mkdir -p $PKG/usr/lib/murti
 cp -r src $PKG/usr/lib/murti/
 cp Cargo.toml $PKG/usr/lib/murti/
 cp VERSION $PKG/usr/lib/murti/
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

@@ -39,12 +39,12 @@ network_access = false
 [build]
 make = "cargo build --release"
 check = "cargo test --all-features"
-install = """
+install = '''
 mkdir -p $PKG/usr/lib/soorat
 cp -r src $PKG/usr/lib/soorat/
 cp Cargo.toml $PKG/usr/lib/soorat/
 cp VERSION $PKG/usr/lib/soorat/
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

@@ -23,14 +23,14 @@ build = ["gcc", "make", "pkgconf", "bison", "flex"]
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 ./configure \
     --prefix=/usr \
     --sbindir=/usr/sbin \
     --disable-nftables \
     --enable-libipq \
     --with-xtlibdir=/usr/lib/xtables
-"""
+'''
 make = "make -j$(nproc)"
 check = ""
 install = "make DESTDIR=$PKG install"

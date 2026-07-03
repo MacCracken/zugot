@@ -57,7 +57,7 @@ build = [
 ]
 
 [build]
-pre_build = """
+pre_build = '''
 # Brave uses its own build scripts on top of Chromium
 npm install
 npm run init
@@ -99,11 +99,11 @@ GNEOF
 mkdir -p out/Release
 cp args.gn out/Release/
 npm run build -- Release
-"""
+'''
 configure = ""
 make = ""
 check = ""
-install = """
+install = '''
 mkdir -p $PKG/usr/lib/brave
 mkdir -p $PKG/usr/bin
 
@@ -144,7 +144,7 @@ exec /usr/lib/brave/brave \
     "$@"
 LAUNCHER
 chmod +x $PKG/usr/bin/brave
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

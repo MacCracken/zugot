@@ -23,7 +23,7 @@ build = ["gcc", "make", "pkgconf", "meson", "ninja", "python", "bison", "flex"]
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 mkdir -p build && cd build && \
 meson setup .. --prefix=/usr --buildtype=release \
   -Dplatforms=wayland \
@@ -33,7 +33,7 @@ meson setup .. --prefix=/usr --buildtype=release \
   -Degl=enabled \
   -Dgles2=enabled \
   -Dllvm=enabled
-"""
+'''
 make = "cd build && ninja -j$(nproc)"
 check = "cd build && meson test || true"
 install = "cd build && DESTDIR=$PKG ninja install"

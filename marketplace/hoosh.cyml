@@ -85,11 +85,11 @@ ports = [8088]
 [build]
 make = ""
 check = ""
-install = """
+install = '''
 mkdir -p $PKG/usr/bin
 BIN=$(find . -maxdepth 1 -type f -name 'hoosh-*-x86_64-linux' | head -1)
 install -Dm755 "$BIN" $PKG/usr/bin/hoosh
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

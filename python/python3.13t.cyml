@@ -40,12 +40,12 @@ build = [
 ]
 
 [build]
-pre_build = """
+pre_build = '''
 # Free-threaded build: --disable-gil removes the Global Interpreter Lock.
 # Uses mimalloc for thread-safe memory allocation.
 # Binary installs as python3.13t to coexist with standard python3.13.
-"""
-configure = """
+'''
+configure = '''
 ./configure \
     --prefix=/usr \
     --libdir=/usr/lib/agnos/python/3.13t \
@@ -60,10 +60,10 @@ configure = """
     --without-static-libpython \
     --disable-gil \
     --with-mimalloc
-"""
+'''
 make = "make -j$(nproc)"
 check = "make test TESTOPTS='--timeout=120 -x test_socket test_asyncio' || true"
-install = """
+install = '''
 DESTDIR=$PKG make install
 
 # Rename binary to python3.13t to avoid conflict with standard 3.13
@@ -84,14 +84,14 @@ rm -rf $PKG/usr/lib/python3.13t/ctypes/test
 rm -rf $PKG/usr/lib/python3.13t/idlelib/idle_test
 rm -rf $PKG/usr/lib/python3.13t/tkinter/test
 rm -rf $PKG/usr/lib/python3.13t/unittest/test
-"""
-post_install = """
+'''
+post_install = '''
 # Byte-compile the standard library
 $PKG/usr/bin/python3.13t -O -m compileall -q $PKG/usr/lib/python3.13t/ 2>/dev/null || true
 
 # Ensure pip is available
 $PKG/usr/bin/python3.13t -m ensurepip --upgrade 2>/dev/null || true
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

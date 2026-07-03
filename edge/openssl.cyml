@@ -25,7 +25,7 @@ build = ["gcc", "make", "perl"]
 strip = true
 install_docs = false
 pre_build = ""
-configure = """
+configure = '''
 ./Configure \
     --prefix=/usr \
     --openssldir=/etc/ssl \
@@ -42,16 +42,16 @@ configure = """
     no-tests \
     no-docs \
     -DOPENSSL_NO_HEARTBEATS
-"""
+'''
 make = "make -j$(nproc)"
 check = ""
-install = """
+install = '''
 make DESTDIR=$PKG install_sw install_ssldirs
 
 # Remove static libraries and pkgconfig if not needed at runtime
 rm -f $PKG/usr/lib/libssl.a $PKG/usr/lib/libcrypto.a
 rm -rf $PKG/usr/share/man $PKG/usr/share/doc
-"""
+'''
 post_install = ""
 
 [security]

@@ -23,14 +23,14 @@ build = ["gcc", "make", "pkgconf"]
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 ./configure \
     --prefix=/usr \
     --disable-static \
     --with-default-trust-store-pkcs11="pkcs11:" \
     --disable-doc \
     --disable-guile
-"""
+'''
 make = "make -j$(nproc)"
 check = "make check || true"
 install = "make DESTDIR=$PKG install"

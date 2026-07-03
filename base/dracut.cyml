@@ -24,16 +24,16 @@ build = ["make"]
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
     --libdir=/usr/lib
-"""
+'''
 make = "make -j$(nproc)"
 check = ""
 install = "make DESTDIR=$PKG install"
-post_install = """
+post_install = '''
 # Create default dracut config for AGNOS
 mkdir -p $PKG/etc/dracut.conf.d
 cat > $PKG/etc/dracut.conf.d/agnos.conf << "DRACUTEOF"
@@ -43,7 +43,7 @@ hostonly_cmdline="no"
 use_fstab="yes"
 compress="zstd"
 DRACUTEOF
-"""
+'''
 
 [security]
 hardening = []

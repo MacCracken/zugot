@@ -23,7 +23,7 @@ build = ["gcc", "make"]
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 ./configure \
     --prefix=/usr \
     --sbindir=/usr/sbin \
@@ -31,10 +31,10 @@ configure = """
     --libdir=/usr/lib \
     --enable-securedir=/usr/lib/security \
     --disable-doc
-"""
+'''
 make = "make -j$(nproc)"
 check = ""
-install = """
+install = '''
 make DESTDIR=$PKG install
 
 # Create /etc/pam.d directory
@@ -100,7 +100,7 @@ session   required  pam_unix.so
 PAMEOF
 
 chmod 644 $PKG/etc/pam.d/*
-"""
+'''
 post_install = ""
 
 [security]

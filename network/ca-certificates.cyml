@@ -25,10 +25,10 @@ pre_build = ""
 configure = ""
 make = ""
 check = ""
-install = """
+install = '''
 mkdir -p $PKG/etc/ssl/certs
 cp cacert-2026-03-19.pem $PKG/etc/ssl/certs/ca-certificates.crt
-"""
+'''
 post_install = ""
 
 [security]

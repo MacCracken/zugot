@@ -46,15 +46,15 @@ runtime = [
 build = []
 
 [build]
-pre_build = """
+pre_build = '''
 # Vivaldi distributes pre-built binaries — extract from .deb
 ar x vivaldi-stable_7.9.3970.55-1_amd64.deb
 tar xf data.tar.xz
-"""
+'''
 configure = ""
 make = ""
 check = ""
-install = """
+install = '''
 mkdir -p $PKG/usr/lib/vivaldi
 mkdir -p $PKG/usr/bin
 
@@ -92,7 +92,7 @@ exec /usr/lib/vivaldi/vivaldi \
     "$@"
 LAUNCHER
 chmod +x $PKG/usr/bin/vivaldi
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

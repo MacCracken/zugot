@@ -47,7 +47,7 @@ access = "rw"
 [build]
 make = "cargo build --release"
 check = "cargo test"
-install = """
+install = '''
 mkdir -p $PKG/usr/bin
 cp target/release/salai $PKG/usr/bin/salai
 chmod +x $PKG/usr/bin/salai
@@ -64,7 +64,7 @@ Terminal=false
 Type=Application
 Categories=Development;IDE;
 EOF
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

@@ -38,12 +38,12 @@ network_access = false
 [build]
 make = "cargo build --release"
 check = "cargo test --all-features"
-install = """
+install = '''
 mkdir -p $PKG/usr/lib/kana
 cp -r src $PKG/usr/lib/kana/
 cp Cargo.toml $PKG/usr/lib/kana/
 cp VERSION $PKG/usr/lib/kana/
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

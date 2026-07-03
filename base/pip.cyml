@@ -25,12 +25,12 @@ pre_build = ""
 configure = ""
 make = ""
 check = ""
-install = """
+install = '''
 # The `python` recipe already installs /usr/bin/pip3 via --with-ensurepip=install.
 # Create /usr/bin/pip as a versioned symlink for recipes that list `pip` directly.
 mkdir -p $PKG/usr/bin
 ln -sf pip3 $PKG/usr/bin/pip
-"""
+'''
 post_install = ""
 
 [security]

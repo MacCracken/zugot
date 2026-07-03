@@ -38,12 +38,12 @@ network_access = false
 [build]
 make = "cargo build --release"
 check = "cargo test --all-features"
-install = """
+install = '''
 mkdir -p $PKG/usr/lib/bijli
 cp -r src $PKG/usr/lib/bijli/
 cp Cargo.toml $PKG/usr/lib/bijli/
 cp VERSION $PKG/usr/lib/bijli/
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

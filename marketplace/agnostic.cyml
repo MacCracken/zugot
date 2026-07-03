@@ -95,14 +95,14 @@ ports = [8000]
 depends_on = ["llm-gateway", "agent-runtime"]
 
 [build]
-pre_build = """
+pre_build = '''
 # Install Python dependencies
 pip install --no-cache-dir -r requirements.txt
-"""
+'''
 configure = ""
 make = "docker build -t agnostic ."
 check = "python run_tests.py --unit"
-install = """
+install = '''
 # Agnostic runs as a container managed by daimon.
 # Install the container image and systemd-style service unit.
 mkdir -p $PKG/usr/lib/agnostic
@@ -125,7 +125,7 @@ Type=Application
 Categories=Development;Testing;
 StartupNotify=true
 EOF
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

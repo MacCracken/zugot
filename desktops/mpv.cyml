@@ -19,7 +19,7 @@ optional = ["yt-dlp", "vapoursynth"]
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 meson setup build \
     --prefix=/usr \
     --buildtype=release \
@@ -32,11 +32,11 @@ meson setup build \
     -Dgl-wayland=enabled \
     -Dvaapi=enabled \
     -Dvaapi-wayland=enabled
-"""
+'''
 make = "ninja -C build -j$(nproc)"
 check = "ninja -C build test || true"
 install = "DESTDIR=$PKG ninja -C build install"
-post_install = """
+post_install = '''
 mkdir -p $PKG/etc/mpv
 cat > $PKG/etc/mpv/mpv.conf << 'CONF'
 # AGNOS default mpv configuration
@@ -62,7 +62,7 @@ Categories=AudioVideo;Audio;Video;Player;
 Keywords=media;player;video;audio;
 MimeType=audio/*;video/*;
 EOF
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

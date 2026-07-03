@@ -25,13 +25,13 @@ pre_build = ""
 configure = "./configure --prefix=/usr"
 make = "make -j$(nproc)"
 check = "make check || true"
-install = """
+install = '''
 make DESTDIR=$PKG install
 
 # Documentation
 mkdir -p $PKG/usr/share/doc/sed-4.10
 install -m644 doc/sed.html $PKG/usr/share/doc/sed-4.10/ 2>/dev/null || true
-"""
+'''
 post_install = ""
 
 [security]

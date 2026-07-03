@@ -27,21 +27,21 @@ build = ["rust", "gcc", "pkgconf"]
 [build]
 strip = true
 install_docs = false
-pre_build = """
+pre_build = '''
 # Build with edge feature flags only
 export CARGO_PROFILE_RELEASE_LTO=true
 export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
 export CARGO_PROFILE_RELEASE_OPT_LEVEL=s
-"""
+'''
 configure = ""
-make = """
+make = '''
 cargo build --release \
     --no-default-features \
     --features edge,tpm,fleet,ota,telemetry,sandbox \
     -p agent-runtime
-"""
+'''
 check = ""
-install = """
+install = '''
 mkdir -p $PKG/usr/bin
 cp -v target/release/agnos-edge-agent $PKG/usr/bin/
 
@@ -95,7 +95,7 @@ case "$1" in
 esac
 INITSCRIPT
 chmod 755 $PKG/etc/init.d/agnos-edge-agent
-"""
+'''
 post_install = ""
 
 [security]

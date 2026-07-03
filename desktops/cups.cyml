@@ -25,7 +25,7 @@ optional = ["avahi", "libpaper"]
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 ./configure --prefix=/usr \
   --sysconfdir=/etc \
   --localstatedir=/var \
@@ -37,11 +37,11 @@ configure = """
   --disable-systemd \
   --with-rundir=/run/cups \
   --with-docdir=/usr/share/doc/cups
-"""
+'''
 make = "make -j$(nproc)"
 check = "make check || true"
 install = "make DESTDIR=$PKG install"
-post_install = """
+post_install = '''
 # Secure default config
 mkdir -p $PKG/etc/cups
 cat > $PKG/etc/cups/cupsd.conf << 'CUPSCONF'
@@ -100,7 +100,7 @@ auth    include system-auth
 account include system-account
 session include system-session
 PAM
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

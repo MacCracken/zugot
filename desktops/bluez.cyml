@@ -25,7 +25,7 @@ optional = ["alsa-lib"]
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 ./configure --prefix=/usr \
   --sysconfdir=/etc \
   --localstatedir=/var \
@@ -36,11 +36,11 @@ configure = """
   --enable-midi \
   --disable-systemd \
   --disable-manpages
-"""
+'''
 make = "make -j$(nproc)"
 check = "make check || true"
 install = "make DESTDIR=$PKG install"
-post_install = """
+post_install = '''
 # Default Bluetooth configuration
 mkdir -p $PKG/etc/bluetooth
 cat > $PKG/etc/bluetooth/main.conf << 'BTCONF'
@@ -76,7 +76,7 @@ after = ["dbus"]
 policy = "on-failure"
 delay_seconds = 3
 SVC
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

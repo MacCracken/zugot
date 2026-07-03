@@ -22,11 +22,11 @@ build = ["gcc", "make", "pkgconf", "cmake"]
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 mkdir -p build && cd build && \
 cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release \
   -DGGML_BLAS=ON -DGGML_BLAS_VENDOR=OpenBLAS
-"""
+'''
 make = "cd build && make -j$(nproc)"
 check = "cd build && make test || true"
 install = "cd build && make DESTDIR=$PKG install"

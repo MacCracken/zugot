@@ -27,9 +27,9 @@ configure = ""
 make = "make -j$(nproc)"
 check = ""
 install = "make prefix=/usr DESTDIR=$PKG install"
-post_install = """
+post_install = '''
 rm -f $PKG/usr/lib/libaio.a
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

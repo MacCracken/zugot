@@ -23,19 +23,19 @@ runtime = ["glibc", "libdrm", "wayland", "openssl", "zlib"]
 build = ["gcc", "make", "linux-api-headers"]
 
 [build]
-pre_build = """
+pre_build = '''
 # Extract the .run installer
 chmod +x NVIDIA-Linux-x86_64-${VERSION}.run
 ./NVIDIA-Linux-x86_64-${VERSION}.run --extract-only
 cd NVIDIA-Linux-x86_64-${VERSION}
-"""
+'''
 configure = ""
-make = """
+make = '''
 cd NVIDIA-Linux-x86_64-${VERSION}/kernel
 make SYSSRC=/usr/src/linux-headers-$(uname -r) module -j$(nproc)
-"""
+'''
 check = ""
-install = """
+install = '''
 cd NVIDIA-Linux-x86_64-${VERSION}
 
 # Kernel modules
@@ -85,7 +85,7 @@ MODPROBE
 # Depmod for module discovery
 mkdir -p $PKG/etc/depmod.d
 echo "search extra/nvidia" > $PKG/etc/depmod.d/nvidia.conf
-"""
+'''
 post_install = "depmod -a"
 
 [security]

@@ -56,10 +56,10 @@ allowed = ["127.0.0.1:8088", "127.0.0.1:8090"]
 [build]
 make = ""
 check = ""
-install = """
+install = '''
 mkdir -p $PKG/usr/bin
 install -Dm755 phylax-*-x86_64-linux $PKG/usr/bin/phylax
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

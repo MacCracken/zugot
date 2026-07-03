@@ -53,11 +53,11 @@ allowed = ["127.0.0.1:8088"]
 [build]
 make = "cyrius build"
 check = "cyrius test"
-install = """
+install = '''
 mkdir -p $PKG/usr/bin
 cp build/abaco $PKG/usr/bin/abaco
 chmod +x $PKG/usr/bin/abaco
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

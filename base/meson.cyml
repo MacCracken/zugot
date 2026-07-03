@@ -26,9 +26,9 @@ pre_build = ""
 configure = ""
 make = ""
 check = ""
-install = """
+install = '''
 python3 -m pip install --no-build-isolation --prefix=/usr --root=$PKG .
-"""
+'''
 post_install = ""
 
 [security]

@@ -23,7 +23,7 @@ build = ["gcc", "make", "pkgconf", "texinfo"]
 
 [build]
 pre_build = "mkdir -v build && cd build"
-configure = """
+configure = '''
 cd build
 ../configure \
     --prefix=/usr \
@@ -35,10 +35,10 @@ cd build
     --disable-libuuid \
     --disable-uuidd \
     --disable-fsck
-"""
+'''
 make = "cd build && make -j$(nproc)"
 check = "cd build && make check || true"
-install = """
+install = '''
 cd build
 make DESTDIR=$PKG install
 
@@ -47,7 +47,7 @@ rm -fv $PKG/usr/lib/{libcom_err,libe2p,libext2fs,libss}.a
 
 # Install default mke2fs.conf
 mkdir -p $PKG/etc
-"""
+'''
 post_install = ""
 
 [security]

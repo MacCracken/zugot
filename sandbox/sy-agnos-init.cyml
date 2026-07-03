@@ -32,7 +32,7 @@ install_docs = false
 pre_build = ""
 configure = ""
 
-make = """
+make = '''
 # Create argonaut init configuration for sy-agnos
 # This is a minimal 3-process tree with zero interactive services.
 
@@ -214,7 +214,7 @@ cat > $PKG/etc/sy-agnos-users << 'USERS'
 # Additional users for sy-agnos (appended to passwd/group during image build)
 # sy-agent:x:1000:1000:SY Agent:/var/lib/sy-agent:/usr/sbin/nologin
 USERS
-"""
+'''
 
 check = ""
 install = ""

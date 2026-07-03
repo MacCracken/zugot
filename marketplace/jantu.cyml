@@ -38,12 +38,12 @@ network_access = false
 [build]
 make = "cargo build --release"
 check = "cargo test --all-features"
-install = """
+install = '''
 mkdir -p $PKG/usr/lib/jantu
 cp -r src $PKG/usr/lib/jantu/
 cp Cargo.toml $PKG/usr/lib/jantu/
 cp VERSION $PKG/usr/lib/jantu/
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

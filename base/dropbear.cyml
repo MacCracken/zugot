@@ -19,7 +19,7 @@ optional = []
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 ./configure \
     --prefix=/usr \
     --sysconfdir=/etc/dropbear \
@@ -29,10 +29,10 @@ configure = """
     --disable-wtmp \
     --disable-wtmpx \
     --disable-pam
-"""
+'''
 make = "make -j$(nproc) PROGRAMS='dropbear dbclient dropbearkey scp'"
 check = ""
-install = """
+install = '''
 make DESTDIR=$PKG install PROGRAMS='dropbear dbclient dropbearkey scp'
 
 # Create host key directory
@@ -54,7 +54,7 @@ Restart=on-failure
 [Install]
 WantedBy=multi-user.target
 EOF
-"""
+'''
 post_install = ""
 
 [security]

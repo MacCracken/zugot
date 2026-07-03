@@ -19,18 +19,18 @@ optional = []
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 meson setup build \
     --prefix=/usr \
     --buildtype=release \
     -Ddocs=enabled \
     -Dthemes=true \
     -Dime=true
-"""
+'''
 make = "ninja -C build -j$(nproc)"
 check = "ninja -C build test || true"
 install = "DESTDIR=$PKG ninja -C build install"
-post_install = """
+post_install = '''
 mkdir -p $PKG/usr/share/applications
 cat > $PKG/usr/share/applications/foot.desktop << 'EOF'
 [Desktop Entry]
@@ -42,7 +42,7 @@ Type=Application
 Categories=System;TerminalEmulator;
 Keywords=terminal;shell;
 EOF
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

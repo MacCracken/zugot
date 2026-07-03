@@ -25,10 +25,10 @@ pre_build = ""
 configure = ""
 make = "./build_linux.sh"
 check = ""
-install = """
+install = '''
 mkdir -p $PKG/usr/lib/cni
 cp bin/* $PKG/usr/lib/cni/
-"""
+'''
 post_install = ""
 
 [security]

@@ -38,12 +38,12 @@ network_access = false
 [build]
 make = "cargo build --release"
 check = "cargo test --all-features"
-install = """
+install = '''
 mkdir -p $PKG/usr/lib/sangha
 cp -r src $PKG/usr/lib/sangha/
 cp Cargo.toml $PKG/usr/lib/sangha/
 cp VERSION $PKG/usr/lib/sangha/
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

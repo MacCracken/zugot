@@ -24,16 +24,16 @@ build = ["gcc", "make", "pkgconf", "meson", "ninja"]
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 mkdir -p build && cd build && \
 meson setup .. --prefix=/usr --buildtype=release \
   -Dman=false \
   -Dsystemd=false
-"""
+'''
 make = "cd build && ninja -j$(nproc)"
 check = "cd build && meson test || true"
 install = "cd build && DESTDIR=$PKG ninja install"
-post_install = """
+post_install = '''
 # Argonaut service unit
 mkdir -p $PKG/etc/agnos/services
 cat > $PKG/etc/agnos/services/boltd.toml << 'SVC'
@@ -59,7 +59,7 @@ cat > $PKG/usr/lib/udev/rules.d/90-bolt.rules << 'UDEV'
 ACTION=="add", SUBSYSTEM=="thunderbolt", TAG+="bolt"
 ACTION=="change", SUBSYSTEM=="thunderbolt", TAG+="bolt"
 UDEV
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

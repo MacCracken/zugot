@@ -24,13 +24,13 @@ build = ["gcc", "make"]
 [build]
 pre_build = ""
 configure = ""
-make = """
+make = '''
 make -j$(nproc) BUILD_STATIC=no PREFIX=/usr
-"""
+'''
 check = "make -j$(nproc) check || true"
-install = """
+install = '''
 make BUILD_STATIC=no PREFIX=/usr DESTDIR=$PKG install
-"""
+'''
 post_install = ""
 
 [security]

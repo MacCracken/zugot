@@ -68,7 +68,7 @@ pre_build = ""
 configure = ""
 make = "cargo build --release"
 check = "cargo test"
-install = """
+install = '''
 # Install the CLI binary
 mkdir -p $PKG/usr/bin
 cp target/release/tarang $PKG/usr/bin/tarang
@@ -94,7 +94,7 @@ Type=Application
 Categories=AudioVideo;Audio;Video;
 MimeType=audio/mpeg;audio/flac;audio/ogg;audio/wav;video/mp4;video/x-matroska;video/webm;
 EOF
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

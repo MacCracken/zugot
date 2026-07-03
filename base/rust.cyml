@@ -22,7 +22,7 @@ runtime = ["glibc", "gcc", "openssl", "zlib", "curl"]
 build = ["gcc", "make", "cmake", "ninja", "python", "curl"]
 
 [build]
-pre_build = """
+pre_build = '''
 # Create config.toml for the Rust build system (x.py)
 cat > config.toml << "RUSTCONF"
 # AGNOS Rust build configuration
@@ -49,13 +49,13 @@ rpath = false
 [target.x86_64-unknown-linux-gnu]
 llvm-config = "/usr/bin/llvm-config"
 RUSTCONF
-"""
+'''
 configure = ""
 make = "python3 x.py build -j$(nproc)"
 check = ""
-install = """
+install = '''
 DESTDIR=$PKG python3 x.py install
-"""
+'''
 post_install = ""
 
 [security]

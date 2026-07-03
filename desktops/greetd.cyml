@@ -22,7 +22,7 @@ pre_build = ""
 configure = ""
 make = "cargo build --release"
 check = ""
-install = """
+install = '''
 mkdir -p $PKG/usr/bin
 cp target/release/greetd $PKG/usr/bin/
 cp target/release/agreety $PKG/usr/bin/
@@ -75,7 +75,7 @@ Exec=aethersafha
 Type=Application
 DesktopNames=AGNOS
 DESKTOP
-"""
+'''
 post_install = ""
 
 [security]

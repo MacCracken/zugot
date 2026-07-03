@@ -34,7 +34,7 @@ build = [
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 mkdir -p build && cd build && \
 cmake .. \
     -G Ninja \
@@ -43,7 +43,7 @@ cmake .. \
     -DQT_FEATURE_webengine_system_ffmpeg=ON \
     -DQT_FEATURE_webengine_system_icu=ON \
     -DQT_FEATURE_webengine_proprietary_codecs=OFF
-"""
+'''
 make = "cd build && ninja -j$(nproc)"
 check = ""
 install = "cd build && DESTDIR=$PKG ninja install"

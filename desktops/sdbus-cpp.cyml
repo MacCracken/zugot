@@ -23,14 +23,14 @@ build = ["gcc", "make", "cmake", "ninja", "pkgconf", "elogind"]
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 cmake -B build -G Ninja \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DSDBUSCPP_BUILD_LIBSYSTEMD=OFF \
     -DSDBUSCPP_BUILD_TESTS=OFF \
     -DSDBUSCPP_BUILD_EXAMPLES=OFF
-"""
+'''
 make = "cmake --build build --parallel"
 check = ""
 install = "DESTDIR=$PKG cmake --install build"

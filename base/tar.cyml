@@ -23,11 +23,11 @@ build = ["gcc", "make"]
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 FORCE_UNSAFE_CONFIGURE=1 \
 ./configure \
     --prefix=/usr
-"""
+'''
 make = "make -j$(nproc)"
 check = "make check || true"
 install = "make DESTDIR=$PKG install"

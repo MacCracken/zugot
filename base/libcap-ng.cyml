@@ -27,12 +27,12 @@ build = ["gcc", "make", "autoconf", "automake", "libtool", "pkgconf"]
 
 [build]
 pre_build = "./autogen.sh"
-configure = """
+configure = '''
 ./configure \
     --prefix=/usr \
     --disable-static \
     --without-python3
-"""
+'''
 make = "make -j$(nproc)"
 check = "make check"
 install = "make DESTDIR=$PKG install"

@@ -41,13 +41,13 @@ network_access = false
 [build]
 make = "cyrius build"
 check = "cyrius test"
-install = """
+install = '''
 mkdir -p $PKG/usr/lib/mabda
 [ -f cyrius.cyml ] && cp cyrius.cyml $PKG/usr/lib/mabda/
 [ -f VERSION ]     && cp VERSION     $PKG/usr/lib/mabda/
 [ -d src ]         && cp -r src      $PKG/usr/lib/mabda/
 [ -d dist ]        && cp -r dist     $PKG/usr/lib/mabda/
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

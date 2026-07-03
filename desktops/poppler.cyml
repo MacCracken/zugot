@@ -25,7 +25,7 @@ optional = ["glib", "nss", "openjpeg", "boost"]
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 cmake -S . -B build \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -35,7 +35,7 @@ cmake -S . -B build \
     -DENABLE_QT6=OFF \
     -DENABLE_BOOST=ON \
     -DENABLE_CPP=ON
-"""
+'''
 make = "cmake --build build -j$(nproc)"
 check = "cd build && ctest --output-on-failure || true"
 install = "DESTDIR=$PKG cmake --install build"

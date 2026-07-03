@@ -63,7 +63,7 @@ depends_on = ["daimon", "hoosh"]
 [build]
 make = "cargo build --release --workspace"
 check = "cargo test --workspace"
-install = """
+install = '''
 mkdir -p $PKG/usr/local/bin
 cp target/release/vidhana $PKG/usr/local/bin/vidhana
 
@@ -95,7 +95,7 @@ Type=Application
 Categories=Settings;System;
 Keywords=settings;preferences;display;network;audio;privacy;
 DESKTOP
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

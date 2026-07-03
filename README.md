@@ -1,7 +1,7 @@
 # Zugot
 
 **Zugot** (Hebrew: זוּגוֹת — pairs) — Recipe repository for AGNOS.
-Current release: **1.0.0** (2026-04-17) — see [CHANGELOG.md](./CHANGELOG.md).
+Current release: **1.0.6** (2026-07-03) — see [CHANGELOG.md](./CHANGELOG.md).
 
 Named after the paired creatures that entered the ark. Each recipe is a *zug* — a matched pair of definition and source that [ark](https://github.com/MacCracken/ark) carries to build the system. Without zugot, ark is an empty vessel.
 
@@ -9,7 +9,7 @@ Named after the paired creatures that entered the ark. Each recipe is a *zug* �
 
 Zugot is the package database for AGNOS. Every package that can be built or installed — from the C library to the desktop compositor to the science crates — has a recipe here. Recipes are CYML files (Cyrius Markup Language — TOML syntax, `.cyml` extension) that define what to download, how to build it, what it depends on, and how to harden it.
 
-**1.0.0 ships 561 recipes** across 10 categories with a validator, CI, a dated CVE audit process, and documented naming conventions.
+**Zugot ships 563 recipes** across 10 categories with a validator, CI, a dated CVE audit process, and documented naming conventions.
 
 Zugot is consumed by:
 - **[ark](https://github.com/MacCracken/ark)** — the package manager (installs from recipes)
@@ -20,7 +20,7 @@ Zugot is consumed by:
 
 ```
 zugot/
-├── VERSION                       — 1.0.0
+├── VERSION                       — 1.0.6
 ├── base/                         — 163 recipes (toolchain, kernel, core libs, build tools, crypto, auth)
 ├── desktops/                     — 196 recipes (Wayland, GTK/Qt, fonts, A/V codecs, Hyprland, XFCE, X11 libs)
 ├── marketplace/                  — 111 recipes (AGNOS-native MacCracken/* packages)
@@ -106,10 +106,10 @@ network_access = false
 
 | Category | Count | Description |
 |----------|-------|-------------|
-| **base** | 163 | GCC 15.2, Rust 1.95, Linux 6.6.134 LTS, glibc 2.43, crypto, auth, build tools, compression, archive, init |
+| **base** | 165 | GCC 15.2, Rust 1.95, Linux 6.6.134 LTS, glibc 2.43, crypto, auth, build tools, compression, archive, init |
 | **desktops** | 196 | Mesa, Wayland, PipeWire, GTK3/4, Qt6 stack, X11 libs, A/V codecs, Hyprland support, XFCE, fonts |
 | **marketplace** | 111 | AGNOS-native `MacCracken/*` packages (cyrius, agnos-kernel, ifran, etc.) |
-| **ai** | 31 | CUDA, ONNX, PyTorch, whisper.cpp, llama.cpp, vllm, container runtimes (containerd, runc, fuse-overlayfs) |
+| **ai** | 32 | CUDA, ONNX, PyTorch, whisper.cpp, llama.cpp, vllm, container runtimes (containerd, runc, fuse-overlayfs) |
 | **edge** | 31 | Minimal profile, fleet agents, ESP32, IoT, hardened kernel |
 | **network** | 10 | nftables, iproute2, iptables, wireless tools, dhcpcd, OpenSSH, rsync |
 | **browser** | 8 | Firefox, Chromium, Brave, LibreWolf, Zen, Vivaldi, Midori, Falkon |
@@ -117,7 +117,7 @@ network_access = false
 | **database** | 3 | postgresql17, redis7, pgvector |
 | **sandbox** | 3 | Hardened AGNOS sandbox images (sy-agnos family) |
 
-Total: **561 recipes** as of 1.0.0.
+Total: **563 recipes** as of 1.0.6.
 
 ## Naming Conventions
 

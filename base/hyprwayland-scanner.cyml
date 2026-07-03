@@ -23,9 +23,9 @@ build = ["gcc", "make", "cmake", "pkgconf", "pugixml"]
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 cmake -B build -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
-"""
+'''
 make = "cmake --build build --parallel"
 check = ""
 install = "DESTDIR=$PKG cmake --install build"

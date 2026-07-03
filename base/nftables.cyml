@@ -23,21 +23,21 @@ build = ["gcc", "make", "pkgconf", "bison", "flex"]
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
     --disable-static \
     --with-cli=readline
-"""
+'''
 make = "make -j$(nproc)"
 check = ""
-install = """
+install = '''
 make DESTDIR=$PKG install
 
 # Install default nftables config directory
 mkdir -p $PKG/etc/nftables
-"""
+'''
 post_install = ""
 
 [security]

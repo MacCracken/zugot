@@ -28,7 +28,7 @@ pre_build = ""
 configure = ""
 make = ""
 check = ""
-install = """
+install = '''
 mkdir -p $PKG/usr/bin
 
 # Extract binaries from release tarball
@@ -59,7 +59,7 @@ fi
 # Base rootfs for microVMs — ext4 image with minimal userspace
 # Built by: scripts/build-edge.sh (squashfs → ext4 conversion)
 # If not present, daimon falls back to gVisor or native sandboxing.
-"""
+'''
 post_install = ""
 
 [security]

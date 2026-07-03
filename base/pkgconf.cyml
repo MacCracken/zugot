@@ -23,20 +23,20 @@ build = ["gcc", "make"]
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 ./configure \
     --prefix=/usr \
     --disable-static
-"""
+'''
 make = "make -j$(nproc)"
 check = ""
-install = """
+install = '''
 make DESTDIR=$PKG install
 
 # Provide pkg-config compatibility symlink
 ln -sv pkgconf $PKG/usr/bin/pkg-config
 ln -sv pkgconf.1 $PKG/usr/share/man/man1/pkg-config.1 2>/dev/null || true
-"""
+'''
 post_install = ""
 
 [security]

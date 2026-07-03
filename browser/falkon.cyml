@@ -47,16 +47,16 @@ build = [
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 cmake -B build -G Ninja \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_TESTING=OFF \
     -DQT_MAJOR_VERSION=6
-"""
+'''
 make = "ninja -C build"
 check = ""
-install = """
+install = '''
 DESTDIR=$PKG ninja -C build install
 
 # Desktop entry for aethersafha
@@ -85,7 +85,7 @@ export QT_QPA_PLATFORM=wayland
 exec /usr/lib/falkon/falkon "$@"
 LAUNCHER
 chmod +x $PKG/usr/bin/falkon
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

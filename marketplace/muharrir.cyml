@@ -39,12 +39,12 @@ network_access = false
 [build]
 make = "cargo build --release"
 check = "cargo test --all-features"
-install = """
+install = '''
 mkdir -p $PKG/usr/lib/muharrir
 cp -r src $PKG/usr/lib/muharrir/
 cp Cargo.toml $PKG/usr/lib/muharrir/
 cp VERSION $PKG/usr/lib/muharrir/
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

@@ -25,7 +25,7 @@ build = ["gcc", "make", "pkgconf"]
 strip = true
 install_docs = false
 pre_build = ""
-configure = """
+configure = '''
 ./configure \
     --prefix=/usr \
     --sysconfdir=/etc/ssh \
@@ -38,10 +38,10 @@ configure = """
     --disable-utmpx \
     --disable-wtmp \
     --disable-wtmpx
-"""
+'''
 make = "make -j$(nproc)"
 check = ""
-install = """
+install = '''
 make DESTDIR=$PKG install
 rm -rf $PKG/usr/share/man $PKG/usr/share/doc
 
@@ -54,7 +54,7 @@ MaxAuthTries 3
 ClientAliveInterval 300
 ClientAliveCountMax 2
 EDGECONF
-"""
+'''
 post_install = ""
 
 [security]

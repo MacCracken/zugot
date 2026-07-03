@@ -38,12 +38,12 @@ network_access = false
 [build]
 make = "cargo build --release"
 check = "cargo test --all-features"
-install = """
+install = '''
 mkdir -p $PKG/usr/lib/jivanu
 cp -r src $PKG/usr/lib/jivanu/
 cp Cargo.toml $PKG/usr/lib/jivanu/
 cp VERSION $PKG/usr/lib/jivanu/
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

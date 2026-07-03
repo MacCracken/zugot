@@ -82,7 +82,7 @@ pre_build = "npm ci && npm run build"
 configure = ""
 make = "cargo tauri build"
 check = "cargo test --workspace"
-install = """
+install = '''
 # Install the Tauri binary
 mkdir -p $PKG/usr/lib/aequi/bin
 cp target/release/aequi $PKG/usr/lib/aequi/bin/aequi
@@ -112,7 +112,7 @@ StartupNotify=true
 StartupWMClass=aequi
 Keywords=accounting;bookkeeping;tax;invoice;receipt;
 EOF
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

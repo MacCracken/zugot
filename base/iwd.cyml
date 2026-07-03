@@ -19,17 +19,17 @@ optional = []
 
 [build]
 pre_build = ""
-configure = """
+configure = '''
 ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
     --localstatedir=/var \
     --enable-external-ell \
     --disable-manual-pages
-"""
+'''
 make = "make -j$(nproc)"
 check = ""
-install = """
+install = '''
 make DESTDIR=$PKG install
 
 # Default config — enable built-in DHCP and DNS
@@ -52,7 +52,7 @@ Name=wlan* wlp*
 DHCP=yes
 IgnoreCarrierLoss=3s
 NETCONF
-"""
+'''
 post_install = ""
 
 [security]

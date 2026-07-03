@@ -22,12 +22,12 @@ pre_build = ""
 configure = ""
 make = "go build -o cliphist -ldflags='-s -w' ."
 check = "go test ./... || true"
-install = """
+install = '''
 mkdir -p $PKG/usr/bin
 cp cliphist $PKG/usr/bin/cliphist
 chmod +x $PKG/usr/bin/cliphist
-"""
-post_install = """
+'''
+post_install = '''
 mkdir -p $PKG/usr/lib/systemd/user
 cat > $PKG/usr/lib/systemd/user/cliphist-store.service << 'EOF'
 [Unit]
@@ -43,7 +43,7 @@ Restart=on-failure
 [Install]
 WantedBy=graphical-session.target
 EOF
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

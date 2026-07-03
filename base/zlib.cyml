@@ -27,10 +27,10 @@ configure = "./configure --prefix=/usr"
 make = "make -j$(nproc)"
 check = "make check"
 install = "make DESTDIR=$PKG install"
-post_install = """
+post_install = '''
 # Remove static library — shared-only policy
 rm -f $PKG/usr/lib/libz.a
-"""
+'''
 
 [security]
 hardening = ["pie", "fullrelro", "fortify", "stackprotector", "bindnow"]

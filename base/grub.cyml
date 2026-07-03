@@ -22,11 +22,11 @@ runtime = ["glibc"]
 build = ["gcc", "make", "flex", "bison", "python", "texinfo", "freetype"]
 
 [build]
-pre_build = """
+pre_build = '''
 # Unset variables that may interfere
 unset {C,CPP,CXX,LD}FLAGS
-"""
-configure = """
+'''
+configure = '''
 ./configure \
     --prefix=/usr \
     --sbindir=/usr/sbin \
@@ -36,10 +36,10 @@ configure = """
     --with-platform=efi \
     --target=x86_64 \
     --disable-werror
-"""
+'''
 make = "make -j$(nproc)"
 check = ""
-install = """
+install = '''
 make DESTDIR=$PKG install
 
 # Create default grub directory
@@ -56,7 +56,7 @@ GRUB_CMDLINE_LINUX_DEFAULT="quiet"
 GRUB_CMDLINE_LINUX=""
 GRUB_DISABLE_OS_PROBER=true
 GRUBCONF
-"""
+'''
 post_install = ""
 
 [security]
