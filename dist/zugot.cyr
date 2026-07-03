@@ -1,7 +1,7 @@
 # dist/zugot.cyr — auto-generated index of zugot package names.
 # Do not edit by hand. Regenerate with scripts/gen-dist.sh
 #
-# Source: 535 packages at zugot 1f77d3c5112a (2026-05-27T20:11:09Z)
+# Source: 536 packages at zugot 5dfbe1c804d0 (2026-07-03T13:03:31Z)
 #
 # Consumers (e.g. bazaar) declare this repo as a cyrius dep and call
 # zugot_names(vec) to populate a vec with every package name in zugot.
@@ -149,6 +149,7 @@ fn zugot_names(out) {
     vec_push(out, str_from("glslang"));
     vec_push(out, str_from("gmp"));
     vec_push(out, str_from("gn"));
+    vec_push(out, str_from("gnoboot"));
     vec_push(out, str_from("gnome-doc-utils"));
     vec_push(out, str_from("gnupg"));
     vec_push(out, str_from("gnutls"));
@@ -544,5 +545,5 @@ fn zugot_names(out) {
     vec_push(out, str_from("zip"));
     vec_push(out, str_from("zlib"));
     vec_push(out, str_from("zstd"));
-    return 535;
+    return 536;
 }

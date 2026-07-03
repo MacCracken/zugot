@@ -19,6 +19,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and
   the gnoboot bootloader) resolves it. Source `sha256` is a TODO pending
   gnoboot's github release asset (same honest state as the other pre-release
   `github_release` recipes; tolerated by `scripts/validate_recipes.py`).
+- **Regenerated `dist/zugot.cyr`** (the consumable package-name index bazaar et
+  al. pull via `zugot_names()`) — `sh scripts/gen-dist.sh`, 535 → **536** names
+  (adds `gnoboot`). The `validate-recipes.yml` freshness gate requires this be
+  committed alongside any recipe add/rename.
 
 ## [1.0.6] - 2026-07-03 — multi-line build-step delimiter normalization
 
