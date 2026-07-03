@@ -6,7 +6,7 @@
 
 - **Type**: Recipe database (CYML files, not a Rust crate)
 - **License**: GPL-3.0-only
-- **Version**: 1.0.6 (2026-07-03)
+- **Version**: 1.0.7 (2026-07-03)
 - **Genesis repo**: [agnosticos](https://github.com/MacCracken/agnosticos)
 - **Philosophy**: [AGNOS Philosophy & Intention](https://github.com/MacCracken/agnosticos/blob/main/docs/philosophy.md)
 - **Standards**: [First-Party Standards](https://github.com/MacCracken/agnosticos/blob/main/docs/development/applications/first-party-standards.md)
@@ -119,7 +119,7 @@ Every recipe change requires a full field audit — **never just bump a version*
 
 ```
 zugot/
-├── VERSION                              — current release (1.0.6)
+├── VERSION                              — current release (1.0.7)
 ├── README.md                            — what zugot is, recipe format, categories
 ├── CHANGELOG.md                         — every change, grouped by category
 ├── CLAUDE.md                            — this file (AI-agent instructions)
@@ -129,10 +129,10 @@ zugot/
 │
 ├── build-order.txt                      — 225-package dependency-sorted sequence
 │
-├── base/                                — 163 recipes (LFS toolchain + kernel + core libs + build tools + auth + crypto + ...)
+├── base/                                — 165 recipes (LFS toolchain + kernel + core libs + build tools + auth + crypto + ...)
 ├── desktops/                            — 196 recipes (Wayland, PipeWire, GPU, fonts, apps, toolkits, Hyprland stack, ...)
-├── marketplace/                         — 111 recipes (AGNOS-native MacCracken/* packages)
-├── ai/                                  —  31 recipes (CUDA, ONNX, PyTorch, container runtimes)
+├── marketplace/                         — 112 recipes (AGNOS-native MacCracken/* packages)
+├── ai/                                  —  32 recipes (CUDA, ONNX, PyTorch, container runtimes)
 ├── edge/                                —  31 recipes (fleet, IoT, minimal profile)
 ├── network/                             —  10 recipes (nftables, iproute2, wireless, VPN)
 ├── browser/                             —   8 recipes (Firefox, Chromium, Brave, variants)

@@ -7,6 +7,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and
 
 ## [Unreleased]
 
+## [1.0.7] - 2026-07-03 — gnoboot bootloader recipe (sovereign UEFI)
+
+### Added
+
+- **`marketplace/gnoboot.cyml`** — recipe for the sovereign UEFI bootloader
+  (gnoboot 0.6.0, `BOOTX64.EFI`, replaces GRUB/systemd-boot). Builds via
+  `CYRIUS_TARGET_EFI=1 cyrius build src/main.cyr build/BOOTX64.EFI` and installs
+  the EFI to `/usr/lib/gnoboot/BOOTX64.EFI` — the path agnova's bootloader phase
+  stages to the ESP. Added so agnova's `default_packages` base (now defaulting to
+  the gnoboot bootloader) resolves it. Source `sha256` is a TODO pending
+  gnoboot's github release asset (same honest state as the other pre-release
+  `github_release` recipes; tolerated by `scripts/validate_recipes.py`).
+
 ## [1.0.6] - 2026-07-03 — multi-line build-step delimiter normalization
 
 ### Changed

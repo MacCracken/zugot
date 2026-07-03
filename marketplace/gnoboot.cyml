@@ -1,0 +1,55 @@
+# gnoboot — sovereign UEFI bootloader for AGNOS (replaces GRUB / systemd-boot)
+# A PE32+ EFI Application (BOOTX64.EFI) loaded directly by UEFI firmware from
+# the ESP at \EFI\BOOT\BOOTX64.EFI. Loads the AGNOS kernel from the ESP at
+# /boot/agnos, builds a sovereign boot-info structure, and hands off — no GRUB,
+# no multiboot, no chainloader. Written in Cyrius, zero external deps; emits the
+# UEFI-application target via CYRIUS_TARGET_EFI=1.
+#
+# Name: gnoboot (agnos + boot). Bin: BOOTX64.EFI.
+# Consumed by agnova's bootloader phase (gnoboot is the default) — staged to the
+# ESP from /usr/lib/gnoboot/BOOTX64.EFI. See agnosticos/scripts/install-media.sh.
+#
+# Status: Pre-1.0 — v0.6.0.
+
+[package]
+name = "gnoboot"
+version = "0.6.0"
+description = "gnoboot — sovereign UEFI bootloader for AGNOS (BOOTX64.EFI, replaces GRUB)"
+license = "GPL-3.0-only"
+groups = ["system", "boot", "cyrius"]
+release = 1
+arch = "x86_64"
+
+[source]
+github_release = "MacCracken/gnoboot"
+release_asset = "gnoboot-*-src.tar.gz"
+# TODO: populate from release tarball (sha256 of the -src.tar.gz asset)
+sha256 = ""
+
+[depends]
+runtime = []
+build = ["cyrius"]
+
+[marketplace]
+category = "system"
+runtime = "native-binary"
+publisher = "AGNOS"
+tags = ["bootloader", "uefi", "efi", "boot", "sovereign", "cyrius"]
+min_agnos_version = "2026.3.22"
+
+[marketplace.sandbox]
+seccomp_mode = "disabled"
+network_access = false
+
+[build]
+make = "CYRIUS_TARGET_EFI=1 cyrius build src/main.cyr build/BOOTX64.EFI"
+check = ""
+install = '''
+mkdir -p $PKG/usr/lib/gnoboot
+cp build/BOOTX64.EFI $PKG/usr/lib/gnoboot/BOOTX64.EFI
+'''
+
+[security]
+# A freestanding PE32+ EFI application — the Linux ELF hardening flags
+# (pie/relro/fortify) do not apply to the UEFI target.
+hardening = []
