@@ -1,34 +1,40 @@
-# Ifran — LLM inference & training engine for AGNOS
-# Model inference, fine-tuning, training pipelines.
+# ifran — the AGNOS training control plane
+# Runs and records training jobs, keeps a signed checkpoint store, curates
+# datasets, runs sweeps (with per-combo evals) and evals, and holds preference
+# data. It orchestrates; the sovereign ML siblings (attn11, tarka, tentib,
+# prajna, anukūlana) own the math.
 #
-# Name: Ifran (Arabic: knowledge/wisdom) — renamed from Irfan
-# Lib: ifran = "1.3.0" in Cargo.toml
+# Name: ifran (عرفان — gnosis)
+# CLI: ifran run job.cyml · ifran sweep sweep.cyml · ifran store add ckpt.tula
+# Lang: Cyrius (was Rust through 1.x; 2.x is the Cyrius port). One static
+#       binary. For the build-from-source system package, see ai/ifran.cyml.
 #
-# Status: Released — v1.3.0.
+# Status: Released — v2.5.0.
 
 [package]
 name = "ifran"
-version = "1.3.0"
-description = "Ifran — LLM inference & training engine"
+version = "2.5.0"
+description = "ifran — the AGNOS training control plane (jobs, signed checkpoint store, datasets, sweeps, evals)"
 license = "GPL-3.0-only"
-groups = ["library", "ai", "rust"]
+groups = ["tool", "ai", "ml", "cyrius"]
 release = 1
-arch = "any"
+arch = "x86_64"
 
 [source]
 github_release = "MacCracken/ifran"
-release_asset = "source"
-sha256 = "bea326e9371ee5e7250653805ea457d0cdbc6595624470ebbb68395e142484a3"
+release_asset = "ifran"
+# The build/ifran line of the release's SHA256SUMS (the static x86_64 binary)
+sha256 = "50498793a7d52c6026e30b3791cb387ebfd1936b33039854603439f6093c4b54"
 
 [depends]
 runtime = []
-build = ["rust"]
+build = []
 
 [marketplace]
-category = "library"
-runtime = "rust-crate"
+category = "ai-platform"
+runtime = "native-binary"
 publisher = "AGNOS"
-tags = ["llm", "inference", "training", "ai", "ml", "rust"]
+tags = ["training", "ml", "ai", "jobs", "sweeps", "evals", "checkpoints", "cyrius"]
 min_agnos_version = "2026.3.24"
 
 [marketplace.sandbox]
@@ -36,13 +42,10 @@ seccomp_mode = "basic"
 network_access = false
 
 [build]
-make = "cargo build --release"
-check = "cargo test --all-features"
+make = ""
+check = ""
 install = '''
-mkdir -p $PKG/usr/lib/ifran
-cp -r src $PKG/usr/lib/ifran/
-cp Cargo.toml $PKG/usr/lib/ifran/
-cp VERSION $PKG/usr/lib/ifran/
+install -Dm755 ifran $PKG/usr/bin/ifran
 '''
 
 [security]

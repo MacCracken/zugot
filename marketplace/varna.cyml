@@ -1,34 +1,43 @@
 # Varna — Multilingual language engine for AGNOS
-# Phoneme inventories, script systems, grammar, IPA.
+# Phoneme inventories, writing systems, grammar profiles, and lexicon access
+# for 51 languages: IPA inventories, allophony, syllable structure, scripts,
+# numerals, transliteration, Swadesh lists and cognates.
+# Consumed via `[deps.varna]` git deps in downstream cyrius.cyml, which fold
+# the single-file bundle dist/varna.cyr (or dist/varna-core.cyr, the data
+# engine without the -D-gated MCP/daimon/hoosh surfaces) and read the matching
+# dist/*.deps sidecar for the stdlib leaves it needs (string, vec, alloc,
+# hashmap). This recipe ships both bundles, their sidecars, and the source tree.
+# Consumers: shabda, shabdakosh, svara, sankhya, jnana, vidya.
 #
-# Name: Varna (Sanskrit: letter/color/class)
-# Lib: varna = "1.0.0" in Cargo.toml
+# Name: Varna (Sanskrit: वर्ण — letter, character, sound)
+# Lang: Cyrius, toolchain pinned to 6.6.20 in cyrius.cyml (was a Rust crate
+#       through 1.x; ported at 2.0, Rust archive removed at 2.1.4)
 #
-# Status: Released — v1.0.0.
+# Status: Released — v2.4.3.
 
 [package]
 name = "varna"
-version = "1.0.0"
-description = "Varna — multilingual language engine"
+version = "2.4.3"
+description = "Varna — multilingual language engine: phoneme inventories, writing systems, grammar profiles, and lexicon access"
 license = "GPL-3.0-only"
-groups = ["library", "media", "rust"]
+groups = ["library", "media", "cyrius"]
 release = 1
 arch = "any"
 
 [source]
 github_release = "MacCracken/varna"
-release_asset = "source"
-sha256 = "16034f15edaa82454bd8a48719cb5004c22959c98256bcdd0e7fd46fa2cbc3a4"
+release_asset = "varna-*-src.tar.gz"
+sha256 = "6ef0900abe93e517d6d26b292ccd31053d20f38f224a44606094a7249a743c52"
 
 [depends]
 runtime = []
-build = ["rust"]
+build = ["cyrius"]
 
 [marketplace]
 category = "library"
-runtime = "rust-crate"
+runtime = "native-binary"
 publisher = "AGNOS"
-tags = ["language", "phoneme", "script", "grammar", "multilingual", "rust"]
+tags = ["language", "linguistics", "phoneme", "ipa", "script", "grammar", "lexicon", "multilingual", "cyrius"]
 min_agnos_version = "2026.3.24"
 
 [marketplace.sandbox]
@@ -36,13 +45,16 @@ seccomp_mode = "basic"
 network_access = false
 
 [build]
-make = "cargo build --release"
-check = "cargo test --all-features"
+# `cyrius deps` vendors the pinned stdlib into lib/ (no network: bote stays
+# commented out in cyrius.cyml); `distlib --all` regenerates dist/varna.cyr +
+# dist/varna-core.cyr and their .deps sidecars from src/.
+make = "cyrius deps && cyrius distlib --all"
+check = "cyrius deps --verify && cyrius tests"
 install = '''
-mkdir -p $PKG/usr/lib/varna
+mkdir -p $PKG/usr/lib/varna/dist
+install -m644 dist/varna.cyr dist/varna.deps dist/varna-core.cyr dist/varna-core.deps $PKG/usr/lib/varna/dist/
+install -m644 cyrius.cyml cyrius.lock VERSION $PKG/usr/lib/varna/
 cp -r src $PKG/usr/lib/varna/
-cp Cargo.toml $PKG/usr/lib/varna/
-cp VERSION $PKG/usr/lib/varna/
 '''
 
 [security]

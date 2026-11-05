@@ -7,6 +7,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and
 
 ## [Unreleased]
 
+### Changed
+
+- **`marketplace/varna.cyml`** 1.0.0 → **2.4.3**: rewritten for the Cyrius
+  library varna has been since its 2.0 port (Cyrius toolchain pinned to 6.6.20).
+  The recipe still described the Rust 1.0.0 crate (`groups`/tags carried
+  `rust`, `build = ["rust"]`, `cargo build`/`cargo test`, and the install
+  copied `Cargo.toml`).
+  Now: `build = ["cyrius"]`, `cyrius`
+  group and tag, `release_asset = "varna-*-src.tar.gz"` (the `git archive`
+  tarball the varna release workflow publishes),
+  `make = "cyrius deps && cyrius distlib --all"`,
+  `check = "cyrius deps --verify && cyrius tests"`. The install ships
+  `dist/varna.cyr` + `dist/varna-core.cyr`, their `.deps` sidecars,
+  `cyrius.cyml`, `cyrius.lock`, `VERSION` and `src/` to `/usr/lib/varna`.
+  The make/check/install steps were run offline (`unshare -rn`) on the
+  published `varna-2.4.3-src.tar.gz`. The regenerated bundles are
+  byte-identical to the shipped `dist/`, and all tests pass (119 + 74 + 35).
+  **SHA256 verified** (`6ef0900a…`): computed from the downloaded release
+  asset, and it matches the GitHub API asset digest and the release's
+  `SHA256SUMS`.
+
 ## [1.0.7] - 2026-07-03 — gnoboot bootloader recipe (sovereign UEFI)
 
 ### Added

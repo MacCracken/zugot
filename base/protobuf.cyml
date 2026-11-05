@@ -1,5 +1,5 @@
 # Protocol Buffers — Serialization format + compiler
-# Used internally by ifran (build dep) and onnxruntime.
+# Used internally by onnxruntime (ifran's Rust line used it too; the Cyrius ifran does not).
 #
 # BLFS
 
