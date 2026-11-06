@@ -9,6 +9,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and
 
 ### Changed
 
+- **`marketplace/agnostic.cyml`** 2026.3.18 → **0.3.0**: rewritten for the native
+  binary agnostic has been since its Cyrius port. The recipe still described the
+  Python container (`pip install`, `docker build`, `python run_tests.py`, a
+  Postgres data directory, port 8000 as Chainlit). Now: `runtime = "native-binary"`,
+  a `cyrius` group, no runtime dependencies (the binary is static, checked with
+  `file` and `ldd`), `release_asset = "agnostic"`, and a sandbox of
+  `/var/lib/agnostic/`. ⚠ The version line restarts with the port, so 0.3.0 reads
+  as lower than 2026.3.18. **SHA256 verified** (`57a6d15f…`): computed from the
+  downloaded release asset, and it matches the GitHub API asset digest and the
+  release's `SHA256SUMS`.
 - **`marketplace/varna.cyml`** 1.0.0 → **2.4.3**: rewritten for the Cyrius
   library varna has been since its 2.0 port (Cyrius toolchain pinned to 6.6.20).
   The recipe still described the Rust 1.0.0 crate (`groups`/tags carried
